@@ -1,6 +1,3 @@
-![Shape Description automatically generated with low
-confidence](media/image1.png)
-
 **OpenFoam® Handbook**
 
 **Last update: 01/02/2022**
@@ -22,172 +19,157 @@ How to interpret the text:
 | Abc         | Command line code   |
 | \<**Abc**\> | User input required |
 
-[Preface ii](#preface)
+[Preface](#preface)
 
-[1 Installation vi](#installation)
+[1 Installation](#installation)
 
-[1.1 Via package manager vi](#via-package-manager)
+[1.1 Via package manager](#via-package-manager)
 
-[1.2 Compiling the source code for x86 architecture
-vi](#compiling-the-source-code-for-x86-architecture)
+[1.2 Compiling the source code for x86 architecture](#compiling-the-source-code-for-x86-architecture)
 
-[1.2.1 Compiling source code for raspberry pi 4 (ARM architecture)
-vii](#compiling-source-code-for-raspberry-pi-4-arm-architecture)
+[1.2.1 Compiling source code for raspberry pi 4 (ARM architecture)](#compiling-source-code-for-raspberry-pi-4-arm-architecture)
 
-[2 Problem set up vii](#problem-set-up)
+[2 Problem set up ](#problem-set-up)
 
-[3 Automation vii](#automation)
+[3 Automation ](#automation)
 
-[3.1 Run commands in sequence vii](#run-commands-in-sequence)
+[3.1 Run commands in sequence](#run-commands-in-sequence)
 
-[3.2 Create a custom command viii](#create-a-custom-command)
+[3.2 Create a custom command](#create-a-custom-command)
 
-[3.3 Bash script viii](#bash-script)
+[3.3 Bash script](#bash-script)
 
-[4 Useful command viii](#useful-command)
+[4 Useful command](#useful-command)
 
-[4.1 Find file in tutorial ix](#_Toc95420194)
+[4.1 Find file in tutorial](#_Toc95420194)
 
-[5 Mesh ix](#mesh)
+[5 Mesh](#mesh)
 
-[5.1 blockMesh ix](#blockmesh)
+[5.1 blockMesh](#blockmesh)
 
-[5.2 SnappyHexMesh ix](#snappyhexmesh)
+[5.2 SnappyHexMesh](#snappyhexmesh)
 
-[5.2.1 Most important mesh parameters xiv](#_Toc95420198)
+[5.2.1 Most important mesh parameters](#_Toc95420198)
 
-[5.2.2 Advice for internal flow x](#advice-for-internal-flow)
+[5.2.2 Advice for internal flow](#advice-for-internal-flow)
 
-[5.2.3 Setting zones inside the mesh for source terms
-x](#setting-zones-inside-the-mesh-for-source-terms)
+[5.2.3 Setting zones inside the mesh for source terms](#setting-zones-inside-the-mesh-for-source-terms)
 
-[5.2.4 Advanced refinement technique xi](#advanced-refinement-technique)
+[5.2.4 Advanced refinement technique](#advanced-refinement-technique)
 
-[5.2.5 Meshing more than one close body
-xii](#meshing-more-than-one-closed-body)
+[5.2.5 Meshing more than one close body](#meshing-more-than-one-closed-body)
 
-[5.2.6 Parallelization issues xii](#parallelization-issues)
+[5.2.6 Parallelization issues](#parallelization-issues)
 
-[5.3 cfMesh xii](#cfmesh)
+[5.3 cfMesh ](#cfmesh)
 
-[5.4 checkMesh xiii](#checkmesh)
+[5.4 checkMesh](#checkmesh)
 
-[5.5 ANSYS Meshing to OpenFoam® xv](#ansys-meshing-to-openfoam)
+[5.5 ANSYS Meshing to OpenFoam® ](#ansys-meshing-to-openfoam)
 
-[6 Directories’ structure xvi](#directories-structure)
+[6 Directories’ structure](#directories-structure)
 
-[7 – 0 (i.e. Boundary Conditions) xvi](#i.e.-boundary-conditions)
+[7 – 0 (i.e. Boundary Conditions)](#i.e.-boundary-conditions)
 
-[7.1 ε, ω, k xvii](#ε-ω-k)
+[7.1 ε, ω, k](#ε-ω-k)
 
-[7.1.1 Internal Flow approximations xvii](#internal-flow-approximations)
+[7.1.1 Internal Flow approximations](#internal-flow-approximations)
 
-[7.1.2 External flow applications xviii](#external-flow-applications)
+[7.1.2 External flow applications](#external-flow-applications)
 
-[7.1.3 Turbulent Wall functions xviii](#turbulent-wall-functions)
+[7.1.3 Turbulent Wall functions](#turbulent-wall-functions)
 
-[7.2 nut xix](#nut)
+[7.2 nut](#nut)
 
-[7.2.1 Turbulent viscosity wall functions
-xix](#turbulent-viscosity-wall-functions)
+[7.2.1 Turbulent viscosity wall functions](#turbulent-viscosity-wall-functions)
 
-[8 Constant xix](#constant)
+[8 Constant](#constant)
 
-[8.1 transportProperties xix](#transportproperties)
+[8.1 transportProperties](#transportproperties)
 
-[8.2 polyMesh xx](#polymesh)
+[8.2 polyMesh ](#polymesh)
 
-[8.2.1 boundary xx](#boundary)
+[8.2.1 boundary](#boundary)
 
-[8.3 Thermophysical model xx](#thermophysical-model)
+[8.3 Thermophysical model](#thermophysical-model)
 
-[9 System xx](#system)
+[9 System ](#system)
 
-[9.1 controlDict xx](#controldict)
+[9.1 controlDict ](#controldict)
 
-[9.2 fvSchemes xxi](#fvschemes)
+[9.2 fvSchemes ](#fvschemes)
 
-[9.2.1 Discretization schemes selection
-xxii](#discretization-schemes-selection)
+[9.2.1 Discretization schemes selection](#discretization-schemes-selection)
 
-[9.3 fvSolution xxiii](#fvsolution)
+[9.3 fvSolution](#fvsolution)
 
-[9.3.1 linear solver xxiii](#linear-solver)
+[9.3.1 linear solver](#linear-solver)
 
-[9.3.2 solver xxiii](#solver)
+[9.3.2 solver](#solver)
 
-[9.3.3 Residuals xxiv](#residuals)
+[9.3.3 Residuals](#residuals)
 
-[9.3.4 Under-relaxation factors xxv](#under-relaxation-factors)
+[9.3.4 Under-relaxation factors](#under-relaxation-factors)
 
-[9.4 decomposeParDict xxv](#decomposepardict)
+[9.4 decomposeParDict](#decomposepardict)
 
-[9.5 fvOptions xxv](#fvoptions)
+[9.5 fvOptions](#fvoptions)
 
-[10 Problem initialization and interpolation from previous results
-xxv](#problem-initialization-and-interpolation-from-previous-results)
+[10 Problem initialization and interpolation from previous results](#problem-initialization-and-interpolation-from-previous-results)
 
-[11 Browse Source Code xxv](#browse-source-code)
+[11 Browse Source Code](#browse-source-code)
 
-[11.1 Doxigen xxvi](#doxigen)
+[11.1 Doxigen](#doxigen)
 
-[11.2 Source code xxvi](#source-code)
+[11.2 Source code](#source-code)
 
-[12 Multiphase model xxvi](#multiphase-model)
+[12 Multiphase model](#multiphase-model)
 
-[13 Conjugate Heat Transfer Model xxvii](#conjugate-heat-transfer-model)
+[13 Conjugate Heat Transfer Model](#conjugate-heat-transfer-model)
 
-[13.1 Run in parallel a CHT model xxix](#run-in-parallel-a-cht-model)
+[13.1 Run in parallel a CHT model](#run-in-parallel-a-cht-model)
 
-[14 Run in parallel xxix](#run-in-parallel)
+[14 Run in parallel](#run-in-parallel)
 
-[15 Residuals xxix](#residuals-1)
+[15 Residuals](#residuals-1)
 
-[15.1 Convergence xxx](#convergence-advice)
+[15.1 Convergence](#convergence-advice)
 
-[15.2 pyFoam xxx](#with-pyfoam)
+[15.2 pyFoam](#with-pyfoam)
 
 [16 ParaView Error\! Bookmark not defined.](#_Toc95420242)
 
-[16.1 Post processing in ParaView **Error\! Bookmark not
-defined.**](#_Toc95420243)
+[16.1 Post processing in ParaView **Error\! Bookmark notdefined.**](#_Toc95420243)
 
-[16.2 pvserver xxxi](#pvserver)
+[16.2 pvserver](#pvserver)
 
-[16.3 Installation from source code **Error\! Bookmark not
-defined.**](#_Toc95420245)
+[16.3 Installation from source code **Error\! Bookmark notdefined.**](#_Toc95420245)
 
-[16.4 Trouble shooting xxxii](#trouble-shooting-common-problems)
+[16.4 Trouble shooting](#trouble-shooting-common-problems)
 
-[17 Post processing via command line
-xxxiii](#post-processing-via-command-line)
+[17 Post processing via command line](#post-processing-via-command-line)
 
-[18 Cluster practice xxxiii](#cluster-practice)
+[18 Cluster practice](#cluster-practice)
 
-[19 Compile functionObjects from web
-xxxiv](#compile-functionobjects-from-web)
+[19 Compile functionObjects from web](#compile-functionobjects-from-web)
 
-[20 WSL xxxiv](#windows-practices)
+[20 WSL](#windows-practices)
 
-[20.1 Enabling graphics applications **Error\! Bookmark not
-defined.**](#_Toc95420251)
+[20.1 Enabling graphics applications **Error\! Bookmark not defined.**](#_Toc95420251)
 
-[20.2 NotePad ++ xxxiv](#notepad)
+[20.2 NotePad ++](#notepad)
 
 [21 GitHub Error\! Bookmark not defined.](#_Toc95420253)
 
-[22 Docker xxxv](#multipass)
+[22 Docker](#multipass)
 
 [22.1 System images **Error\! Bookmark not defined.**](#_Toc95420255)
 
-[22.2 Create the container **Error\! Bookmark not
-defined.**](#_Toc95420256)
+[22.2 Create the container **Error\! Bookmark not defined.**](#_Toc95420256)
 
-[22.3 Run the container **Error\! Bookmark not
-defined.**](#_Toc95420257)
+[22.3 Run the container **Error\! Bookmark not defined.**](#_Toc95420257)
 
-[22.4 Delete the container **Error\! Bookmark not
-defined.**](#_Toc95420258)
+[22.4 Delete the container **Error\! Bookmark not defined.**](#_Toc95420258)
 
 # Installation
 
@@ -204,11 +186,14 @@ The installation of OpenFoam® is possible through three methods:
 To check the dependencies (other software needed to run OpenFoam® )) the
 suggested software and the description of the package:
 
+```shell-session
 apt show openfoam
-
+```
 Then install it
 
+```shell-session
 apt install \<OpenFOAMVersion\>
+```
 
 ## Compiling the source code for x86 architecture 
 
@@ -225,10 +210,12 @@ They will not be separated into different locations as a traditional
 UNIX system would have them. To check if your system has an adequate
 environment to start the installation run:
 
+```shell-session
 source /opt/\<**OpenFOAMInstallationPath**\>/etc/bashrc
-
+```
+```shell-session
 foamSystemCheck
-
+```
 If the system check did not produced error messages, then OpenFOAM can
 be compiled. This is done by executing ./Allwmake. This is an
 installation script that takes care of all required operations.
@@ -236,22 +223,27 @@ Compiling OpenFOAM can be done by using more than one processor to save
 time. In order to do this, an environment variable needs to be set
 before invoking ./Allwmake.
 
+```shell-session
 export WM\_NCOMPPROCS =4
+```
 
 then proceed with the compilation:
 
+```shell-session
 ./Allwmake -j -s -q -l
-
+```
 If you have an HPC or you can schedule the installation with this bash
 script
 
 After the source code has been compiled, it is good practice add those
 lines in  \~/.bashrc :
 
+```shell-session
 source \<installationDirectory\>/etc/bashrc
-
+```
+```shell-session
 source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions
-
+```
 So, at the next start-up (source \~/.bashrc), the OpenFoam® commands
 will be recognized in the terminal
 
@@ -260,7 +252,9 @@ will be recognized in the terminal
 Create a file \<**installationPath**\>/etc/prefs.sh in the installation
 directory as shown:
 
+```shell-session
 echo "WM\_COMPILER=Gcc" \> etc/prefs.sh
+```
 
 Change two files (cOpt and c++Opt) in wmake/rules/linuxARM7Gcc,
 substituting the option -mfloat-abi=softfp into -mfloat-abi=hard
