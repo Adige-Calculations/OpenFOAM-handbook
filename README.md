@@ -1,8 +1,9 @@
-**OpenFoam® Handbook**
+![](AdigeCalculations.png)
 
+# OpenFoam® Handbook
 **Last update: 01/02/2022**
 
-# Preface
+## Preface
 
 This handbook is intended to support a medium/advanced OpenFoam® user
 during the usage of the software. It provides commands, explanations,
@@ -16,7 +17,6 @@ How to interpret the text:
 | **Font**    | **Meaning**         |
 | ----------- | ------------------- |
 | Abc         | Normal text         |
-| Abc         | Command line code   |
 | \<**Abc**\> | User input required |
 
 [Preface](#preface)
@@ -137,7 +137,7 @@ How to interpret the text:
 
 [15.2 pyFoam](#with-pyfoam)
 
-[16 ParaView Error\! Bookmark not defined.](#_Toc95420242)
+[16 ParaView Error\! Bookmark not defined.](#ParaView)
 
 [16.1 Post processing in ParaView **Error\! Bookmark notdefined.**](#_Toc95420243)
 
@@ -153,23 +153,14 @@ How to interpret the text:
 
 [19 Compile functionObjects from web](#compile-functionobjects-from-web)
 
-[20 WSL](#windows-practices)
+[20 Windows-practices](#windows-practices)
 
-[20.1 Enabling graphics applications **Error\! Bookmark not defined.**](#_Toc95420251)
+[20.1 WSL](#WSL (Windows Subsystem for Linux))
 
 [20.2 NotePad ++](#notepad)
 
-[21 GitHub Error\! Bookmark not defined.](#_Toc95420253)
+[22 Multipass](#multipass)
 
-[22 Docker](#multipass)
-
-[22.1 System images **Error\! Bookmark not defined.**](#_Toc95420255)
-
-[22.2 Create the container **Error\! Bookmark not defined.**](#_Toc95420256)
-
-[22.3 Run the container **Error\! Bookmark not defined.**](#_Toc95420257)
-
-[22.4 Delete the container **Error\! Bookmark not defined.**](#_Toc95420258)
 
 # Installation
 
@@ -260,14 +251,14 @@ Change two files (cOpt and c++Opt) in wmake/rules/linuxARM7Gcc,
 substituting the option -mfloat-abi=softfp into -mfloat-abi=hard
 
 Then
-
+```shell-session
 source \<**installationPath**\>/etc/bashrc
-
+```
 Then start the compilation with:
-
+```shell-session
 ./Allwmake -j -s -l
-
-\-j is for use all the processor available
+```
+\-j flag stands for --> use all the processor available
 
 # Problem set up 
 
@@ -284,31 +275,29 @@ Modify the tutorial, including geometry, meshing and problem setup. If
 you need to set a specific directory which is not present in the
 tutorial you have chosen, this utility will create the dictionary for
 you:
-
+```shell-session
 foamGetDict \<dictionary you are searching\>
-
+```
 For instance:
-
+```shell-session
 foamGetDict topoSetDict
-
+```
 # Automation 
 
 ## Run commands in sequence 
 
-Sequence of commands Command 2 will start only if command 1 has
-succeeded:
-
+Sequence of commands Command 2 will start only if command 1 has succeeded:
+```shell-session
 \<**Command1**\> && \<**Command2**\>
-
-Piping commands à The output of Command 1 will feed Command 2 as
-argument
-
+```
+Piping commands à The output of Command 1 will feed Command 2 as argument
+```shell-session
 \<**Command1**\> | \<**Command2**\>
-
+```
 Using ; permit to run command in sequence even if the precedent fail
-
+```shell-session
 \<Command1\>; \<Command2\>
-
+```
 ## Create a custom command
 
 Open the file \~/.bashrc and write at the end of this file the command
@@ -319,10 +308,10 @@ nameCommand\>’
 
 For example, a useful alias which create a dummy file with the name of
 the directory and then open ParaView in series:
-
+```shell-session
 alias ParaView ='touch "${PWD\#\#\*/}".foam && ParaView
 "${PWD\#\#\*/}".foam'
-
+```
 ## Bash script 
 
 These are script files, for running all the commands related to the
@@ -1322,13 +1311,14 @@ the file after that, so it each time the terminal is called the path
 will be registered and you can call ParaView with command line command;
 ParaView.
 
+```shell-session
 export PATH=
 \<**installationPath**\>/ParaView-\<**ParaViewVersion**\>/bin:${PATH}
-
+```
 and then make this modification active for the same session
-
+```shell-session
 source ./bashrc
-
+```
 There is the need to create a dummy file in the working directory to
 make ParaView be able to read the OpenFOAM® format.
 
