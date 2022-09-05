@@ -1,6 +1,5 @@
-![](AdigeCalculations.png)
-
-# OpenFoam® Handbook
+<!-- <img align="centre" width="400" height="400" src="AdigeCalculations.png"> -->
+# **OpenFoam® Handbook**
 **Last update: 01/02/2022**
 
 ## Preface
@@ -17,103 +16,105 @@ How to interpret the text:
 | **Font**    | **Meaning**         |
 | ----------- | ------------------- |
 | Abc         | Normal text         |
-| \<**Abc**\> | User input required |
+| <**Abc**>   | User input required |
+
+## Table of Contents 
 
 [Preface](#preface)
 
 [1 Installation](#installation)
 
-[1.1 Via package manager](#via-package-manager)
+  - [1.1 Via package manager](#via-package-manager)
 
-[1.2 Compiling the source code for x86 architecture](#compiling-the-source-code-for-x86-architecture)
+  - [1.2 Compiling the source code for x86 architecture](#compiling-the-source-code-for-x86-architecture)
 
-[1.2.1 Compiling source code for raspberry pi 4 (ARM architecture)](#compiling-source-code-for-raspberry-pi-4-arm-architecture)
+  - [1.2.1 Compiling source code for raspberry pi 4 (ARM architecture)](#compiling-source-code-for-raspberry-pi-4-arm-architecture)
 
 [2 Problem set up ](#problem-set-up)
 
 [3 Automation ](#automation)
 
-[3.1 Run commands in sequence](#run-commands-in-sequence)
+  - [3.1 Run commands in sequence](#run-commands-in-sequence)
 
-[3.2 Create a custom command](#create-a-custom-command)
+  - [3.2 Create a custom command](#create-a-custom-command)
 
-[3.3 Bash script](#bash-script)
+  - [3.3 Bash script](#bash-script)
 
 [4 Useful command](#useful-command)
 
-[4.1 Find file in tutorial](#_Toc95420194)
+  - [4.1 Find file in tutorial](#_Toc95420194)
 
 [5 Mesh](#mesh)
 
-[5.1 blockMesh](#blockmesh)
+  - [5.1 blockMesh](#blockmesh)
 
-[5.2 SnappyHexMesh](#snappyhexmesh)
+  - [5.2 SnappyHexMesh](#snappyhexmesh)
 
-[5.2.1 Most important mesh parameters](#_Toc95420198)
+    - [5.2.1 Most important mesh parameters](#_Toc95420198)
 
-[5.2.2 Advice for internal flow](#advice-for-internal-flow)
+    - [5.2.2 Advice for internal flow](#advice-for-internal-flow)
 
-[5.2.3 Setting zones inside the mesh for source terms](#setting-zones-inside-the-mesh-for-source-terms)
+    - [5.2.3 Setting zones inside the mesh for source terms](#setting-zones-inside-the-mesh-for-source-terms)
 
-[5.2.4 Advanced refinement technique](#advanced-refinement-technique)
+    - [5.2.4 Advanced refinement technique](#advanced-refinement-technique)
 
-[5.2.5 Meshing more than one close body](#meshing-more-than-one-closed-body)
+    - [5.2.5 Meshing more than one close body](#meshing-more-than-one-closed-body)
 
-[5.2.6 Parallelization issues](#parallelization-issues)
+    - [5.2.6 Parallelization issues](#parallelization-issues)
 
-[5.3 cfMesh ](#cfmesh)
+  - [5.3 cfMesh ](#cfmesh)
 
-[5.4 checkMesh](#checkmesh)
+  - [5.4 checkMesh](#checkmesh)
 
-[5.5 ANSYS Meshing to OpenFoam® ](#ansys-meshing-to-openfoam)
+  - [5.5 ANSYS Meshing to OpenFoam® ](#ansys-meshing-to-openfoam)
 
 [6 Directories’ structure](#directories-structure)
 
 [7 – 0 (i.e. Boundary Conditions)](#i.e.-boundary-conditions)
 
-[7.1 ε, ω, k](#ε-ω-k)
+  - [7.1 ε, ω, k](#ε-ω-k)
 
-[7.1.1 Internal Flow approximations](#internal-flow-approximations)
+    - [7.1.1 Internal Flow approximations](#internal-flow-approximations)
 
-[7.1.2 External flow applications](#external-flow-applications)
+    - [7.1.2 External flow applications](#external-flow-applications)
 
-[7.1.3 Turbulent Wall functions](#turbulent-wall-functions)
+    - [7.1.3 Turbulent Wall functions](#turbulent-wall-functions)
 
-[7.2 nut](#nut)
+  - [7.2 nut](#nut)
 
-[7.2.1 Turbulent viscosity wall functions](#turbulent-viscosity-wall-functions)
+    - [7.2.1 Turbulent viscosity wall functions](#turbulent-viscosity-wall-functions)
 
 [8 Constant](#constant)
 
-[8.1 transportProperties](#transportproperties)
+  - [8.1 transportProperties](#transportproperties)
 
-[8.2 polyMesh ](#polymesh)
+  - [8.2 polyMesh ](#polymesh)
 
-[8.2.1 boundary](#boundary)
+     - [8.2.1 boundary](#boundary)
 
-[8.3 Thermophysical model](#thermophysical-model)
+  - [8.3 Thermophysical model](#thermophysical-model)
 
 [9 System ](#system)
 
-[9.1 controlDict ](#controldict)
+  - [9.1 controlDict ](#controldict)
 
-[9.2 fvSchemes ](#fvschemes)
+  - [9.2 fvSchemes ](#fvschemes)
 
-[9.2.1 Discretization schemes selection](#discretization-schemes-selection)
+    - [9.2.1 Discretization schemes selection](#discretization-schemes-selection)
 
-[9.3 fvSolution](#fvsolution)
+  - [9.3 fvSolution](#fvsolution)
 
-[9.3.1 linear solver](#linear-solver)
+    - [9.3.1 linear solver](#linear-solver)
 
-[9.3.2 solver](#solver)
+    - [9.3.2 solver](#solver)
 
-[9.3.3 Residuals](#residuals)
+    - [9.3.3 Residuals](#residuals)
 
-[9.3.4 Under-relaxation factors](#under-relaxation-factors)
+    - [9.3.4 Under-relaxation factors](#under-relaxation-factors)
 
-[9.4 decomposeParDict](#decomposepardict)
+  - [9.4 decomposeParDict](#decomposepardict)
 
-[9.5 fvOptions](#fvoptions)
+  - [9.5 fvOptions](#fvoptions)
 
 [10 Problem initialization and interpolation from previous results](#problem-initialization-and-interpolation-from-previous-results)
 
@@ -127,25 +128,25 @@ How to interpret the text:
 
 [13 Conjugate Heat Transfer Model](#conjugate-heat-transfer-model)
 
-[13.1 Run in parallel a CHT model](#run-in-parallel-a-cht-model)
+  - [13.1 Run in parallel a CHT model](#run-in-parallel-a-cht-model)
 
 [14 Run in parallel](#run-in-parallel)
 
 [15 Residuals](#residuals-1)
 
-[15.1 Convergence](#convergence-advice)
+  - [15.1 Convergence](#convergence-advice)
 
-[15.2 pyFoam](#with-pyfoam)
+  - [15.2 pyFoam](#with-pyfoam)
 
 [16 ParaView Error\! Bookmark not defined.](#ParaView)
 
-[16.1 Post processing in ParaView **Error\! Bookmark notdefined.**](#_Toc95420243)
+  - [16.1 Post processing in ParaView **Error\! Bookmark notdefined.**](#_Toc95420243)
 
-[16.2 pvserver](#pvserver)
+  - [16.2 pvserver](#pvserver)
 
-[16.3 Installation from source code **Error\! Bookmark notdefined.**](#_Toc95420245)
+  - [16.3 Installation from source code **Error\! Bookmark notdefined.**](#_Toc95420245)
 
-[16.4 Trouble shooting](#trouble-shooting-common-problems)
+  - [16.4 Trouble shooting](#trouble-shooting-common-problems)
 
 [17 Post processing via command line](#post-processing-via-command-line)
 
@@ -155,9 +156,9 @@ How to interpret the text:
 
 [20 Windows-practices](#windows-practices)
 
-[20.1 WSL](#WSL (Windows Subsystem for Linux))
+  - [20.1 WSL](#WSL (Windows Subsystem for Linux))
 
-[20.2 NotePad ++](#notepad)
+  - [20.2 NotePad ++](#notepad)
 
 [22 Multipass](#multipass)
 
@@ -183,7 +184,7 @@ apt show openfoam
 Then install it
 
 ```shell-session
-apt install \<OpenFOAMVersion\>
+apt install \ ***OpenFOAMVersion*** 
 ```
 
 ## Compiling the source code for x86 architecture 
@@ -309,8 +310,7 @@ nameCommand\>’
 For example, a useful alias which create a dummy file with the name of
 the directory and then open ParaView in series:
 ```shell-session
-alias ParaView ='touch "${PWD\#\#\*/}".foam && ParaView
-"${PWD\#\#\*/}".foam'
+alias ParaView ='touch "${PWD\#\#\*/}".foam && ParaView "${PWD\#\#\*/}".foam
 ```
 ## Bash script 
 
@@ -319,55 +319,71 @@ case. You can open it using any editor and see the commands in it.
 Tanking as an example the native bash script often present in tutorial
 cases:
 
-./Allrun It will run all the command necessary to run the tutorial
+```shell-session
+./Allrun
+```
+It will run all the command necessary to run the tutorial
 
-./Allclean It will run all the command necessary to clean the tutorial
+```shell-session
+./Allclean 
+```
+It will run all the command necessary to clean the tutorial.
+To write you bash script, start a new file with the notation:
 
-To write you bash script, start a new file with the notation
-\#\!/bin/bash in the first row and then followed by the command you want
-to execute
-
+```shell-session
+#!/bin/bash 
+```
+in the first row and then followed by the command you want to execute
 Elevate the file permission adding execution permission through
 
+```shell-session
 chmod +x \<fileName\>
-
+```
 For running your bash script, type:
-
+```shell-session
 ./\<fileName\>
-
+```
 # Useful command 
 
 Grep will search word for you in selected documents or a list of them
 
+```shell-session
 grep -w -R "car\_baseCase" \*
-
+```
 where -w stands for word and -R for research in subdirectories
 
 Rename more than one file at once, extension included
 
+```shell-session
 mmv '\*.STL' '\#1.stl'
-
+```
 To check running simulation written in a log file, it is possible to see
 in terminal the live writing
 
+```shell-session
 tail -f \<log.fileName\>
-
+```
 To copy a file in different directory, execute:
 
+```shell-session
 ls -d processor\* | xargs -i cp -r 0.orig/\* ./{}/0
+```
+Call a GUI file manager from terminal (nautilys is the defult in GNOME
+desktop envirnments) :
 
-Call GNOME as a GUI from terminal:
-
+```shell-session
 nautilus . &
-
+```
 For replacing the text repetitively in file stream:
 
+```shell-session
 find . -type f | xargs sed -i s/\<**oldWord**\>/\<**newWord**\>/g
+```
+To find Find the correct case in tutorial
 
-<span id="_Toc95420194" class="anchor"></span>Find the correct file in
-tutorial
-
+```shell-session
 find $FOAM\_TUTORIALS -name controlDict | xargs grep -r \<**word1**\>
+```
 
 List controlDict files where **word1** have been found
 
@@ -380,12 +396,15 @@ those or translated from other programmes.
 
 First step is to create a dummy folder with the tutorial command:
 
+```shell-session
 restore0Dir
-
+```
 BlockMesh is the basic mesh generators which relies on a single
 dictionary file system/blockMeshDict with the command:
 
+```shell-session
 blockMesh
+```
 
 Theg mesh will be generated inside the folder constant/polyMesh.
 Parameters to control this command is in system/blockMeshDict which
@@ -410,7 +429,9 @@ substituting and adding the entries and modifying the featured angles
 cells, lowering this value it wouldn’t be consider these cells and it
 will be applied a merged cell)
 
+```shell-session
 surfaceFeatureExtract
+```
 
 The geometry components must be costant/triSurface directory rigorously
 in this format \<**file**\>.stl and after having launched the command in
@@ -478,9 +499,9 @@ cellZone to use fvOptions
 The selection is usually performed by the tools, both of which can
 select subsets of the mesh and perform boolean operations on them
 
-  - setSet à Use an interactive window
+  - setSet --> Use an interactive window
 
-  - topoSet à Use a dictionary in system/topoSetDict
+  - topoSet --> Use a dictionary in system/topoSetDict
 
 Example of topoSet for the implementation of 2 cellZones from STL files:
 
@@ -512,10 +533,12 @@ If you forgot to restore the 0 directory before the case decomposition,
 what you can do is tp reconstruct the mesh and decompose it again with
 the 0 folder in place with:
 
+```shell-session
 reconstructParMesh -constant
-
+```
+```shell-session
 decomposePar -force
-
+```
 When is reconstructed only the mesh, and the redecomposed to include the
 0 dir. and error can occur when triyng to reconstruct the concluded case
 at the end. A solution is to run:
@@ -528,22 +551,26 @@ CfMesh is a mesher which is integrate in OpenFOAM® such as
 SnappyHexMesh. and it is possible to find the tutorial relatives to it
 in:
 
+```shell-session
 \<**OpenFOAMInstallationDirectrory**\>/modules/cfmesh/tutorials
+```
 
 The modalities to create a mesh pass always through the creation of .stl
 bodies as boundaries, i.e. create all different .stl file as surface
 (ASCII and divided per patch that you intend to apply a boundary
 condition)
 
-cat \<**body1**\>.stl \<**body2**\>.stl \<**bodyN**\>.stl \>\>
-\<**combined**\>.stl
-
+```shell-session
+cat \<**body1**\>.stl \<**body2**\>.stl \<**bodyN**\>.stl \>\>\<**combined**\>.stl
+```
 to permit at the program to select different patches of the geometry,
 remember to check inside the combined file and ensure there is a space
 between the joint of the different STL files. Then to create a .fms file
 specific for OpenFoam®
 
+```shell-session
 surfaceFeatureEdges –angle 15 \<**combined**\>.stl \<**combined**\>.fms
+```
 
 The tag angle \<**number**\> permit to capture correctly sharp corner of
 the geometry and more it is low more it will be precise and
@@ -554,7 +581,9 @@ boundaries (wall, patch, empty) in the first rows. Then the following
 modifications acts on the dictionary system/meshDict. Then to run the
 cited dictionary type the command:
 
+```shell-session
 cartesianMesh
+```
 
 For command to run require that the directory system/meshDict contain
 only the voice:
@@ -566,7 +595,9 @@ maxCellSize …;
 If you are not satisfied with the result, try to run these utilities to
 improve the results:
 
+```shell-session
 improveMeshQuality
+```
 
 ## checkMesh
 
@@ -587,12 +618,16 @@ constant/polyMesh/sets/
 To check all the parameters (often an overkill utilities) of the mesh
 like quality parameters run:
 
+```shell-session
 checkMesh -allGeometry -allTopology -writeAllFields -writeSets vtk
+``` 
 
 This additive options permit to visualise all the fields and most of the
 time is impossible to make them have a positive outcome, hence a simple:
 
+```shell-session
 checkMesh -writeSets vtk
+```
 
 Will write to constant/polyMesh/sets/ the Sets to permit to check the
 most important features cellZones in your domain via ParaView
@@ -619,11 +654,15 @@ otherwise it is strongly advised to re-mesh.
 After checking the quality and writing the problematic cells in cellSets
 with:
 
+```shell-session
 checkMesh -allTopology - allGeometry
+```
 
 It is possible to delete the problematic cells with the utility:
 
+```shell-session
 setSet -constant
+```
 
 An internal command line will appear, and similar command can be used to
 manage bad cells present in your mesh (i.e. concave, underdetermined,
@@ -645,8 +684,9 @@ cellSet c0 invert && quit
 Once exited from the internal command line, execute the following
 command to overwrite the mesh
 
+```shell-session
 subSetMesh c0 -overwrite
-
+```
 ## ANSYS Meshing to OpenFoam® 
 
 OpenFoam® needs to read a mesh in ASCII format if it comes from another
@@ -659,7 +699,9 @@ Choose ASCII and then you can easily extract the file in ASCII format by
 exporting the mesh. After you have the file in the working directory,
 the addressed command is
 
+```shell-session
 fluentMeshToFoam \<**fileName**\>.msh
+```
 
 Remember that it is good practice check the boundary setting in
 constant/polyMesh/boundary after a conversion
@@ -681,22 +723,22 @@ change through setFields
 
 Type of patches are:
 
-fixedValue
+- fixedValue
 
-zeroGradient
+- zeroGradient
 
-symmetryplane
+- symmetryplane
 
-noSlip
+- noSlip
 
-empty - to set a 2D simulation
+- empty  (to set a 2D simulation)
 
-AMIcyclic - impose a periodic BC when the patches in study have not the
+- AMIcyclic (impose a periodic BC when the patches in study have not the
 same mesh, it must be declared the nature of periodicity (rotational,
 translation). The separationVector must contain the distances between
 the 2 patches in study. It is advised to use a createPatchDict to modify
 the BC after snappy procedure of snappyHexMesh because can cause
-problems to the patches.
+problems to the patches)
 
 ![](media/image10.png)
 
@@ -719,15 +761,13 @@ when flow is inwards
 ![Image
 sketch-inlet-outlet-boundary-condition-openfoam](media/image11.png)
 
-{
-
-type inletOutlet;
-
-inletValue uniform (0 0 0); // value of the velocity
-
-value uniform x; // value of the properties
-
-}
+```c
+  {
+    type inletOutlet;
+    inletValue uniform (0 0 0); // value of the velocity
+    value uniform x; // value of the properties
+  }
+```
 
 Basically, inletOutlet is zero gradient unless the flow is inward in
 which case it is fixed value (inletValue). outletInlet is zero gradient
@@ -746,16 +786,16 @@ conditions can be extrapolated using the Reynolds number *Re* to
 determine the turbulent intensity *I* to define the intensity length
 scale *l*, the required turbulent boundary conditions can be calculated.
 
-\[I = 0.16\ Re_{L}^{- \frac{1}{8}}\]
+$ I = 0.16 \ Re_L ^{-1/8} $
 
 This can be used to calculate a mean approximation for the turbulent
 boundary conditions
 
-\[k = \frac{3}{2}\left( \text{UI} \right)^{2}\]
+$ k = \frac{3}{2} U I^{2} $
 
-\[\varepsilon = C_{\mu}\frac{k^{\frac{3}{2}}}{l} = C_{\mu}\frac{k^{\frac{3}{2}}}{0.07L}\]
+$ ε = C_{\mu}\frac{k^{\frac{3}{2}}}{l} = C_{\mu}\frac{k^{\frac{3}{2}}}{0.07L} $
 
-\[\omega = \frac{\varepsilon}{kC_{\mu}}\]
+$ ω = \frac{\varepsilon}{kC_{\mu}}\
 
 ### External flow applications 
 
@@ -771,15 +811,13 @@ following technique. To start the calculation, the Turbulent Intensity
 I, and Viscosity Ratio β need to be approximated by using the table
 below.
 
-![undefined](media/image12.png)
-
 To calculate k, the following equation can be used:
 
-\[k = \frac{3}{2}\left( \text{UI} \right)^{2}\]
+$ k = \frac{3}{2}\left( \text{UI} \right)^{2} $
 
-\[\varepsilon = C_{\mu}\frac{\text{ρk}^{2}}{\mu}\beta^{- 1}\]
+$ ε = C_{\mu}\frac{\text{ρk}^{2}}{\mu}β ^{- 1}\ $
 
-\[\omega = \frac{\text{ρk}}{\mu}\beta^{- 1}\]
+$ ω = \frac{ρk}{\mu}\ β^{-1}\ $$
 
 ### Turbulent Wall functions
 
@@ -804,18 +842,18 @@ or a very small value for y+\<1)
 defined by Menter for Omega, i.e. should be used always for kOmega
 model, independent of y+)
 
-omegawall=60\*nu/(beta\*y^2), with nu=kinematic viscosity at the wall,
-beta=0.075 and y=normal distance between the first fluid node and the
+omegawall=60\*nu/(β \*y^2), with nu=kinematic viscosity at the wall,
+β =0.075 and y=normal distance between the first fluid node and the
 nearest wall-\> very large value for omega)
 
 The "value" which is specified for the wall functions is only an initial
 condition
 
-## nut
+## nut - $ ν_{t} $
 
-The entries for nut are type calculated because they come from ε and k
+The entries for $ ν_{t} $ are type calculated because they come from ε and k
 to calculate the field. Instead in the wall, you specify a wall function
-for nut, to modify the momentum equation for the cells adjacent to the
+for $ ν_{t} $, to modify the momentum equation for the cells adjacent to the
 wall. The modification is that OpenFoam® calculates wall shear stress
 from log-law for these cells and put it in their equations. OpenFoam®
 does not use log-law directly to obtain next-to-the-wall cell velocities
@@ -826,7 +864,7 @@ respectively.
 ### Turbulent viscosity wall functions
 
 The choice of wall function model is specified through the turbulent
-viscosity field  \(\nu_{t}\) in the 0/nut dictionary by the nutxxxxxx
+viscosity field  $ \ν_{t}\ $ in the 0/nut dictionary by the nutxxxxxx
 wall functions:
 
   - nutWallFunction seems to be the most basic wall function without
@@ -849,7 +887,7 @@ wall functions:
 
 <!-- end list -->
 
-  - nutLowReWallFunction (code comment: "Sets nut to zero and provides
+  - nutLowReWallFunction (code comment: "Sets $ ν_{t} $ to zero and provides
     an access function to calculate y+."):
 
 # Constant 
@@ -858,7 +896,8 @@ wall functions:
 
 nu is the kinematic viscosity i.e.
 
-\(\nu_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\)
+$ nu_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $
+
 **Air kinematic viscosity at given temperature**
 
 ##  polyMesh
@@ -1176,14 +1215,16 @@ your domain
 Then split the mesh to create interfaces and different body with the
 following
 
+```shell-session
 splitMeshRegions -cellZonesOnly -overwrite
-
+```
 And generate the
-
+```shell-session
 changeDictionary -region \<**region1**\>
-
+```
+```shell-session
 changeDictionary -region \<**region2**\>
-
+```
 Follow the following tutorial to set up a case:
 
 Check the constant/water/thermophysicalProperties, in the
@@ -1228,10 +1269,12 @@ After having complete the decomposition of the domain through
 system/decomposePar the following command does the same action, where
 process is intended either as solver or mesher:
 
+```shell-session
 mpirun -np \<**cores**\> \<**process**\> -parallel \> log.\<fileName\> &
-
+```
+```shell-session
 foamJob -parallel \<**process**\>
-
+```
 To take full advantage of the hardware, use the maximum number of
 physical cores, remember to disable the hyperthreading in the machine.
 The output of the previous command writes a log file that records
@@ -1240,17 +1283,19 @@ occur in an [operating
 system](https://en.wikipedia.org/wiki/Operating_system) or
 other [software](https://en.wikipedia.org/wiki/Software) to monitor the
 simulation.
-
+```shell-session
 tail -f log.\<**fileName**\> **Live scrolling**
+```
+```shell-session
 
 tail -\<**linesToDisplay**\> log.\<**fileName**\> **Static scrolling**
-
+```
 When the simulation is finished, all you time-step/iteration are in the
 processor’s folder, to build a single case the following command it is
 needed:
-
+```shell-session
 reconstructParMesh
-
+```
 reconstructPar
 
 If you need to kill the process in parallel, check top at first and the
@@ -1299,8 +1344,8 @@ pyFoamPlotRunner.py \<**solver**\>
 ## Convergence advice
 
 To check properly a the converge of the study during the iteration
-looking at nut is pro-tip due to this value is dependent from k and ε
-which both must converge to get a good nut.
+looking at $ ν_{t} $ is pro-tip due to this value is dependent from k and ε
+which both must converge to get a good $ ν_{t} $.
 
 # ParaView 
 
