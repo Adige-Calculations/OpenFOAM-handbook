@@ -291,7 +291,7 @@ Sequence of commands Command 2 will start only if command 1 has succeeded:
 ```shell-session
 \<**Command1**\> && \<**Command2**\>
 ```
-Piping commands à The output of Command 1 will feed Command 2 as argument
+Piping commands → The output of Command 1 will feed Command 2 as argument
 ```shell-session
 \<**Command1**\> | \<**Command2**\>
 ```
@@ -693,7 +693,7 @@ OpenFoam® needs to read a mesh in ASCII format if it comes from another
 program so to export a Fluent .msh file in ASCII format the shortest way
 (from ANSYS meshing) is:
 
-File à Option à Meshing à Export à Format of input file (.msh)
+File → Option → Meshing → Export → Format of input file (.msh)
 
 Choose ASCII and then you can easily extract the file in ASCII format by
 exporting the mesh. After you have the file in the working directory,
@@ -983,14 +983,14 @@ faces by one of the selected schemes
 These are the convective discretization schemes that you will use most
 of the times:
 
-  - Gauss upwind à first order accurate.
+  - Gauss upwind → first order accurate.
 
-  - Gauss linearUpwind grad(\<transporProperties\>) à second order
+  - Gauss linearUpwind grad(\<transporProperties\>) → second order
     accurate, bounded.
 
-  - Gauss linear à second order accurate, unbounded.
+  - Gauss linear → second order accurate, unbounded.
 
-  - Gauss limitedLinear à second order accurate, unbounded, but more
+  - Gauss limitedLinear → second order accurate, unbounded, but more
     stable than pure linear. Recommended for LES simulations.
 
 Gauss indicates derivatives are evaluated via Gauss’ theorem (no real
@@ -1197,7 +1197,7 @@ Several solvers:
 
 <!-- end list -->
 
-  - chtMultiRegionSimpleFoam à steady state version of
+  - chtMultiRegionSimpleFoam → steady state version of
     chtMultiRegionFoam
 
 Allows for defining multiple regions in the problem domain by setting up
@@ -1310,14 +1310,15 @@ this shell script in a way that you correctly distribute the regions
 between the processors:
 
 And the decompose the case through:
-
+```bash
 decomposePar -allRegions
+```
 
 Remember to create symbolic link to all your
-/system/\<region\>/decomposeParDict -\> system/decomposeParDict
-
-mpirun -n \<**nProcessors**\> \<**solver**\> -parallel
-
+```bash
+/system/\<region>/decomposeParDict -\> system/decomposeParDict
+mpirun -n \<nProcessors> \<solver> -parallel
+```
 # Residuals 
 
 ## With GNUPlot
@@ -1328,19 +1329,24 @@ called in /system/controlDict in this way
 
 Then run:
 
+```shell-session
 foamMonitor -l ./postprocessing/0/residuals
+```
 
 ## With pyFoam
 
 If you want to see your residual live just install a python environment,
-and then with the command
+and then with the command:
 
+```shell-session
 pip install PyFoam
+```
 
 run:
 
-pyFoamPlotRunner.py \<**solver**\>
-
+```shell-session
+pyFoamPlotRunner.py \<solver\>
+```
 ## Convergence advice
 
 To check properly a the converge of the study during the iteration
@@ -1348,7 +1354,6 @@ looking at $ ν_{t} $ is pro-tip due to this value is dependent from k and ε
 which both must converge to get a good $ ν_{t} $.
 
 # ParaView 
-
 To install it download the binary file from the ParaView website, un-tar
 it. To call in the correct way ParaView, after having downloaded binary
 file, put in your \~/.bashrc file the installation directory and source
@@ -1357,8 +1362,7 @@ will be registered and you can call ParaView with command line command;
 ParaView.
 
 ```shell-session
-export PATH=
-\<**installationPath**\>/ParaView-\<**ParaViewVersion**\>/bin:${PATH}
+export PATH= \<installationPath>/ParaView-\<ParaViewVersion>/bin:${PATH}
 ```
 and then make this modification active for the same session
 ```shell-session
@@ -1367,24 +1371,30 @@ source ./bashrc
 There is the need to create a dummy file in the working directory to
 make ParaView be able to read the OpenFOAM® format.
 
-touch \<**fileName**\>.foam
-
+```shell-session
+touch \<nameOfTheCase\>.foam
+```
 If ParaView is installed on Linux it is convenient call it with command
 
-ParaView \<**fileName**\>.foam &
+```shell-session
+paraview \<nameOfTheCase\>.foam &
+```
 
 The tag & keeps the program in background so you can continue to use the
 same terminal page. In Windows Subsystem for Linux (WSL) it is enough
 terminate the installation and run the executable;
 
-ParaView.exe \<**name**\>.foam
-
+```shell-session
+ParaView.exe \<nameOfTheCase\>.foam
+```
 When ParaView return errors in reading, it could be possible to solve it
 changing the case format, convert the result of the simulation in VTK
 format (Visualization Tool Kit), make it easier read the file and the
 properties contained on in. The following command does this:
 
+```shell-session
 foamToVTK
+```
 
 **WARNING**: If you use pressure-based solver as simpleFoam, it is
 necessary multiply the pressure for the density\!\!\!
@@ -1396,9 +1406,10 @@ parallel in a remote location, which we assume will have the capacity to
 visuality heavy cases. However, you need to build from source the
 programme in the server and those are the libraries required to do it:
 
+```shell-session
 sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
 lib32z1
-
+```
 Then install the last version of cmake and follow the instruction
 present at this source
 <https://vcg.iwr.uni-heidelberg.de/manual_source/>
@@ -1406,22 +1417,20 @@ present at this source
 Best practice before starting to work with pvserver, check that the port
 used by the service (11111 by default) is free
 
+```shell-session
 netstat -na | grep 11111
-
-If the port is listening, you can start the connection
-
+```
+If the port is listening, you can start the connection.
 For an accurate view of the listening ports and which programmes are
 using those;
 
+```shell-session
 sudo netstat -ltnp
-
-l: display only listening sockets
-
-t: display TCP connection
-
-n: display addresses in a numerical form
-
-p: display process ID/ Program name
+```
+  - l: display only listening sockets
+  - t: display TCP connection
+  - n: display addresses in a numerical form
+  - p: display process ID/ Program name
 
 ### Server/Client connection 
 
@@ -1443,7 +1452,7 @@ p: display process ID/ Program name
 <p>And your client host name:</p>
 <p>hostname -a</p></td>
 <td><p>In ParaView go on:</p>
-<p>File à Connect à Add Server</p>
+<p>File → Connect → Add Server</p>
 <p>And fulfil the fields in this way</p>
 <table>
 <thead>
@@ -1487,10 +1496,10 @@ p: display process ID/ Program name
 
 It is possible to parallelize the visualization task to deal with big
 cases in your local machine, the simplest way is to enable the “Auto
-MPI” mode through the following actions: Open ParaView à Edit à
-Settings à Enabled advanced options (the cogwheel up right) à Scroll
-down (or search for) “Multicore Support” à Enable AutoMPI and set the
-number of cores à restart ParaView.
+MPI” mode through the following actions: 
+Open ParaView → Edit → Settings → Enabled advanced options (the cogwheel up right) → Scroll
+down (or search for) “Multicore Support” → Enable AutoMPI and set the
+number of cores → restart ParaView.
 
 ## Trouble shooting common problems
 
@@ -1543,13 +1552,41 @@ postProcess -func 'patchAverage(name=wall,heatTransferCoeff(T))'
 # Cluster practice 
 
 Check what module of OpenFoam® is installed
-
+```shell-session
 module avail
-
+```
 the module command modifies your environment so that the path and other
 variables are set and you can use the selected program. Before a series
 of command starts inside the shell script it is necessary to prepare the
 environment, this is an example:
+```bash
+#!/bin/bash
+#SBATCH --job-name=OF-Job
+#SBATCH --ntasks=36
+#SBATCH --output=%x_%j.out
+#SBATCH --constraint=c5.18xlarge
+
+#------------------------------------------------------------------------------
+
+module load openmpi                                      # Module upload
+source /fsx/programs/OpenFOAM/OpenFOAM-v2112/etc/bashrc  # Source OpenFOAM bashrc command
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+
+#------------------------------------------------------------------------------
+
+rm -r log; mkdir log
+restore0Dir
+decomposePar -force > ./log/decomposePar.log 2>&1
+mpirun -np $SLURM_NTASKS checkMesh -parallel  > ./log/checkMesh.log 2>&1
+mpirun -np $SLURM_NTASKS redistributePar -parallel -overwrite  > ./log/redistributePar.log 2>&1
+mpirun -np $SLURM_NTASKS renumberMesh -parallel -overwrite -constant  > ./log/renumberMesh.log 2>&1
+mpirun -np $SLURM_NTASKS patchSummary -parallel  > ./log/patchSummary.log 2>&1
+mpirun -np $SLURM_NTASKS potentialFoam -parallel  > ./log/potentialFoam.log 2>&1
+
+#------------------------------------------------------------------------------
+
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel   > ./log/$(getApplication).log 2>&1
+```
 
 # Compile functionObjects from web
 
@@ -1563,10 +1600,14 @@ Inside this directory create an entrance in the file Make/fields like:
 ReynoldsNo/ReynodsNo.C
 
 Then run in ../Make the command
+```shell-session
+wmake 
+```
+Remember to install the command make, if it is not installed:
 
-wmake (remember to install the command make through sudo apt-get install
-make )
-
+```shell-session
+sudo apt-get install make
+``` 
 # Windows practices
 
 A useful code editor is notepad in windows
@@ -1581,7 +1622,7 @@ environment can cause crashes due to a different treatment of invisible
 character for Windows or UNIX. Operate this mod to make the file
 readable without trouble in Linux:
 
-NotePad++ à Edit à EOL conversion à UNIX
+NotePad++ → Edit → EOL conversion →  UNIX
 
 ## Virtual Machines 
 
@@ -1603,12 +1644,13 @@ wsl –install
 Then, once installed, The Linux root folder is in the Windows file
 explorer in:
 
-\\\\wsl$\\Ubuntu-20.04\\
-
+```shell-session
+\\wsl$\Ubuntu-20.04\
+```
 Or whatever distribution you have.
 
+## Linux GUI in Windows
 To lunch GUI programmes via WSL the following actions must take place:
-
 Install an Xserver like VcXsrv, download from
 [https://sourceforge.net/projects/vcxsrv/ 782](https://sourceforge.net/projects/vcxsrv/)
 and install/start it. Specifying the server numer to be ‘0’ on the first
@@ -1616,12 +1658,12 @@ screen and also allow public access
 
 Disable Windows Defender Firewall for Guest or public Network
 
-In WSL write in the \~/.bashrc
+In WSL edit the file
+``` shell-session
+export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
+```
 
-**export** DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print
-$2}'):0.0
-
-### Multipass 
+# Multipass 
 
 If you need to use VMs in your machine together with Docker, WSL could
 not be the best choice since it can create dependencies problem, and one
@@ -1636,15 +1678,72 @@ multipass launch -v -c 18 -d 64G -m 40G –-name \<**nameOfTheInstance**\>
 
 Few comments on the flags:
 
-\-c CPU cores
-
-\-d Disk space
-
-\-m Memory
-
-\-v Verbose
+  - c → CPU cores
+  - d → Disk space
+  - m → Memory
+  - v → Verbose
 
 To mount a part of your file system in your virtual multipass machine
 do:
-
+```shell-session
 multipass mount 'D:\\' \<**nameOfTheInstance**\>:
+```
+# Docker
+First create a docker file, which is a strictly a file named “Dockerfile”,
+on which will be build a docker image that will become a container once is
+running. To build the image from the Docker file use:
+
+```shell-session
+docker build -t <nameOfTheImage> <DockerfileDirectory> 
+```
+## System images 
+An image becomes a container when you execute it. Check the images that are present in your system after the build 
+docker images
+
+## Running the container
+```shell-session
+docker run -ti -–rm <imageID>
+```
+Here's some more info on the flags:
+
+  - ti       → make you access to the terminal
+  - rm       →   remove the container once you exit 
+  - d        →  (deamon) run the container in detached mode (in the background)
+  - p 80:80  →   port exposition
+
+To see if the container is running check 
+
+```shell-session
+docker ps 
+```
+to start and stop the container 
+
+```shell-session
+docker stop <imageID>
+```
+```shell-session
+docker start <imageID>
+```
+
+## Mount a file system directory inside a docker container
+Do not store your simulation data in the container. Instead let’s give our 
+container access to just a little bit of our local filesystem. From your project
+directory in a Windows environment, run:
+
+```shell-session
+docker run -ti --rm -v ${PWD}:/data -w /data <imageID>
+```
+By adding the -v option we’re asking Docker to mount our current working directory
+($PWD) as /data in the container. We’ve also added the -w switch to tell Docker
+that we’d like to be in /data when the container starts.
+
+## Creating an image from a container 
+You can convert a container into an image by using the command
+```shell-session
+docker commit 
+```
+## Delete the container
+The following command will delete the container:
+```shell-session
+docker rmi <imageID>
+```
