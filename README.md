@@ -1,6 +1,6 @@
 <!-- <img align="centre" width="400" height="400" src="AdigeCalculations.png"> -->
-# **OpenFoam® Handbook**
-**Last update: 01/02/2022**
+# OpenFoam® Handbook
+Last update: 01/02/2022
 
 ## Preface
 
@@ -13,10 +13,10 @@ resolve the setting of a problem in the shortest possible time.
 
 How to interpret the text:
 
-| **Font**    | **Meaning**         |
+| Font    | Meaning         |
 | ----------- | ------------------- |
 | Abc         | Normal text         |
-| <**Abc**>   | User input required |
+| <Abc>   | User input required |
 
 ## Table of Contents 
 
@@ -140,11 +140,11 @@ How to interpret the text:
 
 [16 ParaView Error\! Bookmark not defined.](#ParaView)
 
-  - [16.1 Post processing in ParaView **Error\! Bookmark notdefined.**](#_Toc95420243)
+  - [16.1 Post processing in ParaView Error\! Bookmark notdefined.](#_Toc95420243)
 
   - [16.2 pvserver](#pvserver)
 
-  - [16.3 Installation from source code **Error\! Bookmark notdefined.**](#_Toc95420245)
+  - [16.3 Installation from source code Error\! Bookmark notdefined.](#_Toc95420245)
 
   - [16.4 Trouble shooting](#trouble-shooting-common-problems)
 
@@ -184,7 +184,7 @@ apt show openfoam
 Then install it
 
 ```shell-session
-apt install \ ***OpenFOAMVersion*** 
+apt install \ *OpenFOAMVersion* 
 ```
 
 ## Compiling the source code for x86 architecture 
@@ -203,7 +203,7 @@ UNIX system would have them. To check if your system has an adequate
 environment to start the installation run:
 
 ```shell-session
-source /opt/\<**OpenFOAMInstallationPath**\>/etc/bashrc
+source /opt/\<OpenFOAMInstallationPath\>/etc/bashrc
 ```
 ```shell-session
 foamSystemCheck
@@ -241,7 +241,7 @@ will be recognized in the terminal
 
 ### Compiling source code for raspberry pi 4 (ARM architecture)
 
-Create a file \<**installationPath**\>/etc/prefs.sh in the installation
+Create a file \<installationPath\>/etc/prefs.sh in the installation
 directory as shown:
 
 ```shell-session
@@ -253,7 +253,7 @@ substituting the option -mfloat-abi=softfp into -mfloat-abi=hard
 
 Then
 ```shell-session
-source \<**installationPath**\>/etc/bashrc
+source \<installationPath\>/etc/bashrc
 ```
 Then start the compilation with:
 ```shell-session
@@ -270,7 +270,7 @@ ls $FOAM\_SOLVERS
 Once it is decided a solver, take the tutorial case, copy a suitable
 tutorial to your working directory
 
-cp -r $FOAM\_TUTORIALS/\<**tutorial**\> $FOAM\_RUN
+cp -r $FOAM\_TUTORIALS/\<tutorial\> $FOAM\_RUN
 
 Modify the tutorial, including geometry, meshing and problem setup. If
 you need to set a specific directory which is not present in the
@@ -289,11 +289,11 @@ foamGetDict topoSetDict
 
 Sequence of commands Command 2 will start only if command 1 has succeeded:
 ```shell-session
-\<**Command1**\> && \<**Command2**\>
+\<Command1\> && \<Command2\>
 ```
 Piping commands → The output of Command 1 will feed Command 2 as argument
 ```shell-session
-\<**Command1**\> | \<**Command2**\>
+\<Command1\> | \<Command2\>
 ```
 Using ; permit to run command in sequence even if the precedent fail
 ```shell-session
@@ -304,7 +304,7 @@ Using ; permit to run command in sequence even if the precedent fail
 Open the file \~/.bashrc and write at the end of this file the command
 you need following this layout
 
-alias \<**nameCommand**\>=’\<list of command you want execute digiting
+alias \<nameCommand\>=’\<list of command you want execute digiting
 nameCommand\>’
 
 For example, a useful alias which create a dummy file with the name of
@@ -377,15 +377,15 @@ nautilus . &
 For replacing the text repetitively in file stream:
 
 ```shell-session
-find . -type f | xargs sed -i s/\<**oldWord**\>/\<**newWord**\>/g
+find . -type f | xargs sed -i s/\<oldWord\>/\<newWord\>/g
 ```
 To find Find the correct case in tutorial
 
 ```shell-session
-find $FOAM\_TUTORIALS -name controlDict | xargs grep -r \<**word1**\>
+find $FOAM\_TUTORIALS -name controlDict | xargs grep -r \<word1\>
 ```
 
-List controlDict files where **word1** have been found
+List controlDict files where word1 have been found
 
 # Mesh
 
@@ -434,8 +434,8 @@ surfaceFeatureExtract
 ```
 
 The geometry components must be costant/triSurface directory rigorously
-in this format \<**file**\>.stl and after having launched the command in
-the same folder should appear \<**file**\>.eMesh and a new directory
+in this format \<file\>.stl and after having launched the command in
+the same folder should appear \<file\>.eMesh and a new directory
 will appear in constant/extendedFeatureEdgeMesh/
 
 If you want to extract very thin layer, use the utility extrudeMesh
@@ -552,7 +552,7 @@ SnappyHexMesh. and it is possible to find the tutorial relatives to it
 in:
 
 ```shell-session
-\<**OpenFOAMInstallationDirectrory**\>/modules/cfmesh/tutorials
+\<OpenFOAMInstallationDirectrory\>/modules/cfmesh/tutorials
 ```
 
 The modalities to create a mesh pass always through the creation of .stl
@@ -561,7 +561,7 @@ bodies as boundaries, i.e. create all different .stl file as surface
 condition)
 
 ```shell-session
-cat \<**body1**\>.stl \<**body2**\>.stl \<**bodyN**\>.stl \>\>\<**combined**\>.stl
+cat \<body1\>.stl \<body2\>.stl \<bodyN\>.stl \>\>\<combined\>.stl
 ```
 to permit at the program to select different patches of the geometry,
 remember to check inside the combined file and ensure there is a space
@@ -569,10 +569,10 @@ between the joint of the different STL files. Then to create a .fms file
 specific for OpenFoam®
 
 ```shell-session
-surfaceFeatureEdges –angle 15 \<**combined**\>.stl \<**combined**\>.fms
+surfaceFeatureEdges –angle 15 \<combined\>.stl \<combined\>.fms
 ```
 
-The tag angle \<**number**\> permit to capture correctly sharp corner of
+The tag angle \<number\> permit to capture correctly sharp corner of
 the geometry and more it is low more it will be precise and
 computationally expensive, I found 15 being a good compromise, the
 default is 45. Secondly, to set the boundary condition in the easiest
@@ -641,9 +641,9 @@ setting)<span id="_Toc95420198" class="anchor"></span>
 
 The most important parameters to keep in consideration are the:
 
-| **Non orthogonality** | Not run a case if it is above 80 | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
+| Non orthogonality | Not run a case if it is above 80 | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
 | --------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Skewness**          | Acceptable under 3               | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
+| Skewness          | Acceptable under 3               | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
 
 ### Deletion of bad quality cells
 
@@ -700,7 +700,7 @@ exporting the mesh. After you have the file in the working directory,
 the addressed command is
 
 ```shell-session
-fluentMeshToFoam \<**fileName**\>.msh
+fluentMeshToFoam \<fileName\>.msh
 ```
 
 Remember that it is good practice check the boundary setting in
@@ -740,32 +740,25 @@ the 2 patches in study. It is advised to use a createPatchDict to modify
 the BC after snappy procedure of snappyHexMesh because can cause
 problems to the patches)
 
-![](media/image10.png)
-
-Figure 1 - constant/polyMesh/boundary
-
-calculated – calculate the value from its component in the field, this
+- calculated – calculate the value from its component in the field, this
 doesn’t work for transport quantities but only for variable define by a
 formulae (for instance nut)
 
-totalPressure – which is a fixedValue condition calculated from p and U
+- totalPressure – which is a fixedValue condition calculated from p and U
 field
 
-pressureInletOutletVelocity – which applies a zeroGradient on all
+- pressureInletOutletVelocity – which applies a zeroGradient on all
 components, except where there is inflow, in this case a fixedValue
 condition is applied to the tangential component
 
-inletOutlet: which is a zeroGradient condition when outwards, fixedValue
+- inletOutlet: which is a zeroGradient condition when outwards, fixedValue
 when flow is inwards
-
-![Image
-sketch-inlet-outlet-boundary-condition-openfoam](media/image11.png)
 
 ```c
   {
     type inletOutlet;
     inletValue uniform (0 0 0); // value of the velocity
-    value uniform x; // value of the properties
+    value uniform x;            // value of the properties
   }
 ```
 
@@ -795,7 +788,7 @@ $ k = \frac{3}{2} U I^{2} $
 
 $ ε = C_{\mu}\frac{k^{\frac{3}{2}}}{l} = C_{\mu}\frac{k^{\frac{3}{2}}}{0.07L} $
 
-$ ω = \frac{\varepsilon}{kC_{\mu}}\
+$ ω = \frac{\varepsilon}{kC_{\mu}}\ $
 
 ### External flow applications 
 
@@ -813,11 +806,13 @@ below.
 
 To calculate k, the following equation can be used:
 
-$ k = \frac{3}{2}\left( \text{UI} \right)^{2} $
 
-$ ε = C_{\mu}\frac{\text{ρk}^{2}}{\mu}β ^{- 1}\ $
+  $ k = \frac{3}{2}\left( \text{UI} \right)^{2} $
 
-$ ω = \frac{ρk}{\mu}\ β^{-1}\ $$
+  $ ε = C_{\mu}\frac{\text{ρk}^{2}}{\mu}β ^{- 1}\ $
+
+  $ ω = \frac{ρk}{\mu}\ β^{-1}\ $
+
 
 ### Turbulent Wall functions
 
@@ -836,14 +831,14 @@ wall approach
 in code: Boundary condition for turbulence k, Q, and R when using wall
 functions. Simply acts as a zero-gradient condition. It appears to be
 applicable down to yPlus\~1, but one should use a fixed value with k=0
-or a very small value for y+\<1)
+or a very small value for y<sup>+</sup>\<1)
 
 \- omegaWallFunction for omega; Not really a wall function but the b.c.
 defined by Menter for Omega, i.e. should be used always for kOmega
-model, independent of y+)
+model, independent of y<sup>+</sup>)
 
-omegawall=60\*nu/(β \*y^2), with nu=kinematic viscosity at the wall,
-β =0.075 and y=normal distance between the first fluid node and the
+omegawall=60\*nu/(β \*y+<sup>2</sup>), with nu=kinematic viscosity at the wall,
+β =0.075 and y<sup>+</sup>normal distance between the first fluid node and the
 nearest wall-\> very large value for omega)
 
 The "value" which is specified for the wall functions is only an initial
@@ -864,7 +859,7 @@ respectively.
 ### Turbulent viscosity wall functions
 
 The choice of wall function model is specified through the turbulent
-viscosity field  $ \ν_{t}\ $ in the 0/nut dictionary by the nutxxxxxx
+viscosity field  $ ν_{t} $ in the 0/nut dictionary by the nutxxxxxx
 wall functions:
 
   - nutWallFunction seems to be the most basic wall function without
@@ -874,31 +869,24 @@ wall functions:
     viscosity in the first node point based on the logarithmic law based
     on the k value close to the wall
 
-  - nutUWallFunction: in comparison to nutkWallFunction it calculates
-    the y<sup>+</sup> yPlus value based on the velocity close to the
+  - nutUWallFunction: in comparison to nutkWallFunction it calculates the y<sup>+</sup>sup>+</sup> yPlus value based on the velocity close to the
     wall
 
   - nutUSpaldingWallFunction standard wall function for the Spallart
-    Allmarras turbulence model, called nutSpalartAllmarasWallFunction,
-    continuous wall-function which should cover the complete y+ range
-    from O(1) to somewhere of O(10). Might be the best choice (together
-    with low Re k-ε, k-ω, or SA, when y+ varies for different parts of
-    the wall.
+    Allmarras turbulence model, called nutSpalartAllmarasWallFunction, continuous wall-function which should cover the complete y<sup>+</sup> range from O(1) to somewhere of O(10). Might be the best choice (together with low Re k-ε, k-ω, or SA, when y<sup>+</sup> varies for different parts of the wall.
 
-<!-- end list -->
-
-  - nutLowReWallFunction (code comment: "Sets $ ν_{t} $ to zero and provides
-    an access function to calculate y+."):
+  - nutLowReWallFunction (code comment: "Sets $ ν_{t} $ to zero and provides an access function to calculate y<sup>+</sup>."):
 
 # Constant 
+Looking at the directories that represent the constant variable of the CFD case in ```/constant``` 
 
 ## transportProperties
 
 nu is the kinematic viscosity i.e.
 
-$ nu_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $
+$ ν_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $
 
-**Air kinematic viscosity at given temperature**
+Air kinematic viscosity at given temperature
 
 ##  polyMesh
 
@@ -930,10 +918,9 @@ the thermophysical model library.
 
 Types of thermo class
 
-hePsiThermo: General thermophysical model calculation based on
-compressibility ψ = 1/(RT) - Only gas heRhoThermo: General
-thermophysical model calculation based on density ρ. Gas, liquid, solids
-heSolidThermo: Only solids
+- hePsiThermo: General thermophysical model calculation based on compressibility ψ = 1/(RT) - Only gas
+- heRhoThermo: General thermophysical model calculation based on density ρ. Gas, liquid, solids
+- heSolidThermo: Only solids
 
 # System 
 
@@ -959,14 +946,14 @@ This dictionary contains the instructions to discretize the problem’s
 equations. Different discretization procedures suit different mesh
 refinement and quality.
 
-| **Main document keywords** | **Category of mathematical terms **                                                           |
+| Main document keywords | Category of mathematical terms                                                            |
 | -------------------------- | --------------------------------------------------------------------------------------------- |
 | interpolationSchemes       | Point-to-point interpolations of values                                                       |
 | snGradSchemes              | Component of gradient normal to a cell face                                                   |
-| gradSchemes                | Gradient ![∇ \\relax \\special {t4ht=](media/image14.png)                                     |
-| divSchemes                 | Divergence ![∇ ∙ \\relax \\special {t4ht=](media/image15.png)                                 |
-| laplacianSchemes           | Laplacian ![∇2 \\relax \\special {t4ht=](media/image16.png)                                   |
-| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂2t \\relax \\special {t4ht=](media/image17.png) |
+| gradSchemes                | Gradient          ∇|
+| divSchemes                 | Divergence      ∇ ∙|
+| laplacianSchemes           | Laplacian    ∇<sup>2     |
+| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2<sup>t  |
 
 gradScheme
 
@@ -975,7 +962,7 @@ This voice tackles the gradient limitators
 divSchemes
 
 Relates to the evaluation of the flux φ (phi) across cell faces which
-transport a property \<**transporProperties**\> under the influence of
+transport a property \<transporProperties\> under the influence of
 velocity field (phi). The schemes are all based on Gauss integration,
 using the flux φ and the advected field being interpolated to the cell
 faces by one of the selected schemes
@@ -1004,9 +991,9 @@ orthogonal scheme
 
   - Linear corrected
 
-  - Linear limited \<**from0To1**\>
+  - Linear limited \<from0To1\>
 
-> 0 for bad mesh and 1 for good quality mesh
+0 for bad mesh and 1 for good quality mesh
 
 ### Discretization schemes selection
 
@@ -1023,7 +1010,7 @@ under-relaxation factor
 
 ### linear solver
 
-Matrix solver which works on algebraic system of shape **Ax=b**;
+Matrix solver which works on algebraic system of shape Ax=b;
 referring to the method of number-crunching to solve a matrix equation.
 The linear solver stops if any one of the following conditions are
 reached:
@@ -1094,9 +1081,9 @@ under-relaxation are within a *equations* sub-dictionary. 
 This dictionary decomposeParDict divides the domain in blocks which will
 be solved by a single core per each. It is advised to use schotch as
 option for large case. Use the command:
-
+```shell-session
 decomposePar -force
-
+```
 To overwrite the present decomposed case
 
 ## fvOptions
@@ -1110,15 +1097,18 @@ a command in the terminal
 
 If it is not available any previous solution, run
 
+```shell-session
 potentialFoam
+```
 
 to overwrite 0/U with an approximate solution of the field. Instead, to
 map the solution from a coarse mesh to a finer mesh with different mesh
 run
 
+```shell-session
 mapFields -consistent -sourceTime \<iteration number\> \<path of the
 base case\>
-
+```
 to interpolate the results. This will overwrite ./0 with the value of
 the case interpolating the result in the mesh in interest. If you do not
 specify -consistent it is necessary, build a mapFieldsDict.
@@ -1138,15 +1128,17 @@ The directory $WM\_PROJECT\_DIR/doc contains the Doxygen documentation
 of OpenFoam® ). Before using the Doxygen documentation, you will need to
 compile it. To compile the Doxygen documentation, from the terminal:
 
+```shell-session
 cd $WM\_PROJECT\_DIR
-
 ./Allwmake doc
+```
 
 Note: You will need to install doxygen and graphviz/dot. After compiling
 the Doxygen documentation you can use it by typing:
 
+```shell-session
 firefox file://$WM\_PROJECT\_DIR/doc/Doxygen/html/index.html
-
+```
 The compilation is time consuming.
 
 ## Source code
@@ -1195,10 +1187,7 @@ Several solvers:
 
   - chtMultiRegionFoam
 
-<!-- end list -->
-
-  - chtMultiRegionSimpleFoam → steady state version of
-    chtMultiRegionFoam
+  - chtMultiRegionSimpleFoam → steady state version of chtMultiRegionFoam
 
 Allows for defining multiple regions in the problem domain by setting up
 computational meshes, models and conditions separately for each region,
@@ -1220,10 +1209,10 @@ splitMeshRegions -cellZonesOnly -overwrite
 ```
 And generate the
 ```shell-session
-changeDictionary -region \<**region1**\>
+changeDictionary -region \<region1\>
 ```
 ```shell-session
-changeDictionary -region \<**region2**\>
+changeDictionary -region \<region2\>
 ```
 Follow the following tutorial to set up a case:
 
@@ -1241,10 +1230,10 @@ kappaMethod you need to introduce the keywords:
     field.
 
   - fluidthermo: the used thermal conductivity is the one corresponding
-    to the fluid, specified in \<**material**\>/thermophysical
+    to the fluid, specified in \<material\>/thermophysical
 
   - solidthermo: the used thermal conductivity is the one corresponding
-    to the solid, specified in \<**material**\>/thermophysical
+    to the solid, specified in \<material\>/thermophysical
 
   - directionalSolidThermo: the thermal conductivity is the one
     corresponding to an orthotropic material, and it is specified in
@@ -1252,11 +1241,11 @@ kappaMethod you need to introduce the keywords:
 
 For introducing thin walls:
 
-thicknessLayers ( \<**thicknessOfTheLayer**\> );
-
-kappaLayers ( \<**thermalConductivityOfTheLayer**\> );
-
-Check the constant/\<**region**\>/polyMesh/boundary on to check the
+```c
+thicknessLayers ( \<thicknessOfTheLayer\> );
+kappaLayers ( \<thermalConductivityOfTheLayer\> );
+```
+Check the constant/\<region\>/polyMesh/boundary on to check the
 interface type which should be of this kind type: solidThermo for the
 solid and type: fluidThemo for the fluid. Other than that, it is
 necessary that the interface will be declared as
@@ -1270,25 +1259,20 @@ system/decomposePar the following command does the same action, where
 process is intended either as solver or mesher:
 
 ```shell-session
-mpirun -np \<**cores**\> \<**process**\> -parallel \> log.\<fileName\> &
+mpirun -np \<cores\> \<process\> -parallel \> log.\<fileName\> &
 ```
 ```shell-session
-foamJob -parallel \<**process**\>
+foamJob -parallel \<process\>
 ```
 To take full advantage of the hardware, use the maximum number of
 physical cores, remember to disable the hyperthreading in the machine.
 The output of the previous command writes a log file that records
-either [events](https://en.wikipedia.org/wiki/Event_\(computing\)) that
-occur in an [operating
-system](https://en.wikipedia.org/wiki/Operating_system) or
-other [software](https://en.wikipedia.org/wiki/Software) to monitor the
-simulation.
+either events thatoccur in the macine to monitor the simulation.
 ```shell-session
-tail -f log.\<**fileName**\> **Live scrolling**
+tail -f log.\<fileName\> Live scrolling
 ```
 ```shell-session
-
-tail -\<**linesToDisplay**\> log.\<**fileName**\> **Static scrolling**
+tail -\<linesToDisplay\> log.\<fileName\> Static scrolling
 ```
 When the simulation is finished, all you time-step/iteration are in the
 processor’s folder, to build a single case the following command it is
@@ -1396,7 +1380,7 @@ properties contained on in. The following command does this:
 foamToVTK
 ```
 
-**WARNING**: If you use pressure-based solver as simpleFoam, it is
+WARNING: If you use pressure-based solver as simpleFoam, it is
 necessary multiply the pressure for the density\!\!\!
 
 ## pvserver 
@@ -1507,32 +1491,35 @@ ParaView in latest version require drivers for OpenGL \> 3 and in
 certain OS (such as CentOS 7) this is not compatible, hence if the
 installed OpenGL driver are not supported, try to launch ParaView
 telling to follow the MESA drivers:
-
-MESA\_GL\_VERSION\_OVERRIDE=3.2 ParaView
-
+```shell-session
+MESA_GL_VERSION_OVERRIDE=3.2 ParaView
+```
 Otherwise:
-
-ParaView –mesa
-
+```shell-session
+paraview –mesa
+```
 Same if you need to use ParaView in a headless mode and a graphic card
 is not available, but you still want to render on the server. You can
 build ParaView with these options to overtake the problem:
 
-cmake -GNinja -DVTK\_OPENGL\_HAS\_OSMESA=ON -DVTK\_USE\_X=OFF
--DPARAVIEW\_USE\_QT=OFF ../\<**locationParaViewSourceCode**\>
-
+```shell-session
+cmake -GNinja -DVTK\_OPENGL\_HAS\_OSMESA=ON -DVTK\_USE\_X=OFF -DPARAVIEW\_USE\_QT=OFF ../\<locationParaViewSourceCode\>
+```
 # Post processing via command line 
 
-An example to run the post process for y<sup>+</sup>
+An example to run the post process for y<sup>+</sup>sup>+</sup>
 
-\<**solver**\> -postProcess -func \<**functionNameInControlDict**\>
-
+```shell-session
+\<solver\> -postProcess -func \<functionNameInControlDict\>
+```
 Every solver can be run with the -postProcess option, which only
 executes post-processing, but with additional access to data available
 on the database for the solver. To list the possible parameters to post
 process:
 
+```shell-session
 postProcess -list
+```
 
 For a run-processing, or a complicated function postprocess where is
 necessary state different parameters. The simulation must be furnished
@@ -1547,8 +1534,9 @@ controlDict, (already written in the data folder); the command line for
 the post processing is the follow; this example is about averaging the
 heat Transfer Coefficient.
 
+```shell-session
 postProcess -func 'patchAverage(name=wall,heatTransferCoeff(T))'
-
+```
 # Cluster practice 
 
 Check what module of OpenFoam® is installed
@@ -1674,7 +1662,7 @@ is the usage of Multipass
 Multipass is a VM supplied by Canonical which is powerful and contain
 systemd. To start a multipass instance run on the Power Shell:
 
-multipass launch -v -c 18 -d 64G -m 40G –-name \<**nameOfTheInstance**\>
+multipass launch -v -c 18 -d 64G -m 40G –-name \<nameOfTheInstance\>
 
 Few comments on the flags:
 
@@ -1686,7 +1674,7 @@ Few comments on the flags:
 To mount a part of your file system in your virtual multipass machine
 do:
 ```shell-session
-multipass mount 'D:\\' \<**nameOfTheInstance**\>:
+multipass mount 'D:\\' \<nameOfTheInstance\>:
 ```
 # Docker
 First create a docker file, which is a strictly a file named “Dockerfile”,
