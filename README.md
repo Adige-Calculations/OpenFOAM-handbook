@@ -468,9 +468,56 @@ different value of Location in mesh and then use the tool mergeMesh
 To fix the boundary conditions, prepare watertight STL files as
 inlet.stl, outlet.stl, ect. Then in snappyHexMesh define it in geometry
 section
+```c++
+geometry
+{
+    inlet.stl
+    {
+        type triSurfaceMesh;
+        name inlet;
+    }
+        outlet.stl
+    {
+        type triSurfaceMesh;
+        name outlet;
+    }
+}
 
+```
 While in the refinement surfaces section you can define the address the
 info of the patch:
+```c++
+refinementSurfaces
+    {
+        inlet
+        {
+            
+            level (2 2);
+            patchInfo
+                        {
+                        type patch;
+                        }
+        }
+        outlet
+        {
+            
+            level (2 2);
+            patchInfo
+                        {
+                        type patch;
+                        }
+        }
+        wall
+        {
+            
+            level (2 2);
+            patchInfo
+                        {
+                        type wall;
+                        }
+        }
+}
+```
 
 ### Setting zones inside the mesh for source terms 
 
@@ -505,6 +552,54 @@ select subsets of the mesh and perform boolean operations on them
 
 Example of topoSet for the implementation of 2 cellZones from STL files:
 
+```c++
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    HE_frontCellSet;
+        type    cellSet;
+        action  new;
+        source  searchableSurfaceToCell;//surfaceToCell;
+        surfaceType  triSurfaceMesh;
+        surfaceName    HE_front.stl; 
+    }
+    {
+       name HE_front;
+       type cellZoneSet;
+       action new;          // new cellSet, it doesn't simply add to a previous cellSet
+       source setToCellZone;//zoneToCell;
+       set  HE_frontCellSet;
+       
+
+    }
+    {
+        name    HE_frontLateralCellSet;
+        type    cellSet;
+        action  new;
+        source  searchableSurfaceToCell;//surfaceToCell;
+        surfaceType  triSurfaceMesh;
+        surfaceName    HE_frontLateral.stl; 
+    }
+    {
+       name HE_frontLateral;
+       type cellZoneSet;
+       action new;   // new cellSet, it doesn't simply add to a previous cellSet
+       source setToCellZone;//zoneToCell;
+       set  HE_frontLateralCellSet;
+    }
+);
+```
+
 To visualize how much Cell Zone there is inside the domain run
 checkMesh, while if you desire to delete a cell zone, delete the files
 that topoSet creates which are located in: constant/polyMesh/sets
@@ -516,12 +611,44 @@ be satisfied through the usage of an STL file as a cellZone entry.
 First, define a closed STL file through snappyHexMeshDict.geometry then
 use this frame in the respective snappyHexMeshDict sector
 
+```c++
+    refinementSurfaces
+    {
+        <closeSTLFileYouWantToRefine>
+        {
+            level (1 2);
+            
+            cellZone <\name\>;
+            faceZone <\name\>;
+            cellZoneInside inside;
+        }
+      …
+    refinementRegions
+    {
+        <closeSTLFileYouWantToRefine>
+        {
+            mode <\mode\>;
+            levels ((0.000008 3));
+        }
+    }
+```
+
 ### Meshing more than one closed body
 
 To permit the recognition of different closed STL files the
 sub-dictionary snappyHexMesh/castellatedMeshControls/locationInMesh must
 be modified in snappyHexMesh/castellatedMeshControls/locationsInMesh and
 follow the template:
+
+```c++
+    …
+   locationsInMesh 
+      (
+        ((0.010276 0.058958 0.000248) zone1) 
+  	    ((0.011472 0.10046  0.000256) zone2)
+       );
+   …
+```
 
 In this scenario, it is possible to introduce to bodies as a single mesh
 without recurring to use the utility mergeMeshes. The bodies will be
@@ -707,16 +834,17 @@ Remember that it is good practice check the boundary setting in
 constant/polyMesh/boundary after a conversion
 
 # Directories’ structure
-
-![](media/image9.png)
+The following represaentation is the usual set up for an OpenFoam® case 
+![](images/directory_structure.png)
 
 # – 0 (i.e. Boundary Conditions)
 
 The BC works on the Patches which have been defined in the mesh and the
 guessing of the first value of the field pass through the voice
 
+```c++
 internal field
-
+```
 which can be filled with a uniform, but it could be changed in
 non-uniform if set values in system/setFieldsDict and then apply this
 change through setFields
@@ -952,7 +1080,7 @@ refinement and quality.
 | snGradSchemes              | Component of gradient normal to a cell face                                                   |
 | gradSchemes                | Gradient          ∇|
 | divSchemes                 | Divergence      ∇ ∙|
-| laplacianSchemes           | Laplacian    ∇<sup>2     |
+| laplacianSchemes           | Laplacian    ∇<sup>2 |
 | timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2<sup>t  |
 
 gradScheme
