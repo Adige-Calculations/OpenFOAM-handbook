@@ -1,6 +1,6 @@
-<!-- <img align="centre" width="400" height="400" src="AdigeCalculations.png"> -->
+<img style="float: center;" src="images/AdigeCalculations.png">
+
 # OpenFoam® Handbook
-Last update: 01/02/2022
 
 ## Preface
 
@@ -13,10 +13,10 @@ resolve the setting of a problem in the shortest possible time.
 
 How to interpret the text:
 
-| Font    | Meaning         |
+| Font        | Meaning             |
 | ----------- | ------------------- |
 | Abc         | Normal text         |
-| <Abc>   | User input required |
+| </Abc/>     | User input required |
 
 ## Table of Contents 
 
@@ -587,11 +587,11 @@ cartesianMesh
 
 For command to run require that the directory system/meshDict contain
 only the voice:
+```c++
+surfaceFile "…";
 
-surfaceFile “…";
-
-maxCellSize …;
-
+maxCellSize "…";
+```
 If you are not satisfied with the result, try to run these utilities to
 improve the results:
 
@@ -639,11 +639,11 @@ setting)<span id="_Toc95420198" class="anchor"></span>
 
 ### Most important mesh parameters
 
-The most important parameters to keep in consideration are the:
+The most important parameters to keep under control when we deal with mesh genration are:
 
-| Non orthogonality | Not run a case if it is above 80 | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
-| --------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Skewness          | Acceptable under 3               | ![8: Displaying the difference between a non-orthogonal and a skew mesh: For a skew mesh the connection of P and E does not cross the face center point e any more.](media/image7.png) |
+| Non orthogonality | Not run a case if it is above 80 | <img style="float: center;" src="images/non-orthogonal-mesh.png"> |
+| --------------------- | -------------------------------- | ------------------------------------------------------ |
+| Skewness          | Acceptable under 3               | <img style="float: center;" src="images/non-orthogonal-skewed-mesh.png"> |
 
 ### Deletion of bad quality cells
 
@@ -667,20 +667,20 @@ setSet -constant
 An internal command line will appear, and similar command can be used to
 manage bad cells present in your mesh (i.e. concave, underdetermined,
 zero volume cells), in this example zero volume cells are treated:
-
+```shell-session
 cellSet c0 new cellToCell zeroVolumeCells any
-
+```
 if you want to fix additional cells and with problematic faces you can
 (i.e. skew, concave, warp faces etc..)
-
+```shell-session
 cellSet c0 add faceToCell skewFaces any
-
+```
 ![Text Description automatically generated](media/image8.png)
 
 In the end do not forget to invert, with:
-
+```shell-session
 cellSet c0 invert && quit
-
+```
 Once exited from the internal command line, execute the following
 command to overwrite the mesh
 
@@ -1621,14 +1621,14 @@ environment. Here there are two choices in order features completeness.
 
 OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
 run in PowerShell as admin for the enabling a necessary Windows feature:
-
+```shell-session
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart
-
+```
 The proceed with the installation:
-
+```shell-session
 wsl –install
-
+```
 Then, once installed, The Linux root folder is in the Windows file
 explorer in:
 
