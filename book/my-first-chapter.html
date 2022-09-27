@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>OpenFoam® Handbook</title>
-        <meta name="robots" content="noindex" />
+        <title>My First Chapter - OpenFoam® Handbook</title>
 
 
         <!-- Custom HTML head -->
@@ -82,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded affix "><li class="part-title">Summary</li><li class="chapter-item expanded "><a href="my-first-chapter.html"><strong aria-hidden="true">2.</strong> My First Chapter</a></li><li class="chapter-item expanded "><a href="nested/index.html"><strong aria-hidden="true">3.</strong> Nested example</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nested/sub-chapter.html"><strong aria-hidden="true">3.1.</strong> Sub-chapter</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded affix "><li class="part-title">Summary</li><li class="chapter-item expanded "><a href="my-first-chapter.html" class="active"><strong aria-hidden="true">2.</strong> My First Chapter</a></li><li class="chapter-item expanded "><a href="nested/index.html"><strong aria-hidden="true">3.</strong> Nested example</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nested/sub-chapter.html"><strong aria-hidden="true">3.1.</strong> Sub-chapter</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,27 +142,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="preface"><a class="header" href="#preface">Preface</a></h1>
-<p>This handbook is intended to support a medium/advanced OpenFoam® user
-during the usage of the software. It provides commands, explanations,
-and extension that we find useful during our CFD workflow, and it is
-designed to be used by searching for keywords of an action you wish to
-perform within the OpenFoam® framework. This allows you to enrich or
-resolve the setting of a problem in the shortest possible time.</p>
-<p>How to interpret the text:</p>
-<div class="table-wrapper"><table><thead><tr><th>Font</th><th>Meaning</th></tr></thead><tbody>
-<tr><td>Abc</td><td>Normal text</td></tr>
-<tr><td>&lt;/Abc/&gt;</td><td>User input required</td></tr>
-</tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="my-first-chapter"><a class="header" href="#my-first-chapter">My First Chapter</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="nested-example"><a class="header" href="#nested-example">Nested example</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="sub-chapter"><a class="header" href="#sub-chapter">Sub-chapter</a></h1>
+                        <h1 id="my-first-chapter"><a class="header" href="#my-first-chapter">My First Chapter</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="preface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="nested/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -171,7 +162,13 @@ resolve the setting of a problem in the shortest possible time.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="preface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="nested/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -210,11 +207,6 @@ resolve the setting of a problem in the shortest possible time.</p>
 
         <!-- Custom JS scripts -->
 
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </body>
 </html>

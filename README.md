@@ -138,7 +138,7 @@ How to interpret the text:
 
   - [15.2 pyFoam](#with-pyfoam)
 
-[16 ParaView Error\! Bookmark not defined.](#ParaView)
+[16 ParaView](#ParaView)
 
   - [16.1 Post processing in ParaView Error\! Bookmark notdefined.](#_Toc95420243)
 
@@ -1465,7 +1465,7 @@ To check properly a the converge of the study during the iteration
 looking at $ ν_{t} $ is pro-tip due to this value is dependent from k and ε
 which both must converge to get a good $ ν_{t} $.
 
-# ParaView 
+# ParaView
 To install it download the binary file from the ParaView website, un-tar
 it. To call in the correct way ParaView, after having downloaded binary
 file, put in your \~/.bashrc file the installation directory and source
@@ -1511,20 +1511,35 @@ foamToVTK
 WARNING: If you use pressure-based solver as simpleFoam, it is
 necessary multiply the pressure for the density\!\!\!
 
-## pvserver 
+## pvserver
 
 Pvserver is the programme that permit to use ParaView headless and in
 parallel in a remote location, which we assume will have the capacity to
-visuality heavy cases. However, you need to build from source the
-programme in the server and those are the libraries required to do it:
+visuality heavy cases. To be sure that the connection server/client work
+be sure to have the same verison of paraview installed in both the machines.
+
+Sometimes, if you need particular features from paraview it is necessaty to
+build it from source. You'll need CMake and Ninja. Follow the instruction
+present at this source to understand which features are availble.
+<https://vcg.iwr.uni-heidelberg.de/manual_source/>
+
+The build process follows the usual cmake scheme, from the root of your
+source code:
+
+```shell-session
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+Assuming you have a debian based distro on the server the following libraries
+should be required
 
 ```shell-session
 sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
 lib32z1
 ```
-Then install the last version of cmake and follow the instruction
-present at this source
-<https://vcg.iwr.uni-heidelberg.de/manual_source/>
 
 Best practice before starting to work with pvserver, check that the port
 used by the service (11111 by default) is free
@@ -1544,7 +1559,7 @@ sudo netstat -ltnp
   - n: display addresses in a numerical form
   - p: display process ID/ Program name
 
-### Server/Client connection 
+### Server/Client connection
 
 <table>
 <thead>
@@ -1633,7 +1648,7 @@ build ParaView with these options to overtake the problem:
 ```shell-session
 cmake -GNinja -DVTK\_OPENGL\_HAS\_OSMESA=ON -DVTK\_USE\_X=OFF -DPARAVIEW\_USE\_QT=OFF ../\<locationParaViewSourceCode\>
 ```
-# Post processing via command line 
+# Post processing via command line
 
 An example to run the post process for y<sup>+</sup>sup>+</sup>
 
