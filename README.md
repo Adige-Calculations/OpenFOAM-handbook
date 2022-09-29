@@ -11,14 +11,11 @@ designed to be used by searching for keywords of an action you wish to
 perform within the OpenFoam® framework. This allows you to enrich or
 resolve the setting of a problem in the shortest possible time.
 
-How to interpret the text:
+## Where is it hosted
 
-| Font        | Meaning             |
-| ----------- | ------------------- |
-| Abc         | Normal text         |
-| </Abc/>     | User input required |
+The book is hosted at: http://18.168.113.177:3000/
 
-## Table of Contents 
+## Table of Contents
 
 [Preface](#preface)
 
