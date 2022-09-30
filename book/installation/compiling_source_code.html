@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - OpenFoam® Handbook</title>
-        <base href="/">
+        <title>Compiling the source code - OpenFoam® Handbook</title>
 
 
         <!-- Custom HTML head -->
@@ -14,21 +13,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,7 +35,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -82,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Preface</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/via_package_manager.html"><strong aria-hidden="true">1.1.</strong> Via package manager</a></li><li class="chapter-item expanded "><a href="installation/compiling_source_code.html"><strong aria-hidden="true">1.2.</strong> Compiling the source code</a></li></ol></li><li class="chapter-item expanded "><a href="case_set_up.html"><strong aria-hidden="true">2.</strong> Problem set up</a></li><li class="chapter-item expanded "><a href="automation/index.html"><strong aria-hidden="true">3.</strong> Automation </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="automation/run-commands-in-sequence.html"><strong aria-hidden="true">3.1.</strong> Run commands in sequence</a></li><li class="chapter-item expanded "><a href="automation/create-a-custom-command.html"><strong aria-hidden="true">3.2.</strong> Create a custom command</a></li><li class="chapter-item expanded "><a href="automation/bash-script.html"><strong aria-hidden="true">3.3.</strong> Bash script</a></li></ol></li><li class="chapter-item expanded "><a href="useful-command/index.html">Useful command</a></li><li class="chapter-item expanded affix "><a href="useful-command/find_file_in_tutorial.html">Find file in tutorial</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../installation/index.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../installation/via_package_manager.html"><strong aria-hidden="true">1.1.</strong> Via package manager</a></li><li class="chapter-item expanded "><a href="../installation/compiling_source_code.html" class="active"><strong aria-hidden="true">1.2.</strong> Compiling the source code</a></li></ol></li><li class="chapter-item expanded "><a href="../case_set_up.html"><strong aria-hidden="true">2.</strong> Problem set up</a></li><li class="chapter-item expanded "><a href="../automation/index.html"><strong aria-hidden="true">3.</strong> Automation </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../automation/run-commands-in-sequence.html"><strong aria-hidden="true">3.1.</strong> Run commands in sequence</a></li><li class="chapter-item expanded "><a href="../automation/create-a-custom-command.html"><strong aria-hidden="true">3.2.</strong> Create a custom command</a></li><li class="chapter-item expanded "><a href="../automation/bash-script.html"><strong aria-hidden="true">3.3.</strong> Bash script</a></li></ol></li><li class="chapter-item expanded "><a href="../useful-command/index.html">Useful command</a></li><li class="chapter-item expanded affix "><a href="../useful-command/find_file_in_tutorial.html">Find file in tutorial</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,7 +113,7 @@
                     <h1 class="menu-title">OpenFoam® Handbook</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -143,14 +142,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h2 id="installation-via-package-manger"><a class="header" href="#installation-via-package-manger">Installation via package manger</a></h2>
+<p>The source code must be compiled in order to be used, it is usually retrieved using git
+with the command:</p>
+<pre><code class="language-shell-session">git clone \&lt;\&gt;:
+
+  - OpenFOAM-\```&lt;OpenFOAMVersion\```&gt;
+
+  - ThirdParty-\&lt;OpenFOAMVerision\&gt;
+
+</code></pre>
+<blockquote>
+<p>git clone https://develop.openfoam.com/Development/openfoam.git
+git clone </p>
+</blockquote>
+<blockquote>
+<p><code>print &quot;</code><strong><code>Hello world</code></strong><code>&quot;;</code></p>
+</blockquote>
+<p>Install the source code in the installation directory /otp/, so the
+binaries, libraries, and configuration will be in the same directory.
+They will not be separated into different locations as a traditional
+UNIX system would have them. To check if your system has an adequate
+environment to start the installation run:</p>
+<pre><code class="language-shell-session">source /opt/\&lt;OpenFOAMInstallationPath\&gt;/etc/bashrc
+</code></pre>
+<pre><code class="language-shell-session">foamSystemCheck
+</code></pre>
+<p>If the system check did not produced error messages, then OpenFOAM can
+be compiled. This is done by executing ./Allwmake. This is an
+installation script that takes care of all required operations.
+Compiling OpenFOAM can be done by using more than one processor to save
+time. In order to do this, an environment variable needs to be set
+before invoking ./Allwmake.</p>
+<pre><code class="language-shell-session">export WM\_NCOMPPROCS =4
+</code></pre>
+<p>then proceed with the compilation:</p>
+<pre><code class="language-shell-session">./Allwmake -j -s -q -l
+</code></pre>
+<p>If you have an HPC or you can schedule the installation with this bash
+script</p>
+<p>After the source code has been compiled, it is good practice add those
+lines in  ~/.bashrc :</p>
+<pre><code class="language-shell-session">source \&lt;installationDirectory\&gt;/etc/bashrc
+</code></pre>
+<pre><code class="language-shell-session">source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions
+</code></pre>
+<p>So, at the next start-up (source ~/.bashrc), the OpenFoam® commands
+will be recognized in the terminal</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../installation/via_package_manager.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="../case_set_up.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -158,7 +208,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../installation/via_package_manager.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="../case_set_up.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -187,13 +243,13 @@
         </script>
 
 
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
 

@@ -9,3 +9,9 @@ Then install it
 ```shell-session
 apt install \ *OpenFOAMVersion*
 ```
+
+if the packages are not availble for your distribution, use the precompiled 
+binaries instead:
+
+> https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz
+> https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz

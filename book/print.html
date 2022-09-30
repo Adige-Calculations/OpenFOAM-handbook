@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Preface</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/via_package_manager.html"><strong aria-hidden="true">1.1.</strong> Via package manager</a></li><li class="chapter-item expanded "><a href="installation/compiling_source_code.html"><strong aria-hidden="true">1.2.</strong> Compiling the source code</a></li></ol></li><li class="chapter-item expanded "><a href="case_set_up.html"><strong aria-hidden="true">2.</strong> Problem set up</a></li><li class="chapter-item expanded "><a href="automation/index.html"><strong aria-hidden="true">3.</strong> Automation </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="automation/run-commands-in-sequence.html"><strong aria-hidden="true">3.1.</strong> Run commands in sequence</a></li><li class="chapter-item expanded "><a href="automation/create-a-custom-command.html"><strong aria-hidden="true">3.2.</strong> Create a custom command</a></li><li class="chapter-item expanded "><a href="automation/bash-script.html"><strong aria-hidden="true">3.3.</strong> Bash script</a></li></ol></li><li class="chapter-item expanded "><a href="useful-command/index.html">Useful command</a></li><li class="chapter-item expanded affix "><a href="useful-command/find_file_in_tutorial.html">Find file in tutorial</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -155,8 +155,132 @@ resolve the setting of a problem in the shortest possible time.</p>
 <tr><td>Abc</td><td>Normal text</td></tr>
 <tr><td>&lt;/Abc/&gt;</td><td>User input required</td></tr>
 </tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>The installation of OpenFoam® is possible through three methods:</p>
+<ul>
+<li>
+<p>Directly installing the binaries from a packages manager (not all Linux distribution can take advantage of this method)</p>
+</li>
+<li>
+<p>Extracting the already compiled package from the OpenFoam® websites</p>
+</li>
+<li>
+<p>Compiling from the source code</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p>To check the dependencies (other software needed to run OpenFoam®) the
+suggested software and the description of the package:</p>
+<pre><code class="language-shell-session">apt show openfoam
+</code></pre>
+<p>Then install it</p>
+<pre><code class="language-shell-session">apt install \ *OpenFOAMVersion*
+</code></pre>
+<p>if the packages are not availble for your distribution, use the precompiled 
+binaries instead:</p>
+<blockquote>
+<p>https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz
+https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="installation-via-package-manger"><a class="header" href="#installation-via-package-manger">Installation via package manger</a></h2>
+<p>The source code must be compiled in order to be used, it is usually retrieved using git
+with the command:</p>
+<pre><code class="language-shell-session">git clone \&lt;\&gt;:
 
+  - OpenFOAM-\```&lt;OpenFOAMVersion\```&gt;
+
+  - ThirdParty-\&lt;OpenFOAMVerision\&gt;
+
+</code></pre>
+<blockquote>
+<p>git clone https://develop.openfoam.com/Development/openfoam.git
+git clone </p>
+</blockquote>
+<blockquote>
+<p><code>print &quot;</code><strong><code>Hello world</code></strong><code>&quot;;</code></p>
+</blockquote>
+<p>Install the source code in the installation directory /otp/, so the
+binaries, libraries, and configuration will be in the same directory.
+They will not be separated into different locations as a traditional
+UNIX system would have them. To check if your system has an adequate
+environment to start the installation run:</p>
+<pre><code class="language-shell-session">source /opt/\&lt;OpenFOAMInstallationPath\&gt;/etc/bashrc
+</code></pre>
+<pre><code class="language-shell-session">foamSystemCheck
+</code></pre>
+<p>If the system check did not produced error messages, then OpenFOAM can
+be compiled. This is done by executing ./Allwmake. This is an
+installation script that takes care of all required operations.
+Compiling OpenFOAM can be done by using more than one processor to save
+time. In order to do this, an environment variable needs to be set
+before invoking ./Allwmake.</p>
+<pre><code class="language-shell-session">export WM\_NCOMPPROCS =4
+</code></pre>
+<p>then proceed with the compilation:</p>
+<pre><code class="language-shell-session">./Allwmake -j -s -q -l
+</code></pre>
+<p>If you have an HPC or you can schedule the installation with this bash
+script</p>
+<p>After the source code has been compiled, it is good practice add those
+lines in  ~/.bashrc :</p>
+<pre><code class="language-shell-session">source \&lt;installationDirectory\&gt;/etc/bashrc
+</code></pre>
+<pre><code class="language-shell-session">source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions
+</code></pre>
+<p>So, at the next start-up (source ~/.bashrc), the OpenFoam® commands
+will be recognized in the terminal</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="case-set-up"><a class="header" href="#case-set-up">Case set up</a></h1>
+<p>Select an appropriate solver for the problem:</p>
+<pre><code class="language-shell-session">ls $FOAM\_SOLVERS
+</code></pre>
+<p>Once it is decided a solver, take the tutorial case, copy a suitable
+tutorial to your working directory</p>
+<pre><code class="language-shell-session">cp -r $FOAM\_TUTORIALS/\&lt;tutorial\&gt; $FOAM\_RUN
+</code></pre>
+<p>Modify the tutorial, including geometry, meshing and problem setup. If
+you need to set a specific directory which is not present in the
+tutorial you have chosen, this utility will create the dictionary for
+you:</p>
+<pre><code class="language-shell-session">foamGetDict \&lt;dictionary you are searching\&gt;
+</code></pre>
+<p>For instance:</p>
+<pre><code class="language-console">foamGetDict topoSetDict
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><p>Sequence of commands Command 2 will start only if command 1 has succeeded:</p>
+<pre><code class="language-console">\&lt;Command1\&gt; &amp;&amp; \&lt;Command2\&gt;
+</code></pre>
+<p>Piping commands → The output of Command 1 will feed Command 2 as argument</p>
+<pre><code class="language-console">\&lt;Command1\&gt; | \&lt;Command2\&gt;
+</code></pre>
+<p>Using ; permit to run command in sequence even if the precedent fail</p>
+<pre><code class="language-console">\&lt;Command1\&gt;; \&lt;Command2\&gt;</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>Open the file ~/.bashrc and write at the end of this file the command
+you need following this layout</p>
+<p>alias &lt;nameCommand&gt;=’&lt;list of command you want execute digiting
+nameCommand&gt;’</p>
+<p>For example, a useful alias which create a dummy file with the name of
+the directory and then open ParaView in series:</p>
+<pre><code class="language-console">alias ParaView ='touch &quot;${PWD\#\#\*/}&quot;.foam &amp;&amp; ParaView &quot;${PWD\#\#\*/}&quot;.foam
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>These are script files, for running all the commands related to the
+case. You can open it using any editor and see the commands in it.
+Tanking as an example the native bash script often present in tutorial
+cases:</p>
+<pre><code class="language-console">./Allrun
+</code></pre>
+<p>It will run all the command necessary to run the tutorial</p>
+<pre><code class="language-console">./Allclean 
+</code></pre>
+<p>It will run all the command necessary to clean the tutorial.
+To write you bash script, start a new file with the notation:</p>
+<pre><code class="language-sh">#!/bin/bash 
+</code></pre>
+<p>in the first row and then followed by the command you want to execute
+Elevate the file permission adding execution permission through</p>
+<pre><code class="language-console">chmod +x \&lt;fileName\&gt;
+</code></pre>
+<p>For running your bash script, type:</p>
+<pre><code class="language-console">./\&lt;fileName\&gt;</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -174,6 +298,22 @@ resolve the setting of a problem in the shortest possible time.</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

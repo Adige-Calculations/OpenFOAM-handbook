@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html" class="active"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html" class="active">Preface</a></li><li class="chapter-item expanded "><a href="installation/index.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/via_package_manager.html"><strong aria-hidden="true">1.1.</strong> Via package manager</a></li><li class="chapter-item expanded "><a href="installation/compiling_source_code.html"><strong aria-hidden="true">1.2.</strong> Compiling the source code</a></li></ol></li><li class="chapter-item expanded "><a href="case_set_up.html"><strong aria-hidden="true">2.</strong> Problem set up</a></li><li class="chapter-item expanded "><a href="automation/index.html"><strong aria-hidden="true">3.</strong> Automation </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="automation/run-commands-in-sequence.html"><strong aria-hidden="true">3.1.</strong> Run commands in sequence</a></li><li class="chapter-item expanded "><a href="automation/create-a-custom-command.html"><strong aria-hidden="true">3.2.</strong> Create a custom command</a></li><li class="chapter-item expanded "><a href="automation/bash-script.html"><strong aria-hidden="true">3.3.</strong> Bash script</a></li></ol></li><li class="chapter-item expanded "><a href="useful-command/index.html">Useful command</a></li><li class="chapter-item expanded affix "><a href="useful-command/find_file_in_tutorial.html">Find file in tutorial</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -160,7 +160,7 @@ resolve the setting of a problem in the shortest possible time.</p>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next" href="index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="installation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -171,13 +171,29 @@ resolve the setting of a problem in the shortest possible time.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next" href="index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="installation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

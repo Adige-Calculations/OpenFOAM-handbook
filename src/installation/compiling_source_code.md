@@ -1,14 +1,22 @@
+## Installation via package manger
+
 The source code must be compiled in order to be used, it is usually retrieved using git
 with the command:
 
 ```shell-session
 git clone \<\>:
 
-  - OpenFOAM-\<OpenFOAMVersion\>
+  - OpenFOAM-\```<OpenFOAMVersion\```>
 
   - ThirdParty-\<OpenFOAMVerision\>
 
 ```
+
+> git clone https://develop.openfoam.com/Development/openfoam.git
+> git clone 
+
+> `print "`**`Hello world`**`";`
+
 Install the source code in the installation directory /otp/, so the
 binaries, libraries, and configuration will be in the same directory.
 They will not be separated into different locations as a traditional

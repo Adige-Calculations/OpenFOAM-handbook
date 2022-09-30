@@ -1,16 +1,11 @@
-Preface
+# Preface
+-[Preface](./preface.md)
 
-- [Preface](./preface.md)
-
-Summary
-
-[Introduction](README.md)
-
-<!-- - [Installation](installation/README.md)
+- [Installation](installation/README.md)
 
   - [Via package manager](installation/via_package_manager.md)
 
-  - [Compiling the source code](installation/compiling_source_code.md) -->
+  - [Compiling the source code](installation/compiling_source_code.md)
 
 - [Problem set up](case_set_up.md)
 
@@ -24,111 +19,111 @@ Summary
 
 [Useful command](useful-command/README.md)
 
-  - [Find file in tutorial](useful-command/find_file_in_tutorial.md)
-
+  -[Find file in tutorial](useful-command/find_file_in_tutorial.md)
+<!-- 
 [Mesh](mesh/README.md)
 
-  - [blockMesh](mesh/blockmesh)
+  -[blockMesh](mesh/blockmesh.md)
 
-  - [SnappyHexMesh](mesh/snappyhexmesh)
+  -[SnappyHexMesh](mesh/snappyhexmesh.md)
 
-    - [Most important mesh parameters](mesh/snappyhexmesh/most_important_parameters)
+    -[Most important mesh parameters](mesh/snappyhexmesh/most_important_parameters.md)
 
-    - [Advice for internal flow](mesh/snappyhexmesh/advice-for-internal-flow)
+    -[Advice for internal flow](mesh/snappyhexmesh/advice-for-internal-flow.md)
 
-    - [Setting zones inside the mesh for source terms](mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms)
+    -[Setting zones inside the mesh for source terms](mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms)
 
-    - [Advanced refinement technique](mesh/snappyhexmesh/advanced-refinement-technique)
+    -[Advanced refinement technique](mesh/snappyhexmesh/advanced-refinement-technique)
 
-    - [Meshing more than one close body](mesh/snappyhexmesh/meshing-more-than-one-closed-body)
+    -[Meshing more than one close body](mesh/snappyhexmesh/meshing-more-than-one-closed-body)
 
-    - [Parallelization issues](mesh/snappyhexmesh/parallelization-issues)
+    -[Parallelization issues](mesh/snappyhexmesh/parallelization-issues)
 
-  - [cfMesh ](mesh/cfmesh)
+  -[cfMesh ](mesh/cfmesh)
 
-  - [checkMesh](mesh/checkmesh)
+  -[checkMesh](mesh/checkmesh)
 
-  - [ANSYS Meshing to OpenFoam® ](mesh/ansys-meshing-to-openfoam)
+  -[ANSYS Meshing to OpenFoam® ](mesh/ansys-meshing-to-openfoam)
 
 [Directories’ structure](directories-structure)
 
-  - [0 (i.e. Boundary Conditions)](0/README)
+  -[0 (i.e. Boundary Conditions)](0/README)
 
-    - [ε, ω, k](0/ε-ω-k/README.md)
+    -[ε, ω, k](0/ε-ω-k/README.md)
 
-      - [Internal Flow approximations](0/ε-ω-k/internal-flow-approximations)
+      -[Internal Flow approximations](0/ε-ω-k/internal-flow-approximations)
 
-      - [External flow applications](0/ε-ω-k/external-flow-applications)
+      -[External flow applications](0/ε-ω-k/external-flow-applications)
 
-      - [Turbulent Wall functions](0/ε-ω-k/turbulent-wall-functions)
+      -[Turbulent Wall functions](0/ε-ω-k/turbulent-wall-functions)
 
-    - [nut](0/nut/README.md)
+    -[nut](0/nut/README.md)
 
-      - [Turbulent viscosity wall functions](0/nut/turbulent-viscosity-wall-functions)
+      -[Turbulent viscosity wall functions](0/nut/turbulent-viscosity-wall-functions)
 
-  - [Constant](constant)
+  -[Constant](constant)
 
-    - [transportProperties](transportproperties)
+    -[transportProperties](transportproperties)
 
-    - [polyMesh](polymesh)
+    -[polyMesh](polymesh)
 
-      - [boundary](boundary)
+      -[boundary](boundary)
 
-    - [Thermophysical model](thermophysical-model)
+    -[Thermophysical model](thermophysical-model)
 
-  - [System](system)
+  -[System](system)
 
-    - [controlDict ](controldict)
+    -[controlDict ](controldict)
 
-    - [fvSchemes ](fvschemes)
+    -[fvSchemes ](fvschemes)
 
-      - [Discretization schemes selection](discretization-schemes-selection)
+      -[Discretization schemes selection](discretization-schemes-selection)
 
-    - [fvSolution](fvsolution)
+    -[fvSolution](fvsolution)
 
-      - [linear solver](linear-solver)
+      -[linear solver](linear-solver)
 
-      - [solver](solver)
+      -[solver](solver)
 
-      - [Residuals](residuals)
+      -[Residuals](residuals)
 
-      - [Under-relaxation factors](under-relaxation-factors)
+      -[Under-relaxation factors](under-relaxation-factors)
 
-    - [decomposeParDict](decomposepardict)
+    -[decomposeParDict](decomposepardict)
 
-    - [fvOptions](fvoptions)
+    -[fvOptions](fvoptions)
 
 [Problem initialization and interpolation from previous results](problem-initialization-and-interpolation-from-previous-results)
 
 [Browse Source Code](browse-source-code)
 
-   - [Doxigen](doxigen)
+   -[Doxigen](doxigen)
 
-   - [Source code](source-code)
+   -[Source code](source-code)
 
 [Multiphase model](multiphase-model)
 
 [Conjugate Heat Transfer Model](conjugate-heat-transfer-model)
 
-  - [Run in parallel a CHT model](run-in-parallel-a-cht-model)
+  -[Run in parallel a CHT model](run-in-parallel-a-cht-model)
 
 [Run in parallel](run-in-parallel)
 
 [Residuals](residuals-1)
 
-  - [Convergence](convergence-advice)
+  -[Convergence](convergence-advice)
 
-  - [pyFoam](with-pyfoam)
+  -[pyFoam](with-pyfoam)
 
 [ParaView](ParaView)
 
-  - [Post processing in ParaView Error\! Bookmark notdefined.](_Toc95420243)
+  -[Post processing in ParaView Error\! Bookmark notdefined.](_Toc95420243)
 
-  - [pvserver](pvserver)
+  -[pvserver](pvserver)
 
-  - [Installation from source code Error\! Bookmark notdefined.](_Toc95420245)
+  -[Installation from source code Error\! Bookmark notdefined.](_Toc95420245)
 
-  - [Trouble shooting](trouble-shooting-common-problems)
+  -[Trouble shooting](trouble-shooting-common-problems)
 
 [Post processing via command line](post-processing-via-command-line)
 
@@ -138,8 +133,8 @@ Summary
 
 [Windows-practices](windows-practices)
 
-  - [WSL - (Windows Subsystem for Linux)](WSL)
+  -[WSL -(Windows Subsystem for Linux)](WSL)
 
-  - [NotePad ++](notepad)
+  -[NotePad ++](notepad)
 
-[Multipass](multipass)
+[Multipass](multipass) -->

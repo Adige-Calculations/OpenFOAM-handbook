@@ -175,13 +175,13 @@ The installation of OpenFoam® is possible through three methods:
 To check the dependencies (other software needed to run OpenFoam® )) the
 suggested software and the description of the package:
 
-```shell-session
+```console
 apt show openfoam
 ```
 Then install it
 
-```shell-session
-apt install \ *OpenFOAMVersion* 
+```console
+apt install \ ***`OpenFOAMVersion**` 
 ```
 
 ## Compiling the source code for x86 architecture 
@@ -199,10 +199,8 @@ They will not be separated into different locations as a traditional
 UNIX system would have them. To check if your system has an adequate
 environment to start the installation run:
 
-```shell-session
+```console
 source /opt/\<OpenFOAMInstallationPath\>/etc/bashrc
-```
-```shell-session
 foamSystemCheck
 ```
 If the system check did not produced error messages, then OpenFOAM can
@@ -212,13 +210,13 @@ Compiling OpenFOAM can be done by using more than one processor to save
 time. In order to do this, an environment variable needs to be set
 before invoking ./Allwmake.
 
-```shell-session
-export WM\_NCOMPPROCS =4
+```console
+export WM\_NCOMPPROCS = 4
 ```
 
 then proceed with the compilation:
 
-```shell-session
+```console
 ./Allwmake -j -s -q -l
 ```
 If you have an HPC or you can schedule the installation with this bash
@@ -227,10 +225,10 @@ script
 After the source code has been compiled, it is good practice add those
 lines in  \~/.bashrc :
 
-```shell-session
+```console
 source \<installationDirectory\>/etc/bashrc
 ```
-```shell-session
+```console
 source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions
 ```
 So, at the next start-up (source \~/.bashrc), the OpenFoam® commands
@@ -241,7 +239,7 @@ will be recognized in the terminal
 Create a file \<installationPath\>/etc/prefs.sh in the installation
 directory as shown:
 
-```shell-session
+```console
 echo "WM\_COMPILER=Gcc" \> etc/prefs.sh
 ```
 
@@ -249,11 +247,11 @@ Change two files (cOpt and c++Opt) in wmake/rules/linuxARM7Gcc,
 substituting the option -mfloat-abi=softfp into -mfloat-abi=hard
 
 Then
-```shell-session
+```console
 source \<installationPath\>/etc/bashrc
 ```
 Then start the compilation with:
-```shell-session
+```console
 ./Allwmake -j -s -l
 ```
 \-j flag stands for --> use all the processor available
@@ -273,11 +271,11 @@ Modify the tutorial, including geometry, meshing and problem setup. If
 you need to set a specific directory which is not present in the
 tutorial you have chosen, this utility will create the dictionary for
 you:
-```shell-session
+```console
 foamGetDict \<dictionary you are searching\>
 ```
 For instance:
-```shell-session
+```console
 foamGetDict topoSetDict
 ```
 # Automation 
@@ -285,15 +283,15 @@ foamGetDict topoSetDict
 ## Run commands in sequence 
 
 Sequence of commands Command 2 will start only if command 1 has succeeded:
-```shell-session
+```console
 \<Command1\> && \<Command2\>
 ```
 Piping commands → The output of Command 1 will feed Command 2 as argument
-```shell-session
+```console
 \<Command1\> | \<Command2\>
 ```
 Using ; permit to run command in sequence even if the precedent fail
-```shell-session
+```console
 \<Command1\>; \<Command2\>
 ```
 ## Create a custom command
@@ -306,7 +304,7 @@ nameCommand\>’
 
 For example, a useful alias which create a dummy file with the name of
 the directory and then open ParaView in series:
-```shell-session
+```console
 alias ParaView ='touch "${PWD\#\#\*/}".foam && ParaView "${PWD\#\#\*/}".foam
 ```
 ## Bash script 
@@ -316,69 +314,69 @@ case. You can open it using any editor and see the commands in it.
 Tanking as an example the native bash script often present in tutorial
 cases:
 
-```shell-session
+```console
 ./Allrun
 ```
 It will run all the command necessary to run the tutorial
 
-```shell-session
+```console
 ./Allclean 
 ```
 It will run all the command necessary to clean the tutorial.
 To write you bash script, start a new file with the notation:
 
-```shell-session
+```console
 #!/bin/bash 
 ```
 in the first row and then followed by the command you want to execute
 Elevate the file permission adding execution permission through
 
-```shell-session
+```console
 chmod +x \<fileName\>
 ```
 For running your bash script, type:
-```shell-session
+```console
 ./\<fileName\>
 ```
 # Useful command 
 
 Grep will search word for you in selected documents or a list of them
 
-```shell-session
+```console
 grep -w -R "car\_baseCase" \*
 ```
 where -w stands for word and -R for research in subdirectories
 
 Rename more than one file at once, extension included
 
-```shell-session
+```console
 mmv '\*.STL' '\#1.stl'
 ```
 To check running simulation written in a log file, it is possible to see
 in terminal the live writing
 
-```shell-session
+```console
 tail -f \<log.fileName\>
 ```
 To copy a file in different directory, execute:
 
-```shell-session
+```console
 ls -d processor\* | xargs -i cp -r 0.orig/\* ./{}/0
 ```
 Call a GUI file manager from terminal (nautilys is the defult in GNOME
 desktop envirnments) :
 
-```shell-session
+```console
 nautilus . &
 ```
 For replacing the text repetitively in file stream:
 
-```shell-session
+```console
 find . -type f | xargs sed -i s/\<oldWord\>/\<newWord\>/g
 ```
 To find Find the correct case in tutorial
 
-```shell-session
+```console
 find $FOAM\_TUTORIALS -name controlDict | xargs grep -r \<word1\>
 ```
 
@@ -393,13 +391,13 @@ those or translated from other programmes.
 
 First step is to create a dummy folder with the tutorial command:
 
-```shell-session
+```console
 restore0Dir
 ```
 BlockMesh is the basic mesh generators which relies on a single
 dictionary file system/blockMeshDict with the command:
 
-```shell-session
+```console
 blockMesh
 ```
 
@@ -426,7 +424,7 @@ substituting and adding the entries and modifying the featured angles
 cells, lowering this value it wouldn’t be consider these cells and it
 will be applied a merged cell)
 
-```shell-session
+```console
 surfaceFeatureExtract
 ```
 
@@ -657,10 +655,10 @@ If you forgot to restore the 0 directory before the case decomposition,
 what you can do is tp reconstruct the mesh and decompose it again with
 the 0 folder in place with:
 
-```shell-session
+```console
 reconstructParMesh -constant
 ```
-```shell-session
+```console
 decomposePar -force
 ```
 When is reconstructed only the mesh, and the redecomposed to include the
@@ -675,7 +673,7 @@ CfMesh is a mesher which is integrate in OpenFOAM® such as
 SnappyHexMesh. and it is possible to find the tutorial relatives to it
 in:
 
-```shell-session
+```console
 \<OpenFOAMInstallationDirectrory\>/modules/cfmesh/tutorials
 ```
 
@@ -684,7 +682,7 @@ bodies as boundaries, i.e. create all different .stl file as surface
 (ASCII and divided per patch that you intend to apply a boundary
 condition)
 
-```shell-session
+```console
 cat \<body1\>.stl \<body2\>.stl \<bodyN\>.stl \>\>\<combined\>.stl
 ```
 to permit at the program to select different patches of the geometry,
@@ -692,7 +690,7 @@ remember to check inside the combined file and ensure there is a space
 between the joint of the different STL files. Then to create a .fms file
 specific for OpenFoam®
 
-```shell-session
+```console
 surfaceFeatureEdges –angle 15 \<combined\>.stl \<combined\>.fms
 ```
 
@@ -705,7 +703,7 @@ boundaries (wall, patch, empty) in the first rows. Then the following
 modifications acts on the dictionary system/meshDict. Then to run the
 cited dictionary type the command:
 
-```shell-session
+```console
 cartesianMesh
 ```
 
@@ -719,7 +717,7 @@ maxCellSize "…";
 If you are not satisfied with the result, try to run these utilities to
 improve the results:
 
-```shell-session
+```console
 improveMeshQuality
 ```
 
@@ -742,14 +740,14 @@ constant/polyMesh/sets/
 To check all the parameters (often an overkill utilities) of the mesh
 like quality parameters run:
 
-```shell-session
+```console
 checkMesh -allGeometry -allTopology -writeAllFields -writeSets vtk
 ``` 
 
 This additive options permit to visualise all the fields and most of the
 time is impossible to make them have a positive outcome, hence a simple:
 
-```shell-session
+```console
 checkMesh -writeSets vtk
 ```
 
@@ -778,37 +776,37 @@ otherwise it is strongly advised to re-mesh.
 After checking the quality and writing the problematic cells in cellSets
 with:
 
-```shell-session
+```console
 checkMesh -allTopology - allGeometry
 ```
 
 It is possible to delete the problematic cells with the utility:
 
-```shell-session
+```console
 setSet -constant
 ```
 
 An internal command line will appear, and similar command can be used to
 manage bad cells present in your mesh (i.e. concave, underdetermined,
 zero volume cells), in this example zero volume cells are treated:
-```shell-session
+```console
 cellSet c0 new cellToCell zeroVolumeCells any
 ```
 if you want to fix additional cells and with problematic faces you can
 (i.e. skew, concave, warp faces etc..)
-```shell-session
+```console
 cellSet c0 add faceToCell skewFaces any
 ```
 ![Text Description automatically generated](media/image8.png)
 
 In the end do not forget to invert, with:
-```shell-session
+```console
 cellSet c0 invert && quit
 ```
 Once exited from the internal command line, execute the following
 command to overwrite the mesh
 
-```shell-session
+```console
 subSetMesh c0 -overwrite
 ```
 ## ANSYS Meshing to OpenFoam® 
@@ -823,7 +821,7 @@ Choose ASCII and then you can easily extract the file in ASCII format by
 exporting the mesh. After you have the file in the working directory,
 the addressed command is
 
-```shell-session
+```console
 fluentMeshToFoam \<fileName\>.msh
 ```
 
@@ -1206,7 +1204,7 @@ under-relaxation are within a *equations* sub-dictionary. 
 This dictionary decomposeParDict divides the domain in blocks which will
 be solved by a single core per each. It is advised to use schotch as
 option for large case. Use the command:
-```shell-session
+```console
 decomposePar -force
 ```
 To overwrite the present decomposed case
@@ -1222,7 +1220,7 @@ a command in the terminal
 
 If it is not available any previous solution, run
 
-```shell-session
+```console
 potentialFoam
 ```
 
@@ -1230,7 +1228,7 @@ to overwrite 0/U with an approximate solution of the field. Instead, to
 map the solution from a coarse mesh to a finer mesh with different mesh
 run
 
-```shell-session
+```console
 mapFields -consistent -sourceTime \<iteration number\> \<path of the
 base case\>
 ```
@@ -1253,7 +1251,7 @@ The directory $WM\_PROJECT\_DIR/doc contains the Doxygen documentation
 of OpenFoam® ). Before using the Doxygen documentation, you will need to
 compile it. To compile the Doxygen documentation, from the terminal:
 
-```shell-session
+```console
 cd $WM\_PROJECT\_DIR
 ./Allwmake doc
 ```
@@ -1261,7 +1259,7 @@ cd $WM\_PROJECT\_DIR
 Note: You will need to install doxygen and graphviz/dot. After compiling
 the Doxygen documentation you can use it by typing:
 
-```shell-session
+```console
 firefox file://$WM\_PROJECT\_DIR/doc/Doxygen/html/index.html
 ```
 The compilation is time consuming.
@@ -1329,14 +1327,14 @@ your domain
 Then split the mesh to create interfaces and different body with the
 following
 
-```shell-session
+```console
 splitMeshRegions -cellZonesOnly -overwrite
 ```
 And generate the
-```shell-session
+```console
 changeDictionary -region \<region1\>
 ```
-```shell-session
+```console
 changeDictionary -region \<region2\>
 ```
 Follow the following tutorial to set up a case:
@@ -1383,35 +1381,38 @@ After having complete the decomposition of the domain through
 system/decomposePar the following command does the same action, where
 process is intended either as solver or mesher:
 
-```shell-session
+```console
 mpirun -np \<cores\> \<process\> -parallel \> log.\<fileName\> &
 ```
-```shell-session
+```console
 foamJob -parallel \<process\>
 ```
 To take full advantage of the hardware, use the maximum number of
 physical cores, remember to disable the hyperthreading in the machine.
 The output of the previous command writes a log file that records
 either events thatoccur in the macine to monitor the simulation.
-```shell-session
+```console
 tail -f log.\<fileName\> Live scrolling
 ```
-```shell-session
+```console
 tail -\<linesToDisplay\> log.\<fileName\> Static scrolling
 ```
 When the simulation is finished, all you time-step/iteration are in the
 processor’s folder, to build a single case the following command it is
 needed:
-```shell-session
+```console
 reconstructParMesh
-```
 reconstructPar
-
+```
 If you need to kill the process in parallel, check top at first and the
 execute:
-
+```console
 pkill \<processName\>
+```
+if for some reason the process does not close, given the fact OpenFOAM processes
+are not vital for the system you can force the kill using :
 
+> kill -9   
 ## Run in parallel a CHT model
 
 To decompose a case with more than one region it is opportune to run
@@ -1438,7 +1439,7 @@ called in /system/controlDict in this way
 
 Then run:
 
-```shell-session
+```console
 foamMonitor -l ./postprocessing/0/residuals
 ```
 
@@ -1447,13 +1448,13 @@ foamMonitor -l ./postprocessing/0/residuals
 If you want to see your residual live just install a python environment,
 and then with the command:
 
-```shell-session
+```console
 pip install PyFoam
 ```
 
 run:
 
-```shell-session
+```console
 pyFoamPlotRunner.py \<solver\>
 ```
 ## Convergence advice
@@ -1470,22 +1471,22 @@ the file after that, so it each time the terminal is called the path
 will be registered and you can call ParaView with command line command;
 ParaView.
 
-```shell-session
+```console
 export PATH= \<installationPath>/ParaView-\<ParaViewVersion>/bin:${PATH}
 ```
 and then make this modification active for the same session
-```shell-session
+```console
 source ./bashrc
 ```
 There is the need to create a dummy file in the working directory to
 make ParaView be able to read the OpenFOAM® format.
 
-```shell-session
+```console
 touch \<nameOfTheCase\>.foam
 ```
 If ParaView is installed on Linux it is convenient call it with command
 
-```shell-session
+```console
 paraview \<nameOfTheCase\>.foam &
 ```
 
@@ -1493,7 +1494,7 @@ The tag & keeps the program in background so you can continue to use the
 same terminal page. In Windows Subsystem for Linux (WSL) it is enough
 terminate the installation and run the executable;
 
-```shell-session
+```console
 ParaView.exe \<nameOfTheCase\>.foam
 ```
 When ParaView return errors in reading, it could be possible to solve it
@@ -1501,7 +1502,7 @@ changing the case format, convert the result of the simulation in VTK
 format (Visualization Tool Kit), make it easier read the file and the
 properties contained on in. The following command does this:
 
-```shell-session
+```console
 foamToVTK
 ```
 
@@ -1523,7 +1524,7 @@ present at this source to understand which features are availble.
 The build process follows the usual cmake scheme, from the root of your
 source code:
 
-```shell-session
+```console
 mkdir build
 cd build
 cmake ..
@@ -1533,7 +1534,7 @@ cmake --build .
 Assuming you have a debian based distro on the server the following libraries
 should be required
 
-```shell-session
+```console
 sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
 lib32z1
 ```
@@ -1541,14 +1542,14 @@ lib32z1
 Best practice before starting to work with pvserver, check that the port
 used by the service (11111 by default) is free
 
-```shell-session
+```console
 netstat -na | grep 11111
 ```
 If the port is listening, you can start the connection.
 For an accurate view of the listening ports and which programmes are
 using those;
 
-```shell-session
+```console
 sudo netstat -ltnp
 ```
   - l: display only listening sockets
@@ -1631,25 +1632,25 @@ ParaView in latest version require drivers for OpenGL \> 3 and in
 certain OS (such as CentOS 7) this is not compatible, hence if the
 installed OpenGL driver are not supported, try to launch ParaView
 telling to follow the MESA drivers:
-```shell-session
-MESA_GL_VERSION_OVERRIDE=3.2 ParaView
+```console
+MESA_GL_VERSION_OVERRIDE=3.2 paraview
 ```
 Otherwise:
-```shell-session
+```console
 paraview –mesa
 ```
 Same if you need to use ParaView in a headless mode and a graphic card
 is not available, but you still want to render on the server. You can
 build ParaView with these options to overtake the problem:
 
-```shell-session
+```console
 cmake -GNinja -DVTK\_OPENGL\_HAS\_OSMESA=ON -DVTK\_USE\_X=OFF -DPARAVIEW\_USE\_QT=OFF ../\<locationParaViewSourceCode\>
 ```
 # Post processing via command line
 
 An example to run the post process for y<sup>+</sup>sup>+</sup>
 
-```shell-session
+```console
 \<solver\> -postProcess -func \<functionNameInControlDict\>
 ```
 Every solver can be run with the -postProcess option, which only
@@ -1657,7 +1658,7 @@ executes post-processing, but with additional access to data available
 on the database for the solver. To list the possible parameters to post
 process:
 
-```shell-session
+```console
 postProcess -list
 ```
 
@@ -1674,13 +1675,13 @@ controlDict, (already written in the data folder); the command line for
 the post processing is the follow; this example is about averaging the
 heat Transfer Coefficient.
 
-```shell-session
+```console
 postProcess -func 'patchAverage(name=wall,heatTransferCoeff(T))'
 ```
 # Cluster practice 
 
 Check what module of OpenFoam® is installed
-```shell-session
+```console
 module avail
 ```
 the module command modifies your environment so that the path and other
@@ -1728,12 +1729,12 @@ Inside this directory create an entrance in the file Make/fields like:
 ReynoldsNo/ReynodsNo.C
 
 Then run in ../Make the command
-```shell-session
+```console
 wmake 
 ```
 Remember to install the command make, if it is not installed:
 
-```shell-session
+```console
 sudo apt-get install make
 ``` 
 # Windows practices
@@ -1761,18 +1762,18 @@ environment. Here there are two choices in order features completeness.
 
 OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
 run in PowerShell as admin for the enabling a necessary Windows feature:
-```shell-session
+```console
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart
 ```
 The proceed with the installation:
-```shell-session
+```console
 wsl –install
 ```
 Then, once installed, The Linux root folder is in the Windows file
 explorer in:
 
-```shell-session
+```console
 \\wsl$\Ubuntu-20.04\
 ```
 Or whatever distribution you have.
@@ -1787,7 +1788,7 @@ screen and also allow public access
 Disable Windows Defender Firewall for Guest or public Network
 
 In WSL edit the file
-``` shell-session
+``` console
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
 ```
 
@@ -1813,7 +1814,7 @@ Few comments on the flags:
 
 To mount a part of your file system in your virtual multipass machine
 do:
-```shell-session
+```console
 multipass mount 'D:\\' \<nameOfTheInstance\>:
 ```
 # Docker
@@ -1821,7 +1822,7 @@ First create a docker file, which is a strictly a file named “Dockerfile”,
 on which will be build a docker image that will become a container once is
 running. To build the image from the Docker file use:
 
-```shell-session
+```console
 docker build -t <nameOfTheImage> <DockerfileDirectory> 
 ```
 ## System images 
@@ -1829,7 +1830,7 @@ An image becomes a container when you execute it. Check the images that are pres
 docker images
 
 ## Running the container
-```shell-session
+```console
 docker run -ti -–rm <imageID>
 ```
 Here's some more info on the flags:
@@ -1841,15 +1842,15 @@ Here's some more info on the flags:
 
 To see if the container is running check 
 
-```shell-session
+```console
 docker ps 
 ```
 to start and stop the container 
 
-```shell-session
+```console
 docker stop <imageID>
 ```
-```shell-session
+```console
 docker start <imageID>
 ```
 
@@ -1858,7 +1859,7 @@ Do not store your simulation data in the container. Instead let’s give our
 container access to just a little bit of our local filesystem. From your project
 directory in a Windows environment, run:
 
-```shell-session
+```console
 docker run -ti --rm -v ${PWD}:/data -w /data <imageID>
 ```
 By adding the -v option we’re asking Docker to mount our current working directory
@@ -1867,11 +1868,11 @@ that we’d like to be in /data when the container starts.
 
 ## Creating an image from a container 
 You can convert a container into an image by using the command
-```shell-session
+```console
 docker commit 
 ```
 ## Delete the container
 The following command will delete the container:
-```shell-session
+```console
 docker rmi <imageID>
 ```
