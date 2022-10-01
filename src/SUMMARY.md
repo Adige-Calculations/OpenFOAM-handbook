@@ -1,140 +1,162 @@
 # Preface
+
 -[Preface](./preface.md)
 
-- [Installation](installation/README.md)
+- [Intro](1_intro/README.md)
 
-  - [Via package manager](installation/via_package_manager.md)
+- [Installation](2_installation/README.md)
 
-  - [Compiling the source code](installation/compiling_source_code.md)
+  - [Via package manager](2_installation/via_package_manager.md)
 
-- [Problem set up](case_set_up.md)
+  - [Compiling the source code](2_installation/compiling_source_code.md)
 
-- [Automation ](automation/README.md)
+    - [ARM architecture](2_installation/compiling_ARM.md)
 
-  - [Run commands in sequence](automation/run-commands-in-sequence.md)
+- [Problem set up](3_problem_set_up/README.md)
 
-  - [Create a custom command](automation/create-a-custom-command.md)
+- [Automation ](4_automation/README.md)
 
-  - [Bash script](automation/bash-script.md)
+  - [Run commands in sequence](4_automation/run-commands-in-sequence.md)
 
-[Useful command](useful-command/README.md)
+  - [Create a custom command](4_automation/create-a-custom-command.md)
 
-  -[Find file in tutorial](useful-command/find_file_in_tutorial.md)
-<!-- 
-[Mesh](mesh/README.md)
+  - [Bash script](4_automation/bash-script.md)
 
-  -[blockMesh](mesh/blockmesh.md)
+- [Useful command](5_useful_command/README.md)
 
-  -[SnappyHexMesh](mesh/snappyhexmesh.md)
+  -[Find file in tutorial](5_useful_command/find_file_in_tutorial.md)
 
-    -[Most important mesh parameters](mesh/snappyhexmesh/most_important_parameters.md)
+- [Mesh](6_mesh/README.md)
 
-    -[Advice for internal flow](mesh/snappyhexmesh/advice-for-internal-flow.md)
+  - [blockMesh](6_mesh/blockmesh.md)
 
-    -[Setting zones inside the mesh for source terms](mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms)
+  - [SnappyHexMesh](6_mesh/snappyhexmesh/README.md)
 
-    -[Advanced refinement technique](mesh/snappyhexmesh/advanced-refinement-technique)
+    - [Internal flow](6_mesh/snappyhexmesh/advice-for-internal-flow.md)
 
-    -[Meshing more than one close body](mesh/snappyhexmesh/meshing-more-than-one-closed-body)
+    - [Setting zones](6_mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.md)
 
-    -[Parallelization issues](mesh/snappyhexmesh/parallelization-issues)
+    - [Refinement technique](6_mesh/snappyhexmesh/advanced-refinement-technique.md)
 
-  -[cfMesh ](mesh/cfmesh)
+    - [Multiple closed body](6_mesh/snappyhexmesh/meshing-more-than-one-closed-body.md)
 
-  -[checkMesh](mesh/checkmesh)
+    - [Parallelization issues](6_mesh/snappyhexmesh/parallelization-issues.md)
 
-  -[ANSYS Meshing to OpenFoam® ](mesh/ansys-meshing-to-openfoam)
+  - [cfMesh ](6_mesh/cfmesh.md)
 
-[Directories’ structure](directories-structure)
+  - [checkMesh](6_mesh/checkMesh/README.md)
 
-  -[0 (i.e. Boundary Conditions)](0/README)
+      - [Most important mesh parameters](6_mesh/checkMesh/most_important_parameters.md)
 
-    -[ε, ω, k](0/ε-ω-k/README.md)
+      - [Bad quality mesh](6_mesh/checkMesh/delete-bad-quality-cells.md)
 
-      -[Internal Flow approximations](0/ε-ω-k/internal-flow-approximations)
+  - [ANSYS Meshing to OpenFoam® ](6_mesh/ansys-meshing-to-openfoam.md)
 
-      -[External flow applications](0/ε-ω-k/external-flow-applications)
+- [Directories’ structure](7_Directories’_structure/README.md)
 
-      -[Turbulent Wall functions](0/ε-ω-k/turbulent-wall-functions)
+  - [0 (i.e. Boundary Conditions)](7_Directories’_structure/0/README.md)
 
-    -[nut](0/nut/README.md)
+    - [ε, ω, k](7_Directories’_structure/0/ε-ω-k/README.md)
 
-      -[Turbulent viscosity wall functions](0/nut/turbulent-viscosity-wall-functions)
+      - [Internal Flow approximations](7_Directories’_structure/0/ε-ω-k/internal-flow-approximations.md)
 
-  -[Constant](constant)
+      - [External flow applications](7_Directories’_structure/0/ε-ω-k/external-flow-applications.md)
 
-    -[transportProperties](transportproperties)
+      - [Turbulent Wall functions](7_Directories’_structure/0/ε-ω-k/turbulent-wall-functions.md)
 
-    -[polyMesh](polymesh)
+    - [nut](7_Directories’_structure/0/nut/README.md)
 
-      -[boundary](boundary)
+      - [Turbulent viscosity wall functions](7_Directories’_structure/0/nut/turbulent-viscosity-wall-functions.md)
 
-    -[Thermophysical model](thermophysical-model)
+  - [Constant](7_Directories’_structure/constant/README.md)
 
-  -[System](system)
+    - [transportProperties](7_Directories’_structure/constant/transportproperties.md)
 
-    -[controlDict ](controldict)
+    - [polyMesh](7_Directories’_structure/constant/polymesh/README.md)
 
-    -[fvSchemes ](fvschemes)
+      - [boundary](7_Directories’_structure/constant/polymesh/boundary.md)
 
-      -[Discretization schemes selection](discretization-schemes-selection)
+      - [sets](7_Directories’_structure/constant/polymesh/sets.md)
 
-    -[fvSolution](fvsolution)
+    - [Thermophysical model](7_Directories’_structure/constant/thermophysical-model.md)
 
-      -[linear solver](linear-solver)
+  - [System](7_Directories’_structure/system/README.md)
 
-      -[solver](solver)
+    - [controlDict ](7_Directories’_structure/system/controldict.md)
 
-      -[Residuals](residuals)
+    - [fvSchemes ](7_Directories’_structure/system/fvSchemes/README.md)
 
-      -[Under-relaxation factors](under-relaxation-factors)
+      - [Discretization schemes selection](7_Directories’_structure/system/fvSchemes/discretization-schemes-selection.md)
 
-    -[decomposeParDict](decomposepardict)
+    - [fvSolution](7_Directories’_structure/system/fvSolution/README.md)
 
-    -[fvOptions](fvoptions)
+      - [linear solver](7_Directories’_structure/system/fvSolution/linear-solver.md)
 
-[Problem initialization and interpolation from previous results](problem-initialization-and-interpolation-from-previous-results)
+      - [solver](7_Directories’_structure/system/fvSolution/solver.md)
 
-[Browse Source Code](browse-source-code)
+      - [Residuals](7_Directories’_structure/system/fvSolution/residuals.md)
 
-   -[Doxigen](doxigen)
+      - [Under-relaxation factors](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
 
-   -[Source code](source-code)
+    - [decomposeParDict](7_Directories’_structure/decomposepardict.md)
 
-[Multiphase model](multiphase-model)
+    - [fvOptions](7_Directories’_structure/fvOptions.md)
 
-[Conjugate Heat Transfer Model](conjugate-heat-transfer-model)
+- [Problem initialization and interpolation from previous results](8_problem-initialization-and-interpolation-from-previous-results/README.md)
 
-  -[Run in parallel a CHT model](run-in-parallel-a-cht-model)
+- [Browse Source Code](9_browse-source-code/README.md)
 
-[Run in parallel](run-in-parallel)
+   - [Doxigen](9_browse-source-code/doxigen.md)
 
-[Residuals](residuals-1)
+   - [Source code](9_browse-source-code/source-code.md)
 
-  -[Convergence](convergence-advice)
+- [Multiphase model](10_multiphase-model/README.md)
 
-  -[pyFoam](with-pyfoam)
+- [Run in parallel](11_run-in-parallel/README.md)
 
-[ParaView](ParaView)
+- [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
 
-  -[Post processing in ParaView Error\! Bookmark notdefined.](_Toc95420243)
+  - [Run in parallel a CHT model](12_conjugate-heat-transfer-model/run-in-parallel-a-cht-model.md)
 
-  -[pvserver](pvserver)
+- [Residuals](13_residuals/README.md)
 
-  -[Installation from source code Error\! Bookmark notdefined.](_Toc95420245)
+  - [Convergence](13_residuals/convergence-advice.md)
 
-  -[Trouble shooting](trouble-shooting-common-problems)
+  - [pyFoam](13_residuals/with-pyfoam.md)
 
-[Post processing via command line](post-processing-via-command-line)
+- [ParaView](14_paraview/README.md)
 
-[Cluster practice](cluster-practice)
+  - [pvserver](14_paraview/pvserver.md)
 
-[Compile functionObjects from web](compile-functionobjects-from-web)
+  - [Compilation](14_paraview/compilation.md)
 
-[Windows-practices](windows-practices)
+  - [Trouble shooting](14_paraview/trouble-shooting-common-problems.md)
 
-  -[WSL -(Windows Subsystem for Linux)](WSL)
+- [Post processing via command line](15_post-processing-via-command-line/README.md)
 
-  -[NotePad ++](notepad)
+- [Cluster practice](16_cluster-practice/README.md)
 
-[Multipass](multipass) -->
+- [Compile functionObjects from web](17_compile-functionobjects-from-web/README.md)
+
+- [Windows-practices](18_windows-practices/README.md)
+
+  - [Windows Subsystem for Linux](18_windows-practices/WSL.md)
+
+  - [NotePad ++](18_windows-practices/notepad++.md)
+
+- [Virtualization](19_virtualization/README.md)
+
+  - [Multipass](19_virtualization/multipass.md)
+  
+  - [Docker](19_virtualization/docker.md)
+
+- [Linux distro settings](20_distribution_setting/README.md)
+
+<!--
+
+
+
+
+
+
+

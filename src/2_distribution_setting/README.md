@@ -1,0 +1,1 @@
+# Linux distro settings

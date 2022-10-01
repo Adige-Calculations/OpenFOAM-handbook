@@ -9,7 +9,8 @@ resolve the setting of a problem in the shortest possible time.
 
 How to interpret the text:
 
-| Font        | Meaning             |
-| ----------- | ------------------- |
-| Abc         | Normal text         |
-| </Abc/>     | User input required |
+| Structure    | Meaning             |
+| -----------  | ------------------- |
+| Abc          | Normal text         |
+|``` Abc```    | Shell command       |
+|```</Abc/>``` | User input required |
