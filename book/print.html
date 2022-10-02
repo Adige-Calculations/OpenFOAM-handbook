@@ -158,7 +158,7 @@ resolve the setting of a problem in the shortest possible time.</p>
 </tbody></table>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
 <p>OpenFOAM® is classified as free and open-source software, hence everyone can contribute, modify and redistribute the software.
-The two main distributions of OpenFOAM® are actively developed:</p>
+The two main distributions of OpenFOAM® actively developed are:</p>
 <ul>
 <li>OpenFOAM from the OpenFOAM Foundation</li>
 <li>OpenFOAM by OpenCFD Ltd</li>
@@ -168,16 +168,18 @@ The two main distributions of OpenFOAM® are actively developed:</p>
 <li>https://www.openfoam.org</li>
 <li>https://www.openfoam.com</li>
 </ul>
-<p>This book will cover OpenFOAM by OpenCFD Ltd which control the verison of the software with the nomenclature:</p>
+<p>This book will cover OpenFOAM by OpenCFD Ltd which does software verison control following the nomenclature:</p>
 <blockquote>
-<p>OpenFOAM-```**`v2112</p>
+<p>OpenFOAM-v2112</p>
 </blockquote>
-<p>Defied by the year followed from the month, i.e. 2021 stands for year while 12 for December, the release occurs 
-every 6 months.</p>
+<p>Which stands for years followed from the month, i.e. 21 stands for year 2021. while 12 for December, hence the software has been released on Dec 21. The release cicle occurs every 6 months.To check the version of OpenFOAM® run</p>
 <pre><code class="language-sh">foamVersion
 </code></pre>
+<p>Once it si installed.</p>
+<h2 id="whats-the-difference-between-the-two-main-distributions-of-openfoam"><a class="header" href="#whats-the-difference-between-the-two-main-distributions-of-openfoam">What`s the difference between the two main distributions of OpenFOAM®?</a></h2>
+<p>OpenFOAM by OpenCFD Ltd contains more utilities and they optimise more the mesh generation fuctionality.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
-<p>The installation of OpenFoam® is possible through three methods:</p>
+<p>The installation of OpenFoam® is possible through three differetn methods:</p>
 <ul>
 <li>
 <p>Directly installing the binaries from a packages manager (not all Linux distribution can take advantage of this method)</p>
@@ -189,15 +191,20 @@ every 6 months.</p>
 <p>Compiling from the source code</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p>To check the dependencies (other software needed to run OpenFoam®) the
+<h2 id="suggested-location-in-the-linux-file-system"><a class="header" href="#suggested-location-in-the-linux-file-system">Suggested location in the linux file system</a></h2>
+<p>Only if you do not use a package manger you have to choose where to install the software, it is suggested to install it on the directory</p>
+<pre><code class="language-sh">sudo mkdir -p /opt/OpenFOAM
+</code></pre>
+<p>Where <code>/opt</code>stands for optional software on the Linux file system</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-via-package-manger"><a class="header" href="#installation-via-package-manger">Installation via package manger</a></h1>
+<p>To check the dependencies (other software needed to run OpenFoam®) the
 suggested software and the description of the package:</p>
 <pre><code class="language-shell-session">apt show openfoam
 </code></pre>
 <p>Then install it</p>
-<pre><code class="language-shell-session">apt install \ *OpenFOAMVersion*
+<pre><code class="language-shell-session">apt install \ *OpenFOAMVersion*\
 </code></pre>
-<p>if the packages are not availble for your distribution, download the precompiled
-binaries instead:</p>
+<p>if the packages are not availble for your distribution, download the precompiled binaries instead:</p>
 <pre><code class="language-console">wget https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz
 wget https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz
 </code></pre>

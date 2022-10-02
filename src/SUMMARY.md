@@ -8,6 +8,8 @@
 
   - [Via package manager](2_installation/via_package_manager.md)
 
+  - [Precompiled binaries](2_installation/download_binaries.md)
+
   - [Compiling the source code](2_installation/compiling_source_code.md)
 
     - [ARM architecture](2_installation/compiling_ARM.md)
@@ -147,7 +149,7 @@
 - [Virtualization](19_virtualization/README.md)
 
   - [Multipass](19_virtualization/multipass.md)
-  
+
   - [Docker](19_virtualization/docker.md)
 
 - [Linux distro settings](20_distribution_setting/README.md)
