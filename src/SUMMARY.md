@@ -6,7 +6,7 @@
 
 - [Installation](2_installation/README.md)
 
-  - [Via package manager](2_installation/via_package_manager.md)
+  - [Package manager](2_installation/via_package_manager.md)
 
   - [Precompiled binaries](2_installation/download_binaries.md)
 
@@ -24,7 +24,7 @@
 
   - [Bash script](4_automation/bash-script.md)
 
-- [Useful command](5_useful_command/README.md)
+- [Useful commands](5_useful_command/README.md)
 
   -[Find file in tutorial](5_useful_command/find_file_in_tutorial.md)
 

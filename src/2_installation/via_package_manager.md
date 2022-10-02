@@ -1,5 +1,11 @@
 # Installation via package manger
 
+The following Linux distibution are supported:
+
+- Debian/Ubuntu
+- openSUSE
+- CentOS/Fedora
+
 To check the dependencies (other software needed to run OpenFoam®) the
 suggested software and the description of the package:
 

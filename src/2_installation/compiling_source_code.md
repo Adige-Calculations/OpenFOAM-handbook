@@ -4,16 +4,8 @@ The source code must be compiled in order to be used, it is usually retrieved us
 with the command:
 
 ```sh
-git clone \<\>:
-
-  - OpenFOAM-\<OpenFOAMVersion\>
-
-  - ThirdParty-\<OpenFOAMVersion\>
-
-```
-```sh
-git clone https://develop.openfoam.com/Development/openfoam.git
-git clone 
+git clone https://develop.openfoam.com/Development/openfoam.git:
+git clone https://develop.openfoam.com/Development/ThirdParty-common.git
 ```
 
 Install the source code in the installation directory /otp/, so the
