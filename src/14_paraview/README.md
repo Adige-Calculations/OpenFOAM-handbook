@@ -20,14 +20,14 @@ make ParaView be able to read the OpenFOAM® format.
 ```console
 touch \<nameOfTheCase\>.foam
 ```
-If ParaView is installed on Linux it is convenient call it with command
+If ParaView is installed on GNU-Linux it is convenient call it with command
 
 ```console
 paraview \<nameOfTheCase\>.foam &
 ```
 
 The tag & keeps the program in background so you can continue to use the
-same terminal page. In Windows Subsystem for Linux (WSL) it is enough
+same terminal page. In Windows Subsystem for GNU-Linux (WSL) it is enough
 terminate the installation and run the executable;
 
 ```console

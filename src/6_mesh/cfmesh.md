@@ -6,7 +6,7 @@ SnappyHexMesh. and it is possible to find the tutorial relatives to it
 in:
 
 ```console
-\<OpenFOAMInstallationDirectrory\>/modules/cfmesh/tutorials
+\<OpenFOAM®InstallationDirectrory\>/modules/cfmesh/tutorials
 ```
 
 The modalities to create a mesh pass always through the creation of .stl
@@ -30,7 +30,7 @@ The tag angle \<number\> permit to capture correctly sharp corner of
 the geometry and more it is low more it will be precise and
 computationally expensive, I found 15 being a good compromise, the
 default is 45. Secondly, to set the boundary condition in the easiest
-way, open the .fms file (OpenFOAM format) to change the type of
+way, open the .fms file (OpenFOAM® format) to change the type of
 boundaries (wall, patch, empty) in the first rows. Then the following
 modifications acts on the dictionary system/meshDict. Then to run the
 cited dictionary type the command:

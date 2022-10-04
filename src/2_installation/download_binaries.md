@@ -1,7 +1,27 @@
-if the packages are not availble for your distribution, download the precompiled binaries instead:
+# Precompiled binaries download
+If the packages are not availble for your distribution, download the precompiled binaries instead:
 
 ```console
 wget https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz -P /opt/OpenFOAM
 wget https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz -P /opt/OpenFOAM
 ```
 These command will download a .tar archive conatining the all necessary file to make the software working on the ```opt/OpenFOAM``` directory.
+It is advised to use this directory if you are backed up by a package manager to avoid mistakes during future operations or updates.
+Next step is to untar these archive with:
+
+```sh
+cd /opt/OpenFOAM
+tar -xvf OpenFOAM-v2206.tgz
+tar -xvf ThirdParty-v2206.tgz
+```
+Then set the binaries/environment variables on the user workspace:
+```sh
+echo "source /opt/OpenFOAM/OpenFOAM-v2206/etc/bashrc" >> ~/.bashrc
+```
+After the installation, it makes the usage of the software more practical
+adding the tutorial functions to the user space in ~/.bashrc :
+
+```sh
+echo "source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions" >> ~/.bashrc
+source ~/.bashrc
+```

@@ -142,7 +142,7 @@
 
 - [Windows-practices](18_windows-practices/README.md)
 
-  - [Windows Subsystem for Linux](18_windows-practices/WSL.md)
+  - [Windows Subsystem for GNU-Linux](18_windows-practices/WSL.md)
 
   - [NotePad ++](18_windows-practices/notepad++.md)
 
@@ -152,7 +152,7 @@
 
   - [Docker](19_virtualization/docker.md)
 
-- [Linux distro settings](20_distribution_setting/README.md)
+- [GNU-Linux distro settings](20_distribution_setting/README.md)
 
 <!--
 

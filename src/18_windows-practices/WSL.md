@@ -1,4 +1,4 @@
-# Windows Subsystem for Linux
+# Windows Subsystem for GNU-Linux
 
 
 OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
@@ -11,7 +11,7 @@ The proceed with the installation:
 ```console
 wsl –install
 ```
-Then, once installed, The Linux root folder is in the Windows file
+Then, once installed, The GNU-Linux root folder is in the Windows file
 explorer in:
 
 ```console

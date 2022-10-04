@@ -32,7 +32,7 @@ execute:
 ```console
 pkill \<processName\>
 ```
-if for some reason the process does not close, given the fact OpenFOAM processes
+if for some reason the process does not close, given the fact OpenFOAM® processes
 are not vital for the system you can force the kill using :
 ```console
 kill -9 

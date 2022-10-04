@@ -18,7 +18,7 @@ environment, this is an example:
 #------------------------------------------------------------------------------
 
 module load openmpi                                      # Module upload
-source /fsx/programs/OpenFOAM/OpenFOAM-v2112/etc/bashrc  # Source OpenFOAM bashrc command
+source /fsx/programs/OpenFOAM®/OpenFOAM®-v2112/etc/bashrc  # Source OpenFOAM® bashrc command
 source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
 
 #------------------------------------------------------------------------------

@@ -1,28 +1,44 @@
 # Installation via package manger
 
-The following Linux distibution are supported:
+This is the simplest method to install software in GNU-Linux, however not all GNU-Linux distributions can take advantage of this method.
+The following GNU-Linux distibution are supported:
 
 - Debian/Ubuntu
 - openSUSE
 - CentOS/Fedora
 
-To check the dependencies (other software needed to run OpenFoam®) the
-suggested software and the description of the package:
+To check the description of the package and the dependencies (other software needed to run OpenFoam®) the
+software needs:
 
-```shell-session
+```sh
+# It shows the information about OpenFOAM® from the OpenFOAM Foundation
 apt show openfoam
 ```
-Then install it
+
+While to point to the package distributed by the OpenCFD Ltd we must install an additional repository.
+
+```sh
+# Add the repository
+curl https://dl.openfoam.com/add-debian-repo.sh | sudo bash
+
+# Show the info for OpenFOAM® by OpenCFD Ltd
+apt show openfoam2206-default
+```
+
+Then install it with super user privileges the package
 
 ```shell-session
-apt install \ *OpenFOAMVersion*\
+sudo apt install openfoam2206-default
+```
+Then set the binaries/environment variable on the user workspace.
+```sh
+echo "source /usr/lib/openfoam/openfoam2206/OpenFOAM-v2206/etc/bashrc" >> ~/.bashrc
 ```
 
-if the packages are not availble for your distribution, download the precompiled binaries instead:
+After the installation, it makes the usage of the software more practical
+adding the tutorial functions to the user space in ~/.bashrc :
 
-```console
-wget https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz
-wget https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz
+```sh
+echo "source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions" >> ~/.bashrc
+source ~/.bashrc
 ```
-These command will download a .tar archive conatining the all necessary file to make
-the software working.

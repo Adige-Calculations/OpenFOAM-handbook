@@ -1,14 +1,16 @@
-## Run commands in sequence 
+# Execute a UNIX command sequence
 
-Sequence of commands Command 2 will start only if command 1 has succeeded:
+The sequence of commands are a must to learn to be effective on the keyboard.
+
+Command 2 (i.e. snappyHexMesh) will start only if command 1 (blockMesh) has succeeded:
 ```console
-\<Command1\> && \<Command2\>
+blockMesh && snappyHexMesh
 ```
-Piping commands → The output of Command 1 will feed Command 2 as argument
+Using the colon ```;``` permit to run command in sequence even if the precedent has failed.
 ```console
-\<Command1\> | \<Command2\>
+blockMesh; snappyHexMesh
 ```
-Using ; permit to run command in sequence even if the precedent fail
+Piping commands using ```|```. Feed the output of command 1 in command 2 as argument, as example:
 ```console
-\<Command1\>; \<Command2\>
+ls | grep foo
 ```
