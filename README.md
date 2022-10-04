@@ -1,3 +1,5 @@
+<img style="float: center;" src="images/AdigeCalculations.png">
+
 # OpenFoam® Handbook
 ## Build the book
 The rust environment must be previously installed and the cargo package manager present:
