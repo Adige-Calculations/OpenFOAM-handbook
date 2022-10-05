@@ -1,3 +1,5 @@
+<pre>
+</pre>
 <img style="float: center;" src="images/powered_by_adige.svg">
 
 ## What this book is all about?

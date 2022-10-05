@@ -1,4 +1,7 @@
-<img style="float: center;" src="images/powered_by_adige.svg">
+<pre>
+</pre>
+
+<img style="float: center;" src="images/powered_by_adige.png">
 
 # Preface
 This handbook is intended to support a medium/advanced OpenFoam® user
