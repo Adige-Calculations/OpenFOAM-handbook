@@ -1,10 +1,10 @@
-### Deletion of bad quality cells
+# Deletion of bad quality cells
 
 You can delete bad cells if they are not in region of interest, if this
-is the case utilities such as setSet and subsetMesh can be useful tools,
+is the case utilities such as ```setSet``` and ```subsetMesh``` can be useful tools,
 otherwise it is strongly advised to re-mesh.
 
-After checking the quality and writing the problematic cells in cellSets
+After checking the quality and writing the problematic cells in ```cellSets```
 with:
 
 ```console
@@ -28,8 +28,6 @@ if you want to fix additional cells and with problematic faces you can
 ```console
 cellSet c0 add faceToCell skewFaces any
 ```
-![Text Description automatically generated](media/image8.png)
-
 In the end do not forget to invert, with:
 ```console
 cellSet c0 invert && quit

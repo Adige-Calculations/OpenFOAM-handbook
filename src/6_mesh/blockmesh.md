@@ -20,8 +20,6 @@ number of elements in the segment.
 
 > **Warning:**
 > Be consistent – side of different blocks must contain the same number on elements and bias.
-
-> **Warning:**
 > In blockMesh.boundary, use the rule of the right hand to create the normal to the surface towards the intern of the body.
 
 An example is posted here from the tutorial ```/opt/OpenFOAM/OpenFOAM-v2206/tutorials/multiphase/interFoam/RAS/damBreak```:
