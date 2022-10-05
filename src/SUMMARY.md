@@ -20,11 +20,9 @@
 
   - [Create a custom command](4_automation/create-a-custom-command.md)
 
-  - [Bash script](4_automation/bash-script.md)
+  - [Shell scripting](4_automation/bash-script.md)
 
 - [Useful commands](5_useful_command/README.md)
-
-  -[Find file in tutorial](5_useful_command/find_file_in_tutorial.md)
 
 - [Mesh](6_mesh/README.md)
 

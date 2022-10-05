@@ -1,15 +1,16 @@
-## Create a custom command
+# Create a custom command
 
-To create a personalized command, if you are using bash as a OS shell like
-in most of the UNIX like system, write at the end of your shell config file
+To create a personalized command (alias), if you are using bash as a OS shell like
+in most of the UNIX like system, do:
 
-```console
+```sh
 echo "alias <\nameCommand\>=’<\list of command you want execute digiting
 nameCommand\>" >> ~/.bashrc’
 ```
-
+to write at the end of your shell config file the alias you prefer.
 For example, a useful alias which create a dummy file with the name of
 the directory and then open ParaView in series is declared as following:
-```console
-alias ParaView ='touch "${PWD\#\#\*/}".foam && ParaView "${PWD\#\#\*/}".foam
+
+```sh
+alias paraview_openFoam ='touch "${PWD\#\#\*/}".foam && paraview "${PWD\#\#\*/}".foam
 ```

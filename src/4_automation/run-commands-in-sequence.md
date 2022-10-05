@@ -14,3 +14,6 @@ Piping commands using ```|```. Feed the output of command 1 in command 2 as argu
 ```console
 ls | grep foo
 ```
+
+where ```ls``` list the files/directory in the current directory and ```grep``` will retun the
+a list of file which contain a the pattern ```foo``` in their name.

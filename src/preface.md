@@ -1,5 +1,6 @@
-# Preface
+<img style="float: center;" src="images/powered_by_adige.svg">
 
+# Preface
 This handbook is intended to support a medium/advanced OpenFoam® user
 during the usage of the software. It provides commands, explanations,
 and extension that we find useful during our CFD workflow, and it is
