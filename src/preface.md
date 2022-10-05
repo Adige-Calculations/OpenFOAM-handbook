@@ -1,7 +1,9 @@
-<pre>
+<!-- <pre>
 </pre>
 
-<img style="float: center;" src="images/powered_by_adige.png">
+<img style="float: center;" src="images/powered_by_adige.png"> -->
+![title](images/powered_by_adige.svg)
+
 
 # Preface
 This handbook is intended to support a medium/advanced OpenFoam® user
