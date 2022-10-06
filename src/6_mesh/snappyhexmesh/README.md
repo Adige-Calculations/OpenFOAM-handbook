@@ -1,6 +1,5 @@
 # SnappyHexMesh
 
-
 In order to define the patches in snappyHexMesh you need to use
 different STL file that can couple in a watertight geometry. Use the
 utility surfaceCheck to proof that your STL is watertight.
@@ -33,19 +32,16 @@ very thin.
 
 <table>
 <thead>
-<th>snappyHexMesh -overwrite</th>
+<td>snappyHexMesh -overwrite</td>
 <th><strong>Single core</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><p>decomposePar</p>
-<p><strong>mpirun -n 16 snappyHexMesh -parallel -overwrite</p>
-<p><strong>reconstructParMesh -latestTime -constant</p></td>
+<p>mpirun -n 16 snappyHexMesh -parallel -overwrite</p>
+<p>reconstructParMesh -latestTime -constant</p></td>
 <td><strong>Parallel process </strong></td>
 </tr>
 </tbody>
 </table>
-
-If you want to mesh to separate mesh, run twice snappyHexMesh with
-different value of Location in mesh and then use the tool mergeMesh

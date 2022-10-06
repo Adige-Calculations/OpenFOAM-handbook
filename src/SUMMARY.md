@@ -120,8 +120,6 @@
 
   - [Convergence](13_residuals/convergence-advice.md)
 
-  - [pyFoam](13_residuals/with-pyfoam.md)
-
 - [ParaView](14_paraview/README.md)
 
   - [pvserver](14_paraview/pvserver.md)

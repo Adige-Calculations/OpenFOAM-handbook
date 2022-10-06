@@ -1,9 +1,10 @@
 # Deletion of bad quality cells
 
 You can delete bad cells if they are not in region of interest, if this
-is the case utilities such as ```setSet``` and ```subsetMesh``` can be useful tools,
-otherwise it is strongly advised to re-mesh.
+is the case, utilities such as ```setSet``` and ```subsetMesh``` can be
+useful tools, otherwise it is strongly advised to re-mesh.
 
+## Check the mesh
 After checking the quality and writing the problematic cells in ```cellSets```
 with:
 

@@ -26,7 +26,7 @@ refinementSurfaces
     {
         inlet
         {
-            
+
             level (2 2);
             patchInfo
                         {
@@ -35,7 +35,7 @@ refinementSurfaces
         }
         outlet
         {
-            
+
             level (2 2);
             patchInfo
                         {

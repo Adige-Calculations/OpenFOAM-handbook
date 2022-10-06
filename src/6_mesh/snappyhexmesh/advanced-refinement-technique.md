@@ -1,6 +1,5 @@
 # Advanced refinement technique
 
-
 The necessity to refine area that sometimes require a complex shape can
 be satisfied through the usage of an STL file as a cellZone entry.
 First, define a closed STL file through snappyHexMeshDict.geometry then

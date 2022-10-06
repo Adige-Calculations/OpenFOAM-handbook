@@ -26,10 +26,10 @@ splitMeshRegions -cellZonesOnly -overwrite
 ```
 And generate the
 ```console
-changeDictionary -region \<region1\>
+changeDictionary -region <\region1\>
 ```
 ```console
-changeDictionary -region \<region2\>
+changeDictionary -region <\region2\>
 ```
 Follow the following tutorial to set up a case:
 

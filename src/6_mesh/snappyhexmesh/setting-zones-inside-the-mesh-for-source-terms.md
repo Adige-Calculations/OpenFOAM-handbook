@@ -1,6 +1,5 @@
 # Setting zones inside the mesh for source terms
 
-
 Sets and Zones, can store any mesh entity (point, face or cell) in a
 data structure that is somewhat similar to a list. The major difference
 is in the internal handling of the mesh entities, especially in the case
@@ -26,11 +25,13 @@ cellZone to use fvOptions
 The selection is usually performed by the tools, both of which can
 select subsets of the mesh and perform boolean operations on them
 
-  - setSet --> Use an interactive window
+  - setSet → Use an interactive window
 
-  - topoSet --> Use a dictionary in system/topoSetDict
+  - topoSet → Use a dictionary in ```system/topoSetDict```
 
-Example of topoSet for the implementation of 2 cellZones from STL files:
+Two example of topoSet  are listed below:
+
+## The implementation of 2 cellZones from STL files:
 
 ```c++
 FoamFile
@@ -59,7 +60,6 @@ actions
        action new;          // new cellSet, it doesn't simply add to a previous cellSet
        source setToCellZone;//zoneToCell;
        set  HE_frontCellSet;
-       
 
     }
     {
@@ -79,7 +79,73 @@ actions
     }
 );
 ```
+## Implementation of cellZones and faceZones
+```c++
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+actions
+()
+   // FaceZones
+    {
+        name baffleSET;
+        type faceSet;
+        action new;
+        source      surfaceToCell;
+        file    copper.stl;
+    }
+    {
+        name        baffle;
+        type        faceZoneSet;
+        action      new;
+        source      setToFaceZone;
+        faceSet     baffleSET;
+    }
+
+   // CellZones
+    {
+        name           notPCB;
+        type           cellSet;
+        action         new;
+        source         zoneToCell;
+        zones          ( water air hydrogen);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        box     (-1 -1 -1) (1 1 1);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  subtract;
+        source  cellToCell;   // select all the cells from given cellSet(s).
+        set     notPCB ;
+    }
+    {
+        name    PCB;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     solid ;
+    }
+
+);
+
+// ************************************************************************* //
+
+```
+
+### Delete a zone
 To visualize how much Cell Zone there is inside the domain run
-checkMesh, while if you desire to delete a cell zone, delete the files
-that topoSet creates which are located in: constant/polyMesh/sets
+checkMesh, while if you desire to delete a cellZone, delete the files
+that topoSet creates in: ```constant/polyMesh/sets```
