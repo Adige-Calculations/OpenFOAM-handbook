@@ -1,5 +1,6 @@
 # fvOptions
-This dictionary defines properties allocable in the geometry such as
-porosity value, temperature limiters, etc… It is enough writing the
-document to have valid the criteria on the calculations, no need to run
-a command in the terminal
+
+This dictionary defines optional properties the case adopt, such as
+porosity value, temperature limiters, etc.
+The document once it is written does not require an utility to be applicable because it is directly run by
+solver

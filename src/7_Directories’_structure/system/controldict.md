@@ -1,4 +1,4 @@
-# controlDict 
+# controlDict
 
 The time from where simulation starts (startFrom), the time when the
 simulation finishes (stopAt), the time step (deltaT), the data saving

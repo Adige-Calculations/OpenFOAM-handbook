@@ -1,7 +1,7 @@
 # Turbulent viscosity wall functions
 
 The choice of wall function model is specified through the turbulent
-viscosity field  $ ν_{t} $ in the 0/nut dictionary by the nutxxxxxx
+viscosity field  \\( ν_{t} \\) in the 0/nut dictionary by the nutxxxxxx
 wall functions:
 
   - nutWallFunction seems to be the most basic wall function without
@@ -17,4 +17,4 @@ wall functions:
   - nutUSpaldingWallFunction standard wall function for the Spallart
     Allmarras turbulence model, called nutSpalartAllmarasWallFunction, continuous wall-function which should cover the complete y<sup>+</sup> range from O(1) to somewhere of O(10). Might be the best choice (together with low Re k-ε, k-ω, or SA, when y<sup>+</sup> varies for different parts of the wall.
 
-  - nutLowReWallFunction (code comment: "Sets $ ν_{t} $ to zero and provides an access function to calculate y<sup>+</sup>."):
+  - nutLowReWallFunction (code comment: "Sets \\( ν_{t} \\) to zero and provides an access function to calculate y<sup>+</sup>."):

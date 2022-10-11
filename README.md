@@ -1,24 +1,20 @@
-<!-- <pre>
-</pre>
-<img style="float: center;" src="images/powered_by_adige.svg"> -->
-
-![title](src/images/powered_by_adige.svg)
+[![title](src/images/powered_by_adige.svg)](https://www.adigecalculations.com/)
 
 
 ## What this book is all about?
-This small book describes the usual practices a medium/advanced OpenFoam® user
+This book describes the usual practices a medium/advanced OpenFoam® user
 takes during CFD smulations workflows. Shortcuts and support are given for the every-day
-use and this book should be seen as a co-pilot to remember command or take inspiration
+use.
+It should be seen as a co-pilot to remember commands or take inspiration
 for your CFD workflow, instead of a place to study on.
 
 ## Where you can find this book
-The book can be consulted at this link:
-
-- https://openfoam-handbook.adigecalculations.com
+The book can be consulted at this link:  https://openfoam-handbook.adigecalculations.com
 
 ### Build the book
-To build the book on you local machine, the Rust toolchain must be previously installed
-and the cargo package manager present, install ```mdbook```:
+To build the book on you local machine, the Rust toolchain must be previously installed,
+the package you need to build the book is called ```mdbook```. Follow the instruction to
+build the book
 
 ```sh
 cargo install mdbook

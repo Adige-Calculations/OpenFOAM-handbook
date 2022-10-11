@@ -1,6 +1,5 @@
 # 0 (i.e. Boundary Conditions)
 
-
 The BC works on the Patches which have been defined in the mesh and the
 guessing of the first value of the field pass through the voice
 

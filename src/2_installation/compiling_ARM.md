@@ -12,7 +12,7 @@ echo "WM\_COMPILER=Gcc" > etc/prefs.sh
 Then you have to change two files:
 
 - ```./wmake/rules/linuxARM7Gcc/cOpt```
-- ```./wmake/rules/linuxARM7Gcc/c++Opt)```
+- ```./wmake/rules/linuxARM7Gcc/c++Opt```
 
 Substituting the option ```-mfloat-abi``` from ```softfp``` into ```hard``` as follows:
 

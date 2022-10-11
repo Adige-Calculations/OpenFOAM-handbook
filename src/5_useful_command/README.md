@@ -33,11 +33,11 @@ For replacing the text repetitively in file stream:
 find . -type f | xargs sed -i s/</oldWord/>/</newWord/>/g
 ```
 
-## Useful usage of ```cp```
+## Useful usage of the copy utility - ```cp```
 To copy a file in different directory, execute:
 
 ```console
-ls -d processor\* | xargs -i cp -r 0.orig/\* ./{}/0
+ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 ```
 
 ## Useful usage of ```find```

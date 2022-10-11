@@ -56,10 +56,6 @@
 
     - [ε, ω, k](7_Directories’_structure/0/ε-ω-k/README.md)
 
-      - [Internal Flow approximations](7_Directories’_structure/0/ε-ω-k/internal-flow-approximations.md)
-
-      - [External flow applications](7_Directories’_structure/0/ε-ω-k/external-flow-applications.md)
-
       - [Turbulent Wall functions](7_Directories’_structure/0/ε-ω-k/turbulent-wall-functions.md)
 
     - [nut](7_Directories’_structure/0/nut/README.md)
@@ -70,13 +66,15 @@
 
     - [transportProperties](7_Directories’_structure/constant/transportproperties.md)
 
+    - [turbulentProperties](7_Directories’_structure/constant/turbulentProperties.md)
+
     - [polyMesh](7_Directories’_structure/constant/polymesh/README.md)
 
       - [boundary](7_Directories’_structure/constant/polymesh/boundary.md)
 
       - [sets](7_Directories’_structure/constant/polymesh/sets.md)
 
-    - [Thermophysical model](7_Directories’_structure/constant/thermophysical-model.md)
+    - [thermophysicalProperties](7_Directories’_structure/constant/thermophysicalProperties.md)
 
   - [System](7_Directories’_structure/system/README.md)
 
@@ -134,7 +132,7 @@
 
 - [Compile functionObjects from web](17_compile-functionobjects-from-web/README.md)
 
-- [Windows-practices](18_windows-practices/README.md)
+- [Windows programmes](18_windows-practices/README.md)
 
   - [Windows Subsystem for GNU-Linux](18_windows-practices/WSL.md)
 
@@ -147,12 +145,3 @@
   - [Docker](19_virtualization/docker.md)
 
 - [GNU-Linux distro settings](20_distribution_setting/README.md)
-
-<!--
-
-
-
-
-
-
-
