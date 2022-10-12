@@ -1,7 +1,6 @@
 <pre>
 </pre>
-
-<img style="float: center;" src="images/powered_by_adige.png"> -->
+<!-- <img style="float: center;" src="images/powered_by_adige.png"> -->
 [![title](images/powered_by_adige.svg)](https://www.adigecalculations.com/)
 
 # Preface
@@ -31,21 +30,3 @@ The entire document will assume the installation has been performedunder the
 ├── OpenFOAM-v2206
 └── ThirdParty-v2206
 ```
-
-<!-- <div style="position: absolute; bottom: 5px; background-color: green"> -->
-<!-- Adige Calculations -->
-<!-- </div> -->
-
- <head>
- <style type ="text/css" >
-   .footer{ 
-       position: fixed;
-       text-align: center;
-       bottom: 0px;
-       width: 100%;
-   }
-</style>
-</head>
-<body>
-    <div class="footer">Adige Calculations</div>
-</body>

@@ -1,7 +1,7 @@
 # Run in parallel
 
 After having complete the decomposition of the domain through
-system/decomposePar the following command does the same action, where
+```decomposePar``` the following commands does the same action, where
 process is intended either as solver or mesher:
 
 ```console
@@ -13,10 +13,10 @@ foamJob -parallel <\solver\>
 To take full advantage of the hardware, use the maximum number of physical cores, remember to disable the hyperthreading on the machine you are running.
 The output of the previous command writes a log file that records either events thatoccur in the macine to monitor the simulation.
 ```console
-tail -f  iteration.log #Live scrolling
+tail -f  iteration.log         #Live scrolling
 ```
-```console
-tail -\<linesToDisplay\> log.\<fileName\> Static scrolling
+```sh
+tail -<\linesToDisplay\>  # Static scrolling
 ```
 When the simulation is finished, all you time-step/iteration are in the
 processor’s folder, to build a single case the following command it is

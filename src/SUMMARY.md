@@ -116,8 +116,6 @@
 
 - [Residuals](13_residuals/README.md)
 
-  - [Convergence](13_residuals/convergence-advice.md)
-
 - [ParaView](14_paraview/README.md)
 
   - [pvserver](14_paraview/pvserver.md)

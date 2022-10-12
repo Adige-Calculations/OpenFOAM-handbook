@@ -1,9 +1,15 @@
 # Residuals
 
+A simple trick to check the converge of the calculations properly, consits in checking
+the \\( ν_{t} \\) convergence value since it is dependent from \\( k \\) and \\(  ε \\)
+which both must converge to get a good \\( ν_{t} \\, hence it is one of the best indicator 
+of convergence.
+
+## Charts
 Usually residuals can be monitored via terminal live or in a log file afterwords.
 However few solution are present if you want to generate a chart:
 
-## With GNUPlot
+### Charts with GNUPlot
 
 GNU Plot is program for plotting mathematical expressions and data, to install it:
 
@@ -17,7 +23,7 @@ Then run:
 foamMonitor -l ./postprocessing/0/residuals
 ```
 
-## With pyFoam
+### Charts with pyFoam
 
 pyFoam is a python library to control OpenFOAM-runs and manipulate OpenFOAM-data.
 Pyhton is usually already present in all GNU-Linux system and ready to use.
