@@ -1,6 +1,7 @@
 # Useful command
 
-A list and brief description of few UNIX command is given:
+A list comprised of a brief description of few usuefull UNIX command is given.
+
 
 ## ```grep```
 It will search word patterns for you in selected documents or a list of them

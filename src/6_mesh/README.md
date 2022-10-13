@@ -12,5 +12,3 @@ The mesh generators are:
 while the principal mesh converter are:
 - fluent3DMeshToFoam
 - fluentMeshToFoam
-
-and many more

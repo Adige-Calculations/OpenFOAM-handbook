@@ -13,7 +13,7 @@ Then run in ../Make the command
 ```console
 wmake
 ```
-Remember to install the command make, if it is not installed:
+Remember to install the command "make", if it is not installed proceed in this way:
 
 ```console
 sudo apt-get install make

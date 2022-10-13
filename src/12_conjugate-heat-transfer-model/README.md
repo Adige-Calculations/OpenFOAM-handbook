@@ -67,3 +67,92 @@ solid and type: fluidThemo for the fluid. Other than that, it is
 necessary that the interface will be declared as
 
 type: mappedWall
+
+## Baffles generation
+
+In thermal problems it is often necessary resolve thin walls. Hence baffle modelling result to be a good choice if the computaional power is not adapt to solve little features.
+
+```c++
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createBafflesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Whether to convert internal faces only (so leave boundary faces intact).
+// This is only relevant if your face selection type can pick up boundary
+// faces.
+internalFacesOnly true;
+
+
+// Baffles to create.
+baffles
+{
+    copperLayers
+    {
+        type        searchableSurface;
+        surface     triSurfaceMesh;
+        name        copperLayers.stl;
+
+        patchPairs
+        {
+            type wall;      //mappedWall;
+
+            sampleMode      nearestPatchFace;
+            sameGroup       off;
+            patchFields
+            {
+                p
+                  {
+                    type            calculated;
+                    value           uniform 0;
+                  }
+
+                  T
+                    {
+                    type            compressible::thermalBaffle1D<hConstSolidThermoPhysics>;
+                    thickness       uniform 35E-06;    // thickness [m]
+                    qs              uniform 0;         // heat flux [W/m2]
+                    value           uniform 350;
+
+                    specie
+                    {
+                        molWeight   63.546;   // g/mol
+                    }
+
+                    transport
+                    {
+                        kappa   401;          // W/(m·K)
+                    }
+
+                    thermodynamics
+                    {
+                        Hf      0;
+                        Cp      3900;
+                    }
+
+                    equationOfState
+                    {
+                        rho     8920;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+}
+
+
+// ************************************************************************* //
+```
+Then the execution in done via:
+
+```sh
+createBaffles -region PCB  -overwrite >  ./log/createBaffles  2>&1 && echo "createBaffles Executed"
+```

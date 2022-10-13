@@ -1,7 +1,7 @@
 # Internal flow
 
 To fix the boundary conditions, prepare watertight STL files as
-inlet.stl, outlet.stl, ect. Then in snappyHexMesh define it in geometry
+inlet.stl, outlet.stl, ect. Then in ```system/snappyHexMeshDict.geometry``` define:
 section
 ```c++
 geometry
@@ -11,7 +11,7 @@ geometry
         type triSurfaceMesh;
         name inlet;
     }
-        outlet.stl
+    outlet.stl
     {
         type triSurfaceMesh;
         name outlet;
@@ -19,7 +19,7 @@ geometry
 }
 
 ```
-While in the refinement surfaces section you can define the address the
+While in the refinement surfaces section you can address the
 info of the patch:
 ```c++
 refinementSurfaces
@@ -44,7 +44,6 @@ refinementSurfaces
         }
         wall
         {
-            
             level (2 2);
             patchInfo
                         {

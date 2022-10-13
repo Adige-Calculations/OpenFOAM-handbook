@@ -1,4 +1,4 @@
-# Execute a UNIX command sequence
+# Execute UNIX commands in sequence
 
 The sequence of commands are a must to learn to be effective on the keyboard.
 

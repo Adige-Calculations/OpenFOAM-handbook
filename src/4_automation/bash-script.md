@@ -53,31 +53,28 @@ echo "Eliminated mesh on old regions"
 
 # Mesh generation
 restore0Dir
-surfaceFeatureExtract > ./log/surfaceFeatureExtract.log     2>&1  && echo "surfaceFeatureExtract Executed/n"
-blockMesh  > ./log/blockMesh.log                            2>&1  && echo "blockMesh Executed"
-decomposePar -force  > ./log/decomposePar1.log              2>&1  && echo "decomposePar1 Executed"
+surfaceFeatureExtract                                       > ./log/surfaceFeatureExtract.log  2>&1  && echo "surfaceFeatureExtract Executed/n"
+blockMesh                                                   > ./log/blockMesh.log 2>&1  && echo "blockMesh Executed"
+decomposePar -force                                         > ./log/decomposePar1.log 2>&1  && echo "decomposePar1 Executed"
 mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite > ./log/snappyHexMesh.log 2>&1 && echo "snappyHexMesh Executed"
 
 # Addional mesh zones operation
-reconstructParMesh -constant > ./log/reconstructParMesh1         2>&1 && echo "Reconstruct Case"
-topoSet                                                          > ./log/topoSet  && echo "topoSet Executed"
-#mpirun -np $SLURM_NTASKS topoSet -parallel > ./log/topoSet  2>&1 && echo "topoSet Executed"
-splitMeshRegions -cellZonesOnly -overwrite > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
-#mpirun -np $SLURM_NTASKS splitMeshRegions -cellZonesOnly -overwrite -parallel > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
-checkMesh > ./log/checkMesh.log                   2>&1 && echo "checkMesh Executed"
-#mpirun -np $SLURM_NTASKS checkMesh -parallel > ./log/checkMesh-EVERYCELLZONES.log 2>&1 && echo "checkMesh Executed"
+reconstructParMesh -constant                                > ./log/reconstructParMesh1         2>&1 && echo "Reconstruct Case"
+topoSet                                                     > ./log/topoSet  && echo "topoSet Executed"
+splitMeshRegions -cellZonesOnly -overwrite                  > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
+checkMesh                                                   > ./log/checkMesh.log                   2>&1 && echo "checkMesh Executed"
+createBaffles -region PCB  -overwrite                       >  ./log/createBaffles     2>&1 && echo "createBaffles Executed"
 
-createBaffles -region PCB  -overwrite >  ./log/createBaffles     2>&1 && echo "createBaffles Executed"
 for region in $(foamListRegions)
-do
-  changeDictionary -region $region                               > ./log/changeDictionary.$region.log 2>&1
-done
+  do
+     changeDictionary -region $region                       > ./log/changeDictionary.$region.log 2>&1
+  done
 echo "changeDictionary Executed"
 
-decomposePar -force -allRegions                                  > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
-mpirun -np $SLURM_NTASKS $(getApplication) -parallel             > ./log/$(getApplication).log 2>&1 && echo "$(getApplication) Executed"
+decomposePar -force -allRegions                             > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel        > ./log/$(getApplication).log 2>&1 && echo "$(getApplication) Executed"
 
-reconstructParMesh -constant -allRegions                         > ./log/reconstructParMesh.log 2>&1 && echo "Finished"
+reconstructParMesh -constant -allRegions                    > ./log/reconstructParMesh.log 2>&1 && echo "Finished"
 
 #------------------------------------------------------------------------------
 ```

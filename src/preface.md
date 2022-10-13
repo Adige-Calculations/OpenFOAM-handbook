@@ -1,6 +1,3 @@
-<pre>
-</pre>
-<!-- <img style="float: center;" src="images/powered_by_adige.png"> -->
 [![title](images/powered_by_adige.svg)](https://www.adigecalculations.com/)
 
 # Preface

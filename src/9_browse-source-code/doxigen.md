@@ -15,4 +15,4 @@ the Doxygen documentation you can use it by typing:
 ```console
 firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
 ```
-The compilation is time consuming.
+As a notice we say that the compilation is time consuming.

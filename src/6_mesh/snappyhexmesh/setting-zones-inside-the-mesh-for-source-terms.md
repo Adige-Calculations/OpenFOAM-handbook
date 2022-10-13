@@ -95,11 +95,11 @@ actions
 ()
    // FaceZones
     {
-        name baffleSET;
-        type faceSet;
-        action new;
-        source      surfaceToCell;
-        file    copper.stl;
+        name      baffleSET;
+        type      faceSet;
+        action    new;
+        source    surfaceToCell;
+        file      copper.stl;
     }
     {
         name        baffle;

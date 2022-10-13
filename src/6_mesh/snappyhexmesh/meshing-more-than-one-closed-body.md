@@ -11,9 +11,9 @@ follow the template:
 
 ```c++
     …
-   locationsInMesh 
+   locationsInMesh
       (
-        ((0.010276 0.058958 0.000248) zone1) 
+        ((0.010276 0.058958 0.000248) zone1)
   	    ((0.011472 0.10046  0.000256) zone2)
        );
    …

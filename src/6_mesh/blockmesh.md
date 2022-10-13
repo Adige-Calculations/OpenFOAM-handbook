@@ -25,13 +25,6 @@ number of elements in the segment.
 An example is posted here from the tutorial ```/opt/OpenFOAM/OpenFOAM-v2206/tutorials/multiphase/interFoam/RAS/damBreak```:
 
 ```sh
-/*--------------------------------*- C++ -*----------------------------------*\
-| =========                 |                                                 |
-| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2112                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
-|    \\/     M anipulation  |                                                 |
-\*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
@@ -131,7 +124,4 @@ boundary
 mergePatchPairs
 (
 );
-
-
-// ************************************************************************* //
 ```

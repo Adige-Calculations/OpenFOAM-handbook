@@ -30,18 +30,17 @@ dependent on the dictionary ```system/extrudeMeshDict``` to extrude some layers
 externally to the geometry, however, make sure that those created are
 very thin.
 
-<table>
-<thead>
-<td>snappyHexMesh -overwrite</td>
-<th><strong>Single core</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>decomposePar</p>
-<p>mpirun -n 16 snappyHexMesh -parallel -overwrite</p>
-<p>reconstructParMesh -latestTime -constant</p></td>
-<td><strong>Parallel process </strong></td>
-</tr>
-</tbody>
-</table>
+## How to start a case in single and parallel
+
+After the execution of:
+```sh
+surfaceFeatureExtract
+```
+The following commands will start the meshing process:
+
+
+| Single process                | Parallel processes             |
+| -------------------------- | ------------------- |
+| snappyHexMesh -overwrite   | decomposePar -force        |
+|                            | mpirun -n 16 snappyHexMesh -parallel -overwrite       |
+|                            | reconstructParMesh -latestTime -constant |
