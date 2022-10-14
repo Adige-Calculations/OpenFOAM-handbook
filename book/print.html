@@ -167,7 +167,22 @@ resolve the setting of a problem in the shortest possible time.</p>
 ├── OpenFOAM-v2206
 └── ThirdParty-v2206
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("./footer.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html><div style="break-before: page; page-break-before: always;"></div><h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
 <p>OpenFOAM® is classified as free and open-source software, hence everyone can contribute, modify and redistribute the software.
 The two main distributions of OpenFOAM® actively developed are:</p>
 <ul>
@@ -1237,6 +1252,9 @@ Allmarras turbulence model, called nutSpalartAllmarasWallFunction, continuous wa
 <div style="break-before: page; page-break-before: always;"></div><h1 id="constant"><a class="header" href="#constant">Constant</a></h1>
 <p>Looking at the directories that represent the constant variable of the CFD case in <code>/constant</code> </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="transportproperties"><a class="header" href="#transportproperties">transportProperties</a></h1>
+<p>nu is the kinematic viscosity i.e.</p>
+<p>$ ν_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $</p>
+<p>Air kinematic viscosity at given temperature</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="turbulentproperties"><a class="header" href="#turbulentproperties">turbulentProperties</a></h1>
 <p>The current dictionary contains the adoction control of turbulence models.
 Consequent quanitie must be updated or introduced given the model you of turbulence you want to solve.</p>
