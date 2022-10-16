@@ -64,7 +64,7 @@
 
   - [Constant](7_Directories’_structure/constant/README.md)
 
-    - [transportProperties](7_Directories’_structure/constant/transportproperties.md)
+    - [transportProperties](7_Directories’_structure/constant/transportProperties.md)
 
     - [turbulentProperties](7_Directories’_structure/constant/turbulentProperties.md)
 
@@ -86,11 +86,9 @@
 
     - [fvSolution](7_Directories’_structure/system/fvSolution/README.md)
 
-      - [linear solver](7_Directories’_structure/system/fvSolution/linear-solver.md)
+      - [Linear solver](7_Directories’_structure/system/fvSolution/linear-solver.md)
 
-      - [solver](7_Directories’_structure/system/fvSolution/solver.md)
-
-      - [Residuals](7_Directories’_structure/system/fvSolution/residuals.md)
+      - [Solver](7_Directories’_structure/system/fvSolution/solver.md)
 
       - [Under-relaxation factors](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
 

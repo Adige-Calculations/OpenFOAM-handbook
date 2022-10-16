@@ -4,20 +4,20 @@ This dictionary contains the instructions to discretize the problem’s
 equations. Different discretization procedures suit different mesh
 refinement and quality.
 
-| Main document keywords | Category of mathematical terms                                                            |
+| Main document keywords     | Category of mathematical terms                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------------- |
 | interpolationSchemes       | Point-to-point interpolations of values                                                       |
 | snGradSchemes              | Component of gradient normal to a cell face                                                   |
-| gradSchemes                | Gradient          ∇|
-| divSchemes                 | Divergence      ∇ ∙|
-| laplacianSchemes           | Laplacian    ∇<sup>2 |
-| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2<sup>t  |
+| gradSchemes                | Gradient          ∇                                                                           |
+| divSchemes                 | Divergence      ∇ ∙                                                                           |
+| laplacianSchemes           | Laplacian    ∇<sup>2                                                                          |
+| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2<sup>t ]                                    |
 
-gradScheme
+### gradScheme
 
 This voice tackles the gradient limitators
 
-divSchemes
+### divSchemes
 
 Relates to the evaluation of the flux φ (phi) across cell faces which
 transport a property \<transporProperties\> under the influence of

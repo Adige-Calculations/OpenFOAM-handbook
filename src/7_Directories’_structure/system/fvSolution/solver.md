@@ -31,3 +31,31 @@ named after the algorithm
   - momentumPredictor: switch those controls solving of the momentum
     predictor; typically set to off for some flows, including low
     Reynolds number and multiphase.
+
+    ## Addtional notes
+Set to yes for high Reynolds flows, where
+convection dominates (default value is yes)
+```c++ momentumPredictor yes; ```
+Recommended value is 1 (equivalent to PISO).
+Increase to improve the stability of second
+order time discretization schemes (LES
+simulations). Increase for strongly coupled
+problems.
+
+```c++ nOuterCorrectors 1; ```
+Recommended to use at least 3 correctors.
+It improves accuracy and stability. Use 4 or
+more for highly transient flows or strongly
+coupled problems.
+```c++ nCorrector 3; ```
+Recommend to use at least 1 corrector.
+Increase the value for bad quality meshes.
+```c++ nNonOrthogonalCorrectors 1; ```
+Flag to indicate whether to solve the turbulence
+on the final pimple iteration only. For SRS
+simulations the recommended value is false
+(the default value is true)
+```c++ turbOnFinalIterOnly false; ```
+Set to yes for high Reynolds flows, where
+convection dominates (default value is yes).
+
