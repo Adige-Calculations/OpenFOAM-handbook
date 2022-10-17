@@ -1,7 +1,9 @@
 # fvSchemes 
 
 This dictionary contains the instructions to discretize the problem’s
-equations. Different discretization procedures suit different mesh
+equations. 
+ But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.
+Different discretization procedures suit different mesh
 refinement and quality.
 
 | Main document keywords     | Category of mathematical terms                                                                |

@@ -43,12 +43,19 @@ ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 
 ## Useful usage of ```find```
 
-To find Find the correct case in tutorial
+To find the correct case frame in tutorial
 ```console
 find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
 ```
 
 Which list controlDict files where the word ```foo``` have been found
+
+If you want to know how the continuity errors are computed use find in this way:
+
+```console
+$FOAM_SRC –iname *continuity*
+```
+and open any of the files.
 
 ## Run a GUI
 Run a GUI file manager from terminal, ```nautilus``` is the defult in GNOME

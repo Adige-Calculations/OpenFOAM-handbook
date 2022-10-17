@@ -24,3 +24,5 @@ The following represaentation is the usual set up for an OpenFoam® case:
     ├── snappyHexMeshDict                   → Dictionary for mesh generation (with snappyHexMesh)
     └── surfaceFeatureExtractDict           → Dictionary de facto needed for mesh generation (with snappyHexMesh)
 ```
+
+You can change the parameters in the dictionaries controlDict, fvSchemes and fvSolution on-the-fly. But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.

@@ -9,8 +9,10 @@ cd $WM_PROJECT_DIR
 ./Allwmake doc
 ```
 
-Note: You will need to install doxygen and graphviz/dot. After compiling
-the Doxygen documentation you can use it by typing:
+> <b>Note</b>: You will need to install doxygen and graphviz/dot.
+
+After compiling the Doxygen documentation,
+you can use it by typing:
 
 ```console
 firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
