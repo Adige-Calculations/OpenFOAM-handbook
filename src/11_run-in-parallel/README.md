@@ -1,4 +1,4 @@
-# Run in parallel
+# Parallel practices
 
 After having complete the decomposition of the domain through
 ```decomposePar``` the following commands does the same action, where

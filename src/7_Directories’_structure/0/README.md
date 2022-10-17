@@ -27,7 +27,7 @@ Where "x" is the space and ϕ is a field properties.
 
 ### symmetryPlane
 
-Applied to planar patches to represent a symmetry condition.
+Applied to planar patches to represent a symmetry condition, equivalent to ```zeroGradient```.
 
 ```c++
 symmetryPatch

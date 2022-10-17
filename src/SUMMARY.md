@@ -56,11 +56,7 @@
 
     - [ε, ω, k](7_Directories’_structure/0/ε-ω-k/README.md)
 
-      - [Turbulent Wall functions](7_Directories’_structure/0/ε-ω-k/turbulent-wall-functions.md)
-
     - [nut](7_Directories’_structure/0/nut/README.md)
-
-      - [Turbulent viscosity wall functions](7_Directories’_structure/0/nut/turbulent-viscosity-wall-functions.md)
 
   - [Constant](7_Directories’_structure/constant/README.md)
 
@@ -108,7 +104,7 @@
 
 - [Multiphase model](10_multiphase-model/README.md)
 
-- [Run in parallel](11_run-in-parallel/README.md)
+- [Parallel practices](11_run-in-parallel/README.md)
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
 
@@ -124,11 +120,11 @@
 
   - [Trouble shooting](14_paraview/trouble-shooting-common-problems.md)
 
-- [Post processing via command line](15_post-processing-via-command-line/README.md)
+- [CLI Post-processing](15_post-processing-via-command-line/README.md)
 
-- [Cluster practice](16_cluster-practice/README.md)
+- [Cluster practices](16_cluster-practice/README.md)
 
-- [Compile functionObjects from web](17_compile-functionobjects-from-web/README.md)
+- [Compile functionObjects](17_compile-functionobjects-from-web/README.md)
 
 - [Windows programmes](18_windows-practices/README.md)
 
