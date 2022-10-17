@@ -145,7 +145,88 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="discretization-schemes-selection"><a class="header" href="#discretization-schemes-selection">Discretization schemes selection</a></h1>
-<p>The discratazion scheme of the equations must take in account the quality of the mesh.</p>
+<p>The discratazion scheme of the equations must take in account the quality of the mesh. The first calculation arrangemnt that must be set is the &quot;gradient limitation&quot;.</p>
+<h2 id="gradschemes"><a class="header" href="#gradschemes">gradSchemes</a></h2>
+<p>This entry defines the way we compute the
+gradients:</p>
+<h3 id="gradient-computation"><a class="header" href="#gradient-computation">Gradient computation</a></h3>
+<p>The gradients can be computed using the Gauss method or the least squares method. The keywords are:</p>
+<ul>
+<li>Gauss linear</li>
+<li>leastSquares</li>
+</ul>
+<p>The leastSquares method is more accurate, however, I have found that it
+tends to be more oscillatory on tetrahedral meshes</p>
+<h3 id="gradient-limitation"><a class="header" href="#gradient-limitation">Gradient limitation</a></h3>
+<p>Gradient limiters will avoid over and under shoots on the gradient computations. They
+increase the stability of the method but add diffusion due to clipping. There are four available:</p>
+<ul>
+<li>cellMDLimited</li>
+<li>cellLimited</li>
+<li>faceMDLimited</li>
+<li>faceLimited</li>
+</ul>
+<p>They are in order of accuracy, &quot;faceLimited&quot; is the more diffusive, however it provides stability.</p>
+<h3 id="blending-factor"><a class="header" href="#blending-factor">Blending factor</a></h3>
+<p>The gradient limiter implementation uses a blending factor</p>
+<pre><code class="language-c++">gradSchemes
+{
+default
+    cellMDLimited Gauss linear 1 // the blending factor is 1
+}
+</code></pre>
+<p>0 means no blending hence the solution will be accurate but less stable. Of course 1 will introduce the maximum bledning possible.</p>
+<h2 id="divschemes"><a class="header" href="#divschemes">divSchemes</a></h2>
+<p>These are the convective discretization schemes that you will use most of the times:
+• upwind: first order accurate.
+• linearUpwind: second order accurate, bounded.
+• linear: second order accurate, unbounded.
+• A good TVD scheme (vanLeer or Minmod): TVD, second order accurate,
+bounded.
+• limitedLinear: second order accurate, unbounded, but more stable than
+pure linear. Recommended for LES simulations (kind of similar to the Fromm
+method).
+First order methods are bounded and stable but diffusive.
+Second order methods are accurate, but they might become oscillatory.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>An accurate and stable numerical scheme (second order accurate)</p>
+<pre><code class="language-c++">divSchemes
+{
+    div(phi,U)Gauss linearUpwind grad(U);
+    div(phi,omega)Gauss linearUpwind grad(omega);
+    div(phi,k)Gauss linearUpwind grad(omega);
+    div((nuEff*dev2(T(grad(U)))))Gauss linear;
+}
+
+</code></pre>
+<h2 id="laplacianschemes"><a class="header" href="#laplacianschemes">laplacianSchemes</a></h2>
+<p>For the discretization of the diffusive terms, you can use a fully orthogonal scheme</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear corrected;
+}
+</code></pre>
+<p>You can also use a scheme that uses a blending between a fully orthogonal scheme
+and a non-orthogonal scheme:</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear limited 1
+}
+</code></pre>
+<p>In summary, by setting the blending factor equal to 0 is equivalent to using the uncorrected
+method. You give up accuracy but gain stability.</p>
+<p>• If you set the blending factor to 0.5, you get the best of both worlds. In this case,
+the non-orthogonal contribution does not exceed the orthogonal part. You give up
+accuracy but gain stability.
+• For meshes with non-orthogonality less than 70, you can set the blending factor
+to 1.
+• For meshes with non-orthogonality between 70 and 85, you can set the blending
+factor to 0.5
+• For meshes with non-orthogonality more than 85, it is better to get a better mesh.
+But if you definitely want to use that mesh, you can set the blending factor to
+0.333, and increase the number of non-orthogonal corrections.</p>
 <h3 id="non-orthogonality-between-70-and-85"><a class="header" href="#non-orthogonality-between-70-and-85">Non-orthogonality between 70 and 85</a></h3>
 <pre><code class="language-c++">gradSchemes
 {

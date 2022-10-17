@@ -180,29 +180,32 @@ Reynolds number and multiphase.</p>
 </li>
 </ul>
 <p>Set to yes for high Reynolds flows, where
-convection dominates (default value is yes)
-<code>c++ momentumPredictor yes; </code>
-Recommended value is 1 (equivalent to PISO).
+convection dominates (default value is yes)</p>
+<pre><code class="language-c++"> momentumPredictor yes;
+</code></pre>
+<p>Recommended value is 1 (equivalent to PISO).
 Increase to improve the stability of second
 order time discretization schemes (LES
 simulations). Increase for strongly coupled
 problems.</p>
-<p><code>c++ nOuterCorrectors 1; </code>
-Recommended to use at least 3 correctors.
+<pre><code class="language-c++">nOuterCorrectors 1; 
+</code></pre>
+<p>Recommended to use at least 3 correctors.
 It improves accuracy and stability. Use 4 or
 more for highly transient flows or strongly
-coupled problems.
-<code>c++ nCorrector 3; </code>
-Recommend to use at least 1 corrector.
-Increase the value for bad quality meshes.
-<code>c++ nNonOrthogonalCorrectors 1; </code>
-Flag to indicate whether to solve the turbulence
+coupled problems.</p>
+<pre><code class="language-c++"> nCorrector 3; 
+</code></pre>
+<p>Recommend to use at least 1 corrector.
+Increase the value for bad quality meshes.</p>
+<pre><code class="language-c++"> nNonOrthogonalCorrectors 1; 
+</code></pre>
+<p>Flag to indicate whether to solve the turbulence
 on the final pimple iteration only. For SRS
 simulations the recommended value is false
-(the default value is true)
-<code>c++ turbOnFinalIterOnly false; </code>
-Set to yes for high Reynolds flows, where
-convection dominates (default value is yes).</p>
+(the default value is true)</p>
+<pre><code class="language-c++"> turbOnFinalIterOnly false; 
+</code></pre>
 
                     </main>
 

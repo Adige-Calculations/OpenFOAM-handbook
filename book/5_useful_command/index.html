@@ -170,10 +170,14 @@ in terminal the live writing</p>
 <pre><code class="language-console">ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 </code></pre>
 <h2 id="useful-usage-of-find"><a class="header" href="#useful-usage-of-find">Useful usage of <code>find</code></a></h2>
-<p>To find Find the correct case in tutorial</p>
+<p>To find the correct case frame in tutorial</p>
 <pre><code class="language-console">find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
 </code></pre>
 <p>Which list controlDict files where the word <code>foo</code> have been found</p>
+<p>If you want to know how the continuity errors are computed use find in this way:</p>
+<pre><code class="language-console">$FOAM_SRC –iname *continuity*
+</code></pre>
+<p>and open any of the files.</p>
 <h2 id="run-a-gui"><a class="header" href="#run-a-gui">Run a GUI</a></h2>
 <p>Run a GUI file manager from terminal, <code>nautilus</code> is the defult in GNOME
 desktop envirnments:</p>

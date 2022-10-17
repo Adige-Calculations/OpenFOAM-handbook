@@ -155,11 +155,34 @@ change through setFields</p>
 <h2 id="commmon-types-of-boundary-conditions"><a class="header" href="#commmon-types-of-boundary-conditions">Commmon types of boundary conditions:</a></h2>
 <p>The most common types of patches are:</p>
 <h3 id="fixedvalue"><a class="header" href="#fixedvalue">fixedValue</a></h3>
+<p>Every face associated to the boundary is set to the conditions</p>
 <h3 id="zerogradient"><a class="header" href="#zerogradient">zeroGradient</a></h3>
-<h3 id="symmetryplane"><a class="header" href="#symmetryplane">symmetryplane</a></h3>
+<p>Matematically speaking it is a symmetry conditon hence it implements at the boundaries:
+\[ ∂ϕ ∕ ∂x = 0 \]</p>
+<p>Where &quot;x&quot; is the space and ϕ is a field properties.</p>
+<h3 id="symmetryplane"><a class="header" href="#symmetryplane">symmetryPlane</a></h3>
+<p>Applied to planar patches to represent a symmetry condition.</p>
+<pre><code class="language-c++">symmetryPatch
+{
+    type            symmetryPlane;
+    ...
+}
+</code></pre>
 <h3 id="noslip"><a class="header" href="#noslip">noSlip</a></h3>
+<p>It is a velocity condtion and it is equivalent to:</p>
+<pre><code>wallPatch
+{
+    type            fixedValue;
+    value           0;
+}
+</code></pre>
 <h3 id="empty"><a class="header" href="#empty">empty</a></h3>
 <p>To set a 2D simulation</p>
+<pre><code class="language-c+++">frontAndBack
+{
+    type        empty;
+}
+</code></pre>
 <h3 id="amicyclic"><a class="header" href="#amicyclic">AMIcyclic</a></h3>
 <p>Impose a periodic BC when the patches in study have not the
 same mesh, it must be declared the nature of periodicity (rotational,

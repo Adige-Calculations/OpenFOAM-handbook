@@ -520,10 +520,14 @@ in terminal the live writing</p>
 <pre><code class="language-console">ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 </code></pre>
 <h2 id="useful-usage-of-find"><a class="header" href="#useful-usage-of-find">Useful usage of <code>find</code></a></h2>
-<p>To find Find the correct case in tutorial</p>
+<p>To find the correct case frame in tutorial</p>
 <pre><code class="language-console">find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
 </code></pre>
 <p>Which list controlDict files where the word <code>foo</code> have been found</p>
+<p>If you want to know how the continuity errors are computed use find in this way:</p>
+<pre><code class="language-console">$FOAM_SRC –iname *continuity*
+</code></pre>
+<p>and open any of the files.</p>
 <h2 id="run-a-gui"><a class="header" href="#run-a-gui">Run a GUI</a></h2>
 <p>Run a GUI file manager from terminal, <code>nautilus</code> is the defult in GNOME
 desktop envirnments:</p>
@@ -1098,6 +1102,7 @@ and run:</p>
     ├── snappyHexMeshDict                   → Dictionary for mesh generation (with snappyHexMesh)
     └── surfaceFeatureExtractDict           → Dictionary de facto needed for mesh generation (with snappyHexMesh)
 </code></pre>
+<p>You can change the parameters in the dictionaries controlDict, fvSchemes and fvSolution on-the-fly. But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="0-ie-boundary-conditions"><a class="header" href="#0-ie-boundary-conditions">0 (i.e. Boundary Conditions)</a></h1>
 <p>The BC works on the Patches which have been defined in the mesh and the
 guessing of the first value of the field pass through the voice</p>
@@ -1109,11 +1114,34 @@ change through setFields</p>
 <h2 id="commmon-types-of-boundary-conditions"><a class="header" href="#commmon-types-of-boundary-conditions">Commmon types of boundary conditions:</a></h2>
 <p>The most common types of patches are:</p>
 <h3 id="fixedvalue"><a class="header" href="#fixedvalue">fixedValue</a></h3>
+<p>Every face associated to the boundary is set to the conditions</p>
 <h3 id="zerogradient"><a class="header" href="#zerogradient">zeroGradient</a></h3>
-<h3 id="symmetryplane"><a class="header" href="#symmetryplane">symmetryplane</a></h3>
+<p>Matematically speaking it is a symmetry conditon hence it implements at the boundaries:
+\[ ∂ϕ ∕ ∂x = 0 \]</p>
+<p>Where &quot;x&quot; is the space and ϕ is a field properties.</p>
+<h3 id="symmetryplane"><a class="header" href="#symmetryplane">symmetryPlane</a></h3>
+<p>Applied to planar patches to represent a symmetry condition.</p>
+<pre><code class="language-c++">symmetryPatch
+{
+    type            symmetryPlane;
+    ...
+}
+</code></pre>
 <h3 id="noslip"><a class="header" href="#noslip">noSlip</a></h3>
+<p>It is a velocity condtion and it is equivalent to:</p>
+<pre><code>wallPatch
+{
+    type            fixedValue;
+    value           0;
+}
+</code></pre>
 <h3 id="empty"><a class="header" href="#empty">empty</a></h3>
 <p>To set a 2D simulation</p>
+<pre><code class="language-c+++">frontAndBack
+{
+    type        empty;
+}
+</code></pre>
 <h3 id="amicyclic"><a class="header" href="#amicyclic">AMIcyclic</a></h3>
 <p>Impose a periodic BC when the patches in study have not the
 same mesh, it must be declared the nature of periodicity (rotational,
@@ -1160,6 +1188,13 @@ velocity and molecular viscosity to determine k, ε and ω using the
 following technique. To start the calculation, the Turbulent Intensity
 I, and Viscosity Ratio β need to be approximated by using the table
 below.</p>
+<div class="table-wrapper"><table><thead><tr><th>Turbulence</th><th>Reynolds number</th><th>Turbulent Intensity</th></tr></thead><tbody>
+<tr><td>Low turbulence</td><td>3000 &lt; Re &lt; 5000</td><td>1%</td></tr>
+<tr><td>Med turbulence</td><td>5000 &lt; Re &lt; 15000</td><td>1-5%</td></tr>
+<tr><td>High turbulence</td><td>15000 &lt; Re &lt; 20000</td><td>5-20%</td></tr>
+<tr><td>High turbulence</td><td>Re &gt; 100000</td><td>5-20%</td></tr>
+</tbody></table>
+</div>
 <p>To calculate k, the following equation can be used:</p>
 <p>\[ k = \frac{3}{2}\left( \text{UI} \right)^{2} \]</p>
 <p>\[ ε = C_{\mu}\frac{\text{ρk}^{2}}{\mu}β ^{- 1}\ \]</p>
@@ -1292,7 +1327,9 @@ smaller file size, and consequently faster conversion and writing to
 disk, for big simulations.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fvschemes"><a class="header" href="#fvschemes">fvSchemes</a></h1>
 <p>This dictionary contains the instructions to discretize the problem’s
-equations. Different discretization procedures suit different mesh
+equations. 
+But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.
+Different discretization procedures suit different mesh
 refinement and quality.</p>
 <div class="table-wrapper"><table><thead><tr><th>Main document keywords</th><th>Category of mathematical terms</th></tr></thead><tbody>
 <tr><td>interpolationSchemes</td><td>Point-to-point interpolations of values</td></tr>
@@ -1300,7 +1337,7 @@ refinement and quality.</p>
 <tr><td>gradSchemes</td><td>Gradient          ∇</td></tr>
 <tr><td>divSchemes</td><td>Divergence      ∇ ∙</td></tr>
 <tr><td>laplacianSchemes</td><td>Laplacian    ∇<sup>2</td></tr>
-<tr><td>timeScheme</td><td>First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2<sup>t ]</td></tr>
+<tr><td>timeScheme</td><td>First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2</sup>t]</td></tr>
 </tbody></table>
 </div>
 <h3 id="gradscheme"><a class="header" href="#gradscheme">gradScheme</a></h3>
@@ -1346,7 +1383,88 @@ orthogonal scheme</p>
 </ul>
 <p>0 for bad mesh and 1 for good quality mesh</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="discretization-schemes-selection"><a class="header" href="#discretization-schemes-selection">Discretization schemes selection</a></h1>
-<p>The discratazion scheme of the equations must take in account the quality of the mesh.</p>
+<p>The discratazion scheme of the equations must take in account the quality of the mesh. The first calculation arrangemnt that must be set is the &quot;gradient limitation&quot;.</p>
+<h2 id="gradschemes"><a class="header" href="#gradschemes">gradSchemes</a></h2>
+<p>This entry defines the way we compute the
+gradients:</p>
+<h3 id="gradient-computation"><a class="header" href="#gradient-computation">Gradient computation</a></h3>
+<p>The gradients can be computed using the Gauss method or the least squares method. The keywords are:</p>
+<ul>
+<li>Gauss linear</li>
+<li>leastSquares</li>
+</ul>
+<p>The leastSquares method is more accurate, however, I have found that it
+tends to be more oscillatory on tetrahedral meshes</p>
+<h3 id="gradient-limitation"><a class="header" href="#gradient-limitation">Gradient limitation</a></h3>
+<p>Gradient limiters will avoid over and under shoots on the gradient computations. They
+increase the stability of the method but add diffusion due to clipping. There are four available:</p>
+<ul>
+<li>cellMDLimited</li>
+<li>cellLimited</li>
+<li>faceMDLimited</li>
+<li>faceLimited</li>
+</ul>
+<p>They are in order of accuracy, &quot;faceLimited&quot; is the more diffusive, however it provides stability.</p>
+<h3 id="blending-factor"><a class="header" href="#blending-factor">Blending factor</a></h3>
+<p>The gradient limiter implementation uses a blending factor</p>
+<pre><code class="language-c++">gradSchemes
+{
+default
+    cellMDLimited Gauss linear 1 // the blending factor is 1
+}
+</code></pre>
+<p>0 means no blending hence the solution will be accurate but less stable. Of course 1 will introduce the maximum bledning possible.</p>
+<h2 id="divschemes-1"><a class="header" href="#divschemes-1">divSchemes</a></h2>
+<p>These are the convective discretization schemes that you will use most of the times:
+• upwind: first order accurate.
+• linearUpwind: second order accurate, bounded.
+• linear: second order accurate, unbounded.
+• A good TVD scheme (vanLeer or Minmod): TVD, second order accurate,
+bounded.
+• limitedLinear: second order accurate, unbounded, but more stable than
+pure linear. Recommended for LES simulations (kind of similar to the Fromm
+method).
+First order methods are bounded and stable but diffusive.
+Second order methods are accurate, but they might become oscillatory.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>An accurate and stable numerical scheme (second order accurate)</p>
+<pre><code class="language-c++">divSchemes
+{
+    div(phi,U)Gauss linearUpwind grad(U);
+    div(phi,omega)Gauss linearUpwind grad(omega);
+    div(phi,k)Gauss linearUpwind grad(omega);
+    div((nuEff*dev2(T(grad(U)))))Gauss linear;
+}
+
+</code></pre>
+<h2 id="laplacianschemes"><a class="header" href="#laplacianschemes">laplacianSchemes</a></h2>
+<p>For the discretization of the diffusive terms, you can use a fully orthogonal scheme</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear corrected;
+}
+</code></pre>
+<p>You can also use a scheme that uses a blending between a fully orthogonal scheme
+and a non-orthogonal scheme:</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear limited 1
+}
+</code></pre>
+<p>In summary, by setting the blending factor equal to 0 is equivalent to using the uncorrected
+method. You give up accuracy but gain stability.</p>
+<p>• If you set the blending factor to 0.5, you get the best of both worlds. In this case,
+the non-orthogonal contribution does not exceed the orthogonal part. You give up
+accuracy but gain stability.
+• For meshes with non-orthogonality less than 70, you can set the blending factor
+to 1.
+• For meshes with non-orthogonality between 70 and 85, you can set the blending
+factor to 0.5
+• For meshes with non-orthogonality more than 85, it is better to get a better mesh.
+But if you definitely want to use that mesh, you can set the blending factor to
+0.333, and increase the number of non-orthogonal corrections.</p>
 <h3 id="non-orthogonality-between-70-and-85"><a class="header" href="#non-orthogonality-between-70-and-85">Non-orthogonality between 70 and 85</a></h3>
 <pre><code class="language-c++">gradSchemes
 {
@@ -1550,29 +1668,32 @@ Reynolds number and multiphase.</p>
 </li>
 </ul>
 <p>Set to yes for high Reynolds flows, where
-convection dominates (default value is yes)
-<code>c++ momentumPredictor yes; </code>
-Recommended value is 1 (equivalent to PISO).
+convection dominates (default value is yes)</p>
+<pre><code class="language-c++"> momentumPredictor yes;
+</code></pre>
+<p>Recommended value is 1 (equivalent to PISO).
 Increase to improve the stability of second
 order time discretization schemes (LES
 simulations). Increase for strongly coupled
 problems.</p>
-<p><code>c++ nOuterCorrectors 1; </code>
-Recommended to use at least 3 correctors.
+<pre><code class="language-c++">nOuterCorrectors 1; 
+</code></pre>
+<p>Recommended to use at least 3 correctors.
 It improves accuracy and stability. Use 4 or
 more for highly transient flows or strongly
-coupled problems.
-<code>c++ nCorrector 3; </code>
-Recommend to use at least 1 corrector.
-Increase the value for bad quality meshes.
-<code>c++ nNonOrthogonalCorrectors 1; </code>
-Flag to indicate whether to solve the turbulence
+coupled problems.</p>
+<pre><code class="language-c++"> nCorrector 3; 
+</code></pre>
+<p>Recommend to use at least 1 corrector.
+Increase the value for bad quality meshes.</p>
+<pre><code class="language-c++"> nNonOrthogonalCorrectors 1; 
+</code></pre>
+<p>Flag to indicate whether to solve the turbulence
 on the final pimple iteration only. For SRS
 simulations the recommended value is false
-(the default value is true)
-<code>c++ turbOnFinalIterOnly false; </code>
-Set to yes for high Reynolds flows, where
-convection dominates (default value is yes).</p>
+(the default value is true)</p>
+<pre><code class="language-c++"> turbOnFinalIterOnly false; 
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="under-relaxation-factors"><a class="header" href="#under-relaxation-factors">Under-relaxation factors</a></h1>
 <p>Relaxation factors for under-relaxation of fields are specified within
 a <em>field</em> sub-dictionary; relaxation factors for equation
@@ -1600,7 +1721,7 @@ if the domain cannot be subdivided in sections with the same amourt of cells ins
 Use the command to overwrite an already decomposed case:</p>
 <pre><code class="language-console">decomposePar -force
 </code></pre>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
 <pre><code>FoamFile
 {
     version     2.0;
@@ -1746,8 +1867,11 @@ compile it. To compile the Doxygen documentation, from the terminal:</p>
 <pre><code class="language-console">cd $WM_PROJECT_DIR
 ./Allwmake doc
 </code></pre>
-<p>Note: You will need to install doxygen and graphviz/dot. After compiling
-the Doxygen documentation you can use it by typing:</p>
+<blockquote>
+<p><b>Note</b>: You will need to install doxygen and graphviz/dot.</p>
+</blockquote>
+<p>After compiling the Doxygen documentation,
+you can use it by typing:</p>
 <pre><code class="language-console">firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
 </code></pre>
 <p>As a notice we say that the compilation is time consuming.</p>

@@ -16,15 +16,48 @@ The most common types of patches are:
 
 ### fixedValue
 
+Every face associated to the boundary is set to the conditions
+
 ### zeroGradient
 
-### symmetryplane
+Matematically speaking it is a symmetry conditon hence it implements at the boundaries:
+\\[ ∂ϕ ∕ ∂x = 0 \\]
+
+Where "x" is the space and ϕ is a field properties.
+
+### symmetryPlane
+
+Applied to planar patches to represent a symmetry condition.
+
+```c++
+symmetryPatch
+{
+    type            symmetryPlane;
+    ...
+}
+```
 
 ### noSlip
+
+It is a velocity condtion and it is equivalent to:
+
+```
+wallPatch
+{
+    type            fixedValue;
+    value           0;
+}
+```
 
 ### empty
 To set a 2D simulation
 
+``` c+++
+frontAndBack
+{
+    type        empty;
+}
+```
 ### AMIcyclic
 Impose a periodic BC when the patches in study have not the
 same mesh, it must be declared the nature of periodicity (rotational,

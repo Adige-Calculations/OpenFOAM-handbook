@@ -17,6 +17,13 @@ following technique. To start the calculation, the Turbulent Intensity
 I, and Viscosity Ratio β need to be approximated by using the table
 below.
 
+| Turbulence | Reynolds number | Turbulent Intensity  | 
+|------------|-----------|-----------|
+| Low turbulence | 3000 < Re < 5000 | 1% |
+| Med turbulence |5000 < Re < 15000 | 1-5% |
+| High turbulence |15000 < Re < 20000 | 5-20% |
+| High turbulence | Re > 100000 | 5-20% |
+
 To calculate k, the following equation can be used:
 
 
