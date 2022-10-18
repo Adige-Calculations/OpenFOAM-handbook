@@ -14,14 +14,14 @@ bodies as boundaries, i.e. create all different .stl file as surface
 condition)
 
 ```console
-cat </body1/>.stl </body2/>.stl </bodyN/>.stl >> combined.stl
+cat body_1.stl body_2.stl body_N.stl >> combined.stl
 ```
 
-## Hint
-to permit at the program to select different patches of the geometry,
+To permit at the program to select different patches of the geometry,
 remember to check inside the combined file and ensure there is a space
-between the joint of the different STL files. Then to create a .fms file
-specific for OpenFoam®
+between the joint of the different STL files. To create the .fms file
+needed to run the cfMesh utilities (specific for OpenFoam®) run the
+following commands.
 
 ```console
 surfaceFeatureEdges –angle 15 combined.stl combined.fms

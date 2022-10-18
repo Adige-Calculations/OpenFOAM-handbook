@@ -13,7 +13,7 @@ refinement and quality.
 | gradSchemes                | Gradient          ∇                                                                           |
 | divSchemes                 | Divergence      ∇ ∙                                                                           |
 | laplacianSchemes           | Laplacian    ∇<sup>2                                                                          |
-| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂2∕∂<sup>2</sup>t]                                    |
+| timeScheme                 | First and second time derivatives ![∂∕ ∂t,∂<sup>2</sup>∕∂t<sup>2</sup>]                                    |
 
 ### gradScheme
 
