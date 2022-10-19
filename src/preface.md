@@ -38,7 +38,7 @@ The entire document will assume the installation has been performedunder the
 </script>
 <script>
 $(function(){
-  $("#footer").load("./footer.html");
+  $("#footer").load("./footers/footer.html");
 });
 </script>
 <body>
