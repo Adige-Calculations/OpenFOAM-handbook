@@ -28,7 +28,7 @@
 
   - [blockMesh](6_mesh/blockmesh.md)
 
-  - [SnappyHexMesh](6_mesh/snappyhexmesh/README.md)
+  - [snappyHexMesh](6_mesh/snappyhexmesh/README.md)
 
     - [Internal flow](6_mesh/snappyhexmesh/advice-for-internal-flow.md)
 
@@ -64,11 +64,7 @@
 
     - [turbulentProperties](7_Directories’_structure/constant/turbulentProperties.md)
 
-    - [polyMesh](7_Directories’_structure/constant/polymesh/README.md)
-
-      - [boundary](7_Directories’_structure/constant/polymesh/boundary.md)
-
-      - [sets](7_Directories’_structure/constant/polymesh/sets.md)
+    - [polyMesh](7_Directories’_structure/constant/polyMesh.md)
 
     - [thermophysicalProperties](7_Directories’_structure/constant/thermophysicalProperties.md)
 
@@ -97,10 +93,6 @@
 - [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
 
 - [Browse Source Code](9_browse-source-code/README.md)
-
-   - [Doxigen](9_browse-source-code/doxigen.md)
-
-   - [Source code](9_browse-source-code/source-code.md)
 
 - [Multiphase model](10_multiphase-model/README.md)
 
