@@ -1,8 +1,8 @@
 # Windows Subsystem for GNU-Linux
 
-
 OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
 run in PowerShell as admin for the enabling a necessary Windows feature:
+
 ```console
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart

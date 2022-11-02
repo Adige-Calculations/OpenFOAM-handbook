@@ -4,7 +4,6 @@ for file in */*.md
 	do
 	cat <<\EOF >> $file
 
-
 <!--  Script to show the footer   -->
 <html>
 <script
@@ -14,7 +13,7 @@ for file in */*.md
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footer.html");
+  $("#footer").load("../footers/footer_first_level_depth.html");
 });
 </script>
 <body>
@@ -24,11 +23,10 @@ $(function(){
 EOF
 done
 
-
-for file in */*/*.md
+# Fix picking up in a way that picks up only file in second level
+for file in !*/!*/*.md
 	do
 	cat <<\EOF >> $file
-
 
 <!--  Script to show the footer   -->
 <html>
@@ -39,7 +37,7 @@ for file in */*/*.md
 </script>
 <script>
 $(function(){
-  $("#footer").load("../../footer.html");
+  $("#footer").load("../../footers/footer_second_level_depth.html");
 });
 </script>
 <body>

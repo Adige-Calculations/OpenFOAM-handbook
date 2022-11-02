@@ -42,11 +42,7 @@
 
   - [cfMesh ](6_mesh/cfmesh.md)
 
-  - [checkMesh](6_mesh/checkMesh/README.md)
-
-      - [Most important mesh parameters](6_mesh/checkMesh/most_important_parameters.md)
-
-      - [Bad quality mesh](6_mesh/checkMesh/delete-bad-quality-cells.md)
+  - [checkMesh](6_mesh/checkMesh.md)
 
   - [ANSYS Meshing to OpenFoam® ](6_mesh/ansys-meshing-to-openfoam.md)
 
@@ -94,9 +90,9 @@
 
 - [Browse Source Code](9_browse-source-code/README.md)
 
-- [Multiphase model](10_multiphase-model/README.md)
+- [Parallel practices](10_run-in-parallel/README.md)
 
-- [Parallel practices](11_run-in-parallel/README.md)
+- [Multiphase model](11_multiphase-model/README.md)
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
 
@@ -120,11 +116,9 @@
 
 - [Windows programmes](18_windows-practices/README.md)
 
-  - [Windows Subsystem for GNU-Linux](18_windows-practices/WSL.md)
-
-  - [NotePad ++](18_windows-practices/notepad++.md)
-
 - [Virtualization](19_virtualization/README.md)
+
+  - [Windows Subsystem for Linux](19_virtualization/WSL.md)
 
   - [Multipass](19_virtualization/multipass.md)
 

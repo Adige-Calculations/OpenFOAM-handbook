@@ -4,9 +4,9 @@ on which will be build a docker image that will become a container once is
 running. To build the image from the Docker file use:
 
 ```console
-docker build -t <nameOfTheImage> <DockerfileDirectory> 
+docker build -t <nameOfTheImage> <DockerfileDirectory>
 ```
-## System images 
+## System images
 An image becomes a container when you execute it. Check the images that are present in your system after the build 
 docker images
 
@@ -17,16 +17,16 @@ docker run -ti -–rm <imageID>
 Here's some more info on the flags:
 
   - ti       → make you access to the terminal
-  - rm       →   remove the container once you exit 
+  - rm       →   remove the container once you exit
   - d        →  (deamon) run the container in detached mode (in the background)
   - p 80:80  →   port exposition
 
-To see if the container is running check 
+To see if the container is running check:
 
 ```console
-docker ps 
+docker ps
 ```
-to start and stop the container 
+Then to start and/or stop the container run:
 
 ```console
 docker stop <imageID>

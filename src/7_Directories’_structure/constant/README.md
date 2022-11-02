@@ -1,3 +1,13 @@
 # Constant
 
-Looking at the directories that represent the constant variable of the CFD case in ```/constant``` 
+The "constant" directory represent all the constant parameters of the CFD case such
+as mesh, immutable fluid properties, physical model.
+
+``` console
+    ├── polyMesh
+    │   ├──...
+    │   └──...
+    ├── transportProperties
+    ├── ...
+    └── turbulentProperties
+```

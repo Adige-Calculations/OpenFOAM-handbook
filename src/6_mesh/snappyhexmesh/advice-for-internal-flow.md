@@ -21,6 +21,7 @@ geometry
 ```
 While in the refinement surfaces section you can address the
 info of the patch:
+
 ```c++
 refinementSurfaces
     {

@@ -17,8 +17,8 @@ surfaceFeatureExtract
 ```
 
 The geometry components must be costant/triSurface directory rigorously
-in this format ```\<file\>.stl``` and after having launched the command in
-the same folder should appear ```\<file\>.eMesh``` and a new directory
+in this format ```<file>.stl``` and after having launched the command in
+the same folder should appear ```<file>.eMesh``` and a new directory
 will appear in constant/extendedFeatureEdgeMesh/
 
 If you want to extract very thin layer, use the utility
