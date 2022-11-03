@@ -1,0 +1,2831 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OpenFoam® Handbook</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="preface.html">Preface</a></li><li class="chapter-item expanded "><a href="1_intro/index.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="2_installation/index.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2_installation/via_package_manager.html"><strong aria-hidden="true">2.1.</strong> Package manager</a></li><li class="chapter-item expanded "><a href="2_installation/download_binaries.html"><strong aria-hidden="true">2.2.</strong> Precompiled binaries</a></li><li class="chapter-item expanded "><a href="2_installation/compiling_source_code.html"><strong aria-hidden="true">2.3.</strong> Compiling the source code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="2_installation/compiling_ARM.html"><strong aria-hidden="true">2.3.1.</strong> ARM architecture</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="3_problem_set_up/index.html"><strong aria-hidden="true">3.</strong> Problem set up</a></li><li class="chapter-item expanded "><a href="4_automation/index.html"><strong aria-hidden="true">4.</strong> Automation </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4_automation/run-commands-in-sequence.html"><strong aria-hidden="true">4.1.</strong> Run commands in sequence</a></li><li class="chapter-item expanded "><a href="4_automation/create-a-custom-command.html"><strong aria-hidden="true">4.2.</strong> Create a custom command</a></li><li class="chapter-item expanded "><a href="4_automation/bash-script.html"><strong aria-hidden="true">4.3.</strong> Shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="5_useful_command/index.html"><strong aria-hidden="true">5.</strong> Useful commands</a></li><li class="chapter-item expanded "><a href="6_mesh/index.html"><strong aria-hidden="true">6.</strong> Mesh</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="6_mesh/blockmesh.html"><strong aria-hidden="true">6.1.</strong> blockMesh</a></li><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/index.html"><strong aria-hidden="true">6.2.</strong> snappyHexMesh</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/advice-for-internal-flow.html"><strong aria-hidden="true">6.2.1.</strong> Internal flow</a></li><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.html"><strong aria-hidden="true">6.2.2.</strong> Setting zones</a></li><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/advanced-refinement-technique.html"><strong aria-hidden="true">6.2.3.</strong> Refinement technique</a></li><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/meshing-more-than-one-closed-body.html"><strong aria-hidden="true">6.2.4.</strong> Multiple closed body</a></li><li class="chapter-item expanded "><a href="6_mesh/snappyhexmesh/parallelization-issues.html"><strong aria-hidden="true">6.2.5.</strong> Parallelization issues</a></li></ol></li><li class="chapter-item expanded "><a href="6_mesh/cfmesh.html"><strong aria-hidden="true">6.3.</strong> cfMesh </a></li><li class="chapter-item expanded "><a href="6_mesh/checkMesh.html"><strong aria-hidden="true">6.4.</strong> checkMesh</a></li><li class="chapter-item expanded "><a href="6_mesh/ansys-meshing-to-openfoam.html"><strong aria-hidden="true">6.5.</strong> ANSYS Meshing to OpenFoam® </a></li></ol></li><li class="chapter-item expanded "><a href="7_Directories’_structure/index.html"><strong aria-hidden="true">7.</strong> Directories’ structure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/0/index.html"><strong aria-hidden="true">7.1.</strong> 0 (i.e. Boundary Conditions)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/0/ε-ω-k/index.html"><strong aria-hidden="true">7.1.1.</strong> ε, ω, k</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/0/nut/index.html"><strong aria-hidden="true">7.1.2.</strong> nut</a></li></ol></li><li class="chapter-item expanded "><a href="7_Directories’_structure/constant/index.html"><strong aria-hidden="true">7.2.</strong> Constant</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/constant/transportProperties.html"><strong aria-hidden="true">7.2.1.</strong> transportProperties</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/constant/turbulentProperties.html"><strong aria-hidden="true">7.2.2.</strong> turbulentProperties</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/constant/polyMesh.html"><strong aria-hidden="true">7.2.3.</strong> polyMesh</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/constant/thermophysicalProperties.html"><strong aria-hidden="true">7.2.4.</strong> thermophysicalProperties</a></li></ol></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/index.html"><strong aria-hidden="true">7.3.</strong> System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/system/controldict.html"><strong aria-hidden="true">7.3.1.</strong> controlDict </a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSchemes/index.html"><strong aria-hidden="true">7.3.2.</strong> fvSchemes </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSchemes/discretization-schemes-selection.html"><strong aria-hidden="true">7.3.2.1.</strong> Discretization schemes selection</a></li></ol></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSolution/index.html"><strong aria-hidden="true">7.3.3.</strong> fvSolution</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSolution/linear-solver.html"><strong aria-hidden="true">7.3.3.1.</strong> Linear solver</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSolution/solver.html"><strong aria-hidden="true">7.3.3.2.</strong> Solver</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/fvSolution/under-relaxation-factors.html"><strong aria-hidden="true">7.3.3.3.</strong> Under-relaxation factors</a></li></ol></li><li class="chapter-item expanded "><a href="7_Directories’_structure/decomposepardict.html"><strong aria-hidden="true">7.3.4.</strong> decomposeParDict</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/fvOptions.html"><strong aria-hidden="true">7.3.5.</strong> fvOptions</a></li><li class="chapter-item expanded "><a href="7_Directories’_structure/system/topoSetDict.html"><strong aria-hidden="true">7.3.6.</strong> topoSetDict</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="8_problem-initialization-and-interpolation-from-previous-results/index.html"><strong aria-hidden="true">8.</strong> Problem initialization</a></li><li class="chapter-item expanded "><a href="9_browse-source-code/index.html"><strong aria-hidden="true">9.</strong> Browse Source Code</a></li><li class="chapter-item expanded "><a href="10_run-in-parallel/index.html"><strong aria-hidden="true">10.</strong> Parallel practices</a></li><li class="chapter-item expanded "><a href="11_multiphase-model/index.html"><strong aria-hidden="true">11.</strong> Multiphase model</a></li><li class="chapter-item expanded "><a href="12_conjugate-heat-transfer-model/index.html"><strong aria-hidden="true">12.</strong> Conjugate Heat Transfer Model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="12_conjugate-heat-transfer-model/run-in-parallel-a-cht-model.html"><strong aria-hidden="true">12.1.</strong> Run in parallel a CHT model</a></li></ol></li><li class="chapter-item expanded "><a href="13_residuals/index.html"><strong aria-hidden="true">13.</strong> Residuals</a></li><li class="chapter-item expanded "><a href="14_paraview/index.html"><strong aria-hidden="true">14.</strong> ParaView</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="14_paraview/pvserver.html"><strong aria-hidden="true">14.1.</strong> pvserver</a></li><li class="chapter-item expanded "><a href="14_paraview/compilation.html"><strong aria-hidden="true">14.2.</strong> Compilation</a></li><li class="chapter-item expanded "><a href="14_paraview/trouble-shooting-common-problems.html"><strong aria-hidden="true">14.3.</strong> Trouble shooting</a></li></ol></li><li class="chapter-item expanded "><a href="15_post-processing-via-command-line/index.html"><strong aria-hidden="true">15.</strong> CLI Post-processing</a></li><li class="chapter-item expanded "><a href="16_cluster-practice/index.html"><strong aria-hidden="true">16.</strong> Cluster practices</a></li><li class="chapter-item expanded "><a href="17_compile-functionobjects-from-web/index.html"><strong aria-hidden="true">17.</strong> Compile functionObjects</a></li><li class="chapter-item expanded "><a href="18_windows-practices/index.html"><strong aria-hidden="true">18.</strong> Windows programmes</a></li><li class="chapter-item expanded "><a href="19_virtualization/index.html"><strong aria-hidden="true">19.</strong> Virtualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="19_virtualization/WSL.html"><strong aria-hidden="true">19.1.</strong> Windows Subsystem for Linux</a></li><li class="chapter-item expanded "><a href="19_virtualization/multipass.html"><strong aria-hidden="true">19.2.</strong> Multipass</a></li><li class="chapter-item expanded "><a href="19_virtualization/docker.html"><strong aria-hidden="true">19.3.</strong> Docker</a></li></ol></li><li class="chapter-item expanded "><a href="20_distribution_setting/index.html"><strong aria-hidden="true">20.</strong> GNU-Linux distro settings</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OpenFoam® Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><a href="https://www.adigecalculations.com/"><img src="images/powered_by_adige.svg" alt="title" /></a></p>
+<h1 id="preface"><a class="header" href="#preface">Preface</a></h1>
+<p>This handbook is intended to support a medium/advanced OpenFoam® user
+during the usage of the software. It provides commands, explanations,
+and extension that we find useful during our CFD workflow, and it is
+designed to be used by searching for keywords of an action you wish to
+perform within the OpenFoam® framework. This allows you to enrich or
+resolve the setting of a problem in the shortest possible time.</p>
+<h2 id="how-to-interpret-the-text"><a class="header" href="#how-to-interpret-the-text">How to interpret the text:</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Structure</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Abc</td><td>Normal text</td></tr>
+<tr><td><code> Abc</code></td><td>Shell command</td></tr>
+<tr><td><code>&lt;/Abc/&gt;</code></td><td>User input required</td></tr>
+</tbody></table>
+</div>
+<h2 id="installation-location"><a class="header" href="#installation-location">Installation location</a></h2>
+<p>The entire document will assume the installation has been performedunder the
+<code>/opt/OpenFOAM/</code> where there are stored the following files:</p>
+<pre><code class="language-sh">.
+├── OpenFOAM-v2206
+└── ThirdParty-v2206
+</code></pre>
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("./footers/footer.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html><div style="break-before: page; page-break-before: always;"></div><h1 id="intro"><a class="header" href="#intro">Intro</a></h1>
+<p>OpenFOAM® is classified as free and open-source software, hence everyone can contribute, modify and redistribute the software.
+The two main distributions of OpenFOAM® actively developed are:</p>
+<ul>
+<li>OpenFOAM® from the OpenFOAM Foundation</li>
+<li>OpenFOAM® by OpenCFD Ltd</li>
+</ul>
+<p>These are distributed through two differetn web sites, respectively at:</p>
+<ul>
+<li>https://www.openfoam.org</li>
+<li>https://www.openfoam.com</li>
+</ul>
+<p>This book will cover OpenFOAM® by OpenCFD Ltd which does software verison control following the nomenclature:</p>
+<blockquote>
+<p>OpenFOAM-v2112</p>
+</blockquote>
+<p>Which stands for years followed from the month, i.e. 21 stands for year 2021. while 12 for December, hence the software has been released on Dec 21. The release cicle occurs every 6 months.To check the version of OpenFOAM® run, once the sofware is already installed:</p>
+<pre><code class="language-sh">foamVersion
+</code></pre>
+<h2 id="whats-the-difference-between-the-two-main-distributions-of-openfoam"><a class="header" href="#whats-the-difference-between-the-two-main-distributions-of-openfoam">What`s the difference between the two main distributions of OpenFOAM®?</a></h2>
+<p>OpenFOAM® by OpenCFD Ltd contains more utilities and they optimise more the mesh generation fuctionality.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>The installation of OpenFoam® is possible through three differetn methods:</p>
+<ul>
+<li>
+<p>Directly installing the binaries from a packages manager</p>
+</li>
+<li>
+<p>Extracting the already compiled package from the OpenFoam® websites</p>
+</li>
+<li>
+<p>Compiling from the source code</p>
+</li>
+</ul>
+<h2 id="suggested-location-in-the-linux-file-system"><a class="header" href="#suggested-location-in-the-linux-file-system">Suggested location in the linux file system</a></h2>
+<p>Wheater you do not use a package manger, you must choose where to install the software. It
+is advised to create a <code>/opt/OpenFOAM/</code> directory if you are not backed up by a package
+manager to avoid mistakes during future operations or updates. You can create the directory
+following:</p>
+<pre><code class="language-sh">sudo mkdir -p /opt/OpenFOAM
+</code></pre>
+<p>Where <code>/opt</code> stands for optional software on the GNU-Linux file system.</p>
+<h2 id="commodities"><a class="header" href="#commodities">Commodities</a></h2>
+<p>To edit text during local and remote session, a GUI will not be always available.
+As a consequence software able to manage text efficiently on terminal are necessary.
+It is adivised to deprecate <code>nano</code> and make use of the most advanced tool to edit text.</p>
+<div class="table-wrapper"><table><thead><tr><th>Software name</th><th>Destination of use</th><th>Why</th></tr></thead><tbody>
+<tr><td>micro</td><td>Dictionary editing</td><td>Easy to use and common shortcuts</td></tr>
+<tr><td>vim</td><td>Code editing</td><td>Tons extentions and good sintax highlighting</td></tr>
+</tbody></table>
+</div>
+<h3 id="install-commodities"><a class="header" href="#install-commodities">Install commodities</a></h3>
+<p>Debian system will install the software via:</p>
+<pre><code class="language-sh">sudo apt install micro vim
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-via-package-manger"><a class="header" href="#installation-via-package-manger">Installation via package manger</a></h1>
+<p>This is the simplest method to install software in GNU-Linux, however not all GNU-Linux distributions can take advantage of this method.
+The following GNU-Linux distibution are supported:</p>
+<ul>
+<li>Debian/Ubuntu</li>
+<li>openSUSE</li>
+<li>CentOS/Fedora</li>
+</ul>
+<p>To check the description of the package and the dependencies (other software needed to run OpenFoam®) the
+software needs:</p>
+<pre><code class="language-sh"># It shows the information about OpenFOAM® from the OpenFOAM Foundation
+apt show openfoam
+</code></pre>
+<p>While to point to the package distributed by the OpenCFD Ltd we must install an additional repository.</p>
+<pre><code class="language-sh"># Add the repository
+curl https://dl.openfoam.com/add-debian-repo.sh | sudo bash
+
+# Show the info for OpenFOAM® by OpenCFD Ltd
+apt show openfoam2206-default
+</code></pre>
+<p>Then install it with super user privileges the package</p>
+<pre><code class="language-shell-session">sudo apt install openfoam2206-default
+</code></pre>
+<p>Then set the binaries/environment variable on the user workspace.</p>
+<pre><code class="language-sh">echo &quot;source /usr/lib/openfoam/openfoam2206/OpenFOAM-v2206/etc/bashrc&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<p>After the installation, it makes the usage of the software more practical
+adding the tutorial functions to the user space in ~/.bashrc :</p>
+<pre><code class="language-sh">echo &quot;source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="precompiled-binaries-download"><a class="header" href="#precompiled-binaries-download">Precompiled binaries download</a></h1>
+<p>If the packages are not availble for your distribution, download the precompiled binaries instead:</p>
+<pre><code class="language-console">wget https://dl.openfoam.com/source/v2206/OpenFOAM-v2206.tgz -P /opt/OpenFOAM
+wget https://dl.openfoam.com/source/v2206/ThirdParty-v2206.tgz -P /opt/OpenFOAM
+</code></pre>
+<p>These command will download a .tar archive conatining the all necessary file to make the software working on the <code>opt/OpenFOAM</code> directory.
+It is advised to use this directory if you are backed up by a package manager to avoid mistakes during future operations or updates.
+Next step is to untar these archive with:</p>
+<pre><code class="language-sh">cd /opt/OpenFOAM
+tar -xvf OpenFOAM-v2206.tgz
+tar -xvf ThirdParty-v2206.tgz
+</code></pre>
+<p>Then set the binaries/environment variables on the user workspace:</p>
+<pre><code class="language-sh">echo &quot;source /opt/OpenFOAM/OpenFOAM-v2206/etc/bashrc&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<p>After the installation, it makes the usage of the software more practical
+adding the tutorial functions to the user space in ~/.bashrc :</p>
+<pre><code class="language-sh">echo &quot;source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compiling-the-source-code---x86-architecture"><a class="header" href="#compiling-the-source-code---x86-architecture">Compiling the source code - x86 architecture</a></h1>
+<p>The source code must be compiled in order to be used, it is usually retrieved using git
+with the command:</p>
+<pre><code class="language-sh">git clone https://develop.openfoam.com/Development/openfoam.git /opt/OpenFOAM
+git clone https://develop.openfoam.com/Development/ThirdParty-common.git /opt/OpenFOAM
+</code></pre>
+<p>The previous commands will install the source code and the third party
+software in the installation directory <code>/otp/OpenFOAM</code>, so the
+binaries, libraries, and configuration will be in the same directory.
+They will not be separated into different locations as a traditional
+UNIX system would have them. To check if your system has an adequate
+environment to start the installation run:</p>
+<pre><code class="language-sh">echo &quot;source /opt/openfoam/OpenFOAM-v2206/etc/bashrc&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<p>Check if the dowload was a success:</p>
+<pre><code class="language-shell-session">foamSystemCheck
+</code></pre>
+<p>If the system check did not produced error messages, then OpenFOAM® can
+be compiled. This is done by executing the shell script <code>Allwmake</code> to
+actually use the make utilities for automating the compilation of c written programme.</p>
+<pre><code class="language-sh">./Allwmake.
+</code></pre>
+<p>The installation script takes care of all required operations.
+Compiling OpenFOAM® can be done by using more than one processor to save
+time. In order to do this, an environment variable needs to be set
+before running the script to make the programme</p>
+<pre><code class="language-sh"># This export an environment variable to run the compilation in 4 processors
+export WM\_NCOMPPROCS =4
+./Allwmake &gt; installation.log
+</code></pre>
+<p>Or you can directly use all the avilable cores (using the <code>-j</code> flag) to proceed with the compilation:</p>
+<pre><code class="language-shell-session">./Allwmake -j -s -q -l &gt; installation.log
+</code></pre>
+<p>After the source code has been compiled, makes the usage of the software more practical
+adding the tutorial function to the user space in ~/.bashrc :</p>
+<pre><code class="language-sh">echo &quot;source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<p>So, the OpenFoam® commands can be recognized directly in the terminal.</p>
+<h2 id="hpc-installation"><a class="header" href="#hpc-installation">HPC installation</a></h2>
+<p>In case of an HPC installation (the following one use an
+AWS infrastructure with a SLURM scheduler) you can schedule
+the installation with this shell script</p>
+<pre><code class="language-sh">#!/bin/bash
+#SBATCH --job-name=OpenFOAM-compilation
+#SBATCH --ntasks=36
+#SBATCH --output=%x_%j.out
+#SBATCH --partition=compute
+#SBATCH --constraint=c5n.18xlarge
+
+module load openmpi
+source /fsx/openfoam/OpenFOAM-v2012/etc/bashrc
+export WM_NCOMPPROCS=36
+cd /fsx/OpenFOAM/openfoam/
+./Allwmake &gt; installation.log
+</code></pre>
+<p>This script uses 36 cores, correspondent to a 1 nodes since the HPC is composed by
+nodes called c5n.18xlarge made by 36 cores each. The job should compile in few minutes.</p>
+<p>The location of the source code is different because the software is installed on a
+shared file system for distribution purpose.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compiling-the-source-code---arm-architecture"><a class="header" href="#compiling-the-source-code---arm-architecture">Compiling the source code - ARM architecture</a></h1>
+<p>If the architecture of your machine differ from x86 such as a Raspberry or
+an AWS ARM machine, you need to take few more steps. At first create a file
+<code>etc/prefs.sh</code> in the software root directory as shown:</p>
+<pre><code class="language-sh">cd /opt/OpenFOAM/OpenFOAM-v2206
+echo &quot;WM\_COMPILER=Gcc&quot; &gt; etc/prefs.sh
+</code></pre>
+<p>Then you have to change two files:</p>
+<ul>
+<li><code>./wmake/rules/linuxARM7Gcc/cOpt</code></li>
+<li><code>./wmake/rules/linuxARM7Gcc/c++Opt</code></li>
+</ul>
+<p>Substituting the option <code>-mfloat-abi</code> from <code>softfp</code> into <code>hard</code> as follows:</p>
+<pre><code class="language-sh">ls ./wmake/rules/linuxARM7Gcc/cOpt ./wmake/rules/linuxARM7Gcc/c++Opt | xargs sed s/softfp/hard/g
+</code></pre>
+<p>Then set the binaries/environment variables on the user workspace:</p>
+<pre><code class="language-sh">echo &quot;source /opt/OpenFOAM/OpenFOAM-v2206/etc/bashrc&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<p>After the installation, it makes the usage of the software more practical
+adding the tutorial functions to the user space in ~/.bashrc :</p>
+<pre><code class="language-sh">echo &quot;source ${WM\_PROJECT\_DIR:?}/bin/tools/RunFunctions&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<p>Then start the compilation with:</p>
+<pre><code class="language-console">./Allwmake -j -s -l
+</code></pre>
+<p>the <code>-j</code> flag tells to the script to use all the available processors.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="case-set-up"><a class="header" href="#case-set-up">Case set up</a></h1>
+<p>The usual workflows to set up a case is to lay the foundation on similar tutorial.
+Hence, you need to select an appropriate solver for the problem, a way for listing
+the application areas is with:</p>
+<pre><code class="language-shell-session">ls $FOAM_SOLVERS
+</code></pre>
+<p>Once it is decided a solver, take a suitable tutorial case, copy it to your working directory.</p>
+<pre><code class="language-sh">mkdir -p $FOAM_RUN                # if you do not have a working directory
+cp -r $FOAM_TUTORIALS/&lt;\tutorial\&gt; $FOAM_RUN
+</code></pre>
+<p>Modify the tutorial, including geometry, meshing and problem setup is crucial and often
+you need to introduce a dictionary tat was not present in the original turotial file. The
+following utility will create the dictionary for you:</p>
+<pre><code class="language-shell-session">foamGetDict &lt;\dictionary you want in your case\&gt;
+</code></pre>
+<p>For instance:</p>
+<pre><code class="language-console">foamGetDict topoSetDict
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
+<p>Being OpenFOAM® a heavily programmable software built in a heavy programmable system,
+there is the possiblity to automate most of your routine for the usual CFD workflow.
+Usually three action are taken to automate actions:</p>
+<ul>
+<li>run commands in sequence</li>
+<li>create custom commands</li>
+<li>create script to execute</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="execute-unix-commands-in-sequence"><a class="header" href="#execute-unix-commands-in-sequence">Execute UNIX commands in sequence</a></h1>
+<p>The sequence of commands are a must to learn to be effective on the keyboard.</p>
+<p>Command 2 (i.e. snappyHexMesh) will start only if command 1 (blockMesh) has succeeded:</p>
+<pre><code class="language-console">blockMesh &amp;&amp; snappyHexMesh
+</code></pre>
+<p>Using the colon <code>;</code> permit to run command in sequence even if the precedent has failed.</p>
+<pre><code class="language-console">blockMesh; snappyHexMesh
+</code></pre>
+<p>Piping commands using <code>|</code>. Feed the output of command 1 in command 2 as argument, as example:</p>
+<pre><code class="language-console">ls | grep foo
+</code></pre>
+<p>where <code>ls</code> list the files/directory in the current directory and <code>grep</code> will retun the
+a list of file which contain a the pattern <code>foo</code> in their name.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-command"><a class="header" href="#create-a-custom-command">Create a custom command</a></h1>
+<p>To create a personalized command (alias), if you are using bash as a OS shell like
+in most of the UNIX like system, do:</p>
+<pre><code class="language-sh">echo &quot;alias &lt;\nameCommand\&gt;=’&lt;\list of command you want execute digiting
+nameCommand\&gt;&quot; &gt;&gt; ~/.bashrc’
+</code></pre>
+<p>to write at the end of your shell config file the alias you prefer.
+For example, a useful alias which create a dummy file with the name of
+the directory and then open ParaView in series is declared as following:</p>
+<pre><code class="language-sh">alias paraview_openFoam ='touch &quot;${PWD\#\#\*/}&quot;.foam &amp;&amp; paraview &quot;${PWD\#\#\*/}&quot;.foam
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="shell-scripting"><a class="header" href="#shell-scripting">Shell scripting</a></h1>
+<p>These are script files, for running all the commands related to the
+case. You can open it using any editor and see the commands executed from it.
+Taking as example the native bash script often present in tutorial
+cases <code>Allrun</code> and <code>Allclean</code>, the follwing command will execute them:</p>
+<pre><code class="language-console">./Allrun
+</code></pre>
+<p>It will run all the command necessary to run the tutorial. While:</p>
+<pre><code class="language-console">./Allclean
+</code></pre>
+<p>It will run all the command necessary to clean the tutorial.
+To write you bash script, start a new file with the notation:</p>
+<pre><code class="language-bash">#!/bin/bash
+</code></pre>
+<p>then followed by the command you want to execute.
+Elevate the file permission adding execution permission through</p>
+<pre><code class="language-console">chmod +x shellScript.sh
+</code></pre>
+<p>For running your bash script, type:</p>
+<pre><code class="language-sh">./shellScript.sh
+</code></pre>
+<p>An example of a bash script to automate a thermal analysis is presented here:</p>
+<pre><code class="language-sh">#!/bin/bash
+
+#------------------------------------------------------------------------------
+
+SLURM_NTASKS=16                                          # Processor number defined here 
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+
+# Remove previous log directory for job monitoring and previous run file
+./Allclean
+rm -r log;
+mkdir log
+
+# Remove all mesh region present in the case
+for region in $(foamListRegions)
+do
+    rm -r constant/$region/polyMesh;
+done
+echo &quot;Eliminated mesh on old regions&quot;
+
+# Mesh generation
+restore0Dir
+surfaceFeatureExtract                                       &gt; ./log/surfaceFeatureExtract.log  2&gt;&amp;1  &amp;&amp; echo &quot;surfaceFeatureExtract Executed/n&quot;
+blockMesh                                                   &gt; ./log/blockMesh.log 2&gt;&amp;1  &amp;&amp; echo &quot;blockMesh Executed&quot;
+decomposePar -force                                         &gt; ./log/decomposePar1.log 2&gt;&amp;1  &amp;&amp; echo &quot;decomposePar1 Executed&quot;
+mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite &gt; ./log/snappyHexMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;snappyHexMesh Executed&quot;
+
+# Addional mesh zones operation
+reconstructParMesh -constant                                &gt; ./log/reconstructParMesh1         2&gt;&amp;1 &amp;&amp; echo &quot;Reconstruct Case&quot;
+topoSet                                                     &gt; ./log/topoSet  &amp;&amp; echo &quot;topoSet Executed&quot;
+splitMeshRegions -cellZonesOnly -overwrite                  &gt; ./log/splitMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;splitMeshRegions Executed&quot;
+checkMesh                                                   &gt; ./log/checkMesh.log                   2&gt;&amp;1 &amp;&amp; echo &quot;checkMesh Executed&quot;
+createBaffles -region PCB  -overwrite                       &gt;  ./log/createBaffles     2&gt;&amp;1 &amp;&amp; echo &quot;createBaffles Executed&quot;
+
+for region in $(foamListRegions)
+  do
+     changeDictionary -region $region                       &gt; ./log/changeDictionary.$region.log 2&gt;&amp;1
+  done
+echo &quot;changeDictionary Executed&quot;
+
+decomposePar -force -allRegions                             &gt; ./log/decomposePar2 2&gt;&amp;1 &amp;&amp; echo &quot;decomposePar2 Executed&quot;
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel        &gt; ./log/$(getApplication).log 2&gt;&amp;1 &amp;&amp; echo &quot;$(getApplication) Executed&quot;
+
+reconstructParMesh -constant -allRegions                    &gt; ./log/reconstructParMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;Finished&quot;
+
+#------------------------------------------------------------------------------
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="useful-command"><a class="header" href="#useful-command">Useful command</a></h1>
+<p>A list comprised of a brief description of few usuefull UNIX command is given.</p>
+<h2 id="grep"><a class="header" href="#grep"><code>grep</code></a></h2>
+<p>It will search word patterns for you in selected documents or a list of them</p>
+<pre><code class="language-console">grep -w -R &quot;foo&quot;
+</code></pre>
+<p>where -w stands for word and -R for research in subdirectories. It will search all the
+file names that in which he finds a pattern (in this case: <code>foo</code>).</p>
+<h2 id="mmv"><a class="header" href="#mmv"><code>mmv</code></a></h2>
+<p>Rename more than one file at once, extension included</p>
+<pre><code class="language-console">mmv '\*.STL' '\#1.stl'
+</code></pre>
+<h2 id="tail"><a class="header" href="#tail"><code>tail</code></a></h2>
+<p>To check running simulation written in a log file, it is possible to see
+in terminal the live writing</p>
+<pre><code class="language-console">tail -f  foo.log
+</code></pre>
+<h2 id="sed"><a class="header" href="#sed"><code>sed</code></a></h2>
+<p>For replacing the text repetitively in file stream:</p>
+<pre><code class="language-console">find . -type f | xargs sed -i s/&lt;/oldWord/&gt;/&lt;/newWord/&gt;/g
+</code></pre>
+<h2 id="useful-usage-of-the-copy-utility---cp"><a class="header" href="#useful-usage-of-the-copy-utility---cp">Useful usage of the copy utility - <code>cp</code></a></h2>
+<p>To copy a file in different directory, execute:</p>
+<pre><code class="language-console">ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
+</code></pre>
+<h2 id="useful-usage-of-find"><a class="header" href="#useful-usage-of-find">Useful usage of <code>find</code></a></h2>
+<p>To find the correct case frame in tutorial</p>
+<pre><code class="language-console">find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
+</code></pre>
+<p>Which list controlDict files where the word <code>foo</code> have been found</p>
+<p>If you want to know how the continuity errors are computed use find in this way:</p>
+<pre><code class="language-console">$FOAM_SRC –iname *continuity*
+</code></pre>
+<p>and open any of the files.</p>
+<h2 id="run-a-gui"><a class="header" href="#run-a-gui">Run a GUI</a></h2>
+<p>Run a GUI file manager from terminal, <code>nautilus</code> is the defult in GNOME
+desktop envirnments:</p>
+<pre><code class="language-console">nautilus . &amp;
+</code></pre>
+<p>Instead, <code>dolphin</code> is the default for the KDE desktop environement.</p>
+<pre><code class="language-console">dolphin . &amp;
+</code></pre>
+<p>This will open the file manager in the location you are on the terminal. The
+flag <code>&amp;</code> runs the process in background.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mesh"><a class="header" href="#mesh">Mesh</a></h1>
+<p>Mesh in OpenFoam® can be generated using 3 native tools, a combination of
+those or translated from other programmes such as ANSYS, STAR-CCM ect with
+few native utilities.</p>
+<p>The mesh generators are:</p>
+<ul>
+<li>blockMesh</li>
+<li>blockMesh + snappyHexMesh</li>
+<li>cfMesh</li>
+</ul>
+<p>while the principal mesh converter are:</p>
+<ul>
+<li>fluent3DMeshToFoam</li>
+<li>fluentMeshToFoam</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="blockmesh"><a class="header" href="#blockmesh">blockMesh</a></h1>
+<p>First step is to create a dummy folder with the tutorial command:</p>
+<pre><code class="language-console">restore0Dir
+</code></pre>
+<p>blockMesh is a cartesian mesh generators which relies on a single
+dictionary located at <code>system/blockMeshDict</code>. The programme starts
+executing in terminal:</p>
+<pre><code class="language-console">blockMesh
+</code></pre>
+<p>The mesh will be generated inside the folder <code>constant/polyMesh</code>.
+Parameters to control this command is in <code>system/blockMeshDict</code> which
+defines the domain through vertices, define the blocks and set the
+number of elements in the segment.</p>
+<blockquote>
+<p><strong>Warning:</strong>
+Be consistent – side of different blocks must contain the same number on elements and bias.
+In blockMesh.boundary, use the rule of the right hand to create the normal to the surface towards the intern of the body.</p>
+</blockquote>
+<p>An example is posted here from the tutorial <code>/opt/OpenFOAM/OpenFOAM-v2206/tutorials/multiphase/interFoam/RAS/damBreak</code>:</p>
+<pre><code class="language-sh">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale   0.146;
+
+vertices
+(
+    (0 0 0)
+    (2 0 0)
+    (2.16438 0 0)
+    (4 0 0)
+    (0 0.32876 0)
+    (2 0.32876 0)
+    (2.16438 0.32876 0)
+    (4 0.32876 0)
+    (0 4 0)
+    (2 4 0)
+    (2.16438 4 0)
+    (4 4 0)
+    (0 0 0.1)
+    (2 0 0.1)
+    (2.16438 0 0.1)
+    (4 0 0.1)
+    (0 0.32876 0.1)
+    (2 0.32876 0.1)
+    (2.16438 0.32876 0.1)
+    (4 0.32876 0.1)
+    (0 4 0.1)
+    (2 4 0.1)
+    (2.16438 4 0.1)
+    (4 4 0.1)
+);
+
+blocks
+(
+    hex (0 1 5 4 12 13 17 16) (23 8 1) simpleGrading (1 1 1)
+    hex (2 3 7 6 14 15 19 18) (19 8 1) simpleGrading (1 1 1)
+    hex (4 5 9 8 16 17 21 20) (23 42 1) simpleGrading (1 1 1)
+    hex (5 6 10 9 17 18 22 21) (4 42 1) simpleGrading (1 1 1)
+    hex (6 7 11 10 18 19 23 22) (19 42 1) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    leftWall
+    {
+        type wall;
+        faces
+        (
+            (0 12 16 4)
+            (4 16 20 8)
+        );
+    }
+    rightWall
+    {
+        type wall;
+        faces
+        (
+            (7 19 15 3)
+            (11 23 19 7)
+        );
+    }
+    lowerWall
+    {
+        type wall;
+        faces
+        (
+            (0 1 13 12)
+            (1 5 17 13)
+            (5 6 18 17)
+            (2 14 18 6)
+            (2 3 15 14)
+        );
+    }
+    atmosphere
+    {
+        type patch;
+        faces
+        (
+            (8 20 21 9)
+            (9 21 22 10)
+            (10 22 23 11)
+        );
+    }
+);
+
+mergePatchPairs
+(
+);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="snappyhexmesh"><a class="header" href="#snappyhexmesh">SnappyHexMesh</a></h1>
+<p>In order to define the patches in snappyHexMesh you need to use
+different STL file that can couple in a watertight geometry. Use the
+utility surfaceCheck to proof that your STL is watertight.</p>
+<p>The files to entry in the command are the parts of the 3D complex draw
+in STL format (exclusively written in ASCII) and they must be copied in
+constant/triSurface. Then modify the file sytem/surfaceFeatureDict
+substituting and adding the entries and modifying the featured angles
+(170°(advised) - 180°: you include all the angle between two neighboured
+cells, lowering this value it wouldn’t be consider these cells and it
+will be applied a merged cell)</p>
+<pre><code class="language-console">surfaceFeatureExtract
+</code></pre>
+<p>The geometry components must be costant/triSurface directory rigorously
+in this format <code>&lt;file&gt;.stl</code> and after having launched the command in
+the same folder should appear <code>&lt;file&gt;.eMesh</code> and a new directory
+will appear in constant/extendedFeatureEdgeMesh/</p>
+<p>If you want to extract very thin layer, use the utility</p>
+<pre><code class="language-console">extrudeMesh
+</code></pre>
+<p>dependent on the dictionary <code>system/extrudeMeshDict</code> to extrude some layers
+externally to the geometry, however, make sure that those created are
+very thin.</p>
+<h2 id="how-to-start-a-case-in-single-and-parallel"><a class="header" href="#how-to-start-a-case-in-single-and-parallel">How to start a case in single and parallel</a></h2>
+<p>After the execution of:</p>
+<pre><code class="language-sh">surfaceFeatureExtract
+</code></pre>
+<p>The following commands will start the meshing process:</p>
+<div class="table-wrapper"><table><thead><tr><th>Single process</th><th>Parallel processes</th></tr></thead><tbody>
+<tr><td>snappyHexMesh -overwrite</td><td>decomposePar -force</td></tr>
+<tr><td></td><td>mpirun -n 16 snappyHexMesh -parallel -overwrite</td></tr>
+<tr><td></td><td>reconstructParMesh -latestTime -constant</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="internal-flow"><a class="header" href="#internal-flow">Internal flow</a></h1>
+<p>To fix the boundary conditions, prepare watertight STL files as
+inlet.stl, outlet.stl, ect. Then in <code>system/snappyHexMeshDict.geometry</code> define:
+section</p>
+<pre><code class="language-c++">geometry
+{
+    inlet.stl
+    {
+        type triSurfaceMesh;
+        name inlet;
+    }
+    outlet.stl
+    {
+        type triSurfaceMesh;
+        name outlet;
+    }
+}
+
+</code></pre>
+<p>While in the refinement surfaces section you can address the
+info of the patch:</p>
+<pre><code class="language-c++">refinementSurfaces
+    {
+        inlet
+        {
+
+            level (2 2);
+            patchInfo
+                        {
+                        type patch;
+                        }
+        }
+        outlet
+        {
+
+            level (2 2);
+            patchInfo
+                        {
+                        type patch;
+                        }
+        }
+        wall
+        {
+            level (2 2);
+            patchInfo
+                        {
+                        type wall;
+                        }
+        }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-zones-inside-the-mesh-for-source-terms"><a class="header" href="#setting-zones-inside-the-mesh-for-source-terms">Setting zones inside the mesh for source terms</a></h1>
+<p>Sets and Zones, can store any mesh entity (point, face or cell) in a
+data structure that is somewhat similar to a list. The major difference
+is in the internal handling of the mesh entities, especially in the case
+of a parallel simulation with topological mesh changes. In this case,
+the addressing in the list has to be updated accordingly and only the
+zone provides such a method (use cellZone for this purpose).</p>
+<ul>
+<li>
+<p>pointSet/faceSet/cellSet provide a named list of point/face/cell
+indexes. Essentially, it's just the result of a selection of
+points/faces/cells, so that you can then do something with them,
+since you know which ones you want. Usually, these sets are used for
+data sampling and for creating faceZones or cellZones</p>
+</li>
+<li>
+<p>cellZone are an extension to the sets, since zones provide
+additional information useful for mesh manipulation. Zones are
+commonly used for MRF, baffles, dynamic meshes, porous mediums and
+other features available through the dictionary system/fvOptions</p>
+</li>
+</ul>
+<p>Sets can be used to create Zones and vice versa. As a reminder first
+create a cellSet and then fed the cell set into the creation of the
+cellZone to use fvOptions</p>
+<p>The selection is usually performed by the tools, both of which can
+select subsets of the mesh and perform boolean operations on them</p>
+<ul>
+<li>
+<p>setSet → Use an interactive window</p>
+</li>
+<li>
+<p>topoSet → Use a dictionary in <code>system/topoSetDict</code></p>
+</li>
+</ul>
+<p>Two example of topoSet  are listed below:</p>
+<h2 id="the-implementation-of-2-cellzones-from-stl-files"><a class="header" href="#the-implementation-of-2-cellzones-from-stl-files">The implementation of 2 cellZones from STL files:</a></h2>
+<pre><code class="language-c++">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    &quot;system&quot;;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    HE_frontCellSet;
+        type    cellSet;
+        action  new;
+        source  searchableSurfaceToCell;//surfaceToCell;
+        surfaceType  triSurfaceMesh;
+        surfaceName    HE_front.stl; 
+    }
+    {
+       name HE_front;
+       type cellZoneSet;
+       action new;          // new cellSet, it doesn't simply add to a previous cellSet
+       source setToCellZone;//zoneToCell;
+       set  HE_frontCellSet;
+
+    }
+    {
+        name    HE_frontLateralCellSet;
+        type    cellSet;
+        action  new;
+        source  searchableSurfaceToCell;//surfaceToCell;
+        surfaceType  triSurfaceMesh;
+        surfaceName    HE_frontLateral.stl; 
+    }
+    {
+       name HE_frontLateral;
+       type cellZoneSet;
+       action new;   // new cellSet, it doesn't simply add to a previous cellSet
+       source setToCellZone;//zoneToCell;
+       set  HE_frontLateralCellSet;
+    }
+);
+</code></pre>
+<h2 id="implementation-of-cellzones-and-facezones"><a class="header" href="#implementation-of-cellzones-and-facezones">Implementation of cellZones and faceZones</a></h2>
+<pre><code class="language-c++">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    &quot;system&quot;;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+()
+   // FaceZones
+    {
+        name      baffleSET;
+        type      faceSet;
+        action    new;
+        source    surfaceToCell;
+        file      copper.stl;
+    }
+    {
+        name        baffle;
+        type        faceZoneSet;
+        action      new;
+        source      setToFaceZone;
+        faceSet     baffleSET;
+    }
+
+   // CellZones
+    {
+        name           notPCB;
+        type           cellSet;
+        action         new;
+        source         zoneToCell;
+        zones          ( water air hydrogen);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        box     (-1 -1 -1) (1 1 1);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  subtract;
+        source  cellToCell;   // select all the cells from given cellSet(s).
+        set     notPCB ;
+    }
+    {
+        name    PCB;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     solid ;
+    }
+
+);
+
+// ************************************************************************* //
+
+</code></pre>
+<h3 id="delete-a-zone"><a class="header" href="#delete-a-zone">Delete a zone</a></h3>
+<p>To visualize how much Cell Zone there is inside the domain run
+checkMesh, while if you desire to delete a cellZone, delete the files
+that topoSet creates in: <code>constant/polyMesh/sets</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-refinement-technique"><a class="header" href="#advanced-refinement-technique">Advanced refinement technique</a></h1>
+<p>The necessity to refine area that sometimes require a complex shape can
+be satisfied through the usage of an STL file as a cellZone entry.
+First, define a closed STL file through snappyHexMeshDict.geometry then
+use this frame in the respective snappyHexMeshDict sector</p>
+<pre><code class="language-c++">    refinementSurfaces
+    {
+        &lt;closeSTLFileYouWantToRefine&gt;
+        {
+            level (1 2);
+
+            cellZone &lt;\name\&gt;;
+            faceZone &lt;\name\&gt;;
+            cellZoneInside inside;
+        }
+      …
+    refinementRegions
+    {
+        &lt;closeSTLFileYouWantToRefine&gt;
+        {
+            mode &lt;\mode\&gt;;
+            levels ((0.000008 3));
+        }
+    }
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="meshing-multiples-closed-body"><a class="header" href="#meshing-multiples-closed-body">Meshing multiples closed body</a></h1>
+<p>If you want to mesh to separate mesh, run twice snappyHexMesh with
+different value of Location in mesh and then use the tool <code>mergeMesh</code></p>
+<h2 id="using-the-dictionary"><a class="header" href="#using-the-dictionary">Using the dictionary</a></h2>
+<p>To permit the recognition of different closed STL files the
+sub-dictionary snappyHexMesh.castellatedMeshControls.locationInMesh must
+be modified in snappyHexMesh.castellatedMeshControls.locationsInMesh and
+follow the template:</p>
+<pre><code class="language-c++">    …
+   locationsInMesh
+      (
+        ((0.010276 0.058958 0.000248) zone1)
+  	    ((0.011472 0.10046  0.000256) zone2)
+       );
+   …
+</code></pre>
+<p>In this scenario, it is possible to introduce to bodies as a single mesh
+without recurring to use the utility <code>mergeMeshes</code>. The bodies will be
+distinguished from a different cellZones allocations.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="parallelization-issues"><a class="header" href="#parallelization-issues">Parallelization issues</a></h1>
+<p>If you forgot to restore the 0 directory before the case decomposition,
+what you can do is to reconstruct the mesh and decompose it again with
+the 0 folder in place with:</p>
+<pre><code class="language-console">reconstructParMesh -constant
+restore0Dir
+decomposePar -force
+</code></pre>
+<p>When it is reconstructed only the mesh, and decomposed a second time to include the
+0 directory, an error can occur when triyng to reconstruct at the conclusion of the
+case. A solution is to run:</p>
+<pre><code class="language-console">reconstructParMesh -constant &amp;&amp; reconstructPar -latestTime
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cfmesh"><a class="header" href="#cfmesh">cfMesh</a></h1>
+<p>CfMesh is a mesher which is integrate in OpenFOAM® such as
+SnappyHexMesh and it is possible to find the tutorial relatives to it
+in:</p>
+<pre><code class="language-console">/opt/OpenFOAM/OpenFOAM-v2206/modules/cfmesh/tutorials
+</code></pre>
+<p>The modalities to create a mesh pass always through the creation of a .stl
+bodies as boundaries, i.e. create all different .stl file as surface
+(ASCII and divided per patch that you intend to apply a boundary
+condition)</p>
+<pre><code class="language-console">cat body_1.stl body_2.stl body_N.stl &gt;&gt; combined.stl
+</code></pre>
+<p>To permit at the program to select different patches of the geometry,
+remember to check inside the combined file and ensure there is a space
+between the joint of the different STL files. To create the .fms file
+needed to run the cfMesh utilities (specific for OpenFoam®) run the
+following commands.</p>
+<pre><code class="language-console">surfaceFeatureEdges –angle 15 combined.stl combined.fms
+</code></pre>
+<p>The flag <code>angle</code> permit to capture correctly sharp corner of
+the geometry, the lower is set the more it will be precise and
+computationally expensive, I found 15 being a good compromise, the
+default is 45. Secondly, to set the boundary condition in the easiest
+way, open the .fms file (the OpenFOAM® format) to change the type of
+boundaries (wall, patch, empty) in the first rows. Then the following
+modifications acts on the dictionary system/meshDict. Then to run the
+cited dictionary type the command:</p>
+<pre><code class="language-console">cartesianMesh
+</code></pre>
+<p>For command to run require that the directory <code>system/meshDict</code> contain
+only the voice:</p>
+<pre><code class="language-c++">surfaceFile &quot;…&quot;;
+
+maxCellSize &quot;…&quot;;
+</code></pre>
+<p>If you are not satisfied with the result, try to run these utilities to
+improve the results:</p>
+<pre><code class="language-console">improveMeshQuality
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="checkmesh"><a class="header" href="#checkmesh">checkMesh</a></h1>
+<p>checkMesh will check for:</p>
+<ul>
+<li>Mesh statistics</li>
+<li>Topology</li>
+<li>Geometry and mesh quality (bounding box, cell volumes,
+skewness, orthogonality, aspect ratio, and so on).</li>
+</ul>
+<p>To check the most important parameters of the mesh, run the utilities without flags:</p>
+<pre><code class="language-console">checkMesh
+</code></pre>
+<p>If checkMesh explicitly generates an error, this error field must be repaired. To check all
+the possible measurable parameters of the mesh (often an overkill utilities), and visualise all the fields, run:</p>
+<pre><code class="language-console">checkMesh -allGeometry -allTopology -writeAllFields -writeSets vtk
+</code></pre>
+<p>Most of the time, it is impossible to get no errors when we look at all the mesh fields.
+A more progmatic way, is to write the field when you encouter an important error,
+so you can post-process via ParaView your mesh and check all the defective set of cells, faces
+and/or points written to the <code>constant/polyMesh/sets/</code> directory with the following flags</p>
+<pre><code class="language-console">checkMesh -writeSets vtk
+</code></pre>
+<p>It will write Sets and cellZones.</p>
+<h2 id="most-important-mesh-parameters"><a class="header" href="#most-important-mesh-parameters">Most important mesh parameters</a></h2>
+<p>Only few parameters between <code>Settings</code> and <code>Topology</code> must kept under control to 
+produce a sufficient output.</p>
+<h3 id="settings"><a class="header" href="#settings">Settings</a></h3>
+<p>The most important parameters to keep under control when we deal with mesh genration are:</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Non orthogonality</th><th>Skewness</th></tr></thead><tbody>
+<tr><td><b>Rapresentation</b></td><td><img src="6_mesh/non-orthogonal-mesh.png" alt="img" /></td><td><img src="6_mesh/non-orthogonal-skewed-mesh.png" alt="img" /></td></tr>
+<tr><td><b>Limits</b></td><td>Not run a case if it is above 80</td><td>Acceptable under 3</td></tr>
+</tbody></table>
+</div>
+<p>Then is very important to check minVolume (if it is negative, check the .stl files or setting)</p>
+<h3 id="topology"><a class="header" href="#topology">Topology</a></h3>
+<p>To improve the quality of the mesh try to remove as much as
+possible tetrahedra and tet wedges.</p>
+<h2 id="deletion-of-bad-quality-cells"><a class="header" href="#deletion-of-bad-quality-cells">Deletion of bad quality cells</a></h2>
+<p>You can delete bad cells if they are not in region of interest, if this
+is the case, utilities such as <code>setSet</code> and <code>subsetMesh</code> can be
+useful tools, otherwise it is strongly advised to re-mesh. Instead, deleting mesh
+arbitrarely is usually done via this utilities.</p>
+<pre><code class="language-console">setSet -constant
+</code></pre>
+<p>An internal command line will appear, and similar command can be used to
+manage bad cells present in your mesh (i.e. concave, underdetermined,
+zero volume cells), in the followng commands a zero-volume cells are treated:</p>
+<pre><code class="language-console"># if you want to fix additional cells and with problematic faces you can (i.e. skew, concave, warp faces etc..)
+cellSet c0 new cellToCell zeroVolumeCells any
+cellSet c0 add faceToCell skewFaces any
+cellSet c0 invert &amp;&amp; quit
+</code></pre>
+<p>Once exited from the internal command line, execute the following
+command to overwrite the mesh</p>
+<pre><code class="language-console">subSetMesh c0 -overwrite
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ansys-meshing-to-openfoam"><a class="header" href="#ansys-meshing-to-openfoam">ANSYS Meshing to OpenFoam®</a></h1>
+<p>OpenFoam® needs to read a mesh via file written in ASCII format, if it comes from another
+program. As a consequence to export a Fluent .msh file in ASCII format the shortest way
+(from ANSYS meshing) is:</p>
+<p>File → Option → Meshing → Export → Format of input file (.msh)</p>
+<p>Choose ASCII and then you can easily extract the file in ASCII format by
+exporting the mesh. Then move the produced file on the root directory of your case
+and run:</p>
+<pre><code class="language-console">fluentMeshToFoam foo.msh
+</code></pre>
+<p>Remember that it is good practice check the boundary setting in
+<code>constant/polyMesh/boundary</code> after a conversion</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="directories-structure"><a class="header" href="#directories-structure">Directories’ structure</a></h1>
+<p>The following represaentation is the usual set up for an OpenFoam® case:</p>
+<pre><code class="language-console">.
+├── 0.orig                          →  Initial value settings
+│   ├── k                                   →  Turbulent kinetic energy
+│   ├── nut                                 →  Turbutent kinematic viscosity
+│   ├── omega                               →  Specific rate of turbulent dissipation
+│   ├── p                                   →  Pressure
+│   └── U                                   →  Velocity
+├── Allclean
+├── Allrun
+├── constant                        →  Initial value settings
+│   ├── transportProperties                 →  Fluid properties
+│   └── turbulenceProperties                →  Turbulence model selection
+└── system                          →  Settings
+    ├── blockMeshDict                       → Dictionary for cartesian mesh generation
+    ├── controlDict                         → Running time and I/O control
+    ├── decomposeParDict `                  → Dictionary to control the parallelization scheme
+    ├── fvSchemes                           → Terms, scheme, numerical settings
+    ├── fvSolution                          → Tolerance, algorithm and solver settings
+    ├── snappyHexMeshDict                   → Dictionary for mesh generation (with snappyHexMesh)
+    └── surfaceFeatureExtractDict           → Dictionary de facto needed for mesh generation (with snappyHexMesh)
+</code></pre>
+<p>You can change the parameters in the dictionaries controlDict, fvSchemes and fvSolution on-the-fly. But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="0-ie-boundary-conditions"><a class="header" href="#0-ie-boundary-conditions">0 (i.e. Boundary Conditions)</a></h1>
+<p>The BC works on the Patches which have been defined in the mesh and the
+guessing of the first value of the field pass through the voice</p>
+<pre><code class="language-c++">internal field
+</code></pre>
+<p>which can be filled with a uniform, but it could be changed in
+non-uniform if set values in system/setFieldsDict and then apply this
+change through setFields</p>
+<h2 id="commmon-types-of-boundary-conditions"><a class="header" href="#commmon-types-of-boundary-conditions">Commmon types of boundary conditions:</a></h2>
+<p>The most common types of patches are:</p>
+<h3 id="fixedvalue"><a class="header" href="#fixedvalue">fixedValue</a></h3>
+<p>Every face associated to the boundary is set to the conditions</p>
+<h3 id="zerogradient"><a class="header" href="#zerogradient">zeroGradient</a></h3>
+<p>Matematically speaking it is a symmetry conditon hence it implements at the boundaries:
+\[ ∂ϕ ∕ ∂x = 0 \]</p>
+<p>Where &quot;x&quot; is the space and ϕ is a field properties.</p>
+<h3 id="symmetryplane"><a class="header" href="#symmetryplane">symmetryPlane</a></h3>
+<p>Applied to planar patches to represent a symmetry condition, equivalent to <code>zeroGradient</code>.</p>
+<pre><code class="language-c++">symmetryPatch
+{
+    type            symmetryPlane;
+    ...
+}
+</code></pre>
+<h3 id="noslip"><a class="header" href="#noslip">noSlip</a></h3>
+<p>It is a velocity condtion and it is equivalent to:</p>
+<pre><code>wallPatch
+{
+    type            fixedValue;
+    value           0;
+}
+</code></pre>
+<h3 id="empty"><a class="header" href="#empty">empty</a></h3>
+<p>To set a 2D simulation</p>
+<pre><code class="language-c+++">frontAndBack
+{
+    type        empty;
+}
+</code></pre>
+<h3 id="amicyclic"><a class="header" href="#amicyclic">AMIcyclic</a></h3>
+<p>Impose a periodic BC when the patches in study have not the
+same mesh, it must be declared the nature of periodicity (rotational,
+translation). The separationVector must contain the distances between
+the 2 patches in study. It is advised to use a createPatchDict to modify
+the BC after snappy procedure of snappyHexMesh because can cause
+problems to the patches)</p>
+<h3 id="calculated"><a class="header" href="#calculated">calculated</a></h3>
+<p>Calculate the value from its component in the field, this
+doesn’t work for transport quantities but only for variable define by a
+formulae (for instance nut)</p>
+<h3 id="totalpressure"><a class="header" href="#totalpressure">totalPressure</a></h3>
+<p>which is a fixedValue condition calculated from p and U
+field</p>
+<h3 id="pressureinletoutletvelocity"><a class="header" href="#pressureinletoutletvelocity">pressureInletOutletVelocity</a></h3>
+<p>Which applies a zeroGradient on all
+components, except where there is inflow, in this case a fixedValue
+condition is applied to the tangential component</p>
+<h3 id="inletoutlet"><a class="header" href="#inletoutlet">inletOutlet</a></h3>
+<p>It is a zeroGradient condition when outwards, fixedValue
+when flow is inwards</p>
+<pre><code class="language-c">  {
+    type inletOutlet;
+    inletValue uniform (0 0 0); // value of the velocity
+    value uniform x;            // value of the properties
+  }
+</code></pre>
+<p>Basically, inletOutlet is zero gradient unless the flow is inward in
+which case it is fixed value (inletValue). outletInlet is zero gradient
+if the flow is inward and fixed value (outletValue) if the flow is
+outward.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ε-ω-k"><a class="header" href="#ε-ω-k">ε, ω, k</a></h1>
+<p>An estimation of the turbulent mainstream quantities should take place
+to have a stable solver.</p>
+<h2 id="turbulent-external-flow-approximations"><a class="header" href="#turbulent-external-flow-approximations">Turbulent external flow approximations</a></h2>
+<p>External flows can be a bit tricky to approximate because it is hard to
+evaluate the flow downstream considering anything that could have
+affected the turbulence. This could be other objects, convection over
+land or the position of the domain in a boundary layer. A good technique
+for approximation turbulence is by using the Turbulent Viscosity
+Ratio—the ratio between molecular viscosity and turbulent viscosity.
+This ratio can be used along with the Turbulence Intensity, freestream
+velocity and molecular viscosity to determine k, ε and ω using the
+following technique. To start the calculation, the Turbulent Intensity
+I, and Viscosity Ratio β need to be approximated by using the table
+below.</p>
+<div class="table-wrapper"><table><thead><tr><th>Turbulence</th><th>Reynolds number</th><th>Turbulent Intensity</th></tr></thead><tbody>
+<tr><td>Low turbulence</td><td>3000 &lt; Re &lt; 5000</td><td>1%</td></tr>
+<tr><td>Med turbulence</td><td>5000 &lt; Re &lt; 15000</td><td>1-5%</td></tr>
+<tr><td>High turbulence</td><td>15000 &lt; Re &lt; 20000</td><td>5-20%</td></tr>
+<tr><td>High turbulence</td><td>Re &gt; 100000</td><td>5-20%</td></tr>
+</tbody></table>
+</div>
+<p>To calculate k, the following equation can be used:</p>
+<p>\[ k = \frac{3}{2}\left( \text{UI} \right)^{2} \]</p>
+<p>\[ ε = C_{\mu}\frac{\text{ρk}^{2}}{\mu}β ^{- 1}\ \]</p>
+<p>\[ ω = \frac{ρk}{\mu}\ β^{-1}\ \]</p>
+<h2 id="turbulent-internal-flow-approximations"><a class="header" href="#turbulent-internal-flow-approximations">Turbulent internal flow approximations</a></h2>
+<p>For a fully developed inlet flow, approximating turbulent boundary
+conditions can be extrapolated using the Reynolds number <em>Re</em> to
+determine the turbulent intensity <em>I</em> to define the intensity length
+scale <em>l</em>, the required turbulent boundary conditions can be calculated.</p>
+<p>\[ I = 0.16 \ Re_L ^{-1/8} \]</p>
+<p>This can be used to calculate a mean approximation for the turbulent
+boundary conditions</p>
+<p>\[ k = \frac{3}{2} U I^{2} \]</p>
+<p>\[ ε = C_{\mu}\frac{k^{\frac{3}{2}}}{l} = C_{\mu}\frac{k^{\frac{3}{2}}}{0.07L} \]</p>
+<p>\[ ω = \frac{\varepsilon}{kC_{\mu}}\  \]</p>
+<h2 id="turbulent-wall-functions"><a class="header" href="#turbulent-wall-functions">Turbulent Wall functions</a></h2>
+<p>Keeping the focus only in the treatment of the wall, the corresponding
+wall functions exist:</p>
+<ul>
+<li>εWallFuncion for ε( (fixed value e=0 or better e=1e-8(?) for lowRe
+calculations):</li>
+</ul>
+<p>calculate (for each timestep) the first grid point value by using an
+algebraic expression derived from the classical logarithmic law-of the
+wall approach</p>
+<ul>
+<li>kqRWallFunction for k, q, R</li>
+</ul>
+<p>in code: Boundary condition for turbulence k, Q, and R when using wall
+functions. Simply acts as a zero-gradient condition. It appears to be
+applicable down to yPlus ~ 1, but one should use a fixed value with k=0
+or a very small value for y<sup>+</sup> &lt;1)</p>
+<p>\ omegaWallFunction for omega; Not really a wall function but the b.c.
+defined by Menter for Omega, i.e. should be used always for kOmega
+model, independent of y<sup>+</sup>)</p>
+<p>omegawall=60*nu/(β *y+<sup>2</sup>), with nu=kinematic viscosity at the wall,
+β =0.075 and y<sup>+</sup>normal distance between the first fluid node and the
+nearest wall-&gt; very large value for omega)</p>
+<p>The &quot;value&quot; which is specified for the wall functions is only an initial
+condition</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nut----ν_t-"><a class="header" href="#nut----ν_t-">nut - \( ν_{t} \)</a></h1>
+<p>The entries for \( ν_{t} \) are type calculated because they come from ε and k
+to calculate the field. Instead in the wall, you specify a wall function
+for \( ν_{t} \), to modify the momentum equation for the cells adjacent to the
+wall. The modification is that OpenFoam® calculates wall shear stress
+from log-law for these cells and put it in their equations. OpenFoam®
+does not use log-law directly to obtain next-to-the-wall cell velocities
+but solves their equation in which the stress term is modified using
+log-law.</p>
+<h2 id="turbulent-viscosity-wall-functions"><a class="header" href="#turbulent-viscosity-wall-functions">Turbulent viscosity wall functions</a></h2>
+<p>The choice of wall function model is specified through the turbulent
+viscosity field  \( ν_{t} \) in the 0/nut dictionary by the nutxxxxxx
+wall functions:</p>
+<ul>
+<li>
+<p>nutWallFunction seems to be the most basic wall function without
+further requirements: high-Re wall-function based on k.</p>
+</li>
+<li>
+<p>nutkWallFunction standard for k-ε/k-ω, it calculates the turbulent
+viscosity in the first node point based on the logarithmic law based
+on the k value close to the wall</p>
+</li>
+<li>
+<p>nutUWallFunction: in comparison to nutkWallFunction it calculates the y<sup>+</sup>sup&gt;+</sup> yPlus value based on the velocity close to the
+wall</p>
+</li>
+<li>
+<p>nutUSpaldingWallFunction standard wall function for the Spallart
+Allmarras turbulence model, called nutSpalartAllmarasWallFunction, continuous wall-function which should cover the complete y<sup>+</sup> range from O(1) to somewhere of O(10). Might be the best choice (together with low Re k-ε, k-ω, or SA, when y<sup>+</sup> varies for different parts of the wall.</p>
+</li>
+<li>
+<p>nutLowReWallFunction (code comment: &quot;Sets \( ν_{t} \) to zero and provides an access function to calculate y<sup>+</sup>.&quot;):</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="constant"><a class="header" href="#constant">Constant</a></h1>
+<p>The &quot;constant&quot; directory represent all the constant parameters of the CFD case such
+as mesh, immutable fluid properties, physical model.</p>
+<pre><code class="language-console">    ├── polyMesh
+    │   ├──...
+    │   └──...
+    ├── transportProperties
+    ├── ...
+    └── turbulentProperties
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transportproperties"><a class="header" href="#transportproperties">transportProperties</a></h1>
+<p>nu is the kinematic viscosity i.e.</p>
+<p>$ ν_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $</p>
+<p>Air kinematic viscosity at given temperature</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="turbulentproperties"><a class="header" href="#turbulentproperties">turbulentProperties</a></h1>
+<p>The current dictionary contains the adoction control of turbulence models.
+Consequent quanitie must be updated or introduced given the model you of turbulence you want to solve.</p>
+<h2 id="rans-model-reynolds-average-navier-stokes"><a class="header" href="#rans-model-reynolds-average-navier-stokes">RANS model (Reynolds Average Navier Stokes)</a></h2>
+<p>Usually three models are used and they can be specified in this way on <code>constant/turbulenceProperties</code>:</p>
+<pre><code class="language-c++">simulationType      RAS;
+
+RAS
+{
+    RASModel        kOmegaSST;  // or kEpsilon, kOmega, etc
+
+    turbulence      on;
+
+    printCoeffs     on;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="polymesh"><a class="header" href="#polymesh">polyMesh</a></h1>
+<p>Contains all the mesh details as:</p>
+<h2 id="sets"><a class="header" href="#sets">Sets</a></h2>
+<p>Each set you will create i.g. through</p>
+<pre><code class="language-c">checkMesh;   // or
+topoSet;     // or
+setSet;
+</code></pre>
+<p>It will be stored in this document diversifying between:</p>
+<ul>
+<li>
+<p>pointZone</p>
+</li>
+<li>
+<p>faceZOne</p>
+</li>
+<li>
+<p>cellZone</p>
+</li>
+</ul>
+<h2 id="boundary"><a class="header" href="#boundary">boundary</a></h2>
+<p>Each patch can be put inGroups for pre and post-processing purpose. Each
+patch can thus be in several groups. The patchGroup generated by this
+makes e.g. setting of boundary conditions easier. A patch boundary
+condition definition takes precedence over a patchGroup boundary
+condition.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="thermophysical-model"><a class="header" href="#thermophysical-model">Thermophysical model</a></h1>
+<p>The thermophysicalProperties dictionary is read by any solver that uses
+the thermophysical model library.</p>
+<p>Types of thermo class</p>
+<ul>
+<li>hePsiThermo: General thermophysical model calculation based on compressibility ψ = 1/(RT) - Only gas</li>
+<li>heRhoThermo: General thermophysical model calculation based on density ρ. Gas, liquid, solids</li>
+<li>heSolidThermo: Only solids</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="system"><a class="header" href="#system">System</a></h1>
+<p>The system directory contains all the setting relative to the case.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="controldict"><a class="header" href="#controldict">controlDict</a></h1>
+<p>The time from where simulation starts (startFrom), the time when the
+simulation finishes (stopAt), the time step (deltaT), the data saving
+interval (writeInterval), the saved data file format (writeFormat), the
+saved file data precision (writePrecision), and if changing the files
+during the run can affect the run or not (runTimeModifiable) are set in
+this file.</p>
+<p><em>Note</em>: If the write format is ASCII, then the simulation data which is
+written to the file can be opened and read using any text editor. If the
+format is binary, the data will be written in binary style and is not
+readable by text editors. The advantage of binary over ASCII is the
+smaller file size, and consequently faster conversion and writing to
+disk, for big simulations.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fvschemes"><a class="header" href="#fvschemes">fvSchemes</a></h1>
+<p>This dictionary contains the instructions to discretize the problem’s
+equations. 
+But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.
+Different discretization procedures suit different mesh
+refinement and quality.</p>
+<div class="table-wrapper"><table><thead><tr><th>Main document keywords</th><th>Category of mathematical terms</th></tr></thead><tbody>
+<tr><td>interpolationSchemes</td><td>Point-to-point interpolations of values</td></tr>
+<tr><td>snGradSchemes</td><td>Component of gradient normal to a cell face</td></tr>
+<tr><td>gradSchemes</td><td>Gradient          ∇</td></tr>
+<tr><td>divSchemes</td><td>Divergence      ∇ ∙</td></tr>
+<tr><td>laplacianSchemes</td><td>Laplacian    ∇<sup>2</td></tr>
+<tr><td>timeScheme</td><td>First and second time derivatives ![∂∕ ∂t,∂<sup>2</sup>∕∂t<sup>2</sup>]</td></tr>
+</tbody></table>
+</div>
+<h3 id="gradscheme"><a class="header" href="#gradscheme">gradScheme</a></h3>
+<p>This voice tackles the gradient limitators</p>
+<h3 id="divschemes"><a class="header" href="#divschemes">divSchemes</a></h3>
+<p>Relates to the evaluation of the flux φ (phi) across cell faces which
+transport a property &lt;transporProperties&gt; under the influence of
+velocity field (phi). The schemes are all based on Gauss integration,
+using the flux φ and the advected field being interpolated to the cell
+faces by one of the selected schemes</p>
+<p>These are the convective discretization schemes that you will use most
+of the times:</p>
+<ul>
+<li>
+<p>Gauss upwind → first order accurate.</p>
+</li>
+<li>
+<p>Gauss linearUpwind grad(&lt;transporProperties&gt;) → second order
+accurate, bounded.</p>
+</li>
+<li>
+<p>Gauss linear → second order accurate, unbounded.</p>
+</li>
+<li>
+<p>Gauss limitedLinear → second order accurate, unbounded, but more
+stable than pure linear. Recommended for LES simulations.</p>
+</li>
+</ul>
+<p>Gauss indicates derivatives are evaluated via Gauss’ theorem (no real
+choice there). upwind is standard 1st order upwind interpolation
+(usually too diffusive). linear is standard 2nd order interpolation –
+unbounded. Instead remember that TVD methods (such as superBee, minmod
+vanLeer) switch locally to upwind when they detect strong gradients</p>
+<p>For the discretization of the diffusive terms, you can use a fully
+orthogonal scheme</p>
+<ul>
+<li>
+<p>Linear corrected</p>
+</li>
+<li>
+<p>Linear limited &lt;from0To1&gt;</p>
+</li>
+</ul>
+<p>0 for bad mesh and 1 for good quality mesh</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="discretization-schemes-selection"><a class="header" href="#discretization-schemes-selection">Discretization schemes selection</a></h1>
+<p>The discratazion scheme of the equations must take in account the quality of the mesh. The first calculation arrangemnt that must be set is the &quot;gradient limitation&quot;.</p>
+<h2 id="gradschemes"><a class="header" href="#gradschemes">gradSchemes</a></h2>
+<p>This entry defines the way we compute the
+gradients:</p>
+<h3 id="gradient-computation"><a class="header" href="#gradient-computation">Gradient computation</a></h3>
+<p>The gradients can be computed using the Gauss method or the least squares method. The keywords are:</p>
+<ul>
+<li>Gauss linear</li>
+<li>leastSquares</li>
+</ul>
+<p>The leastSquares method is more accurate, however, I have found that it
+tends to be more oscillatory on tetrahedral meshes</p>
+<h3 id="gradient-limitation"><a class="header" href="#gradient-limitation">Gradient limitation</a></h3>
+<p>Gradient limiters will avoid over and under shoots on the gradient computations. They
+increase the stability of the method but add diffusion due to clipping. There are four available:</p>
+<ul>
+<li>cellMDLimited</li>
+<li>cellLimited</li>
+<li>faceMDLimited</li>
+<li>faceLimited</li>
+</ul>
+<p>They are in order of accuracy, &quot;faceLimited&quot; is the more diffusive, however it provides stability.</p>
+<h3 id="blending-factor"><a class="header" href="#blending-factor">Blending factor</a></h3>
+<p>The gradient limiter implementation uses a blending factor</p>
+<pre><code class="language-c++">gradSchemes
+{
+default
+    cellMDLimited Gauss linear 1 // the blending factor is 1
+}
+</code></pre>
+<p>0 means no blending hence the solution will be accurate but less stable. Of course 1 will introduce the maximum bledning possible.</p>
+<h2 id="divschemes-1"><a class="header" href="#divschemes-1">divSchemes</a></h2>
+<p>These are the convective discretization schemes that you will use most of the times:
+• upwind: first order accurate.
+• linearUpwind: second order accurate, bounded.
+• linear: second order accurate, unbounded.
+• A good TVD scheme (vanLeer or Minmod): TVD, second order accurate,
+bounded.
+• limitedLinear: second order accurate, unbounded, but more stable than
+pure linear. Recommended for LES simulations (kind of similar to the Fromm
+method).
+First order methods are bounded and stable but diffusive.
+Second order methods are accurate, but they might become oscillatory.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>An accurate and stable numerical scheme (second order accurate)</p>
+<pre><code class="language-c++">divSchemes
+{
+    div(phi,U)Gauss linearUpwind grad(U);
+    div(phi,omega)Gauss linearUpwind grad(omega);
+    div(phi,k)Gauss linearUpwind grad(omega);
+    div((nuEff*dev2(T(grad(U)))))Gauss linear;
+}
+
+</code></pre>
+<h2 id="laplacianschemes"><a class="header" href="#laplacianschemes">laplacianSchemes</a></h2>
+<p>For the discretization of the diffusive terms, you can use a fully orthogonal scheme</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear corrected;
+}
+</code></pre>
+<p>You can also use a scheme that uses a blending between a fully orthogonal scheme
+and a non-orthogonal scheme:</p>
+<pre><code class="language-c++">laplacianSchemes
+{
+default
+    Gauss linear limited 1
+}
+</code></pre>
+<p>In summary, by setting the blending factor equal to 0 is equivalent to using the uncorrected
+method. You give up accuracy but gain stability.</p>
+<p>• If you set the blending factor to 0.5, you get the best of both worlds. In this case,
+the non-orthogonal contribution does not exceed the orthogonal part. You give up
+accuracy but gain stability.
+• For meshes with non-orthogonality less than 70, you can set the blending factor
+to 1.
+• For meshes with non-orthogonality between 70 and 85, you can set the blending
+factor to 0.5
+• For meshes with non-orthogonality more than 85, it is better to get a better mesh.
+But if you definitely want to use that mesh, you can set the blending factor to
+0.333, and increase the number of non-orthogonal corrections.</p>
+<h3 id="non-orthogonality-between-70-and-85"><a class="header" href="#non-orthogonality-between-70-and-85">Non-orthogonality between 70 and 85</a></h3>
+<pre><code class="language-c++">gradSchemes
+{
+    default cellLimited Gauss linear 0.5;
+    grad(U) cellLimited Gauss linear 1.0;
+}
+divSchemes
+{
+    div(phi,U) Gauss linearUpwind grad(U);
+    div(phi,omega) Gauss linearUpwind default;
+    div(phi,k) Gauss linearUpwind default;
+    div((nuEff*dev(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default Gauss linear limited 0.5;
+}
+snGradSchemes
+{
+    default limited 0.5;
+}
+
+</code></pre>
+<h3 id="non-orthogonality-between-60-and-70"><a class="header" href="#non-orthogonality-between-60-and-70">Non-orthogonality between 60 and 70</a></h3>
+<pre><code class="language-c++">gradSchemes
+{
+    default cellMDLimited Gauss linear 0.5;
+    grad(U) cellMDLimited Gauss linear 0.5;
+}
+divSchemes
+{
+    div(phi,U) Gauss linearUpwind grad(U);
+    div(phi,omega) Gauss linearUpwind default;
+    div(phi,k) Gauss linearUpwind default;
+    div((nuEff*dev(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default Gauss linear limited 0.777;
+}
+snGradSchemes
+{
+    default limited 0.777;
+}
+</code></pre>
+<h3 id="non-orthogonality-between-40-and-60"><a class="header" href="#non-orthogonality-between-40-and-60">Non-orthogonality between 40 and 60</a></h3>
+<pre><code class="language-c++">gradSchemes
+{
+    default cellMDLimited Gauss linear 0;
+    grad(U) cellMDLimited Gauss linear 0.333;
+}
+divSchemes
+{
+    div(phi,U) Gauss linearUpwind grad(U);
+    div(phi,omega) Gauss linearUpwind default;
+    div(phi,k) Gauss linearUpwind default;
+    div((nuEff*dev(T(grad(U))))) Gauss linear;
+}
+laplacianSchemes
+{
+    default Gauss linear limited 1.0;
+}
+snGradSchemes
+{
+    default limited 1.0;
+}
+</code></pre>
+<h2 id="non-orthogonal-correctors"><a class="header" href="#non-orthogonal-correctors">Non orthogonal correctors</a></h2>
+<p>The orthogonality correctors must be raised once the mesh starts to be highly orthogonal.</p>
+<div class="table-wrapper"><table><thead><tr><th>Non-orthogonality</th><th><n>between 70 and 85: </n></th><th>between 60 and 70</th><th>less than 60</th></tr></thead><tbody>
+<tr><td>nNonOrthogonalCorrectors</td><td>3</td><td>2</td><td>1</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="fvsolution"><a class="header" href="#fvsolution">fvSolution</a></h1>
+<p>Usually is divided in 3 parts: linear-solver, solver and
+under-relaxation factor</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linear-solver"><a class="header" href="#linear-solver">linear solver</a></h1>
+<p>Matrix solver which works on algebraic system of shape Ax=b;
+referring to the method of number-crunching to solve a matrix equation.
+The linear solver stops if any one of the following conditions are
+reached:</p>
+<ul>
+<li>
+<p>tolerance Define the exit criterion for the solver, it is the
+absolute difference between 2 consecutive iterations and must be low
+in steady state while coarser in transient simulation</p>
+</li>
+<li>
+<p>relTol Define the exit criterion for the solver, on a relative
+difference of solution from 2 consecutive iteration (i.e. 0.1 is
+10%)</p>
+</li>
+<li>
+<p>maxIter A maximum number of iterations at which the solver is
+stopped anyway 1000 as default</p>
+</li>
+</ul>
+<p>The solvers can be modified on the fly.
+The GAMG solver (generalized geometric-algebraic multigrid solver), can often be the optimal choice for solving the pressure equation.</p>
+<h2 id="simple-solvers-practice"><a class="header" href="#simple-solvers-practice">SIMPLE solvers practice</a></h2>
+<h3 id="pressure---usual-solver-settings"><a class="header" href="#pressure---usual-solver-settings">Pressure - Usual solver settings</a></h3>
+<p>For the pressure equation:</p>
+<pre><code class="language-c++">p
+{
+  solver GAMG;
+  tolerance 1e-6;
+  relTol 0.01;
+  smoother GaussSeidel;
+  nPreSweeps 0;
+  nPostSweeps 2;
+  cacheAgglomeration on;
+  agglomerator faceAreaPair;
+  nCellsInCoarsestLevel 1000;
+  mergeLevels 1;
+}
+</code></pre>
+<p>After a while it should be good practice to lower the relative tollerance to ```relTol: 0.0```` to let mamage the tollerance in an absolute criteria</p>
+<h3 id="velocity---usual-solver-settings"><a class="header" href="#velocity---usual-solver-settings">Velocity - Usual solver settings</a></h3>
+<pre><code class="language-c++">p
+{
+solver GAMG;
+tolerance 1e-6;
+relTol 0.0;
+smoother GaussSeidel;
+nPreSweeps 0;
+nPostSweeps 2;
+cacheAgglomeration on;
+agglomerator faceAreaPair;
+nCellsInCoarsestLevel 1000;
+mergeLevels 1;
+}
+</code></pre>
+<h2 id="piso--pimple-solvers-practice"><a class="header" href="#piso--pimple-solvers-practice">PISO &amp; PIMPLE solvers practice</a></h2>
+<p>Remember, you must do at least one corrector step when using PISO solvers.
+When you use the PISO and PIMPLE solvers, you also have the option to set the
+tolerance for the final corrector step (.*Final).
+By proceeding in this way, you can put all the computational effort only in the last
+corrector step (.*Final).</p>
+<pre><code class="language-c++">p
+{
+  solver GAMG;
+  tolerance 1e-04;
+  relTol 0.01;
+  smoother GaussSeidel;
+  nPreSweeps 0;
+  nPostSweeps 2;
+  cacheAgglomeration on;
+  agglomerator faceAreaPair;
+  nCellsInCoarsestLevel 1000;
+  mergeLevels 1;
+}
+
+pFinal
+{
+  solver GAMG;
+  tolerance 1e-06;
+  relTol 0.0;
+  smoother GaussSeidel;
+  nPreSweeps 0;
+  nPostSweeps 2;
+  cacheAgglomeration on;
+  agglomerator faceAreaPair;
+  nCellsInCoarsestLevel 1000;
+  mergeLevels 1;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="solver"><a class="header" href="#solver">Solver</a></h1>
+<p>The solver explicit the algorithm the linear system will be arranged to
+go towards convergence such as &lt;pressure-velocity coupling SOLVER&gt;
+(i.e. SIMPLE, PISO or PIMPLE)</p>
+<p><img src="7_Directories%E2%80%99_structure/system/fvSolution/media/image22.png" alt="Diagram Description automatically generated" /></p>
+<p>Figure 2 - PIMPLE algorithm</p>
+<p>All the algorithms solve the same governing equations, consequently they
+differ in how they loop over the equations. The looping is controlled by
+input parameters that are listed below. They are set in a dictionary
+named after the algorithm</p>
+<ul>
+<li>
+<p>nNonOrthogonalCorrectors: used by all algorithms, specifies repeated
+solutions of the pressure equation, used to update the explicit
+non-orthogonal correction of the Laplacian term; typically set to 0
+(particularly for steady-state) or 1.</p>
+</li>
+<li>
+<p>nCorrectors: used by PISO, and PIMPLE, sets the number of times the
+algorithm solves the pressure equation and momentum corrector in
+each step; typically set to 2 or 3.</p>
+</li>
+<li>
+<p>nOuterCorrectors: used by PIMPLE, it enables looping over the entire
+system of equations within on time step, representing the total
+number of times the system is solved; must be and is typically set
+to 1, replicating the PISO algorithm.</p>
+</li>
+<li>
+<p>momentumPredictor: switch those controls solving of the momentum
+predictor; typically set to off for some flows, including low
+Reynolds number and multiphase.</p>
+<h2 id="addtional-notes"><a class="header" href="#addtional-notes">Addtional notes</a></h2>
+</li>
+</ul>
+<p>Set to yes for high Reynolds flows, where
+convection dominates (default value is yes)</p>
+<pre><code class="language-c++"> momentumPredictor yes;
+</code></pre>
+<p>Recommended value is 1 (equivalent to PISO).
+Increase to improve the stability of second
+order time discretization schemes (LES
+simulations). Increase for strongly coupled
+problems.</p>
+<pre><code class="language-c++">nOuterCorrectors 1; 
+</code></pre>
+<p>Recommended to use at least 3 correctors.
+It improves accuracy and stability. Use 4 or
+more for highly transient flows or strongly
+coupled problems.</p>
+<pre><code class="language-c++"> nCorrector 3; 
+</code></pre>
+<p>Recommend to use at least 1 corrector.
+Increase the value for bad quality meshes.</p>
+<pre><code class="language-c++"> nNonOrthogonalCorrectors 1; 
+</code></pre>
+<p>Flag to indicate whether to solve the turbulence
+on the final pimple iteration only. For SRS
+simulations the recommended value is false
+(the default value is true)</p>
+<pre><code class="language-c++"> turbOnFinalIterOnly false; 
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="under-relaxation-factors"><a class="header" href="#under-relaxation-factors">Under-relaxation factors</a></h1>
+<p>Relaxation factors for under-relaxation of fields are specified within
+a <em>field</em> sub-dictionary; relaxation factors for equation
+under-relaxation are within a <em>equations</em> sub-dictionary. </p>
+<h2 id="simple"><a class="header" href="#simple">SIMPLE</a></h2>
+<pre><code class="language-c++">p 0.3;
+U 0.7;
+k 0.7;
+omega 0.7;
+</code></pre>
+<h2 id="simplec"><a class="header" href="#simplec">SIMPLEC</a></h2>
+<pre><code class="language-c++">p 1; 
+U 0.9;
+k 0.9;
+omega 0.9;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="decomposepardict"><a class="header" href="#decomposepardict">decomposeParDict</a></h1>
+<p>The dictionary decomposeParDict is read by the utility</p>
+<pre><code class="language-sh">decomposePar
+</code></pre>
+<p>The utility divides the domain in blocks which will
+be solved by a single core each, hence the domain must be divided in the same parts as permitted parallel processes i.e. cores.</p>
+<p>It is advised to use the <code>schotch</code> option
+if the domain cannot be subdivided in sections with the same amourt of cells inside.
+Use the command to overwrite an already decomposed case:</p>
+<pre><code class="language-console">decomposePar -force
+</code></pre>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
+<pre><code>FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      decomposeParDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+numberOfSubdomains 16;                  // Must be to core numbers
+
+method          hierarchical;           // schotch
+
+coeffs                                  //
+{                                       //
+    n           (2 2 4);                //  No need if method is: schotch
+}                                       //
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fvoptions"><a class="header" href="#fvoptions">fvOptions</a></h1>
+<p>This dictionary defines optional properties the case adopt, such as
+porosity value, temperature limiters, etc.
+The document once it is written does not require an utility to be applicable
+because it is directly read by the solver.</p>
+<h2 id="limiting-the-temperature-field"><a class="header" href="#limiting-the-temperature-field">Limiting the temperature field</a></h2>
+<p>The following dictionary set the max and min temperature allowed in the domain.</p>
+<pre><code class="language-sh">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+limitT
+{
+    type       limitTemperature;
+    min        300;
+    max        460;
+    selectionMode all;
+}
+
+//************************************************************************** //
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="toposetdict"><a class="header" href="#toposetdict">topoSetDict</a></h1>
+<p>This dictionary become more easy the more get exposed to it. Few example of topoSetDict are given.</p>
+<h2 id="divide-the-domain-in-4-domains-with-different-properties"><a class="header" href="#divide-the-domain-in-4-domains-with-different-properties">Divide the domain in 4 domains with different properties</a></h2>
+<pre><code class="language-c++">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    &quot;system&quot;;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(   
+/*   // FaceZones
+        {
+                name baffleSET;
+                type faceSet;
+                action new;
+                //source       searchableSurfaceToCell;
+                //surfaceType  triSurfaceMesh;
+                //surfaceName  copper.stl;
+
+source      surfaceToCell;
+    file    copper.stl;
+    }
+    {
+        name        baffle;
+        type        faceZoneSet;
+        action      new;
+        source      setToFaceZone;
+        faceSet     baffleSET;
+    }
+*/
+//  --------------------------------------------------------------------------------------------
+
+   // CellZones
+    {
+        name           notPCB;
+        type           cellSet;
+        action         new;
+        source         zoneToCell;
+        zones          ( water air hydrogen);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        box     (-1 -1 -1) (1 1 1);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  subtract;     
+        source  cellToCell;   // select all the cells from given cellSet(s).
+        set     notPCB ;
+    }
+    {
+        name    PCB;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     solid ;
+    }
+
+);
+
+// ************************************************************************* //
+</code></pre>
+<p>This dictonary is triggered using:</p>
+<pre><code class="language-sh">topoSet  &gt; ./log/topoSet  &amp;&amp; echo &quot;topoSet Executed&quot;
+</code></pre>
+<p>It will return 4 different cellZones, those cellZones can be then addressed as different region of the mesh.</p>
+<pre><code class="language-sh">splitMeshRegions -cellZonesOnly -overwrite &gt; ./log/splitMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;splitMeshRegions Executed&quot;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="problem-initialization-and-interpolation-from-previous-results"><a class="header" href="#problem-initialization-and-interpolation-from-previous-results">Problem initialization and interpolation from previous results</a></h1>
+<p>If it is not available any previous solution, run:</p>
+<pre><code class="language-console">potentialFoam
+</code></pre>
+<p>a solver for the fluid velocity potential to overwrite <code>0/U</code> with an approximate solution of the field. Instead,if data are present from a previous solution it is possible to map the fields to interpolate the results on the new mesh, running:</p>
+<pre><code class="language-console">mapFields -consistent -sourceTime &lt;\iteration number\&gt; &lt;\path of the
+base case\&gt;
+</code></pre>
+<p>This will overwrite <code>0/*</code> with the value of
+the case interpolating the result in the mesh in interest. If you do not
+specify the flag &quot;-consistent&quot;, it is necessary build a mapFieldsDict (not adivced).</p>
+<p>To reorder the indexing of the matrix to get the more sparse matrix as possible, before launching the calculation use:</p>
+<pre><code class="language-console">renumberMesh
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="browse-source-code"><a class="header" href="#browse-source-code">Browse Source Code</a></h1>
+<p>The best source of information is the source code and the Doxygen documentation.</p>
+<h2 id="source-code"><a class="header" href="#source-code">Source code</a></h2>
+<p>The source code of the solver and governing equations solved are
+described following the source code located in the directory <code>$FOAM_SOLVERS</code></p>
+<p>Looking at the directory as example:</p>
+<pre><code class="language-sh">tree /opt/OpenFOAM/OpenFOAM-v2206/applications/solvers/heatTransfer/buoyantBoussinesqSimpleFoam
+</code></pre>
+<p>It will return the source code that builds the equation of your solver</p>
+<pre><code class="language-console">.
+├── buoyantBoussinesqSimpleFoam.C
+├── createFields.H
+├── Make
+│   ├── files
+│   └── options
+├── pEqn.H
+├── readTransportProperties.H
+├── TEqn.H
+└── UEqn.H
+</code></pre>
+<p>Other sources can be searched around. I.g: To find where the source code
+for the boundary condition &quot;slip&quot; is located:</p>
+<pre><code class="language-sh">find $FOAM_SRC -name &quot;*slip*&quot;
+</code></pre>
+<p>Contoruring <code>slip</code> with <code>*</code> will make <code>find</code> able to find the word even inside a more complex title</p>
+<h2 id="doxigen"><a class="header" href="#doxigen">Doxigen</a></h2>
+<p>The directory <code>$WM_PROJECT_DIR/doc</code> contains the Doxygen documentation
+of OpenFoam®. Before using the Doxygen documentation, you will need to
+compile it. To compile the Doxygen documentation, from the terminal:</p>
+<pre><code class="language-console">cd $WM_PROJECT_DIR
+./Allwmake doc
+</code></pre>
+<blockquote>
+<p><b>Note</b>: You will need to install doxygen and graphviz/dot.</p>
+</blockquote>
+<p>After compiling the Doxygen documentation,
+you can use it by typing:</p>
+<pre><code class="language-console">firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
+</code></pre>
+<p>As a notice we say that the compilation is time consuming.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="parallel-practices"><a class="header" href="#parallel-practices">Parallel practices</a></h1>
+<p>After having complete the decomposition of the domain through
+<code>decomposePar</code> the following commands does the same action, where
+process is intended either as solver or mesher:</p>
+<pre><code class="language-console">mpirun -np &lt;\cores\&gt; &lt;\solver\&gt; -parallel &gt; iterations.log &amp;
+</code></pre>
+<pre><code class="language-console">foamJob -parallel &lt;\solver\&gt;
+</code></pre>
+<p>To take full advantage of the hardware, use the maximum number of physical cores, remember to disable the hyperthreading on the machine you are running.
+The output of the previous command writes a log file that records either events thatoccur in the macine to monitor the simulation.</p>
+<pre><code class="language-console">tail -f  iteration.log         #Live scrolling
+</code></pre>
+<pre><code class="language-sh">tail -&lt;\linesToDisplay\&gt;  # Static scrolling
+</code></pre>
+<p>When the simulation is finished, all you time-step/iteration are in the
+processor’s folder, to build a single case the following command it is
+needed:</p>
+<pre><code class="language-console">reconstructParMesh
+reconstructPar
+</code></pre>
+<p>If you need to kill the process in parallel, check top at first and the
+execute:</p>
+<pre><code class="language-console">pkill &lt;\processName\&gt;
+</code></pre>
+<p>if for some reason the process does not close, given the fact OpenFOAM® processes
+are not vital for the system you can force the kill using :</p>
+<pre><code class="language-console">kill -9
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="multiphase-model"><a class="header" href="#multiphase-model">Multiphase model</a></h1>
+<p>Multiphase models can put in place simulations with liquid-liquid, liquid-gas, gas-gas and fluid-solid interactions.
+One of the more simple multiphase solver is:</p>
+<pre><code class="language-sh">interFoam
+</code></pre>
+<p>Which solves the Navier Stokes equations for two incompressible, isothermal immiscible fluids. That means that the material properties are constant in the region filled by one of the two fluid except at the interphase. Transferrable, a similar pattern is present fot all the multiphase solver hence additional set-up must take place to deliver a simulation with more than one phase.</p>
+<h2 id="set-up"><a class="header" href="#set-up">Set-up</a></h2>
+<p>In a multiphase simulation you need to define the phase properties and its interaction through the <code>constant</code> directory.
+Looking at the necessary file to run a more complex solver for liquid/gasseous interaction in a disperse phase like <code>twoPhaseEulerFoam</code>.
+The <code>constant</code> directory should look like this:</p>
+<pre><code class="language-console">constant
+├── phaseProperties
+├── thermophysicalProperties.hydrogen
+├── thermophysicalProperties.water
+├── turbulenceProperties.hydrogen
+└── turbulenceProperties.water
+</code></pre>
+<p>It this scenario we have the liquid phase as water, describing its theral behaviour in <code>thermophysicalProperties.water</code></p>
+<pre><code class="language-c++">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties.water;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+   equationOfState
+    {
+        rho             983.2;              // density     [kg/m^3]   at 60°C  
+    }
+    specie
+    {
+        molWeight       18.01528;           // water molecular weight   [g/mol]
+    }
+    thermodynamics
+    {
+        Cp              4190;               // Specific Heat at 90°C         [J/Kg K]
+        Hf              0;                  // Heat of fusion - 0 in single phase
+    }
+    transport
+    {
+        mu              4.66E-04;           // dynamic viscosity at 90°C   [Kg/m s]
+        Pr              2.98;               // Prandtl Number at 90°C      [nu/alfa] = [mu Cp/k] [-]    
+    }
+
+}
+
+
+</code></pre>
+<p>While the interaction between the two phases should look something like:</p>
+<pre><code class="language-c++">FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      phaseProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type isothermalPhaseModel ;
+phases          (hydrogen water);
+
+hydrogen
+{
+    diameterModel   isothermal;
+    isothermalCoeffs
+    {
+        d0              3e-5;
+        p0              1e5;
+    }
+    residualAlpha   1e-6;
+}
+
+water
+{
+    diameterModel   constant;
+    constantCoeffs
+    {
+        d               1e-6;
+    }
+    residualAlpha   1e-6;
+}
+
+blending
+{
+    default
+    {
+        type            linear;
+        maxFullyDispersedAlpha.hydrogen 0.7;
+        maxPartlyDispersedAlpha.hydrogen 0.7;
+        maxFullyDispersedAlpha.water 0.7;
+        maxPartlyDispersedAlpha.water 0.7;
+    }
+}
+
+sigma
+(
+    (hydrogen and water)     0.07
+);
+
+aspectRatio
+(
+    (hydrogen in water)
+    {
+        type            constant;
+        E0              1.0;
+    }
+
+    (water in hydrogen)
+    {
+        type            constant;
+        E0              1.0;
+    }
+);
+
+drag
+(
+    (hydrogen in water)
+    {
+        type            SchillerNaumann;
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (water in hydrogen)
+    {
+        type            SchillerNaumann;
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (hydrogen and water)
+    {
+        type            segregated;
+        residualAlpha   1e-6;
+        m               0.5;
+        n               8;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+);
+
+virtualMass
+(
+    (hydrogen in water)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (water in hydrogen)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+);
+
+heatTransfer
+(
+    (hydrogen in water)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-3;
+    }
+
+    (water in hydrogen)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-3;
+    }
+);
+
+lift
+(
+);
+
+wallLubrication
+(
+);
+
+turbulentDispersion
+(
+);
+
+// Minimum allowable pressure
+pMin            10000;
+
+</code></pre>
+<p>where <code>sigma</code> is the surface tension between the interfaces</p>
+<p>If you change the name of the fluid in phases (water air); there is the
+need change the extension of the name as well in 0 because the nomenclature
+must be consistent:</p>
+<pre><code>0
+├── alpha.hydrogen
+├── p
+├── p_rgh
+├── Theta
+├── T.hydrogen
+├── T.water
+├── U.hydrogen
+└── U.water
+</code></pre>
+<p>Even remember that the first material that you define in the first row of this document will be taken as the first term of the VOF (volume of
+fluid) equation.</p>
+<blockquote>
+<p><b>Warning:</b> In fvSolutions miss the keyword
+cAlpha 1.0 to put in the section of alphaWater.*</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conjugate-heat-transfer-model"><a class="header" href="#conjugate-heat-transfer-model">Conjugate Heat Transfer Model</a></h1>
+<p>Several solvers:</p>
+<ul>
+<li>
+<p>chtMultiRegionFoam</p>
+</li>
+<li>
+<p>chtMultiRegionSimpleFoam → steady state version of chtMultiRegionFoam</p>
+</li>
+</ul>
+<p>Allows for defining multiple regions in the problem domain by setting up
+computational meshes, models and conditions separately for each region,
+including solid-only (metal) ones. The steady-state flow and heat
+transfer in the complete domain is obtained by solving the mass,
+momentum and energy conservation equations simultaneously in all
+regions, including the thermal coupling among them.</p>
+<p>Create the mesh</p>
+<p>Use topoSet (dependent on topoSetDict) to set different cellZones in
+your domain</p>
+<p>Then split the mesh to create interfaces and different body with the
+following</p>
+<pre><code class="language-console">splitMeshRegions -cellZonesOnly -overwrite
+</code></pre>
+<p>And generate the</p>
+<pre><code class="language-console">changeDictionary -region &lt;\region1\&gt;
+</code></pre>
+<pre><code class="language-console">changeDictionary -region &lt;\region2\&gt;
+</code></pre>
+<p>Follow the following tutorial to set up a case:</p>
+<p>Check the constant/water/thermophysicalProperties, in the
+thermophysicalProperties.thermo.type you should find heRhoThermo for the
+fluid region and heSolidThermo for the solid region.</p>
+<h2 id="thermal-boundary-conditions"><a class="header" href="#thermal-boundary-conditions">Thermal boundary conditions</a></h2>
+<p>Instead as BC in 0, for selecting the thermal conductivity aside of
+kappaMethod you need to introduce the keywords:</p>
+<ul>
+<li>
+<p>lookup: the used thermal conductivity is specified in the own
+boundary field by means of the name kappa. kappa is the name of the
+field.</p>
+</li>
+<li>
+<p>fluidthermo: the used thermal conductivity is the one corresponding
+to the fluid, specified in &lt;material&gt;/thermophysical</p>
+</li>
+<li>
+<p>solidthermo: the used thermal conductivity is the one corresponding
+to the solid, specified in &lt;material&gt;/thermophysical</p>
+</li>
+<li>
+<p>directionalSolidThermo: the thermal conductivity is the one
+corresponding to an orthotropic material, and it is specified in
+&lt;material&gt;/thermophysical (directionalKSolidThermoCoeffs)</p>
+</li>
+</ul>
+<p>For introducing thin walls:</p>
+<pre><code class="language-c">thicknessLayers ( \&lt;thicknessOfTheLayer\&gt; );
+kappaLayers ( \&lt;thermalConductivityOfTheLayer\&gt; );
+</code></pre>
+<p>Check the constant/&lt;region&gt;/polyMesh/boundary on to check the
+interface type which should be of this kind type: solidThermo for the
+solid and type: fluidThemo for the fluid. Other than that, it is
+necessary that the interface will be declared as</p>
+<p>type: mappedWall</p>
+<h2 id="baffles-generation"><a class="header" href="#baffles-generation">Baffles generation</a></h2>
+<p>In thermal problems it is often necessary resolve thin walls. Hence baffle modelling result to be a good choice if the computaional power is not adapt to solve little features.</p>
+<pre><code class="language-c++">\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createBafflesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Whether to convert internal faces only (so leave boundary faces intact).
+// This is only relevant if your face selection type can pick up boundary
+// faces.
+internalFacesOnly true;
+
+
+// Baffles to create.
+baffles
+{
+    copperLayers
+    {
+        type        searchableSurface;
+        surface     triSurfaceMesh;
+        name        copperLayers.stl;
+
+        patchPairs
+        {
+            type wall;      //mappedWall;
+
+            sampleMode      nearestPatchFace;
+            sameGroup       off;
+            patchFields
+            {
+                p
+                  {
+                    type            calculated;
+                    value           uniform 0;
+                  }
+
+                  T
+                    {
+                    type            compressible::thermalBaffle1D&lt;hConstSolidThermoPhysics&gt;;
+                    thickness       uniform 35E-06;    // thickness [m]
+                    qs              uniform 0;         // heat flux [W/m2]
+                    value           uniform 350;
+
+                    specie
+                    {
+                        molWeight   63.546;   // g/mol
+                    }
+
+                    transport
+                    {
+                        kappa   401;          // W/(m·K)
+                    }
+
+                    thermodynamics
+                    {
+                        Hf      0;
+                        Cp      3900;
+                    }
+
+                    equationOfState
+                    {
+                        rho     8920;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+}
+
+
+// ************************************************************************* //
+</code></pre>
+<p>Then the execution in done via:</p>
+<pre><code class="language-sh">createBaffles -region PCB  -overwrite &gt;  ./log/createBaffles  2&gt;&amp;1 &amp;&amp; echo &quot;createBaffles Executed&quot;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="run-in-parallel-a-cht-model"><a class="header" href="#run-in-parallel-a-cht-model">Run in parallel a CHT model</a></h1>
+<p>To decompose a case with more than one region it is opportune to run
+this shell script in a way that you correctly distribute the regions
+between the processors:</p>
+<p>And the decompose the case through:</p>
+<pre><code class="language-bash">decomposePar -allRegions
+</code></pre>
+<p>Remember to create symbolic link to all your</p>
+<pre><code class="language-bash">/system/\&lt;region&gt;/decomposeParDict -&gt; system/decomposeParDict
+mpirun -n \&lt;nProcessors&gt; \&lt;solver&gt; -parallel
+</code></pre>
+<h2 id="script-example"><a class="header" href="#script-example">Script example</a></h2>
+<p>This script aims to show most of the action that a CHT case usually require:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+#------------------------------------------------------------------------------
+
+SLURM_NTASKS=16
+
+./Allclean
+source /opt/OpenFOAM/OpenFOAM-v2206/etc/bashrc           # Source the Openfoam binaries
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+rm -r log;
+mkdir log
+
+for region in $(foamListRegions)
+do
+    rm -r constant/$region/polyMesh;
+done
+echo &quot;Eliminated mesh create in old regions&quot;
+
+restore0Dir
+surfaceFeatureExtract &gt; ./log/surfaceFeatureExtract.log 2&gt;&amp;1  &amp;&amp; echo &quot;surfaceFeatureExtract Executed/n&quot;
+blockMesh  &gt; ./log/blockMesh.log 2&gt;&amp;1  &amp;&amp; echo &quot;blockMesh Executed&quot;
+decomposePar -force  &gt; ./log/decomposePar1.log 2&gt;&amp;1 &amp;&amp; echo &quot;decomposePar1 Executed&quot;
+mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite &gt; ./log/snappyHexMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;snappyHexMesh Executed&quot;
+
+## --------------------   SINGLE CORE -------------------------------------------- #
+
+# reconstructParMesh -constant &gt; ./log/reconstructParMesh1 2&gt;&amp;1 &amp;&amp; echo &quot;Reconstruct Case&quot;
+# topoSet  &gt; ./log/topoSet  &amp;&amp; echo &quot;topoSet Executed&quot;
+# splitMeshRegions -cellZonesOnly -overwrite &gt; ./log/splitMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;splitMeshRegions Executed&quot;
+# checkMesh &gt; ./log/checkMesh-EVERYCELLZONES.log 2&gt;&amp;1 &amp;&amp; echo &quot;checkMesh Executed&quot;
+# createBaffles -region PCB  -overwrite &gt;  ./log/createBaffles  2&gt;&amp;1 &amp;&amp; echo &quot;createBaffles Executed&quot;
+
+## Create a new 0/regions/* following a single dictionary in system/region/changeDIcitonaryDict
+# for region in $(foamListRegions)
+# do
+#   changeDictionary -region $region &gt; ./log/changeDictionary.$region.log 2&gt;&amp;1
+# done
+# echo &quot;changeDictionary Executed&quot;
+# decomposePar -force -allRegions  &gt; ./log/decomposePar2 2&gt;&amp;1 &amp;&amp; echo &quot;decomposePar2 Executed&quot;
+
+##  ----------------------   PARALLEL CORES   -----------------------------------------------
+
+mpirun -np $SLURM_NTASKS topoSet -parallel &gt; ./log/topoSet  2&gt;&amp;1 &amp;&amp; echo &quot;topoSet Executed&quot;
+mpirun -np $SLURM_NTASKS splitMeshRegions -cellZonesOnly -overwrite -parallel &gt; ./log/splitMesh.log 2&gt;&amp;1 &amp;&amp; echo &quot;splitMeshRegions Executed&quot;
+mpirun -np $SLURM_NTASKS checkMesh -parallel &gt; ./log/checkMesh-EVERYCELLZONES.log 2&gt;&amp;1 &amp;&amp; echo &quot;checkMesh Executed&quot;
+
+## Create a new 0/regions/* following a single dictionry 
+for region in $(foamListRegions)
+do
+  mpirun -np $SLURM_NTASKS changeDictionary -region $region -parallel &gt; ./log/changeDictionary.$region.log 2&gt;&amp;1
+done
+echo &quot;changeDictionary Executed&quot;
+
+## ---------------------------  Calculations in parallel start -------------------------------------------------------
+
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel   &gt; ./log/$(getApplication).log 2&gt;&amp;1 &amp;&amp; echo &quot;$(getApplication) Executed&quot;
+reconstructParMesh -constant -allRegions &gt; ./log/reconstructParMesh.log 2&gt;&amp;1
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="residuals"><a class="header" href="#residuals">Residuals</a></h1>
+<p>The residual is evaluated by substituting the current solution into the
+equation, taking the magnitude of the difference between the left- and
+right-hand sides; it is also normalised to make it independent of the
+scale of the problem being analysed. Consequently, before solving an
+equation for a particular field, the initial residual is evaluated based
+on the current values of the field. After each solver iteration the
+residual is re-evaluated. To terminate the case, the initial residual of
+the field equations must falls below user-specified threshold values.</p>
+<h2 id="check-convergence"><a class="header" href="#check-convergence">Check convergence</a></h2>
+<p>A simple trick to check the converge of the calculations properly, consits in checking
+the \( ν_{t} \) convergence value since it is dependent from \( k \) and \(  ε \)
+which both must converge to get a good \( ν_{t} \, hence it is one of the best indicator
+of convergence.</p>
+<h2 id="graphically-check-convergence"><a class="header" href="#graphically-check-convergence">Graphically check convergence</a></h2>
+<p>Usually residuals can be monitored via terminal live or in a log file afterwords.
+However few solution are present if you want to generate a chart:</p>
+<h3 id="charts-with-gnuplot"><a class="header" href="#charts-with-gnuplot">Charts with GNUPlot</a></h3>
+<p>GNU Plot is program for plotting mathematical expressions and data, to install it:</p>
+<p><code>sudo apt install gnuplot</code></p>
+<p>and creating a file: <code>/system/residual</code> called in <code>/system/controlDict</code> in this way</p>
+<p>Then run:</p>
+<pre><code class="language-console">foamMonitor -l ./postprocessing/0/residuals
+</code></pre>
+<h3 id="charts-with-pyfoam"><a class="header" href="#charts-with-pyfoam">Charts with pyFoam</a></h3>
+<p>pyFoam is a python library to control OpenFOAM-runs and manipulate OpenFOAM-data.
+Pyhton is usually already present in all GNU-Linux system and ready to use.</p>
+<p>To install the programme with <code>pip</code> the package manger for pyhton projects you
+need to run:</p>
+<pre><code class="language-console">pip install PyFoam
+</code></pre>
+<p>One recommended usage of these utilities would be to start a simulation with foamJob
+and display the residuals with pyFoamPlotWatcher.py without interfering with the simulation.</p>
+<pre><code class="language-console">pyFoamPlotRunner.py \&lt;solver\&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paraview"><a class="header" href="#paraview">ParaView</a></h1>
+<p>To install it download the binary file from the ParaView website, un-tar
+it. To call in the correct way ParaView, after having downloaded binary
+file, put in your ~/.bashrc file the installation directory and source
+the file after that, so it each time the terminal is called the path
+will be registered and you can call ParaView with command line command;
+ParaView.</p>
+<pre><code class="language-console">export PATH= \&lt;installationPath&gt;/ParaView-\&lt;ParaViewVersion&gt;/bin:${PATH}
+</code></pre>
+<p>and then make this modification active for the same session</p>
+<pre><code class="language-console">source ./bashrc
+</code></pre>
+<p>There is the need to create a dummy file in the working directory to
+make ParaView be able to read the OpenFOAM® format.</p>
+<pre><code class="language-console">touch \&lt;nameOfTheCase\&gt;.foam
+</code></pre>
+<p>If ParaView is installed on GNU-Linux it is convenient call it with command</p>
+<pre><code class="language-console">paraview \&lt;nameOfTheCase\&gt;.foam &amp;
+</code></pre>
+<p>The tag &amp; keeps the program in background so you can continue to use the
+same terminal page. In Windows Subsystem for GNU-Linux (WSL) it is enough
+terminate the installation and run the executable;</p>
+<pre><code class="language-console">ParaView.exe \&lt;nameOfTheCase\&gt;.foam
+</code></pre>
+<p>When ParaView return errors in reading, it could be possible to solve it
+changing the case format, convert the result of the simulation in VTK
+format (Visualization Tool Kit), make it easier read the file and the
+properties contained on in. The following command does this:</p>
+<pre><code class="language-console">foamToVTK
+</code></pre>
+<blockquote>
+<p>WARNING: If you use pressure-based solver as simpleFoam, it is
+necessary multiply the pressure for the density!!!</p>
+</blockquote>
+<h2 id="parallel-visualization-in-local-machine"><a class="header" href="#parallel-visualization-in-local-machine">Parallel visualization in local machine</a></h2>
+<p>It is possible to parallelize the visualization task to deal with big
+cases in your local machine, the simplest way is to enable the “Auto
+MPI” mode through the following actions:</p>
+<ul>
+<li>Open ParaView</li>
+<li>Edit</li>
+<li>Settings</li>
+<li>Enabled advanced options (the cogwheel up right)</li>
+<li>Scroll down (or search for) “Multicore Support”</li>
+<li>Enable AutoMPI and set the number of cores → restart ParaView.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pvserver"><a class="header" href="#pvserver">pvserver</a></h1>
+<p>pvserver is a server side utility that permit to use ParaView headless and in
+parallel in a remote location, which we assume will have the capacity to
+visuality heavy cases. To be sure that the connection server/client work
+be sure to have the same verison of paraview installed in both the machines.
+Best practice before starting to work with <code>pvserver</code>, check that the port
+used by the service (11111 by default) is free:</p>
+<pre><code class="language-console">netstat -na | grep 11111
+</code></pre>
+<p>If the port is listening, you can start the connection. For an accurate view of the listening ports and which programmes are
+using those;</p>
+<pre><code class="language-console">sudo netstat -ltnp
+</code></pre>
+<p>the flags indicate respectively:</p>
+<ul>
+<li>l: display only listening sockets</li>
+<li>t: display TCP connection</li>
+<li>n: display addresses in a numerical form</li>
+<li>p: display process ID/ Program name</li>
+</ul>
+<h3 id="serverclient-connection"><a class="header" href="#serverclient-connection">Server/Client connection</a></h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Server side </strong></th>
+<th><strong>Client side </strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>On the terminal execute:</p>
+<p>mpiexec -np 4 pvserver</p>
+<p>This command will establish a connection though the port 11111 (default for ParaView), if you want to specify a different port</p>
+<p>mpiexec -np 4 pvserver --server-port=&lt;<strong>portNumber</strong>&gt;</p>
+<p>On the terminal, get your IP address:</p>
+<p>hostname -i</p>
+<p>And your client host name:</p>
+<p>hostname -a</p></td>
+<td><p>In ParaView go on:</p>
+<p>File → Connect → Add Server</p>
+<p>And fulfil the fields in this way</p>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>&lt;<strong>serverPublicIPAddress</strong>&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Server type</td>
+<td>Client/Server</td>
+</tr>
+<tr class="even">
+<td>Port</td>
+<td>11111</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>Configure</td>
+<td>Manual startup</td>
+</tr>
+</tbody>
+</table>
+<p>Port 11111 is the default TCP port for the ParaView connection, if this port is occupied from another service you can set up another port accordingly with the server setting.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Connect</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paraview-compilation"><a class="header" href="#paraview-compilation">ParaView compilation</a></h1>
+<p>Sometimes, if you need particular features from paraview it is necessaty to
+build it from source. You'll need CMake and Ninja. Follow the instruction
+present at this source to understand which features are availble.
+<a href="https://vcg.iwr.uni-heidelberg.de/manual_source/">https://vcg.iwr.uni-heidelberg.de/manual_source/</a></p>
+<p>The build process follows the usual cmake scheme, from the root of your
+source code:</p>
+<pre><code class="language-console">mkdir build
+cd build
+cmake ..
+cmake --build .
+</code></pre>
+<p>Assuming you have a debian based distro on the server the following libraries
+should be required</p>
+<pre><code class="language-console">sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
+lib32z1
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="trouble-shooting-commons-problem"><a class="header" href="#trouble-shooting-commons-problem">Trouble shooting commons problem</a></h1>
+<p>ParaView in latest version require drivers for OpenGL &gt; 3 and in
+certain OS (such as CentOS 7) this is not compatible, hence if the
+installed OpenGL driver are not supported, try to launch ParaView
+telling to follow the MESA drivers:</p>
+<pre><code class="language-console">MESA_GL_VERSION_OVERRIDE=3.2 paraview
+</code></pre>
+<p>Otherwise:</p>
+<pre><code class="language-console">paraview –mesa
+</code></pre>
+<p>Same if you need to use ParaView in a headless mode and a graphic card
+is not available, but you still want to render on the server. You can
+build ParaView with these options to overtake the problem:</p>
+<pre><code class="language-console">cmake -GNinja -DVTK\_OPENGL\_HAS\_OSMESA=ON -DVTK\_USE\_X=OFF -DPARAVIEW\_USE\_QT=OFF ../\&lt;locationParaViewSourceCode\&gt;</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="post-processing-via-command-line"><a class="header" href="#post-processing-via-command-line">Post processing via command line</a></h1>
+<p>An example to run the post process for y<sup>+</sup>sup&gt;+</sup></p>
+<pre><code class="language-console">\&lt;solver\&gt; -postProcess -func \&lt;functionNameInControlDict\&gt;
+</code></pre>
+<p>Every solver can be run with the -postProcess option, which only
+executes post-processing, but with additional access to data available
+on the database for the solver. To list the possible parameters to post
+process:</p>
+<pre><code class="language-console">postProcess -list
+</code></pre>
+<p>For a run-processing, or a complicated function postprocess where is
+necessary state different parameters. The simulation must be furnished
+with the function object (Function objects are utilities to ease
+workflow configurations and enhance workflows by producing additional
+user-requested data both during runtime and postprocessing calculations,
+typically in the form of additional logging to the screen, or generating
+text, image, and field files) in controlDict as follow:</p>
+<p>To manage in a simply way the function field already calculated through
+controlDict, (already written in the data folder); the command line for
+the post processing is the follow; this example is about averaging the
+heat Transfer Coefficient.</p>
+<pre><code class="language-console">postProcess -func 'patchAverage(name=wall,heatTransferCoeff(T))'
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cluster-practice"><a class="header" href="#cluster-practice">Cluster practice</a></h1>
+<p>Check what module of OpenFoam® is installed</p>
+<pre><code class="language-console">module avail
+</code></pre>
+<p>the module command modifies your environment so that the path and other
+variables are set and you can use the selected program. Before a series
+of command starts inside the shell script it is necessary to prepare the
+environment, this is an example:</p>
+<pre><code class="language-bash">#!/bin/bash
+#SBATCH --job-name=OF-Job
+#SBATCH --ntasks=36
+#SBATCH --output=%x_%j.out
+#SBATCH --constraint=c5.18xlarge
+
+#------------------------------------------------------------------------------
+
+module load openmpi                                      # Module upload
+source /fsx/programs/OpenFOAM®/OpenFOAM®-v2112/etc/bashrc  # Source OpenFOAM® bashrc command
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+
+#------------------------------------------------------------------------------
+
+rm -r log; mkdir log
+restore0Dir
+decomposePar -force &gt; ./log/decomposePar.log 2&gt;&amp;1
+mpirun -np $SLURM_NTASKS checkMesh -parallel  &gt; ./log/checkMesh.log 2&gt;&amp;1
+mpirun -np $SLURM_NTASKS redistributePar -parallel -overwrite  &gt; ./log/redistributePar.log 2&gt;&amp;1
+mpirun -np $SLURM_NTASKS renumberMesh -parallel -overwrite -constant  &gt; ./log/renumberMesh.log 2&gt;&amp;1
+mpirun -np $SLURM_NTASKS patchSummary -parallel  &gt; ./log/patchSummary.log 2&gt;&amp;1
+mpirun -np $SLURM_NTASKS potentialFoam -parallel  &gt; ./log/potentialFoam.log 2&gt;&amp;1
+
+#------------------------------------------------------------------------------
+
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel   &gt; ./log/$(getApplication).log 2&gt;&amp;1
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compile-functionobjects"><a class="header" href="#compile-functionobjects">Compile functionObjects</a></h1>
+<p>Once you are in possess of the file .C and .H of the function you want
+to add. A new directory must add to the $FOAM_SRC/functionObject/…/</p>
+<p>For instance, ReynoldsNo folder and relative files has been transferred
+to <code>$FOAM_SRC/functionObject/fields/</code></p>
+<p>Inside this directory create an entrance in the file Make/fields like:
+ReynoldsNo/ReynodsNo.C</p>
+<p>Then run in ../Make the command</p>
+<pre><code class="language-console">wmake
+</code></pre>
+<p>Remember to install the command &quot;make&quot;, if it is not installed proceed in this way:</p>
+<pre><code class="language-console">sudo apt-get install make
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usefull-windows-programmes"><a class="header" href="#usefull-windows-programmes">Usefull windows programmes</a></h1>
+<p>Here there is a list of useful programmes that are available for Windows system</p>
+<h2 id="notepad-"><a class="header" href="#notepad-">NotePad ++</a></h2>
+<p>If you are in a Windows environment, we suggest using NotePad++ as a
+default text editor.</p>
+<p>A single modification must be apported since writing script in this
+environment can cause crashes due to a different treatment of invisible
+character for Windows or UNIX. Operate this mod to make the file
+readable without trouble in GNU-Linux:</p>
+<p>NotePad++ → Edit → EOL conversion →  UNIX</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="virtualization"><a class="header" href="#virtualization">Virtualization</a></h1>
+<p>This is a problme that is expecially present for Windows or Mac-OS user, since it must
+be used a virtual system to simulate a GNU-Linux environment. Here there are two choices
+in order features completeness.</p>
+<ul>
+<li>WSL: for Windows system</li>
+<li>Multipass: for Windows system</li>
+<li>Docker: for Mac-OS user</li>
+</ul>
+<h3 id="nb"><a class="header" href="#nb">NB</a></h3>
+<p>Docker can be used in Windows as well however it is retained a more poliedric working tool a
+stable virtual machine as the one Canonical has developed for Windows.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-subsystem-for-gnu-linux"><a class="header" href="#windows-subsystem-for-gnu-linux">Windows Subsystem for GNU-Linux</a></h1>
+<p>OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
+run in PowerShell as admin for the enabling a necessary Windows feature:</p>
+<pre><code class="language-console">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
+/all /norestart
+</code></pre>
+<p>The proceed with the installation:</p>
+<pre><code class="language-console">wsl –install
+</code></pre>
+<p>Then, once installed, The GNU-Linux root folder is in the Windows file
+explorer in:</p>
+<pre><code class="language-console">\\wsl$\Ubuntu-20.04\
+</code></pre>
+<p>Or whatever distribution you have.</p>
+<h2 id="wsl-gui-in-windows"><a class="header" href="#wsl-gui-in-windows">WSL GUI in Windows</a></h2>
+<p>To lunch GUI programmes via WSL the following actions must take place:
+Install an Xserver like VcXsrv, download from
+<a href="https://sourceforge.net/projects/vcxsrv/">https://sourceforge.net/projects/vcxsrv/ 782</a>
+and install/start it. Specifying the server numer to be ‘0’ on the first
+screen and also allow public access</p>
+<p>Disable Windows Defender Firewall for Guest or public Network</p>
+<p>In WSL edit the file</p>
+<pre><code class="language-console">export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 &gt;&gt; ~/.bashrc
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="multipass"><a class="header" href="#multipass">Multipass</a></h1>
+<p>If you need to use VMs in your machine together with Docker, WSL could
+not be the best choice since it can create dependencies problem, and one
+of the virtual environment above citated will not work at the current
+time. A solution for the coexistence of container and VM in your machine
+is the usage of Multipass</p>
+<p>Multipass is a VM supplied by Canonical which is powerful and contain
+systemd. To start a multipass instance run on the Power Shell:</p>
+<p>multipass launch -v -c 18 -d 64G -m 40G –-name &lt;nameOfTheInstance&gt;</p>
+<p>Few comments on the flags:</p>
+<ul>
+<li>c → CPU cores</li>
+<li>d → Disk space</li>
+<li>m → Memory</li>
+<li>v → Verbose</li>
+</ul>
+<p>To mount a part of your file system in your virtual multipass machine
+do:</p>
+<pre><code class="language-console">multipass mount 'D:\\' \&lt;nameOfTheInstance\&gt;:
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
+<p>First create a docker file, which is a strictly a file named “Dockerfile”,
+on which will be build a docker image that will become a container once is
+running. To build the image from the Docker file use:</p>
+<pre><code class="language-console">docker build -t &lt;nameOfTheImage&gt; &lt;DockerfileDirectory&gt;
+</code></pre>
+<h2 id="system-images"><a class="header" href="#system-images">System images</a></h2>
+<p>An image becomes a container when you execute it. Check the images that are present in your system after the build 
+docker images</p>
+<h2 id="running-the-container"><a class="header" href="#running-the-container">Running the container</a></h2>
+<pre><code class="language-console">docker run -ti -–rm &lt;imageID&gt;
+</code></pre>
+<p>Here's some more info on the flags:</p>
+<ul>
+<li>ti       → make you access to the terminal</li>
+<li>rm       →   remove the container once you exit</li>
+<li>d        →  (deamon) run the container in detached mode (in the background)</li>
+<li>p 80:80  →   port exposition</li>
+</ul>
+<p>To see if the container is running check:</p>
+<pre><code class="language-console">docker ps
+</code></pre>
+<p>Then to start and/or stop the container run:</p>
+<pre><code class="language-console">docker stop &lt;imageID&gt;
+</code></pre>
+<pre><code class="language-console">docker start &lt;imageID&gt;
+</code></pre>
+<h2 id="mount-a-file-system-directory-inside-a-docker-container"><a class="header" href="#mount-a-file-system-directory-inside-a-docker-container">Mount a file system directory inside a docker container</a></h2>
+<p>Do not store your simulation data in the container. Instead let’s give our 
+container access to just a little bit of our local filesystem. From your project
+directory in a Windows environment, run:</p>
+<pre><code class="language-console">docker run -ti --rm -v ${PWD}:/data -w /data &lt;imageID&gt;
+</code></pre>
+<p>By adding the -v option we’re asking Docker to mount our current working directory
+($PWD) as /data in the container. We’ve also added the -w switch to tell Docker
+that we’d like to be in /data when the container starts.</p>
+<h2 id="creating-an-image-from-a-container"><a class="header" href="#creating-an-image-from-a-container">Creating an image from a container</a></h2>
+<p>You can convert a container into an image by using the command</p>
+<pre><code class="language-console">docker commit 
+</code></pre>
+<h2 id="delete-the-container"><a class="header" href="#delete-the-container">Delete the container</a></h2>
+<p>The following command will delete the container:</p>
+<pre><code class="language-console">docker rmi &lt;imageID&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gnu-linux-distro-settings"><a class="header" href="#gnu-linux-distro-settings">GNU-Linux distro settings</a></h1>
+<p>Several distribution may need some libraries, and correct callings to make the system working</p>
+<h2 id="fedora"><a class="header" href="#fedora">Fedora</a></h2>
+<p>To compile OpenFOAM in Fedora system, a particulary library must be exported in the exectution path:</p>
+<pre><code class="language-sh">export PATH=$PATH:/usr/lib64/openmpi/bin
+source /usr/lib/openfoam/openfoam2112/OpenFOAM®-v2112/etc/bashrc
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>

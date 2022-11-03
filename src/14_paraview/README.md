@@ -42,14 +42,17 @@ properties contained on in. The following command does this:
 foamToVTK
 ```
 
-WARNING: If you use pressure-based solver as simpleFoam, it is
+> WARNING: If you use pressure-based solver as simpleFoam, it is
 necessary multiply the pressure for the density\!\!\!
 
-## Parallel visualization in local machine 
+## Parallel visualization in local machine
 
 It is possible to parallelize the visualization task to deal with big
 cases in your local machine, the simplest way is to enable the “Auto
-MPI” mode through the following actions: 
-Open ParaView → Edit → Settings → Enabled advanced options (the cogwheel up right) → Scroll
-down (or search for) “Multicore Support” → Enable AutoMPI and set the
-number of cores → restart ParaView.
+MPI” mode through the following actions:
+- Open ParaView
+- Edit
+- Settings
+- Enabled advanced options (the cogwheel up right)
+- Scroll down (or search for) “Multicore Support”
+- Enable AutoMPI and set the number of cores → restart ParaView.
