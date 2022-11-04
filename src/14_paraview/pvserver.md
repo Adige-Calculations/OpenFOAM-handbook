@@ -5,7 +5,7 @@ parallel in a remote location, which we assume will have the capacity to
 visuality heavy cases. To be sure that the connection server/client work
 be sure to have the same verison of paraview installed in both the machines.
 Best practice before starting to work with ```pvserver```, check that the port
-used by the service (11111 by default) is free
+used by the service (11111 by default) is free:
 
 ```console
 netstat -na | grep 11111
