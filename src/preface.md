@@ -1,4 +1,4 @@
-[![title](images/powered_by_adige.svg)](https://www.adigecalculations.com/)
+[![title](images/powered_by_adige.png)](https://www.adigecalculations.com/)
 
 # Preface
 This handbook is intended to support a medium/advanced OpenFoam® user
