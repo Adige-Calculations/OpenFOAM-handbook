@@ -1,26 +1,29 @@
 # Docker
 
 Docker is an open-source software project automating the deployment of applications inside software containers.
+To visualise how many imagesyou have in your system run:
 
-## Installation
-As a first step check if you have docker installed, if not, proceed to the installation via: https://www.docker.com/
-
-## Image generation
-
-The command to build an image is:
-
-```console
-docker build <DirectoryWhereTheDockerfileIsLocated>
-
-# To list the images do:
+```sh
 docker images
 ```
 
-First create a docker file, which is a file named “Dockerfile” similar to the fllowng script snippet, 
-(depending on your esigence) on which will be build a docker image that will become a container once is
-running. 
+It works with images and container, the main difference between this two is:
 
-```Dockerfile
+- An image is piece of memory with the os and applicaiton data inside
+- A container instead is a running image
+## System images
+An image becomes a container when you execute it. Check the images that are present in your system after the build
+docker images, the command to build an image is:
+
+```sh
+docker build <DirectoryWhereTheDockerfileIsLocated>
+```
+
+First create a docker file, which is a file named ```Dockerfile``` with a content similar to the followng
+script snippet (depending on your esigence) on which will be build a docker image that will become a container once is
+running.
+
+```sh
 # Start from the official Ubuntu official image in DockeHub (last LTS version)
 FROM ubuntu:latest    
 
@@ -51,12 +54,9 @@ USER of-user
 ```
 To build the image from the ```Dockerfile``` use:
 
-```console
+```sh
 docker build -t <nameOfTheImage> <DockerfileDirectory>
 ```
-## System images
-An image becomes a container when you execute it. Check the images that are present in your system after the build 
-docker images
 
 ## Running the container
 Running the container means that the docker file will be read and executed, the execution
@@ -84,7 +84,7 @@ docker start <imageID>
 docker stop <imageID>
 ```
 
-## Mount a file system directory inside a docker container
+### Mount a file system directory inside a docker container
 Do not store your simulation data in the container. Instead let’s give our 
 container access to just a little bit of our local filesystem. From your project
 directory in a Windows environment, run:
