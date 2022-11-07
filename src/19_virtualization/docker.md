@@ -13,7 +13,7 @@ The command to build an image is:
 docker build <DirectoryWhereTheDockerfileIsLocated>
 
 # To list the images do:
-docker image
+docker images
 ```
 
 First create a docker file, which is a file named “Dockerfile” similar to the fllowng script snippet, 
@@ -77,13 +77,11 @@ To see if the container is running check:
 ```console
 docker ps
 ```
-Then to start and/or stop the container run:
+Then to start and/or stop the container run the following self explatory commands:
 
 ```console
-docker stop <imageID>
-```
-```console
 docker start <imageID>
+docker stop <imageID>
 ```
 
 ## Mount a file system directory inside a docker container
@@ -108,5 +106,22 @@ docker commit
 The following command will delete the container:
 
 ```console
+docker ps				   # To visualise them
 docker rmi <imageID>
+```
+
+## Delete the image
+To delete the images that does not run a container above them run;
+
+```
+docker images  				# To visualise them
+docker image rm <imageID>
+```
+
+## Reclaim space from machine
+
+Docker saves container chaces on ```var/lib/docker```, this can create obstruction in machine that
+does not have disk available. A quick solution is to run the following command to clean the system cache:
+```console
+docker system prune -a -f
 ```
