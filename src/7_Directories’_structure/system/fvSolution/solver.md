@@ -1,14 +1,6 @@
 # Solver
 
-
-The solver explicit the algorithm the linear system will be arranged to
-go towards convergence such as \<pressure-velocity coupling SOLVER\>
-(i.e. SIMPLE, PISO or PIMPLE)
-
-![Diagram Description automatically generated](media/image22.png)
-
-Figure 2 - PIMPLE algorithm
-
+The solver use a specific algorithm to prepare the resolution pattern of your linear system such as SIMPLE, PISO or PIMPLE.
 All the algorithms solve the same governing equations, consequently they
 differ in how they loop over the equations. The looping is controlled by
 input parameters that are listed below. They are set in a dictionary
@@ -32,7 +24,7 @@ named after the algorithm
     predictor; typically set to off for some flows, including low
     Reynolds number and multiphase.
 
-    ## Addtional notes
+### Addtional notes
 Set to yes for high Reynolds flows, where
 convection dominates (default value is yes)
 ```c++
@@ -59,6 +51,12 @@ Increase the value for bad quality meshes.
 ```c++
  nNonOrthogonalCorrectors 1; 
  ```
+The orthogonality correctors must be raised once the mesh starts to be highly orthogonal.
+
+|Non-orthogonality       |<n>between 70 and 85: </n>| between 60 and 70 | less than 60 |
+|------------------------|--------------------------|-------------------|--------------|
+|nNonOrthogonalCorrectors| 3                | 2| 1|
+
 Flag to indicate whether to solve the turbulence
 on the final pimple iteration only. For SRS
 simulations the recommended value is false

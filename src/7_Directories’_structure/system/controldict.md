@@ -13,3 +13,54 @@ format is binary, the data will be written in binary style and is not
 readable by text editors. The advantage of binary over ASCII is the
 smaller file size, and consequently faster conversion and writing to
 disk, for big simulations.
+
+A simple example of a ```controlDict``` is display below:
+
+```c++
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     simpleFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+graphFormat     raw;  // (raw is default)
+
+runTimeModifiable true;
+
+functions
+{
+    #include "yPlus"
+}
+```

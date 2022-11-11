@@ -1,4 +1,4 @@
-# linear solver
+# Linear solver
 
 Matrix solver which works on algebraic system of shape Ax=b;
 referring to the method of number-crunching to solve a matrix equation.

@@ -66,11 +66,9 @@
 
   - [System](7_Directories’_structure/system/README.md)
 
-    - [controlDict ](7_Directories’_structure/system/controldict.md)
+    - [controlDict](7_Directories’_structure/system/controldict.md)
 
-    - [fvSchemes ](7_Directories’_structure/system/fvSchemes/README.md)
-
-      - [Discretization schemes selection](7_Directories’_structure/system/fvSchemes/discretization-schemes-selection.md)
+    - [fvSchemes](7_Directories’_structure/system/fvSchemes.md)
 
     - [fvSolution](7_Directories’_structure/system/fvSolution/README.md)
 
