@@ -48,7 +48,7 @@
 
 - [Directories’ structure](7_Directories’_structure/README.md)
 
-  - [0 (i.e. Boundary Conditions)](7_Directories’_structure/0/README.md)
+  - [0](7_Directories’_structure/0/README.md)
 
     - [ε, ω, k](7_Directories’_structure/0/ε-ω-k/README.md)
 
@@ -78,7 +78,7 @@
 
       - [Solver](7_Directories’_structure/system/fvSolution/solver.md)
 
-      - [Under-relaxation factors](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
+      - [Under-relaxation](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
 
     - [decomposeParDict](7_Directories’_structure/decomposepardict.md)
 
@@ -125,3 +125,5 @@
   - [Docker](19_virtualization/docker.md)
 
 - [GNU-Linux distro settings](20_distribution_setting/README.md)
+
+- [Navier Stokes equations ](21_math_formulation/README.md)
