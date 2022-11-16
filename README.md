@@ -2,7 +2,7 @@
 
 ## Web site:
 
-[![website](src/images/globe-dark.svg)](http://openfoam-handbook.adigecalculations.com/)
+:globe_with_meridians: Link: http://openfoam-handbook.adigecalculations.com/
 
 <!-- The book can be consulted at this link:  https://openfoam-handbook.adigecalculations.com -->
 ## What this book is all about?
