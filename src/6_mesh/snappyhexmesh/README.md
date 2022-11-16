@@ -44,3 +44,28 @@ The following commands will start the meshing process:
 | snappyHexMesh -overwrite   | decomposePar -force        |
 |                            | mpirun -n 16 snappyHexMesh -parallel -overwrite       |
 |                            | reconstructParMesh -latestTime -constant |
+
+
+## Meshing multiples bodies
+
+If you want to mesh different entities with separate mesh, you might run twice 
+snappyHexMesh with different value of Location in mesh and then use the tool ```mergeMesh```.
+Otherwise you can use the dictionary before running the mesh.
+To permit the recognition of different closed STL files the
+sub-dictionary "snappyHexMesh.castellatedMeshControls.locationInMesh" must
+be modified in "snappyHexMesh.castellatedMeshControls.locationsInMesh" and
+follow a similar resolution:
+
+```c++
+    …
+   locationsInMesh
+      (
+        ((0.010276 0.058958 0.000248) zone1)
+  	    ((0.011472 0.10046  0.000256) zone2)
+       );
+   …
+```
+
+In this scenario, it is possible to introduce to bodies as a single mesh
+without recurring to use the utility ```mergeMeshes```. The bodies will be
+distinguished from a different cellZones allocations.
