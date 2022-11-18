@@ -1,4 +1,4 @@
-[![Adige logo image](src/images/powered_by_adige.png)](https://www.adigecalculations.com/)
+[![Adige-logo-image](src/images/powered_by_adige.png)](https://www.adigecalculations.com/)
 
 ## Web site:
 
