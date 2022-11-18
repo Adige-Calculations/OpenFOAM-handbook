@@ -35,3 +35,39 @@ are not vital for the system you can force the kill using :
 ```console
 kill -9
 ```
+
+## Parallelization issues
+
+Given the case the ```0``` directory has not been set before the case decomposition,
+what you can recover the mesh reconstructing it and then decompose it again with annex 
+the ```0``` folder in place following this series of command at meshing done::
+
+```console
+reconstructParMesh -constant
+restore0Dir
+decomposePar -force
+```
+
+When it is reconstructed only the mesh, and decomposed a second time to include the
+0 directory, an error can occur when trying to reconstruct at the conclusion of the
+case. A solution is to run:
+
+```console
+reconstructParMesh -constant && reconstructPar -latestTime
+```
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../footers/footer_first_level_depth.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>

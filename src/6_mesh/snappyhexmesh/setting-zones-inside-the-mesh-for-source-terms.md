@@ -149,3 +149,19 @@ actions
 To visualize how much Cell Zone there is inside the domain run
 checkMesh, while if you desire to delete a cellZone, delete the files
 that topoSet creates in: ```constant/polyMesh/sets```
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../../footers/footer_second_level_depth.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>

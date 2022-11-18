@@ -1,4 +1,17 @@
 #!/bin/sh
+# delete the last 16 lines of a file
+
+# for markdown_file in */*.md
+#   do
+#   sed -e :a -e '$d;N;2,16ba' -e 'P;D' 
+# done
+# # delete the last 16 lines of a file
+
+# for markdown_file in */*/*.md
+#   do
+#   sed -e :a -e '$d;N;2,16ba' -e 'P;D' 
+# done
+
 
 for file in */*.md
 	do
@@ -24,7 +37,7 @@ EOF
 done
 
 # Fix picking up in a way that picks up only file in second level
-for file in !*/!*/*.md
+for file in */*/*.md
 	do
 	cat <<\EOF >> $file
 

@@ -36,10 +36,6 @@
 
     - [Refinement technique](6_mesh/snappyhexmesh/advanced-refinement-technique.md)
 
-    - [Multiple closed body](6_mesh/snappyhexmesh/meshing-more-than-one-closed-body.md)
-
-    - [Parallelization issues](6_mesh/snappyhexmesh/parallelization-issues.md)
-
   - [cfMesh ](6_mesh/cfmesh.md)
 
   - [checkMesh](6_mesh/checkMesh.md)
@@ -78,9 +74,9 @@
 
       - [Under-relaxation](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
 
-    - [decomposeParDict](7_Directories’_structure/decomposepardict.md)
+    - [decomposeParDict](7_Directories’_structure/system/decomposepardict.md)
 
-    - [fvOptions](7_Directories’_structure/fvOptions.md)
+    - [fvOptions](7_Directories’_structure/system/fvOptions.md)
 
     - [topoSetDict](7_Directories’_structure/system/topoSetDict.md)
 

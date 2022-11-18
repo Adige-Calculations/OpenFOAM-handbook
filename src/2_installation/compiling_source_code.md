@@ -77,3 +77,20 @@ nodes called c5n.18xlarge made by 36 cores each. The job should compile in few m
 
 The location of the source code is different because the software is installed on a
 shared file system for distribution purpose.
+
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../footers/footer_first_level_depth.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>
