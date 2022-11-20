@@ -90,8 +90,6 @@
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
 
-  - [Run in parallel a CHT model](12_conjugate-heat-transfer-model/run-in-parallel-a-cht-model.md)
-
 - [Residuals](13_residuals/README.md)
 
 - [ParaView](14_paraview/README.md)

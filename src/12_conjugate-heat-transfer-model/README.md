@@ -1,39 +1,40 @@
 # Conjugate Heat Transfer Model
 
-Several solvers:
+Simulate the heat transfert between a solid and a fluid mean necessity a CHT model.
+Several solvers that implements these model are present, the most common are called:
 
-  - chtMultiRegionFoam
+  - <b> chtMultiRegionFoam </b>
 
-  - chtMultiRegionSimpleFoam → steady state version of chtMultiRegionFoam
+  - <b> chtMultiRegionSimpleFoam </b> → steady state version of chtMultiRegionFoam
 
-Allows for defining multiple regions in the problem domain by setting up
+These allow the definition of multiple regions in the domain by setting up
 computational meshes, models and conditions separately for each region,
-including solid-only (metal) ones. The steady-state flow and heat
+including solid-only ones. The steady-state flow and heat
 transfer in the complete domain is obtained by solving the mass,
 momentum and energy conservation equations simultaneously in all
 regions, including the thermal coupling among them.
 
-Create the mesh
+## Mesh partition practice
 
-Use topoSet (dependent on topoSetDict) to set different cellZones in
-your domain
+At first you must define different region, using the ```topoSet``` utility ( which 
+follows "system/topoSetDict") to set different cellZones:
 
-Then split the mesh to create interfaces and different body with the
-following
+```console 
+topoSet
+```
+Then split the mesh to create interfaces and distinct domain regions to couple the CHT model:
 
 ```console
 splitMeshRegions -cellZonesOnly -overwrite
 ```
-And generate the
-```console
-changeDictionary -region <\region1\>
-```
-```console
-changeDictionary -region <\region2\>
-```
-Follow the following tutorial to set up a case:
+And generate a set of dictionaty from a sample:
 
-Check the constant/water/thermophysicalProperties, in the
+```console
+changeDictionary -region <regionName1>
+changeDictionary -region <regionName2>
+```
+
+Check the "constant/<regionName>/thermophysicalProperties", in the
 thermophysicalProperties.thermo.type you should find heRhoThermo for the
 fluid region and heSolidThermo for the solid region.
 
@@ -41,34 +42,117 @@ fluid region and heSolidThermo for the solid region.
 Instead as BC in 0, for selecting the thermal conductivity aside of
 kappaMethod you need to introduce the keywords:
 
-  - lookup: the used thermal conductivity is specified in the own
+  - <b> lookup </b> →  the used thermal conductivity is specified in the own
     boundary field by means of the name kappa. kappa is the name of the
     field.
 
-  - fluidthermo: the used thermal conductivity is the one corresponding
-    to the fluid, specified in \<material\>/thermophysical
+  - <b> fluidthermo </b> →  the used thermal conductivity is the one corresponding
+    to the fluid, specified in <material>/thermophysical
 
-  - solidthermo: the used thermal conductivity is the one corresponding
-    to the solid, specified in \<material\>/thermophysical
+  - <b>  solidthermo </b> →  the used thermal conductivity is the one corresponding
+    to the solid, specified in <material>/thermophysical
 
-  - directionalSolidThermo: the thermal conductivity is the one
+  - <b> directionalSolidThermo </b> -> the thermal conductivity is the one
     corresponding to an orthotropic material, and it is specified in
-    \<material\>/thermophysical (directionalKSolidThermoCoeffs)
+    <material>/thermophysical (directionalKSolidThermoCoeffs)
 
-For introducing thin walls:
+## Parallel execution a CHT model
 
-```c
+To decompose a case with more than one region it is opportune to run
+this shell script in a way that you correctly distribute the regions
+between the processors:
+
+And the decompose the case through:
+```bash
+decomposePar -allRegions
+```
+
+Remember to create symbolic link to all your
+```bash
+/system/<regionName>/decomposeParDict -> system/decomposeParDict
+mpirun -n <nProcessors> <solver> -parallel
+```
+
+### Script example
+This script aims to show most of the action that a CHT case usually require:
+
+```bash
+#!/bin/bash
+
+#------------------------------------------------------------------------------
+
+SLURM_NTASKS=16
+
+./Allclean
+source /opt/OpenFOAM/OpenFOAM-v2206/etc/bashrc           # Source the Openfoam binaries
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+rm -r log;
+mkdir log
+
+for region in $(foamListRegions)
+do
+    rm -r constant/$region/polyMesh;
+done
+echo "Eliminated mesh create in old regions"
+
+restore0Dir
+surfaceFeatureExtract > ./log/surfaceFeatureExtract.log 2>&1  && echo "surfaceFeatureExtract Executed/n"
+blockMesh  > ./log/blockMesh.log 2>&1  && echo "blockMesh Executed"
+decomposePar -force  > ./log/decomposePar1.log 2>&1 && echo "decomposePar1 Executed"
+mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite > ./log/snappyHexMesh.log 2>&1 && echo "snappyHexMesh Executed"
+
+## --------------------   SINGLE CORE -------------------------------------------- #
+
+# reconstructParMesh -constant > ./log/reconstructParMesh1 2>&1 && echo "Reconstruct Case"
+# topoSet  > ./log/topoSet  && echo "topoSet Executed"
+# splitMeshRegions -cellZonesOnly -overwrite > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
+# checkMesh > ./log/checkMesh-EVERYCELLZONES.log 2>&1 && echo "checkMesh Executed"
+# createBaffles -region PCB  -overwrite >  ./log/createBaffles  2>&1 && echo "createBaffles Executed"
+
+## Create a new 0/regions/* following a single dictionary in system/region/changeDIcitonaryDict
+# for region in $(foamListRegions)
+# do
+#   changeDictionary -region $region > ./log/changeDictionary.$region.log 2>&1
+# done
+# echo "changeDictionary Executed"
+# decomposePar -force -allRegions  > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
+
+##  ----------------------   PARALLEL CORES   -----------------------------------------------
+
+mpirun -np $SLURM_NTASKS topoSet -parallel > ./log/topoSet  2>&1 && echo "topoSet Executed"
+mpirun -np $SLURM_NTASKS splitMeshRegions -cellZonesOnly -overwrite -parallel > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
+mpirun -np $SLURM_NTASKS checkMesh -parallel > ./log/checkMesh-EVERYCELLZONES.log 2>&1 && echo "checkMesh Executed"
+
+## Create a new 0/regions/* following a single dictionry 
+for region in $(foamListRegions)
+do
+  mpirun -np $SLURM_NTASKS changeDictionary -region $region -parallel > ./log/changeDictionary.$region.log 2>&1
+done
+echo "changeDictionary Executed"
+
+## ---------------------------  Calculations in parallel start -------------------------------------------------------
+
+mpirun -np $SLURM_NTASKS $(getApplication) -parallel   > ./log/$(getApplication).log 2>&1 && echo "$(getApplication) Executed"
+reconstructParMesh -constant -allRegions > ./log/reconstructParMesh.log 2>&1
+```
+
+### Thin walls
+For introducing thin walls inside your domain:
+
+```c++
 thicknessLayers ( \<thicknessOfTheLayer\> );
 kappaLayers ( \<thermalConductivityOfTheLayer\> );
 ```
-Check the constant/\<region\>/polyMesh/boundary on to check the
+Check the "constant/<regionName>/polyMesh/boundary" on to check the
 interface type which should be of this kind type: solidThermo for the
 solid and type: fluidThemo for the fluid. Other than that, it is
 necessary that the interface will be declared as
 
+```c++
 type: mappedWall
+```
 
-## Baffles generation
+### Baffles generation
 
 In thermal problems it is often necessary resolve thin walls. Hence baffle modelling result to be a good choice if the computaional power is not adapt to solve little features.
 
@@ -151,11 +235,12 @@ baffles
 
 // ************************************************************************* //
 ```
-Then the execution in done via:
+Then the execution should look like the following example:
 
 ```sh
 createBaffles -region PCB  -overwrite >  ./log/createBaffles  2>&1 && echo "createBaffles Executed"
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script
