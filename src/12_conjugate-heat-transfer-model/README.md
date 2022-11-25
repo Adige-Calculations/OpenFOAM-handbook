@@ -16,27 +16,120 @@ regions, including the thermal coupling among them.
 
 ## Mesh partition practice
 
-At first you must define different region, using the ```topoSet``` utility ( which 
+At first you must define different regions, using the ```topoSet``` utility ( which 
 follows "system/topoSetDict") to set different cellZones:
 
 ```console 
 topoSet
+```
+An example of topoSet can be the following one, which separates threee fluid with a solid region,
+and apply a face zone:
+
+```c++
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+   FaceZones
+    {
+            name copperLayerAirSET;
+            type faceSet;
+            action new;
+            source patchToFace;
+            sourceInfo { patch copperLayerAir; }
+    }
+
+    {
+        name      copperLayerAir;
+        type      faceZoneSet;
+        action    new;
+        source    setToFaceZone;
+        faceSet   copperLayerAirSET;
+    }
+    
+   // CellZones
+    {
+        name           notPCB;
+        type           cellSet;
+        action         new;
+        source         zoneToCell;
+        zones          ( water air hydrogen);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        box     (-1 -1 -1) (1 1 1);
+    }
+    {
+        name    solid;
+        type    cellSet;
+        action  subtract;
+        source  cellToCell;   // select all the cells from given cellSet(s).
+        set     notPCB ;
+    }
+    {
+        name    PCB;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     solid ;
+    }
+
+);
 ```
 Then split the mesh to create interfaces and distinct domain regions to couple the CHT model:
 
 ```console
 splitMeshRegions -cellZonesOnly -overwrite
 ```
-And generate a set of dictionaty from a sample:
+
+This will overwrite a new mesh, divided into different CellZones. 
+
+## Setting boundary conditions practice
+
+Since multiple domains are present, manually managing the ```0``` directory dictionaries
+can be overwhelming. The utility ```changeDictionary``` can be used to generate a set of
+dictionary from a sample:
 
 ```console
 changeDictionary -region <regionName1>
 changeDictionary -region <regionName2>
 ```
+To make this utility wokring your "system" directory must imitate a similar layout:
+```console
+system
+│
+├── regionName1
+│   ├── changeDictionaryDict
+│   ├── decomposeParDict -> ../decomposeParDict
+│   ├── fvOptions -> ../fvOptions
+│   ├── fvSchemes
+│   └── fvSolution
+├── regionName2
+│   ├── changeDictionaryDict
+│   ├── createBafflesDict
+│   ├── decomposeParDict -> ../decomposeParDict
+│   ├── fvOptions -> ../fvOptions
+│   ├── fvSchemes
+│   └── fvSolution
+├── topoSetDict
+├── controlDict
+└── ...
+```
 
-Check the "constant/<regionName>/thermophysicalProperties", in the
-thermophysicalProperties.thermo.type you should find heRhoThermo for the
-fluid region and heSolidThermo for the solid region.
+Check the "constant/<regionName>/thermophysicalProperties" to be consistent with the nomenclature,
+then in the dictionary section ```thermophysicalProperties.thermo.type``` you should set 
+"heRhoThermo" for setting the fluid region and "heSolidThermo" for the solid region.
 
 ## Thermal boundary conditions
 Instead as BC in 0, for selecting the thermal conductivity aside of
@@ -66,8 +159,7 @@ And the decompose the case through:
 ```bash
 decomposePar -allRegions
 ```
-
-Remember to create symbolic link to all your
+Remember to create symbolic link to all your decomosition files to be consistent:
 ```bash
 /system/<regionName>/decomposeParDict -> system/decomposeParDict
 mpirun -n <nProcessors> <solver> -parallel
