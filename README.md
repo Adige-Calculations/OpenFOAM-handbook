@@ -1,25 +1,67 @@
-[![Adige-logo-image](src/images/powered_by_adige.png)](https://www.adigecalculations.com/)
+<div align="center">
+  <p align="center">
+    <a href="https://www.adigecalculations.com/">
+    <img src="src/images/powered_by_adige.png" alt="Adige OF book logo" >
+  </p>
+  <strong>This book describes the usual practices a medium/advanced OpenFoam® user takes during CFD smulations workflows. </strong>
 
-## Web site:
+  <h3>
+    <a href="http://openfoam-handbook.adigecalculations.com/">Read the Book</a>
+    <span> | </span>
+    <a href="https://github.com/Adige-Calculations/OpenFOAM-handbook">Contributing</a>
+    <span> | </span>
+    <a href="https://www.adigecalculations.com/contact">Chat</a>
+  </h3>
 
-:globe_with_meridians: Link: http://openfoam-handbook.adigecalculations.com/
+  <sub>Explore open-source simualtion with us! 🌊 🌫 ♨️ </sub>
+</div>
 
-<!-- The book can be consulted at this link:  https://openfoam-handbook.adigecalculations.com -->
-## What this book is all about?
-This book describes the usual practices a medium/advanced OpenFoam® user
-takes during CFD smulations workflows. Shortcuts and support are given for the every-day
-use.
-It should be seen as a co-pilot to remember commands or take inspiration
-for your CFD workflow, instead of a place to study on.
+## About
 
-## Build the book
-To build the book on you local machine, the Rust toolchain must be previously installed,
-the package you need to build the book is called ```mdbook```. Follow the instruction to
-build the book
+This repo contains documentation on using OpenFoam®, common workflows, how
+to get started and more as you dive deeper. It acts as a guide for doing some really neat things with OpenFoam®.
+However, keep in mind it should be seen as a co-pilot for your CFD workflow, instead of a place to study on.
 
-```sh
-cargo install mdbook
-mdbook build
-# To serve it in local
-mdbook serve
+[Open issues for improving the Rust and WebAssembly book.][book-issues]
+
+[book-issues]: https://github.com/Adige-Calculations/OpenFOAM-handbook/issues
+
+## Building the Book
+
+The book is made using [`mdbook`][mdbook]. To install it you'll need `cargo`
+installed. If you don't have any Rust tooling installed, you'll need to install
+[`rustup`][rustup] first. Follow the instructions on the site in order to get
+setup.
+
+Once you have that done then just do the following:
+
+```bash
+$ cargo install mdbook
 ```
+
+Make sure the `cargo install` directory is in your `$PATH` so that you can run
+the binary.
+
+Now just run this command from this directory:
+
+```bash
+$ mdbook build
+```
+
+This will build the book and output files into a directory called `book`. From
+there you can navigate to the `index.html` file to view it in your browser. You
+could also run the following command to automatically generate changes if you
+want to look at changes you might be making to it:
+
+```bash
+$ mdbook serve
+```
+
+This will automatically generate the files as you make changes and serves them
+locally so you can view them easily without having to call `build` every time.
+
+The files are all written in Markdown so if you don't want to generate the book
+to read them then you can read them from the `src` directory.
+
+[mdbook]: https://github.com/rust-lang-nursery/mdBook
+[rustup]: https://github.com/rust-lang-nursery/rustup.rs/
