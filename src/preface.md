@@ -14,7 +14,7 @@ resolve the setting of a problem in the shortest possible time.
 | -----------  | ------------------- |
 | Abc          | Normal text         |
 |``` Abc```    | Shell command       |
-|```</Abc/>``` | User input required |
+|```<Abc>``` | User input required |
 
 
 ## Installation location

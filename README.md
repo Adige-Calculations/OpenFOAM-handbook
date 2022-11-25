@@ -22,7 +22,7 @@ This repo contains documentation on using OpenFoam®, common workflows, how
 to get started and more as you dive deeper. It acts as a guide for doing some really neat things with OpenFoam®.
 However, keep in mind it should be seen as a co-pilot for your CFD workflow, instead of a place to study on.
 
-[Open issues for improving the Rust and WebAssembly book.][book-issues]
+[Open issues for improving the OpenFOAM® hand-book.][book-issues]
 
 [book-issues]: https://github.com/Adige-Calculations/OpenFOAM-handbook/issues
 
