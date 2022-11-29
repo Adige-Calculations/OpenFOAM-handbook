@@ -13,7 +13,7 @@
     <a href="https://www.adigecalculations.com/contact">Chat</a>
   </h3>
 
-  <sub>Explore open-source simualtion with us! 🌊 🌫 ♨️ </sub>
+  <sub>Explore open-source simualtions with us! 🌊 🌫 ♨️ </sub>
 </div>
 
 ## About
