@@ -8,28 +8,31 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart
 ```
 The proceed with the installation:
+
 ```console
 wsl –install
 ```
-Then, once installed, The GNU-Linux root folder is in the Windows file
-explorer in:
+
+After having prepared the environment, download from the Windows Store the GNU/Linux
+distribution you would like to work on. Then, once installed, The GNU-Linux root folder
+is in the Windows file explorer in:
 
 ```console
 \\wsl$\Ubuntu-20.04\
 ```
-Or whatever distribution you have.
+Change the distribution name accordingly to the distribution you have chosen to run.
 
-
-## WSL GUI in Windows
+## GUI applications
 To lunch GUI programmes via WSL the following actions must take place:
 Install an Xserver like VcXsrv, download from
 [https://sourceforge.net/projects/vcxsrv/ 782](https://sourceforge.net/projects/vcxsrv/)
 and install/start it. Specifying the server numer to be ‘0’ on the first
-screen and also allow public access
+screen and also allow public access such as:
 
+```console 
 Disable Windows Defender Firewall for Guest or public Network
-
-In WSL edit the file
+```
+In WSL edit the file shell confing file in this way:
 ``` console
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
 ```
