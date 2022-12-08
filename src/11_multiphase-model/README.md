@@ -15,7 +15,7 @@ In a multiphase simulation you need to define the phase properties and its inter
 Looking at the necessary file to run a more complex solver for liquid/gasseous interaction in a disperse phase like ```twoPhaseEulerFoam```.
 The ```constant``` directory should look like this:
 
-```console
+```sh
 constant
 ├── phaseProperties
 ├── thermophysicalProperties.hydrogen

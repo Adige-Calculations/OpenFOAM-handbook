@@ -12,7 +12,7 @@ substituting and adding the entries and modifying the featured angles
 cells, lowering this value it wouldn’t be consider these cells and it
 will be applied a merged cell)
 
-```console
+```sh
 surfaceFeatureExtract
 ```
 
@@ -23,7 +23,7 @@ will appear in constant/extendedFeatureEdgeMesh/
 
 If you want to extract very thin layer, use the utility
 
-```console
+```sh
 extrudeMesh
  ```
 dependent on the dictionary ```system/extrudeMeshDict``` to extrude some layers

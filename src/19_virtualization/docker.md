@@ -61,7 +61,7 @@ docker build -t <nameOfTheImage> <DockerfileDirectory>
 Running the container means that the docker file will be read and executed, the execution
 can be modified by the flags that follows the utility such as:
 
-```console
+```sh
 docker run -ti -–rm <imageID>
 ```
 Here's some more info on the flags:
@@ -73,12 +73,12 @@ Here's some more info on the flags:
 
 To see if the container is running check:
 
-```console
+```sh
 docker ps
 ```
 Then to start and/or stop the container run the following self explatory commands:
 
-```console
+```sh
 docker start <imageID>
 docker stop <imageID>
 ```
@@ -88,7 +88,7 @@ Do not store your simulation data in the container. Instead let’s give our
 container access to just a little bit of our local filesystem. From your project
 directory in a Windows environment, run:
 
-```console
+```sh
 docker run -ti --rm -v ${PWD}:/data -w /data <imageID>
 ```
 By adding the -v option we’re asking Docker to mount our current working directory
@@ -98,19 +98,19 @@ that we’d like to be in /data when the container starts.
 ## Creating an image from a container 
 You can convert a container into an image by using the command
 
-```console
+```sh
 docker commit 
 ```
 ## Delete container
 The following command will delete the container:
 
-```console
+```sh
 docker ps			 	   # To visualise them
 docker rmi <imageID>
 ```
 
 Or you can delete all of them piping two commands:
-```console 
+```sh 
 docker rm -vf $(docker ps -aq)
 ```
 
@@ -124,14 +124,14 @@ docker image rm <imageID>
 ```
 Or you can delete all of them piping two commands:
 
-```console
+```sh
 docker rmi -f $(docker images -aq)
 ```
 
 ## Reclaim space from machine
 Docker saves container chaces on ```var/lib/docker```, this can clog a machine that
 does not have storage available. A quick solution is to run the following command to clean the system cache:
-```console
+```sh
 docker system prune -a -f
 ```
 <!--  Script to show the footer   -->

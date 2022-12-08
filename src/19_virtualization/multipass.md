@@ -21,7 +21,7 @@ Few comments on the flags:
 To mount a part of your file system in your virtual multipass machine
 execute this command in powershell:
 
-```console
+```sh
 # In this case D:\\ is the name of the disk I would like to mout on the virtual machine
 multipass mount 'D:\\' <nameOfTheInstance>
 ```

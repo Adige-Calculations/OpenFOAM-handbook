@@ -10,7 +10,7 @@ Choose ASCII and then you can easily extract the file in ASCII format by
 exporting the mesh. Then move the produced file on the root directory of your case
 and run:
 
-```console
+```sh
 fluentMeshToFoam foo.msh
 ```
 

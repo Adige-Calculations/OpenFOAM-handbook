@@ -7,22 +7,22 @@ the file after that, so it each time the terminal is called the path
 will be registered and you can call ParaView with command line command;
 ParaView.
 
-```console
+```sh
 export PATH= <installationPath>/ParaView-<ParaViewVersion>/bin:${PATH}
 ```
 and then make this modification active for the same session
-```console
+```sh
 source ./bashrc
 ```
 There is the need to create a dummy file in the working directory to
 make ParaView be able to read the OpenFOAM® format.
 
-```console
+```sh
 touch <nameOfTheCase>.foam
 ```
 If ParaView is installed on GNU-Linux system, it is convenient call it with command
 
-```console
+```sh
 paraview <nameOfTheCase>.foam &
 ```
 
@@ -30,7 +30,7 @@ The tag & keeps the program in background so you can continue to use the
 same terminal page. In Windows Subsystem for GNU-Linux (WSL) it is enough
 terminate the installation and run the executable;
 
-```console
+```sh
 ParaView.exe <nameOfTheCase>.foam
 ```
 When ParaView return errors in reading, it could be possible to solve it
@@ -39,7 +39,7 @@ format (Visualization Tool Kit), it makes easier the manipulation the file and t
 properties contained on in. The following command convert the format from the
 OpenFOAM native one to VTK one:
 
-```console
+```sh
 foamToVTK
 ```
 

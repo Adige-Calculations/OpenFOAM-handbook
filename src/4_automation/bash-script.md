@@ -5,12 +5,12 @@ case. You can open it using any editor and see the commands executed from it.
 Taking as example the native bash script often present in tutorial
 cases ```Allrun``` and ```Allclean```, the follwing command will execute them:
 
-```console
+```sh
 ./Allrun
 ```
 It will run all the command necessary to run the tutorial. While:
 
-```console
+```sh
 ./Allclean
 ```
 It will run all the command necessary to clean the tutorial.
@@ -22,7 +22,7 @@ To write you bash script, start a new file with the notation:
 then followed by the command you want to execute.
 Elevate the file permission adding execution permission through
 
-```console
+```sh
 chmod +x shellScript.sh
 ```
 For running your bash script, type:

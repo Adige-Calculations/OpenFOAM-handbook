@@ -12,7 +12,7 @@ Looking at the directory as example:
 tree /opt/OpenFOAM/OpenFOAM-v2206/applications/solvers/heatTransfer/buoyantBoussinesqSimpleFoam
 ```
 It will return the source code that builds the equation of your solver
-```console
+```sh
 .
 ├── buoyantBoussinesqSimpleFoam.C
 ├── createFields.H
@@ -40,7 +40,7 @@ The directory ```$WM_PROJECT_DIR/doc``` contains the Doxygen documentation
 of OpenFoam®. Before using the Doxygen documentation, you will need to
 compile it. To compile the Doxygen documentation, from the terminal:
 
-```console
+```sh
 cd $WM_PROJECT_DIR
 ./Allwmake doc
 ```
@@ -50,7 +50,7 @@ cd $WM_PROJECT_DIR
 After compiling the Doxygen documentation,
 you can use it by typing:
 
-```console
+```sh
 firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
 ```
 As a notice we say that the compilation is time consuming.

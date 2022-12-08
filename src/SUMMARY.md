@@ -10,8 +10,6 @@
 
   - [Compiling the source code](2_installation/compiling_source_code.md)
 
-    - [ARM architecture](2_installation/compiling_ARM.md)
-
 - [Problem set up](3_problem_set_up/README.md)
 
 - [Automation ](4_automation/README.md)

@@ -20,7 +20,7 @@ foamGetDict <\dictionary you want in your case\>
 ```
 For instance:
 
-```console
+```sh
 foamGetDict topoSetDict
 ```
 <!--  Script to show the footer   -->

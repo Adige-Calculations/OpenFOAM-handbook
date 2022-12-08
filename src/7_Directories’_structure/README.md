@@ -3,7 +3,7 @@
 The following directories tree is a representation of a file arrangement 
 for setting up an OpenFoam® case:
 
-```console
+```sh
 .
 ├── 0.orig                          →  Initial value settings
 │   ├── k                                   →  Turbulent kinetic energy

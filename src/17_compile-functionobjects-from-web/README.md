@@ -10,12 +10,12 @@ Inside this directory create an entrance in the file Make/fields like:
 ReynoldsNo/ReynodsNo.C
 
 Then run in ../Make the command
-```console
+```sh
 wmake
 ```
 Remember to install the command "make", if it is not installed proceed in this way:
 
-```console
+```sh
 sudo apt-get install make
 ```
 <!--  Script to show the footer   -->

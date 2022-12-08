@@ -3,18 +3,18 @@
 OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
 run in PowerShell as admin for the enabling a necessary Windows feature:
 
-```console
+```sh
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart
 ```
 The proceed with the installation:
-```console
+```sh
 wsl –install
 ```
 Then, once installed, The GNU-Linux root folder is in the Windows file
 explorer in:
 
-```console
+```sh
 \\wsl$\Ubuntu-20.04\
 ```
 Or whatever distribution you have.
@@ -30,7 +30,7 @@ screen and also allow public access
 Disable Windows Defender Firewall for Guest or public Network
 
 In WSL edit the file
-``` console
+``` sh
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
 ```
 

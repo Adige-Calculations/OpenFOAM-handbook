@@ -6,7 +6,7 @@
   <strong>This book describes the usual practices a medium/advanced OpenFoam® user takes during CFD smulations workflows. </strong>
 
   <h3>
-    <a href="http://openfoam-handbook.adigecalculations.com/">Read the Book</a>
+    <a href="https://openfoam-handbook.adigecalculations.com/">Read the Book</a>
     <span> | </span>
     <a href="https://github.com/Adige-Calculations/OpenFOAM-handbook">Contributing</a>
     <span> | </span>

@@ -1,7 +1,7 @@
 # Cluster practice
 
 Check what module of OpenFoam® is installed
-```console
+```sh
 module avail
 ```
 the module command modifies your environment so that the path and other
