@@ -31,7 +31,7 @@ OpenFOAM® by OpenCFD Ltd contains more utilities and they optimise more the mes
 </script>
 <script>
 $(function(){
-  $("#footer).load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../footers/footer_first_level_depth.html");
 });
 </script>
 <body>
