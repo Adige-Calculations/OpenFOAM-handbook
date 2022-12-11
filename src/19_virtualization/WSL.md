@@ -28,11 +28,11 @@ Install an Xserver like VcXsrv, download from
 and install/start it. Specifying the server numer to be ‘0’ on the first
 screen and also allow public access such as:
 
-```console 
+```sh 
 Disable Windows Defender Firewall for Guest or public Network
 ```
 In WSL edit the file shell confing file in this way:
-``` console
+``` sh
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
 ```
 

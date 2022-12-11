@@ -111,7 +111,7 @@ docker rmi <imageID>
 ```
 
 Or you can delete all of them piping two commands:
-```console 
+```sh 
 docker rm -vf $(docker ps -aq)
 ```
 
@@ -125,14 +125,14 @@ docker image rm <imageID>
 ```
 Or you can delete all of them piping two commands:
 
-```console
+```sh
 docker rmi -f $(docker images -aq)
 ```
 
 ## Reclaim space from machine
 Docker saves container chaces on ```var/lib/docker```, this can clog a machine that
 does not have storage available. A quick solution is to run the following command to clean the system cache:
-```console
+```sh
 docker system prune -a -f
 ```
 <!--  Script to show the footer   -->

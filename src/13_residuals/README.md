@@ -42,13 +42,13 @@ installation of these libary must take place.
 ```pip``` the package manger for pyhton projects permits you install libraries present 
 in the python official repo, to run it type as follows:
 
-```console
+```sh
 pip install PyFoam
 ```
 One recommended usage of these utilities would be to start a simulation with foamJob
 and display the residuals with pyFoamPlotWatcher.py without interfering with the simulation.
 
-```console
+```sh
 pyFoamPlotRunner.py <yourSolver>
 ```
 <!--  Script to show the footer   -->
