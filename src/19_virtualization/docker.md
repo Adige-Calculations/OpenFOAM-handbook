@@ -12,6 +12,7 @@ It works with images and container, the main difference between this two is:
 - An image is piece of memory with the os and applicaiton data inside
 - A container instead is a running image
 
+
 ## System images
 An image becomes a container when you execute it. Check the images that are present in your system after the build
 docker images, the command to build an image is:
@@ -105,12 +106,12 @@ docker commit
 The following command will delete the container:
 
 ```sh
-docker ps			 	   # To visualise them
+docker ps			  	   # To visualise them
 docker rmi <imageID>
 ```
 
 Or you can delete all of them piping two commands:
-```sh 
+```console 
 docker rm -vf $(docker ps -aq)
 ```
 
@@ -124,14 +125,14 @@ docker image rm <imageID>
 ```
 Or you can delete all of them piping two commands:
 
-```sh
+```console
 docker rmi -f $(docker images -aq)
 ```
 
 ## Reclaim space from machine
 Docker saves container chaces on ```var/lib/docker```, this can clog a machine that
 does not have storage available. A quick solution is to run the following command to clean the system cache:
-```sh
+```console
 docker system prune -a -f
 ```
 <!--  Script to show the footer   -->
