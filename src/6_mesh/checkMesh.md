@@ -9,14 +9,14 @@ checkMesh will check for:
 
 To check the most important parameters of the mesh, run the utilities without flags:
 
-```console
+```sh
 checkMesh
 ```
 
 If checkMesh explicitly generates an error, this error field must be repaired. To check all
 the possible measurable parameters of the mesh (often an overkill utilities), and visualise all the fields, run:
 
-```console
+```sh
 checkMesh -allGeometry -allTopology -writeAllFields -writeSets vtk
 ```
 
@@ -25,7 +25,7 @@ A more progmatic way, is to write the field when you encouter an important error
 so you can post-process via ParaView your mesh and check all the defective set of cells, faces
 and/or points written to the ``constant/polyMesh/sets/`` directory with the following flags
 
-```console
+```sh
 checkMesh -writeSets vtk
 ```
 
@@ -59,7 +59,7 @@ is the case, utilities such as ```setSet``` and ```subsetMesh``` can be
 useful tools, otherwise it is strongly advised to re-mesh. Instead, deleting mesh
 arbitrarely is usually done via this utilities.
 
-```console
+```sh
 setSet -constant
 ```
 
@@ -67,7 +67,7 @@ An internal command line will appear, and similar command can be used to
 manage bad cells present in your mesh (i.e. concave, underdetermined,
 zero volume cells), in the followng commands a zero-volume cells are treated:
 
-```console
+```sh
 # if you want to fix additional cells and with problematic faces you can (i.e. skew, concave, warp faces etc..)
 cellSet c0 new cellToCell zeroVolumeCells any
 cellSet c0 add faceToCell skewFaces any
@@ -76,7 +76,7 @@ cellSet c0 invert && quit
 Once exited from the internal command line, execute the following
 command to overwrite the mesh
 
-```console
+```sh
 subSetMesh c0 -overwrite
 ```
 <!--  Script to show the footer   -->

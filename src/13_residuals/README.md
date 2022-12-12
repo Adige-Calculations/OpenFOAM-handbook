@@ -1,8 +1,8 @@
 # Residuals
 
-The residual is evaluated by substituting the current solution into the
-equation, taking the magnitude of the difference between the left- and
-right-hand sides; it is also normalised to make it independent of the
+The residuals are evaluated by substituting the current solution into the
+equation and taking the magnitude of the difference between the left- and
+right-hand sides of the system; it is also normalised to make it independent of the
 scale of the problem being analysed. Consequently, before solving an
 equation for a particular field, the initial residual is evaluated based
 on the current values of the field. After each solver iteration the
@@ -29,27 +29,27 @@ and creating a file: ```/system/residual``` called in ```/system/controlDict``` 
 
 Then run:
 
-```console
+```sh
 foamMonitor -l ./postprocessing/0/residuals
 ```
 
 ### Charts with pyFoam
 
-pyFoam is a python library to control OpenFOAM-runs and manipulate OpenFOAM-data.
-Pyhton is usually already present in all GNU-Linux system and ready to use.
+PyFoam is a python library to control OpenFOAM-runs and manipulate OpenFOAM-data.
+A pyhton interpreter is usually already present in all GNU-Linux system, therefore 
+to make the interpreter able to understand the programme you are going to run, the
+installation of these libary must take place.
+```pip``` the package manger for pyhton projects permits you install libraries present 
+in the python official repo, to run it type as follows:
 
-
-To install the programme with ```pip``` the package manger for pyhton projects you
-need to run:
-```console
+```sh
 pip install PyFoam
 ```
-
 One recommended usage of these utilities would be to start a simulation with foamJob
 and display the residuals with pyFoamPlotWatcher.py without interfering with the simulation.
 
-```console
-pyFoamPlotRunner.py \<solver\>
+```sh
+pyFoamPlotRunner.py <yourSolver>
 ```
 <!--  Script to show the footer   -->
 <html>

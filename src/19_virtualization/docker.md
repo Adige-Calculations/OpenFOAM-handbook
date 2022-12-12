@@ -11,6 +11,8 @@ It works with images and container, the main difference between this two is:
 
 - An image is piece of memory with the os and applicaiton data inside
 - A container instead is a running image
+
+
 ## System images
 An image becomes a container when you execute it. Check the images that are present in your system after the build
 docker images, the command to build an image is:
@@ -38,9 +40,7 @@ RUN apt-get update \
 RUN useradd --user-group --create-home --shell /bin/bash of-user ;\
 	echo "of-user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Install OpenFOAM v2112 (without ParaView)
-# including configuring for use by user=of-user
-# plus an extra environment variable to make OpenMPI play nice
+# Install OpenFOAM v2112 (without ParaView) including configuring for use by user=of-user plus an extra environment variable to make OpenMPI play nice
 RUN curl -s https://dl.openfoam.com/add-debian-repo.sh | bash ;\
 	apt-get install -y openfoam2112 ;\
 	rm -rf /var/lib/apt/lists/* ;\
@@ -62,24 +62,24 @@ docker build -t <nameOfTheImage> <DockerfileDirectory>
 Running the container means that the docker file will be read and executed, the execution
 can be modified by the flags that follows the utility such as:
 
-```console
+```sh
 docker run -ti -–rm <imageID>
 ```
 Here's some more info on the flags:
 
-  - ti       → make you access to the terminal
-  - rm       →   remove the container once you exit
+  - ti       →  make you access to the terminal
+  - rm       →  remove the container once you exit
   - d        →  (deamon) run the container in detached mode (in the background)
-  - p 80:80  →   port exposition
+  - p 80:80  →  port exposition, the local OS can connect to the docker image via port 80
 
 To see if the container is running check:
 
-```console
+```sh
 docker ps
 ```
 Then to start and/or stop the container run the following self explatory commands:
 
-```console
+```sh
 docker start <imageID>
 docker stop <imageID>
 ```
@@ -89,7 +89,7 @@ Do not store your simulation data in the container. Instead let’s give our
 container access to just a little bit of our local filesystem. From your project
 directory in a Windows environment, run:
 
-```console
+```sh
 docker run -ti --rm -v ${PWD}:/data -w /data <imageID>
 ```
 By adding the -v option we’re asking Docker to mount our current working directory
@@ -99,30 +99,40 @@ that we’d like to be in /data when the container starts.
 ## Creating an image from a container 
 You can convert a container into an image by using the command
 
-```console
+```sh
 docker commit 
 ```
-## Delete the container
+## Delete container
 The following command will delete the container:
 
-```console
-docker ps				   # To visualise them
+```sh
+docker ps			  	   # To visualise them
 docker rmi <imageID>
 ```
 
-## Delete the image
+Or you can delete all of them piping two commands:
+```sh 
+docker rm -vf $(docker ps -aq)
+```
+
+
+## Delete images
 To delete the images that does not run a container above them run;
 
 ```
 docker images  				# To visualise them
 docker image rm <imageID>
 ```
+Or you can delete all of them piping two commands:
+
+```sh
+docker rmi -f $(docker images -aq)
+```
 
 ## Reclaim space from machine
-
-Docker saves container chaces on ```var/lib/docker```, this can create obstruction in machine that
-does not have disk available. A quick solution is to run the following command to clean the system cache:
-```console
+Docker saves container chaces on ```var/lib/docker```, this can clog a machine that
+does not have storage available. A quick solution is to run the following command to clean the system cache:
+```sh
 docker system prune -a -f
 ```
 <!--  Script to show the footer   -->

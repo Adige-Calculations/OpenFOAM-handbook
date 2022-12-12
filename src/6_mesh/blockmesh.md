@@ -2,14 +2,14 @@
 
 First step is to create a dummy folder with the tutorial command:
 
-```console
+```sh
 restore0Dir
 ```
 blockMesh is a cartesian mesh generators which relies on a single
 dictionary located at ```system/blockMeshDict```. The programme starts
 executing in terminal:
 
-```console
+```sh
 blockMesh
 ```
 

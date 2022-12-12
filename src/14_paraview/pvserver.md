@@ -7,13 +7,13 @@ be sure to have the same verison of paraview installed in both the machines.
 Best practice before starting to work with ```pvserver```, check that the port
 used by the service (11111 by default) is free:
 
-```console
+```sh
 netstat -na | grep 11111
 ```
 If the port is listening, you can start the connection. For an accurate view of the listening ports and which programmes are
 using those;
 
-```console
+```sh
 sudo netstat -ltnp
 ```
 the flags indicate respectively:

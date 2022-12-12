@@ -12,7 +12,7 @@ It is advised to use the ```scotch;``` option
 if the domain cannot be subdivided in sections with the same amourt of cells inside.
 Use the command to overwrite an already decomposed case:
 
-```console
+```sh
 decomposePar -force
 ```
 ## Example

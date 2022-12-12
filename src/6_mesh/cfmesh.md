@@ -4,7 +4,7 @@ CfMesh is a mesher which is integrate in OpenFOAM® such as
 SnappyHexMesh and it is possible to find the tutorial relatives to it
 in:
 
-```console
+```sh
 /opt/OpenFOAM/OpenFOAM-v2206/modules/cfmesh/tutorials
 ```
 
@@ -13,7 +13,7 @@ bodies as boundaries, i.e. create all different .stl file as surface
 (ASCII and divided per patch that you intend to apply a boundary
 condition)
 
-```console
+```sh
 cat body_1.stl body_2.stl body_N.stl >> combined.stl
 ```
 
@@ -23,7 +23,7 @@ between the joint of the different STL files. To create the .fms file
 needed to run the cfMesh utilities (specific for OpenFoam®) run the
 following commands.
 
-```console
+```sh
 surfaceFeatureEdges –angle 15 combined.stl combined.fms
 ```
 
@@ -36,7 +36,7 @@ boundaries (wall, patch, empty) in the first rows. Then the following
 modifications acts on the dictionary system/meshDict. Then to run the
 cited dictionary type the command:
 
-```console
+```sh
 cartesianMesh
 ```
 
@@ -50,7 +50,7 @@ maxCellSize "…";
 If you are not satisfied with the result, try to run these utilities to
 improve the results:
 
-```console
+```sh
 improveMeshQuality
 ```
 <!--  Script to show the footer   -->

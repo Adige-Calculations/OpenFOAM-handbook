@@ -14,7 +14,7 @@ resolve the setting of a problem in the shortest possible time.
 | -----------  | ------------------- |
 | Abc          | Normal text         |
 |``` Abc```    | Shell command       |
-|```</Abc/>``` | User input required |
+|```<Abc>``` | User input required |
 
 
 ## Installation location
@@ -28,7 +28,6 @@ The entire document will assume the installation has been performedunder the
 └── ThirdParty-v2206
 ```
 
-
 <!--  Script to show the footer   -->
 <html>
 <script
@@ -38,7 +37,7 @@ The entire document will assume the installation has been performedunder the
 </script>
 <script>
 $(function(){
-  $("#footer").load("./footers/footer.html");
+  $("#footer").load("./footers/footer_first_level_depth.html");
 });
 </script>
 <body>

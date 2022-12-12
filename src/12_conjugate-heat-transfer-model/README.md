@@ -19,7 +19,7 @@ regions, including the thermal coupling among them.
 At first you must define different regions, using the ```topoSet``` utility ( which 
 follows "system/topoSetDict") to set different cellZones:
 
-```console 
+```sh 
 topoSet
 ```
 An example of topoSet can be the following one, which separates threee fluid with a solid region,
@@ -89,7 +89,7 @@ actions
 ```
 Then split the mesh to create interfaces and distinct domain regions to couple the CHT model:
 
-```console
+```sh
 splitMeshRegions -cellZonesOnly -overwrite
 ```
 
@@ -101,12 +101,12 @@ Since multiple domains are present, manually managing the ```0``` directory dict
 can be overwhelming. The utility ```changeDictionary``` can be used to generate a set of
 dictionary from a sample:
 
-```console
+```sh
 changeDictionary -region <regionName1>
 changeDictionary -region <regionName2>
 ```
 To make this utility wokring your "system" directory must imitate a similar layout:
-```console
+```sh
 system
 │
 ├── regionName1

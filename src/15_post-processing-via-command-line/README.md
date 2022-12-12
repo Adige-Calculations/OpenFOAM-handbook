@@ -2,7 +2,7 @@
 
 An example to run the post process for y<sup>+</sup>sup>+</sup>
 
-```console
+```sh
 <solver> -postProcess -func <functionNameInControlDict>
 ```
 Every solver can be run with the -postProcess option, which only
@@ -10,7 +10,7 @@ executes post-processing, but with additional access to data available
 on the database for the solver. To list the possible parameters to post
 process:
 
-```console
+```sh
 postProcess -list
 ```
 An example on how "system/controlDict" shoud be set up to read a function:
@@ -63,12 +63,12 @@ controlDict, (already written in the data folder); the command line for
 the post processing is the follow; this example is about averaging the
 heat transfer coefficient.
 
-```console
+```sh
 postProcess -func 'patchAverage(name=wall, heatTransferCoeff(T))'
 ```
 
 While to extract the pressure drop, run a command similar to the follow one:
-```console
+```sh
 postProcess -func 'patchAverage(name=inlet, p)'
 ```
  once it is know the pressure of the outlet you can subract it and obtain the delta pressure.

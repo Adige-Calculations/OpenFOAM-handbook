@@ -8,7 +8,7 @@ present at this source to understand which features are availble.
 The build process follows the usual cmake scheme, from the root of your
 source code:
 
-```console
+```sh
 mkdir build
 cd build
 cmake ..
@@ -18,7 +18,7 @@ cmake --build .
 Assuming you have a debian based distro on the server the following libraries
 should be required
 
-```console
+```sh
 sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
 lib32z1
 ```

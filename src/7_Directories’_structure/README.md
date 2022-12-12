@@ -1,8 +1,9 @@
 # Directories’ structure
 
-The following represaentation is the usual set up for an OpenFoam® case:
+The following directories tree is a representation of a file arrangement 
+for setting up an OpenFoam® case:
 
-```console
+```sh
 .
 ├── 0.orig                          →  Initial value settings
 │   ├── k                                   →  Turbulent kinetic energy
@@ -18,14 +19,25 @@ The following represaentation is the usual set up for an OpenFoam® case:
 └── system                          →  Settings
     ├── blockMeshDict                       → Dictionary for cartesian mesh generation
     ├── controlDict                         → Running time and I/O control
-    ├── decomposeParDict `                  → Dictionary to control the parallelization scheme
+    ├── decomposeParDict                    → Dictionary to control the parallelization scheme
     ├── fvSchemes                           → Terms, scheme, numerical settings
     ├── fvSolution                          → Tolerance, algorithm and solver settings
     ├── snappyHexMeshDict                   → Dictionary for mesh generation (with snappyHexMesh)
     └── surfaceFeatureExtractDict           → Dictionary de facto needed for mesh generation (with snappyHexMesh)
 ```
 
-You can change the parameters in the dictionaries controlDict, fvSchemes and fvSolution on-the-fly. But you will need to set the keyword runTimeModifiable to yes in the controlDict dictionary.
+You can change the calculation settings in the dictionaries:
+- controlDict
+- fvSchemes
+- fvSolution
+on-the-fly during calculation execution, however you will need to set the dictionary voice to 
+
+```c
+runTimeModifiable     yes
+```
+
+in the ```system/controlDict``` dictionary before the calculation is instanciated.
+
 <!--  Script to show the footer   -->
 <html>
 <script
