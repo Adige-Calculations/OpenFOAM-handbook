@@ -98,6 +98,8 @@
 
   - [Compilation](14_paraview/compilation.md)
 
+  <!-- - [Plotting advice](14_paraview/plotting_advice.md) -->
+
   - [Trouble shooting](14_paraview/trouble-shooting-common-problems.md)
 
 - [CLI Post-processing](15_post-processing-via-command-line/README.md)
