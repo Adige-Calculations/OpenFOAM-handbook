@@ -59,7 +59,7 @@ When the user cope with a huge amount of data, it is necessary the usage of a cl
 the load and distribute it. However even a single machine user benefit from these techniques.
 
 ### NVIDIA IndeX™
-A plug-in from NVIDIA called <b> NVIDIA IndeX™ <b/> helps in resolving the problem.
+A plug-in from NVIDIA called <b> NVIDIA IndeX™ </b> helps in resolving the problem.
 It is a volume visualization tool, that takes advantage of the GPU’s to deliver real-time performance 
 on large datasets by distributing visualization workloads across a GPU-accelerated system.
 If you have installed ParaView using a binary package provided by Kitware, then the plugin
