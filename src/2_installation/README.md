@@ -8,6 +8,9 @@ The installation of OpenFoam® is possible through three differetn methods:
 
   - Compiling from the source code
 
+In this chapter only pre-compiled installation steps will be covered. For further information on the compilation process refer to 
+the relative chapter - [Compilation](../src/17_compile-functionobjects-from-web/README.md)
+
 ## Suggested location in the linux file system
 
 Wheater you do not use a package manger, you must choose where to install the software. It

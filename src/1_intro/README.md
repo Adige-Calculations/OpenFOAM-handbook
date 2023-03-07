@@ -11,9 +11,9 @@ These are distributed through two differetn web sites, respectively at:
 
 This book will cover OpenFOAM® by OpenCFD Ltd which does software verison control following the nomenclature:
 
-> OpenFOAM-v2112
+> OpenFOAM-v2212
 
-Which stands for years followed from the month, i.e. 21 stands for year 2021. while 12 for December, hence the software has been released on Dec 21. The release cicle occurs every 6 months.To check the version of OpenFOAM® run, once the sofware is already installed:
+Which stands for years followed from the month, i.e. 22 stands for year 2022. while 12 for December, hence the software has been released on Dec 22. The release cicle occurs every 6 months.To check the version of OpenFOAM® run, once the sofware is already installed:
 
 ```sh
 foamVersion

@@ -12,6 +12,12 @@ It works with images and container, the main difference between this two is:
 - An image is piece of memory with the os and applicaiton data inside
 - A container instead is a running image
 
+To visualize a resume of the system run:
+
+```sh
+docker system df  # use -v to get further informations 
+```
+
 
 ## System images
 An image becomes a container when you execute it. Check the images that are present in your system after the build
@@ -130,11 +136,14 @@ docker rmi -f $(docker images -aq)
 ```
 
 ## Reclaim space from machine
-Docker saves container chaces on ```var/lib/docker```, this can clog a machine that
-does not have storage available. A quick solution is to run the following command to clean the system cache:
+Docker saves container chaces on ```var/lib/docker```, this can clog the machine disk if 
+there is not enough storage available. A quick solution is to run the following command 
+to clean the system cache:
+
 ```sh
 docker system prune -a -f
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script
