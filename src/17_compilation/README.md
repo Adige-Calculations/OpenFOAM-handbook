@@ -12,8 +12,8 @@ git clone https://develop.openfoam.com/Development/ThirdParty-common.git /opt/Op
 ```
 
 The previous commands will install the source code and the third party
-software in the chosen installation directory ```/otp/OpenFOAM```, so 
-binaries, libraries, and configuration will be in the same directory.
+software in the chosen installation directory ```/otp/OpenFOAM```.
+Binaries, libraries, and configuration will be in the same directory.
 They will not be separated into different locations as a traditional
 UNIX system would have them. To check if your system has an adequate
 environment to start the compilation run:
