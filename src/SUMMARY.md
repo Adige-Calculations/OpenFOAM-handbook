@@ -78,6 +78,8 @@
 
 - [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
 
+    - [Modularity](8_problem-initialization-and-interpolation-from-previous-results/modularity.md)
+
 - [Browse Source Code](9_browse-source-code/README.md)
 
 - [Parallel practices](10_run-in-parallel/README.md)
