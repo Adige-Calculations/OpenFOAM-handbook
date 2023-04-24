@@ -8,8 +8,6 @@
 
   - [Precompiled binaries](2_installation/download_binaries.md)
 
-  - [Compiling the source code](2_installation/compiling_source_code.md)
-
 - [Problem set up](3_problem_set_up/README.md)
 
 - [Automation ](4_automation/README.md)
@@ -80,6 +78,8 @@
 
 - [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
 
+    - [Modularity](8_problem-initialization-and-interpolation-from-previous-results/modularity.md)
+
 - [Browse Source Code](9_browse-source-code/README.md)
 
 - [Parallel practices](10_run-in-parallel/README.md)
@@ -104,7 +104,7 @@
 
 - [Cluster practices](16_cluster-practice/README.md)
 
-- [Compile functionObjects](17_compile-functionobjects-from-web/README.md)
+- [Compilation](17_compilation/README.md)
 
 - [Windows programmes](18_windows-practices/README.md)
 
@@ -115,6 +115,8 @@
   - [Multipass](19_virtualization/multipass.md)
 
   - [Docker](19_virtualization/docker.md)
+
+  - [Docker compose](19_virtualization/docker-compose.md)
 
 - [GNU-Linux distro settings](20_distribution_setting/README.md)
 

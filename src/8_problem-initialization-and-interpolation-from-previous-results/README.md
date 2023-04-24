@@ -14,7 +14,7 @@ Instead,if data are present from a previous solution it is possible
 to map the fields to interpolate the results on the new mesh, running:
 
 ```sh
-mapFields -consistent -sourceTime <iteration number> <path of the base case>
+mapFields -consistent -sourceTime <iterationNumber> <pathOfTheBaseCase>
 ```
 This will overwrite ```0/*``` with the value of
 the case interpolating the result in the mesh in interest. If you do not
@@ -25,6 +25,7 @@ To reorder the indexing of the matrix to get the more sparse matrix as possible,
 ```sh
 renumberMesh
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script

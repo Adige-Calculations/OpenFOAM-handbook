@@ -36,7 +36,7 @@ functions
     #include "yPlus"
 }
 ```
-From that we can read the file "system/yPlus" that might be organized in this way:
+From that we can read the file ```system/yPlus``` that might be organized in this way:
 
 ```c++
     yPlusFunction
