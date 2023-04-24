@@ -26,17 +26,20 @@ for setting up an OpenFoam® case:
     └── surfaceFeatureExtractDict           → Dictionary de facto needed for mesh generation (with snappyHexMesh)
 ```
 
-You can change the calculation settings in the dictionaries:
+You can change the problem settings on-the-fly during the calculation, on the dictionaries:
+
+``` sh
 - controlDict
 - fvSchemes
 - fvSolution
-on-the-fly during calculation execution, however you will need to set the dictionary voice to 
+```
+As long as in ```system/controlDict``` the option is set as:
 
 ```c
 runTimeModifiable     yes
 ```
 
-in the ```system/controlDict``` dictionary before the calculation is instanciated.
+before the calculation is instanciated.
 
 <!--  Script to show the footer   -->
 <html>

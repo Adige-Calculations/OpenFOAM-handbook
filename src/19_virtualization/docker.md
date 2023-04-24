@@ -1,17 +1,18 @@
 # Docker
 
-Docker is an open-source software project automating the deployment of applications inside software containers.
-To visualise how many imagesyou have in your system run:
+Docker is an open-source software for automating and encapsulating the 
+deployment of applications inside software containers.
+
+It works with images and container, the main difference between this two is:
+
+- An image is chunk of memory allocated to store an OS and the relative applicaiton data
+- A container instead is a running image
+
+To visualise how many images you have in your system run:
 
 ```sh
 docker images
 ```
-
-It works with images and container, the main difference between this two is:
-
-- An image is piece of memory with the os and applicaiton data inside
-- A container instead is a running image
-
 
 ## System images
 An image becomes a container when you execute it. Check the images that are present in your system after the build

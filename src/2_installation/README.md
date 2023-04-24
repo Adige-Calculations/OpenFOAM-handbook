@@ -1,18 +1,16 @@
 # Installation
 
-The installation of OpenFoam® is possible through three differetn methods:
+The installation of OpenFoam® is possible through three different methods:
 
-  - Directly installing the binaries from a packages manager
+  - Installing the binaries and its shared libraries from a packages manager
+  - Downloading and extracting an pre-compiled package from the OpenFoam® websites
+  - Compiling the source code
 
-  - Extracting the already compiled package from the OpenFoam® websites
-
-  - Compiling from the source code
-
-## Suggested location in the linux file system
+## Suggested location
 
 Wheater you do not use a package manger, you must choose where to install the software. It
 is advised to create a ```/opt/OpenFOAM/``` directory if you are not backed up by a package
-manager to avoid mistakes during future operations or updates. You can create the directory
+manager to avoid mistakes during future operations or updates.q You can create the directory
 following:
 
 ```sh
