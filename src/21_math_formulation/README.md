@@ -1,10 +1,11 @@
-Navier-Stokes Equations
-=======================
-These equation can be displayed in two differennt forms:
+# Navier-Stokes Equations
 
+These equations are usually displayed following two different notation systems.
 
-Einstein summation notation
------------------------------
+## Einstein summation notation
+
+The Einstein summation convention dictates that:
+
 \begin{equation}
 \tag{1}
 \frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial x_{i}} = 0
@@ -22,7 +23,7 @@ Einstein summation notation
 \end{equation}
 
 
-The Einstein summation convention dictates that: When a sub-indice (here
+When a sub-indice (here
 *i* or *j*) is twice or more repeated in the same equation, one sums
 across the n-dimensions. This means, in the context of Navier-Stokes in
 3 spacial dimensions, that one repeats the term 3 times, each time
@@ -38,9 +39,10 @@ of:
 could be written in a 3-line form: one line equation for each *i* in
 each of which one sums the three terms for the *j* sub-indices.
 
-Classic notation 
------------------------------------------------------
+## Classic notation 
+
 In a classic notation the equation make use of ⟶,⊗,∇ symbology to define the eqution structure;
+
 \begin{equation}
 \tag{4}
 \frac{\partial \rho}{\partial t} + \overrightarrow{\nabla}\cdot(\rho\overrightarrow{u})=0
