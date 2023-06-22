@@ -84,6 +84,8 @@
 
 - [Parallel practices](10_run-in-parallel/README.md)
 
+    - [MPI (Message Passage Interface)](10_run-in-parallel/MPI.md)
+
 - [Multiphase model](11_multiphase-model/README.md)
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)

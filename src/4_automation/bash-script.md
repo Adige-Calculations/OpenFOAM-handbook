@@ -8,6 +8,7 @@ cases ```Allrun``` and ```Allclean```, the follwing command will execute them:
 ```sh
 ./Allrun
 ```
+
 It will run all the command necessary to run the tutorial. While:
 
 ```sh
@@ -78,6 +79,34 @@ reconstructParMesh -constant -allRegions                    > ./log/reconstructP
 
 #------------------------------------------------------------------------------
 ```
+
+## Parametric study
+
+To develop a parametric study, hence you change one or more  variables to get the consequent result
+of this boudnary conditions change. You can use the ```sed``` command to drive the dictionary changes:
+
+```sh
+sed -i '/^[[:space:]]*massFlowRate/c\ massFlowRate 1000;'  0/U
+```  
+
+This above command substitute the row that contain the word "massFlowRate" with the follwing: "massFlowRate 1000;".
+Creating a bash script to automate this practise will look similar to the following:
+
+```sh
+#!/bin/bash
+
+list_mass_flow_rate=(1 2 3)
+
+for flowRateValue in "${list_mass_flow_rate[@]}"
+do 
+	cp -r cathode cathode_$flowRateValue
+	cd cathode_$flowRateValue
+	sed -i "/^[[:space:]]*massFlowRate/c\ massFlowRate $flowRateValue ;"  0/U
+	./Allrun
+	cd ..
+done
+```
+ 
 
 <!--  Script to show the footer   -->
 <html>
