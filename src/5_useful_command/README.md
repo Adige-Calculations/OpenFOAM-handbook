@@ -1,6 +1,6 @@
 # Useful command
 
-A list comprised of a brief description of few usuefull UNIX command is given.
+A list comprised of a brief description of few usueful command is given.
 
 
 ## ```grep```
@@ -9,11 +9,14 @@ It will search word patterns for you in selected documents or a list of them
 ```sh
 grep -w -R "foo"
 ```
-where -w stands for word and -R for research in subdirectories. It will search all the
-file names that in which he finds a pattern (in this case: ```foo```).
+
+where the ```-w``` flag stands for word while ```-R``` for research in subdirectories. 
+It will search all the file names that in which he finds a pattern (in this case: 
+```foo```).
 
 ## ```mmv```
-Rename more than one file at once, extension included
+
+Rename more than one file at once, extension included:
 
 ```sh
 mmv '\*.STL' '\#1.stl'
@@ -34,16 +37,22 @@ For replacing the text repetitively in file stream:
 find . -type f | xargs sed -i s/<oldWord>/<newWord>/g
 ```
 
-## Useful usage of the copy utility - ```cp```
-To copy a file in different directory, execute:
+The above chains of commands  will change the content of every file that constains an
+```oldWorld``` pattern substituting it with ```newWord```. 
+
+## ```cp```
+
+A useful usage of the copy utility follows.
+for example, to copy a file in different directory, execute:
 
 ```sh
 ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 ```
 
-## Useful usage of ```find```
+## ```find```
 
-To find the correct case frame in tutorial
+To find the correct case frame in tutorial, follows simlar commands chain:
+
 ```sh
 find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
 ```
@@ -55,15 +64,18 @@ If you want to know how the continuity errors are computed use find in this way:
 ```sh
 $FOAM_SRC –iname *continuity*
 ```
+
 and open any of the files.
 
-## Run a GUI
+# Run a GUI
+
 Run a GUI file manager from terminal, ```nautilus``` is the defult in GNOME
 desktop envirnments:
 
 ```sh
 nautilus . &
 ```
+
 Instead, ```dolphin``` is the default for the KDE desktop environement.
 
 ```sh

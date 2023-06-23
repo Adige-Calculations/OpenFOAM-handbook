@@ -95,15 +95,36 @@ Creating a bash script to automate this practise will look similar to the follow
 ```sh
 #!/bin/bash
 
-list_mass_flow_rate=(1 2 3)
+SLURM_NTASKS=14
+list_mass_flow_rate=(1.14E-04  2.29E-04  3.43E-04)
+
+# Source run functions
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        
+rm -r log;
+mkdir log
+
+# Build the mesh
+surfaceFeatureExtract > ./log/surfaceFeatureExtract.log 2>&1  && echo "surfaceFeatureExtract Executed/n"
+blockMesh  > ./log/blockMesh.log 2>&1  && echo "blockMesh Executed"
+decomposePar -force  > ./log/decomposePar1.log 2>&1 && echo "decomposePar1 Executed"
+mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite > ./log/snappyHexMesh.log 2>&1 && echo "snappyHexMesh Executed"
+mpirun -np $SLURM_NTASKS checkMesh -parallel > ./log/checkMesh.log 2>&1 && echo "checkMesh Executed"
+reconstructParMesh -constant > ./reconstructParMesh.log 2>&1 && echo "reconstructParMesh Executed"
+
 
 for flowRateValue in "${list_mass_flow_rate[@]}"
-do 
-	cp -r cathode cathode_$flowRateValue
-	cd cathode_$flowRateValue
-	sed -i "/^[[:space:]]*massFlowRate/c\ massFlowRate $flowRateValue ;"  0/U
-	./Allrun
-	cd ..
+do
+        rm -r process*;
+
+        # Modify the 0/U directory with a new value of massflow rate
+        sed -i "/^[[:space:]]*massFlowRate/c\ massFlowRate $flowRateValue ;"  0.orig/U  && echo "Changed 0/U with $flowRateValue kg/s"
+        restore0Dir > ./log/restore0Dir.$flowRateValue.log 2>&1 && echo "restore0Dir $flowRateValue  Executed"
+        decomposePar -force > ./log/decomposePar.$flowRateValue.log 2>&1 && echo "decomposePar $flowRateValue  Executed"
+        mpirun -np $SLURM_NTASKS $(getApplication) -parallel   > ./log/$(getApplication).$flowRateValue.log 2>&1 && echo "$(getApplication) $flowRateValue Executed"
+        reconstructPar -latestTime > ./log/reconstructParMesh.$flowRateValue.log 2>&1  && echo "reconstructPar $flowRateValue Executed"
+
+        # Take the newly created directory and re-name it as the flow rate
+        mv $(ls -1tr | tail -1) $flowRateValue
 done
 ```
  
