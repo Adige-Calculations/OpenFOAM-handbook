@@ -1,13 +1,21 @@
 # Cluster practice
 
-Check what module of OpenFoam® is installed
+Check what modules are installed:
+
 ```sh
 module avail
 ```
-the module command modifies your environment so that the path and other
-variables are set and you can use the selected program. Before a series
-of command starts inside the shell script it is necessary to prepare the
-environment, this is an example:
+A ```module``` refers to a software package or library that is available on a computing cluster. 
+The ```module load``` command is used in HPC scripts to load specific modules into the user's environment.
+
+
+The default environment is typically a minimal set of software packages and libraries needed to run basic commands.
+However, there may be many additional software packages and libraries available on the cluster, and these can be 
+loaded into the user's environment as needed using the "module load" command.
+
+
+Once a module is loaded, its associated executables, libraries, and environment variables become available to the 
+user's session. 
 
 ```bash
 #!/bin/bash
@@ -18,9 +26,9 @@ environment, this is an example:
 
 #------------------------------------------------------------------------------
 
-module load openmpi                                      # Module upload
-source /fsx/programs/OpenFOAM®/OpenFOAM®-v2112/etc/bashrc  # Source OpenFOAM® bashrc command
-source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
+module load openmpi                                         # MPI module upload
+source /fsx/programs/OpenFOAM®/OpenFOAM®-v2112/etc/bashrc   # Source OpenFOAM® binaries
+source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions           # Source OpenFOAM® run functions
 
 #------------------------------------------------------------------------------
 
