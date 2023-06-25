@@ -3,42 +3,30 @@
 - [Intro](1_intro/README.md)
 
 - [Installation](2_installation/README.md)
-
   - [Package manager](2_installation/via_package_manager.md)
-
   - [Precompiled binaries](2_installation/download_binaries.md)
+  - [Compiling source code](2_installation/compiling_src_code.md)
 
 - [Problem set up](3_problem_set_up/README.md)
 
 - [Automation ](4_automation/README.md)
-
   - [Run commands in sequence](4_automation/run-commands-in-sequence.md)
-
   - [Create a custom command](4_automation/create-a-custom-command.md)
-
   - [Shell scripting](4_automation/bash-script.md)
 
 - [Useful commands](5_useful_command/README.md)
 
 - [Mesh](6_mesh/README.md)
-
   - [blockMesh](6_mesh/blockmesh.md)
-
   - [snappyHexMesh](6_mesh/snappyhexmesh/README.md)
-
     - [Internal flow](6_mesh/snappyhexmesh/advice-for-internal-flow.md)
-
     - [Setting zones](6_mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.md)
-
     - [Refinement technique](6_mesh/snappyhexmesh/advanced-refinement-technique.md)
-
   - [cfMesh ](6_mesh/cfmesh.md)
-
   - [checkMesh](6_mesh/checkMesh.md)
-
   - [ANSYS Meshing to OpenFoam® ](6_mesh/ansys-meshing-to-openfoam.md)
 
-- [Directories’ structure](7_Directories’_structure/README.md)
+- [Directories’ structure](7_Directories_structure/README.md)
 
   - [0](7_Directories’_structure/0/README.md)
 
@@ -106,7 +94,7 @@
 
 - [Compilation](17_compilation/README.md)
 
-- [Windows programmes](18_windows-practices/README.md)
+- [Tools](18_tools/README.md)
 
 - [Virtualization](19_virtualization/README.md)
 
@@ -121,3 +109,5 @@
 - [GNU-Linux distro settings](20_distribution_setting/README.md)
 
 - [Navier Stokes equations ](21_math_formulation/README.md)
+
+- [PETSc](PETSc/README.md)

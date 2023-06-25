@@ -2,12 +2,8 @@
 
 The installation of OpenFoam® is possible through three different methods:
 
-  - Installing the binaries and its shared libraries from a packages manager
+  - Installing the binaries and correlated [dynamic libraries] from a packages manager
   - Downloading and extracting an pre-compiled package from the OpenFoam® websites
-  - Compiling the source code
-
-  - Extracting the already compiled package from the OpenFoam® websites
-
   - Compiling from the source code
 
 In this chapter only pre-compiled installation steps will be covered. For further information on the compilation process refer to 
@@ -15,34 +11,16 @@ the relative chapter - [Compilation](../src/17_compile-functionobjects-from-web/
 
 ## Suggested location in the linux file system
 
-Wheater you do not use a package manger, you must choose where to install the software. It
+If you do not use a package manger, you must choose where to install the software. It
 is advised to create a ```/opt/OpenFOAM/``` directory if you are not backed up by a package
-manager to avoid mistakes during future operations or updates.q You can create the directory
-following:
+manager to avoid mistakes during updates. You can create the directory following:
 
 ```sh
 sudo mkdir -p /opt/OpenFOAM
 ```
 
-Where ```/opt``` stands for optional software on the GNU-Linux file system.
+Where ```/opt``` stands for Optional software on file system hierarchy.
 
-## Commodities
-
-To edit text during local and remote session, a GUI will not be always available.
-As a consequence software able to manage text efficiently on terminal are necessary.
-It is adivised to deprecate ```nano``` and make use of the most advanced tool to edit text.
-
-| Software name | Destination of use  |  Why |
-| -----------   | ------------------- |------------------- |
-|  micro        | Dictionary editing  | Easy to use and common shortcuts|
-|  vim          | Code editing        | Tons extentions and good sintax highlighting|
-
-### Install commodities
-
-Debian system will install the software via:
-```sh
-sudo apt install micro vim
-```
 <!--  Script to show the footer   -->
 <html>
 <script
