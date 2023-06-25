@@ -12,10 +12,10 @@ source code:
 mkdir build
 cd build
 cmake ..
-cmake --build .
+cmake --build .  # This will actually start the compilation process
 ```
 
-Assuming you have a debian based distro on the server the following libraries
+Assuming you have a Debian based distro on the server the following libraries
 should be required
 
 ```sh

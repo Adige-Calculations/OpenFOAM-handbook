@@ -28,41 +28,41 @@
 
 - [Directories’ structure](7_Directories_structure/README.md)
 
-  - [0](7_Directories’_structure/0/README.md)
+  - [0](7_Directories_structure/0/README.md)
 
-    - [ε, ω, k](7_Directories’_structure/0/ε-ω-k/README.md)
+    - [ε, ω, k](7_Directories_structure/0/ε-ω-k/README.md)
 
-    - [nut](7_Directories’_structure/0/nut/README.md)
+    - [nut](7_Directories_structure/0/nut/README.md)
 
-  - [Constant](7_Directories’_structure/constant/README.md)
+  - [Constant](7_Directories_structure/constant/README.md)
 
-    - [transportProperties](7_Directories’_structure/constant/transportProperties.md)
+    - [transportProperties](7_Directories_structure/constant/transportProperties.md)
 
-    - [turbulentProperties](7_Directories’_structure/constant/turbulentProperties.md)
+    - [turbulentProperties](7_Directories_structure/constant/turbulentProperties.md)
 
-    - [polyMesh](7_Directories’_structure/constant/polyMesh.md)
+    - [polyMesh](7_Directories_structure/constant/polyMesh.md)
 
-    - [thermophysicalProperties](7_Directories’_structure/constant/thermophysicalProperties.md)
+    - [thermophysicalProperties](7_Directories_structure/constant/thermophysicalProperties.md)
 
-  - [System](7_Directories’_structure/system/README.md)
+  - [System](7_Directories_structure/system/README.md)
 
-    - [controlDict](7_Directories’_structure/system/controldict.md)
+    - [controlDict](7_Directories_structure/system/controldict.md)
 
-    - [fvSchemes](7_Directories’_structure/system/fvSchemes.md)
+    - [fvSchemes](7_Directories_structure/system/fvSchemes.md)
 
-    - [fvSolution](7_Directories’_structure/system/fvSolution/README.md)
+    - [fvSolution](7_Directories_structure/system/fvSolution/README.md)
 
-      - [Linear solver](7_Directories’_structure/system/fvSolution/linear-solver.md)
+      - [Linear solver](7_Directories_structure/system/fvSolution/linear-solver.md)
 
-      - [Solver](7_Directories’_structure/system/fvSolution/solver.md)
+      - [Solver](7_Directories_structure/system/fvSolution/solver.md)
 
-      - [Under-relaxation](7_Directories’_structure/system/fvSolution/under-relaxation-factors.md)
+      - [Under-relaxation](7_Directories_structure/system/fvSolution/under-relaxation-factors.md)
 
-    - [decomposeParDict](7_Directories’_structure/system/decomposepardict.md)
+    - [decomposeParDict](7_Directories_structure/system/decomposepardict.md)
 
-    - [fvOptions](7_Directories’_structure/system/fvOptions.md)
+    - [fvOptions](7_Directories_structure/system/fvOptions.md)
 
-    - [topoSetDict](7_Directories’_structure/system/topoSetDict.md)
+    - [topoSetDict](7_Directories_structure/system/topoSetDict.md)
 
 - [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
 
