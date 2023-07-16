@@ -87,7 +87,9 @@
     
     - [Problems](16_compilation/problems.md)
 
-- [Tools](18_tools/README.md)
+- [External library for computation](17_PETSc/README.md)
+
+- [Editing tools](18_tools/README.md)
 
 - [Virtualization](19_virtualization/README.md)
 
@@ -101,4 +103,3 @@
 
 - [Navier Stokes equations ](21_math_formulation/README.md)
 
-- [External library for computation](17_PETSc/README.md)
