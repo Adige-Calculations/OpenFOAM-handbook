@@ -30,6 +30,7 @@ character for Windows or UNIX. Operate this mod to make the file
 readable without trouble in GNU-Linux:
 
 NotePad++ → Edit → EOL conversion →  UNIX
+
 <!--  Script to show the footer   -->
 <html>
 <script

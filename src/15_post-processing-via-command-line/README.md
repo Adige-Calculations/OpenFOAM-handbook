@@ -13,6 +13,7 @@ process:
 ```sh
 postProcess -list
 ```
+
 An example on how "system/controlDict" shoud be set up to read a function:
 
 ```c++
@@ -48,8 +49,8 @@ From that we can read the file ```system/yPlus``` that might be organized in thi
     }
 ```
 
-
 ## Postprocess utility
+
 For a run-processing, or a complicated function postprocess where is
 necessary state different parameters. The simulation must be furnished
 with the function object (Function objects are utilities to ease
@@ -57,6 +58,42 @@ workflow configurations and enhance workflows by producing additional
 user-requested data both during runtime and postprocessing calculations,
 typically in the form of additional logging to the screen, or generating
 text, image, and field files) in controlDict as follow:
+
+```c++
+...
+functions    // sub-dictionary name under the system/controlDict file
+{
+    <userDefinedSubDictName1>
+    {
+        // Mandatory entries
+        type                <functionObjectTypeName>;
+        libs                (<libType>FunctionObjects);
+
+        // Mandatory entries defined in <functionObjectType>
+        ...
+
+        // Optional entries defined in <functionObjectType>
+        ...
+
+        // Optional (inherited) entries
+        region              region0;
+        enabled             true;
+        log                 true;
+        timeStart           0;
+        timeEnd             1000;
+        executeControl      timeStep;
+        executeInterval     1;
+        writeControl        timeStep;
+        writeInterval       1;
+    }
+
+    <userDefinedSubDictName2>
+    {
+        ...
+    }
+    ...
+}
+```
 
 To manage in a simply way the function field already calculated through
 controlDict, (already written in the data folder); the command line for
@@ -68,10 +105,13 @@ postProcess -func 'patchAverage(name=wall, heatTransferCoeff(T))'
 ```
 
 While to extract the pressure drop, run a command similar to the follow one:
+
 ```sh
 postProcess -func 'patchAverage(name=inlet, p)'
 ```
- once it is know the pressure of the outlet you can subract it and obtain the delta pressure.
+
+once it is know the pressure of the outlet you can subract it and obtain the delta pressure.
+
 <!--  Script to show the footer   -->
 <html>
 <script

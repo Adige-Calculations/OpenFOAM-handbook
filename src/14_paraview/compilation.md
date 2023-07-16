@@ -15,13 +15,12 @@ cmake ..
 cmake --build .  # This will actually start the compilation process
 ```
 
-Assuming you have a Debian based distro on the server the following libraries
-should be required
+Assuming your system is Debian based the following libraries should be required:
 
 ```sh
-sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
-lib32z1
+sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script

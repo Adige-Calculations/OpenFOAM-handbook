@@ -1,13 +1,21 @@
-# Cluster practice
+# Cluster practices
+
+OpenFoam® has been designed to run in a distributed memory system. This means that each core or node has
+a memory of its own and does not require locks like shared memory. Distributed memory uses a collection
+of independent core memory pairs that synchronize using a network.
+
+OpenMPI is an implementation of the Message Passing Interface (MPI) used to permit at the system to 
+communicate via a distributed memory.
+
+## Environment setup
 
 Check what modules are installed:
 
 ```sh
 module avail
 ```
-A ```module``` refers to a software package or library that is available on a computing cluster. 
-The ```module load``` command is used in HPC scripts to load specific modules into the user's environment.
-
+A ```module``` refers to a collection of software packages or libraries that is available on a system. 
+The ```module load``` command is used to load specific modules into the user's environment.
 
 The default environment is typically a minimal set of software packages and libraries needed to run basic commands.
 However, there may be many additional software packages and libraries available on the cluster, and these can be 

@@ -31,37 +31,27 @@
   - [0](7_Directories_structure/0/README.md)
 
     - [ε, ω, k](7_Directories_structure/0/ε-ω-k/README.md)
-
     - [nut](7_Directories_structure/0/nut/README.md)
 
   - [Constant](7_Directories_structure/constant/README.md)
 
     - [transportProperties](7_Directories_structure/constant/transportProperties.md)
-
     - [turbulentProperties](7_Directories_structure/constant/turbulentProperties.md)
-
     - [polyMesh](7_Directories_structure/constant/polyMesh.md)
-
     - [thermophysicalProperties](7_Directories_structure/constant/thermophysicalProperties.md)
 
   - [System](7_Directories_structure/system/README.md)
 
     - [controlDict](7_Directories_structure/system/controldict.md)
-
     - [fvSchemes](7_Directories_structure/system/fvSchemes.md)
-
     - [fvSolution](7_Directories_structure/system/fvSolution/README.md)
 
       - [Linear solver](7_Directories_structure/system/fvSolution/linear-solver.md)
-
       - [Solver](7_Directories_structure/system/fvSolution/solver.md)
-
       - [Under-relaxation](7_Directories_structure/system/fvSolution/under-relaxation-factors.md)
 
     - [decomposeParDict](7_Directories_structure/system/decomposepardict.md)
-
     - [fvOptions](7_Directories_structure/system/fvOptions.md)
-
     - [topoSetDict](7_Directories_structure/system/topoSetDict.md)
 
 - [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
@@ -70,9 +60,10 @@
 
 - [Browse Source Code](9_browse-source-code/README.md)
 
-- [Parallel practices](10_run-in-parallel/README.md)
+- [Parallel execution](10_run-in-parallel/README.md)
 
     - [MPI (Message Passage Interface)](10_run-in-parallel/MPI.md)
+    - [Cluster practices](10_run-in-parallel/cluster_practice.md)
 
 - [Multiphase model](11_multiphase-model/README.md)
 
@@ -92,9 +83,9 @@
 
 - [CLI Post-processing](15_post-processing-via-command-line/README.md)
 
-- [Cluster practices](16_cluster-practice/README.md)
-
-- [Compilation](17_compilation/README.md)
+- [Compilation](16_compilation/README.md)
+    
+    - [Problems](16_compilation/problems.md)
 
 - [Tools](18_tools/README.md)
 
@@ -108,8 +99,6 @@
 
   - [Docker compose](19_virtualization/docker-compose.md)
 
-- [GNU-Linux distro settings](20_distribution_setting/README.md)
-
 - [Navier Stokes equations ](21_math_formulation/README.md)
 
-- [PETSc](PETSc/README.md)
+- [External library for computation](17_PETSc/README.md)

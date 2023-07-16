@@ -14,6 +14,7 @@ the directory and then open ParaView in series is declared as following:
 ```sh
 alias paraview_openFoam ='touch "${PWD\#\#\*/}".foam && paraview "${PWD\#\#\*/}".foam
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script

@@ -1,6 +1,6 @@
-# pvserver
+# Pvserver
 
-pvserver is a server side utility that permit to use ParaView headless and in
+```pvserver``` is a server side utility that permit to use ParaView headless and in
 parallel in a remote location, which we assume will have the capacity to
 visuality heavy cases. To be sure that the connection server/client work
 be sure to have the same verison of paraview installed in both the machines.
@@ -10,19 +10,19 @@ used by the service (11111 by default) is free:
 ```sh
 netstat -na | grep 11111
 ```
+
 If the port is listening, you can start the connection. For an accurate view of the listening ports and which programmes are
 using those;
 
 ```sh
 sudo netstat -ltnp
 ```
+
 the flags indicate respectively:
   - l: display only listening sockets
   - t: display TCP connection
   - n: display addresses in a numerical form
   - p: display process ID/ Program name
-
-
 
 ### Server/Client connection
 

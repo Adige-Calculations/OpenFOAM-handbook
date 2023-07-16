@@ -4,14 +4,17 @@ The best source of information is the source code and the Doxygen documentation.
 
 ## Source code
 
-The source code of the solver and governing equations solved are
+The source code of the solver (executable, not library) and governing equations solved are
 described following the source code located in the directory ```$FOAM_SOLVERS```
 
 Looking at the directory as example:
+
 ```sh
 tree /opt/OpenFOAM/OpenFOAM-v2206/applications/solvers/heatTransfer/buoyantBoussinesqSimpleFoam
 ```
+
 It will return the source code that builds the equation of your solver
+
 ```sh
 .
 ├── buoyantBoussinesqSimpleFoam.C
@@ -53,6 +56,7 @@ you can use it by typing:
 ```sh
 firefox file://$WM_PROJECT_DIR/doc/Doxygen/html/index.html
 ```
+
 As a notice we say that the compilation is time consuming.
 
 <!--  Script to show the footer   -->
