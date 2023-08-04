@@ -46,7 +46,7 @@ RUN curl -s https://dl.openfoam.com/add-debian-repo.sh | bash ;\
 	apt-get install -y openfoam2112 ;\
 	rm -rf /var/lib/apt/lists/* ;\
 	echo "source /usr/lib/openfoam/openfoam2112/etc/bashrc" >> ~of-user/.bashrc ;\
-	echo "export OMPI_MCA_btl_vader_single_copy_mechanism=none" >> ~of-user/.bashrc;
+	echo "export OMPI_MCA_btl_vader_single_copy_mechanism=none" >> ~of-user/.bashrc;  # By setting OMPI_MCA_btl_vader_single_copy_mechanism to none, you are disabling a specific feature or mechanism called "vader single copy mechanism" used by Open MPI for efficient communication between processes.
 
 #   Set the default container user to of-user
 USER of-user
