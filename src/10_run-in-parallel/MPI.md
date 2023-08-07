@@ -1,6 +1,14 @@
 # MPI (Message Passage Interface)
 
-We consider only the OpenMPI project as MPI standard protocol, however other flavours are avilable (i.g. Intel® MPI Library).
+It is a standard, not an implementation. Hence it is not:
+
+- a compiler
+- a library
+- a framework
+- a programming language
+
+It is the standard for paralleal computing in distributed system with distributed memory.
+OpenMPI is one of its implementation (other flavours are avilable, i.g. Intel® MPI Library).
 
 ## OpenMPI
 
@@ -8,7 +16,7 @@ In general, Open MPI requires that its executables are in your PATH on every nod
 and if Open MPI was compiled as dynamic libraries (which is the default), the directory where its libraries 
 are located must be in your LD_LIBRARY_PATH on every node.
 
-Specifically, if Open MPI was installed with a prefix of ```/opt/openmpi```, then the following should 
+Specifically, if OpenMPI was installed with a prefix of ```/opt/openmpi```, then the following should 
 be in your PATH and LD_LIBRARY_PATH
 
 - PATH:            /opt/openmpi/bin
