@@ -127,7 +127,15 @@ do
         mv $(ls -1tr | tail -1) $flowRateValue
 done
 ```
- 
+
+## Find bugs 
+
+The utility ```shellcheck``` provide warnings and suggestions for bash/sh 
+shell scripts. Run the following for instant output: 
+
+```sh
+shellcheck yourscript.sh
+``` 
 
 <!--  Script to show the footer   -->
 <html>
