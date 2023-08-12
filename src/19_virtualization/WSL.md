@@ -1,13 +1,15 @@
 # Windows Subsystem for GNU-Linux
 
-OpenFoam<sup>®</sup> can run on version 2 of WSL few installation notes,
-run in PowerShell as admin for the enabling a necessary Windows feature:
+OpenFoam<sup>®</sup> can run on version 2 of WSL. Few installation notes before installing it:,
+run in PowerShell as adminthe followings for the enabling a necessary Windows feature:
 
 ```sh
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform
 /all /norestart
 ```
+
 The proceed with the installation:
+
 ```sh
 wsl –install
 ```
@@ -22,6 +24,7 @@ is in the Windows file explorer in:
 Change the distribution name accordingly to the distribution you have chosen to run.
 
 ## GUI applications
+
 To lunch GUI programmes via WSL the following actions must take place:
 Install an Xserver like VcXsrv, download from
 [https://sourceforge.net/projects/vcxsrv/ 782](https://sourceforge.net/projects/vcxsrv/)
@@ -31,9 +34,23 @@ screen and also allow public access such as:
 ```sh 
 Disable Windows Defender Firewall for Guest or public Network
 ```
+
 In WSL edit the file shell confing file in this way:
+
 ``` sh
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0 >> ~/.bashrc
+```
+
+## Storage reclaim
+
+Shirnking the storage has been a problem for WSL instances and they can clog the storage of 
+the entire system. Given that you have reduced the size of the content inside the WSL it is
+adviced to do the following in powershell to get back the storage:
+
+```sh
+wsl.exe --shutdown
+cd C:\Users\<User>\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState
+optimize-vhd -Path .\ext4.vhdx -Mode full
 ```
 
 <!--  Script to show the footer   -->
