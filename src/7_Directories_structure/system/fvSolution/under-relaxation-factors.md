@@ -1,9 +1,12 @@
 # Under-relaxation factors
-Relaxation factors for under-relaxaing fields are specified within
+
+The relaxation factors for under-relaxaing the fields variable are specified within
 ```fvSolution.relaxationFactors.fields``` sub-dictionary, instead
 equation under-relaxations factor are within a ```fvSolution.relaxationFactors.equations``` sub-dictionary. 
 
 ## SIMPLE
+
+Usual set of parameters for under-relaxaing the problem using a SIMPLE scheme:
 
 ```c++
 p 0.3;
@@ -13,6 +16,8 @@ omega 0.7;
 ```
 
 ## SIMPLEC
+
+Usual set of parameters for under-relaxaing the problem using a SIMPLEC scheme:
 
 ```c++
 p 1;
