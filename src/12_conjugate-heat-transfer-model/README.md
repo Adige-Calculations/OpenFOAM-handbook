@@ -9,10 +9,7 @@ Several solvers that implements these model are present, the most common are cal
 
 These allow the definition of multiple regions in the domain by setting up
 computational meshes, models and conditions separately for each region,
-including solid-only ones. The steady-state flow and heat
-transfer in the complete domain is obtained by solving the mass,
-momentum and energy conservation equations simultaneously in all
-regions, including the thermal coupling among them.
+including solid-only ones.
 
 ## Mesh partition practice
 
@@ -26,12 +23,7 @@ An example of topoSet can be the following one, which separates threee fluid wit
 and apply a face zone:
 
 ```c++
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "system";
+...
     object      topoSetDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -86,8 +78,9 @@ actions
     }
 
 );
+
 ```
-Then split the mesh to create interfaces and distinct domain regions to couple the CHT model:
+Then split the mesh to create interfaces and distinct regions to couple the CHT model:
 
 ```sh
 splitMeshRegions -cellZonesOnly -overwrite
@@ -95,43 +88,32 @@ splitMeshRegions -cellZonesOnly -overwrite
 
 This will overwrite a new mesh, divided into different CellZones. 
 
-## Setting boundary conditions practice
-
-Since multiple domains are present, manually managing the ```0``` directory dictionaries
-can be overwhelming. The utility ```changeDictionary``` can be used to generate a set of
-dictionary from a sample:
-
 ```sh
-changeDictionary -region <regionName1>
-changeDictionary -region <regionName2>
-```
-To make this utility wokring your "system" directory must imitate a similar layout:
-```sh
-system
-│
-├── regionName1
-│   ├── changeDictionaryDict
-│   ├── decomposeParDict -> ../decomposeParDict
-│   ├── fvOptions -> ../fvOptions
-│   ├── fvSchemes
-│   └── fvSolution
-├── regionName2
-│   ├── changeDictionaryDict
-│   ├── createBafflesDict
-│   ├── decomposeParDict -> ../decomposeParDict
-│   ├── fvOptions -> ../fvOptions
-│   ├── fvSchemes
-│   └── fvSolution
-├── topoSetDict
-├── controlDict
-└── ...
+checkMesh -region <nameRegion>
 ```
 
-Check the "constant/<regionName>/thermophysicalProperties" to be consistent with the nomenclature,
-then in the dictionary section ```thermophysicalProperties.thermo.type``` you should set 
-"heRhoThermo" for setting the fluid region and "heSolidThermo" for the solid region.
+## Region characterization
+
+In "constant/<regionName>/thermophysicalProperties" you have to be consistent with the nomenclature,
+then in the dictionary section ```thermophysicalProperties.thermo.type``` you will usually set 
+"heRhoThermo" for setting the fluid region and "heSolidThermo" for the solid region other then defining 
+the file "constant/regionProperties" such as:
+
+```c#
+    ...
+    object      regionProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+regions
+(
+    fluid       (fluid_domain)
+    solid       (aluminum gold regionNameN)
+);
+```
 
 ## Thermal boundary conditions
+
 Instead as BC in 0, for selecting the thermal conductivity aside of
 kappaMethod you need to introduce the keywords:
 
@@ -263,7 +245,6 @@ FoamFile
 // This is only relevant if your face selection type can pick up boundary
 // faces.
 internalFacesOnly true;
-
 
 // Baffles to create.
 baffles

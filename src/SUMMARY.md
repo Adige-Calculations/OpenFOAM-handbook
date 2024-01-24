@@ -68,6 +68,7 @@
 - [Multiphase model](11_multiphase-model/README.md)
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
+    - [Boundary condition automation](12_conjugate-heat-transfer-model/automation_for_initial_condition.md)
 
 - [Residuals](13_residuals/README.md)
 

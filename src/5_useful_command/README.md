@@ -54,7 +54,8 @@ ls -d processor* | xargs -i cp -r 0.orig/* ./{}/0
 To find the correct case frame in tutorial, follows simlar commands chain:
 
 ```sh
-find $FOAM\_TUTORIALS -name controlDict | xargs grep -r foo
+find $FOAM_TUTORIALS -type f | xargs grep -r <wordYouAreInterestedIn>              # It will search in all tutorial files 
+find $FOAM_TUTORIALS -name controlDict | xargs grep -r <wordYouAreInterestedIn>    # It will search in all controlDict files
 ```
 
 Which list controlDict files where the word ```foo``` have been found
