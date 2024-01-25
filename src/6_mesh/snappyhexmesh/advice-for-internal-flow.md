@@ -3,18 +3,24 @@
 To fix the boundary conditions, prepare watertight STL files as
 inlet.stl, outlet.stl, ect. Then in ```system/snappyHexMeshDict.geometry``` define:
 section
+
 ```c++
 geometry
 {
     inlet.stl
     {
-        type triSurfaceMesh;
+        type triSurfaceMesh;  // It grabs STL files from constant/triSurface
         name inlet;
     }
     outlet.stl
     {
         type triSurfaceMesh;
         name outlet;
+    }
+    wall.stl
+    {
+        type triSurfaceMesh;
+        name wall;
     }
 }
 
@@ -24,33 +30,33 @@ info of the patch:
 
 ```c++
 refinementSurfaces
+{
+    inlet
     {
-        inlet
-        {
 
-            level (2 2);
-            patchInfo
-                        {
-                        type patch;
-                        }
-        }
-        outlet
+        level (2 2);
+        patchInfo
         {
+            type patch;
+        }
+    }
+    outlet
+    {
 
-            level (2 2);
-            patchInfo
-                        {
-                        type patch;
-                        }
-        }
-        wall
+        level (2 2);
+        patchInfo
         {
-            level (2 2);
-            patchInfo
-                        {
-                        type wall;
-                        }
+            type patch;
         }
+    }
+    wall
+    {
+        level (2 2);
+        patchInfo
+        {
+            type wall;
+        }
+    }
 }
 ```
 

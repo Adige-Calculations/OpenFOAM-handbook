@@ -21,6 +21,7 @@
   - [snappyHexMesh](6_mesh/snappyhexmesh/README.md)
     - [Internal flow](6_mesh/snappyhexmesh/advice-for-internal-flow.md)
     - [Setting zones](6_mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.md)
+    - [Multiple regions](6_mesh/snappyhexmesh/multiple_regions.md)
     - [Refinement technique](6_mesh/snappyhexmesh/advanced-refinement-technique.md)
   - [cfMesh ](6_mesh/cfmesh.md)
   - [checkMesh](6_mesh/checkMesh.md)
@@ -69,6 +70,7 @@
 
 - [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
     - [Boundary condition automation](12_conjugate-heat-transfer-model/automation_for_initial_condition.md)
+    - [Fluid decoupling](12_conjugate-heat-transfer-model/not_resolving_fluid_part.md)
 
 - [Residuals](13_residuals/README.md)
 

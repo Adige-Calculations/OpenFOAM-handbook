@@ -1,21 +1,22 @@
 # Residuals
 
-The residuals are evaluated by substituting the current solution into the
-equation and taking the magnitude of the difference between the left- and
-right-hand sides of the system; it is also normalised to make it independent of the
-scale of the problem being analysed. Consequently, before solving an
-equation for a particular field, the initial residual is evaluated based
+The residuals are evaluated by substituting the iterations' solution into the
+theretical equation, taking out the non-zero result; it is also normalised 
+to make it independent of the scale of the problem being analysed. Consequently, 
+before solving an equation for a particular field, the initial residual is evaluated based
 on the current values of the field. After each solver iteration the
 residual is re-evaluated. To terminate the case, the initial residual of
-the field equations must falls below user-specified threshold values.
+the field equations should fall below user-specified threshold values.
 
-## Check convergence
+## Check convergence on turbulent flows
+
 A simple trick to check the converge of the calculations properly, consits in checking
 the \\( ν_{t} \\) convergence value since it is dependent from \\( k \\) and \\(  ε \\)
 which both must converge to get a good \\( ν_{t} \\, hence it is one of the best indicator
 of convergence.
 
 ## Graphically check convergence
+
 Usually residuals can be monitored via terminal live or in a log file afterwords.
 However few solution are present if you want to generate a chart:
 

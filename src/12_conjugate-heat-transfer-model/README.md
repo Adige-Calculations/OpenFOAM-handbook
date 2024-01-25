@@ -11,6 +11,26 @@ These allow the definition of multiple regions in the domain by setting up
 computational meshes, models and conditions separately for each region,
 including solid-only ones.
 
+## Region characterization
+
+In "constant/<regionName>/thermophysicalProperties" you have to be consistent with the nomenclature,
+then in the dictionary section ```thermophysicalProperties.thermo.type``` you will usually set 
+"heRhoThermo" for setting the fluid region and "heSolidThermo" for the solid region other then defining 
+the file "constant/regionProperties" such as:
+
+```c#
+    ...
+    object      regionProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+regions
+(
+    fluid       (fluid_domain)
+    solid       (aluminum gold regionNameN)
+);
+```
+
 ## Mesh partition practice
 
 At first you must define different regions, using the ```topoSet``` utility ( which 
@@ -92,26 +112,6 @@ This will overwrite a new mesh, divided into different CellZones.
 checkMesh -region <nameRegion>
 ```
 
-## Region characterization
-
-In "constant/<regionName>/thermophysicalProperties" you have to be consistent with the nomenclature,
-then in the dictionary section ```thermophysicalProperties.thermo.type``` you will usually set 
-"heRhoThermo" for setting the fluid region and "heSolidThermo" for the solid region other then defining 
-the file "constant/regionProperties" such as:
-
-```c#
-    ...
-    object      regionProperties;
-}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-regions
-(
-    fluid       (fluid_domain)
-    solid       (aluminum gold regionNameN)
-);
-```
-
 ## Thermal boundary conditions
 
 Instead as BC in 0, for selecting the thermal conductivity aside of
@@ -131,29 +131,36 @@ kappaMethod you need to introduce the keywords:
     corresponding to an orthotropic material, and it is specified in
     <material>/thermophysical (directionalKSolidThermoCoeffs)
 
-## Parallel execution a CHT model
+## Parallel execution with multiple regions 
 
-To decompose a case with more than one region it is opportune to run
-this shell script in a way that you correctly distribute the regions
-between the processors:
+To decompose a case with more than one region it is opportune that every region has
+directives to decompose the case. An option is to create symbolic link to all your 
+decomposition files for consistency, such as:
 
-And the decompose the case through:
+```sh
+ln -s system/decomposeParDict system/<solidRegion1>/decomposeParDict
+ln -s system/decomposeParDict system/<fluidRegion1>/decomposeParDict
+```
+Same applies to the "fvSolution" and "fvSchemes":
+
+```sh
+ln -s system/fvSolution_solid_regions system/<solidRegion1>/fvSolution
+ln -s system/fvSolution_solid_regions system/<solidRegion2>/fvSolution
+```
+
+Then decompose and run the case through:
+
 ```bash
 decomposePar -allRegions
-```
-Remember to create symbolic link to all your decomosition files to be consistent:
-```bash
-/system/<regionName>/decomposeParDict -> system/decomposeParDict
-mpirun -n <nProcessors> <solver> -parallel
+mpirun -n <nProcessors>  $(getApplication) -parallel
 ```
 
 ### Script example
-This script aims to show most of the action that a CHT case usually require:
+
+This script aims to show most of the commands that a CHT case usually require:
 
 ```bash
 #!/bin/bash
-
-#------------------------------------------------------------------------------
 
 SLURM_NTASKS=16
 
@@ -175,22 +182,6 @@ blockMesh  > ./log/blockMesh.log 2>&1  && echo "blockMesh Executed"
 decomposePar -force  > ./log/decomposePar1.log 2>&1 && echo "decomposePar1 Executed"
 mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite > ./log/snappyHexMesh.log 2>&1 && echo "snappyHexMesh Executed"
 
-## --------------------   SINGLE CORE -------------------------------------------- #
-
-# reconstructParMesh -constant > ./log/reconstructParMesh1 2>&1 && echo "Reconstruct Case"
-# topoSet  > ./log/topoSet  && echo "topoSet Executed"
-# splitMeshRegions -cellZonesOnly -overwrite > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
-# checkMesh > ./log/checkMesh-EVERYCELLZONES.log 2>&1 && echo "checkMesh Executed"
-# createBaffles -region PCB  -overwrite >  ./log/createBaffles  2>&1 && echo "createBaffles Executed"
-
-## Create a new 0/regions/* following a single dictionary in system/region/changeDIcitonaryDict
-# for region in $(foamListRegions)
-# do
-#   changeDictionary -region $region > ./log/changeDictionary.$region.log 2>&1
-# done
-# echo "changeDictionary Executed"
-# decomposePar -force -allRegions  > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
-
 ##  ----------------------   PARALLEL CORES   -----------------------------------------------
 
 mpirun -np $SLURM_NTASKS topoSet -parallel > ./log/topoSet  2>&1 && echo "topoSet Executed"
@@ -211,6 +202,7 @@ reconstructParMesh -constant -allRegions > ./log/reconstructParMesh.log 2>&1
 ```
 
 ### Thin walls
+
 For introducing thin walls inside your domain:
 
 ```c++
@@ -219,8 +211,8 @@ kappaLayers ( \<thermalConductivityOfTheLayer\> );
 ```
 Check the "constant/<regionName>/polyMesh/boundary" on to check the
 interface type which should be of this kind type: solidThermo for the
-solid and type: fluidThemo for the fluid. Other than that, it is
-necessary that the interface will be declared as
+solid and type: fluidThemo for the fluid. Other than that, it is necessary 
+that the interface will be declared as in "constant/<region1>/polyMesh/boundary"
 
 ```c++
 type: mappedWall
@@ -231,12 +223,7 @@ type: mappedWall
 In thermal problems it is often necessary resolve thin walls. Hence baffle modelling result to be a good choice if the computaional power is not adapt to solve little features.
 
 ```c++
-\*---------------------------------------------------------------------------*/
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
+    ...
     object      createBafflesDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -296,17 +283,11 @@ baffles
                     {
                         rho     8920;
                     }
-
                 }
-
             }
         }
     }
-
 }
-
-
-// ************************************************************************* //
 ```
 Then the execution should look like the following example:
 

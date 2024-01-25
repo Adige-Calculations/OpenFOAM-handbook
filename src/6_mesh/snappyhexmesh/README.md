@@ -1,25 +1,29 @@
 # SnappyHexMesh
 
-In order to define the patches in snappyHexMesh you need to use
-different STL file that can couple in a watertight geometry. Use the
+In order to define the patches with snappyHexMesh you need to use
+different files (in STL format, for compatability reasons, wrting in STL-ASCII 
+format might be beneficial) that can assemble in a watertight shell geometry. Use the
 utility surfaceCheck to proof that your STL is watertight.
 
-The files to entry in the command are the parts of the 3D complex draw
-in STL format (exclusively written in ASCII) and they must be copied in
-constant/triSurface. Then modify the file sytem/surfaceFeatureDict
+----------------------------------------------------------------------------------------
+
+The files are suppoed to be stored in "constant/triSurface" rigorously
+in this format ```<file>.stl``` and plus a description on "sytem/surfaceFeatureDict" 
 substituting and adding the entries and modifying the featured angles
-(170°(advised) - 180°: you include all the angle between two neighboured
+(170°(advised) - 180°: to include all the angles between two neighboured
 cells, lowering this value it wouldn’t be consider these cells and it
-will be applied a merged cell)
+will be applied a merged cell).
+
+## How to start a case in single and parallel
+
+After the execution of:
 
 ```sh
 surfaceFeatureExtract
 ```
 
-The geometry components must be costant/triSurface directory rigorously
-in this format ```<file>.stl``` and after having launched the command in
-the same folder should appear ```<file>.eMesh``` and a new directory
-will appear in constant/extendedFeatureEdgeMesh/
+in "constant/triSurface" the same folder should appear ```<file>.eMesh``` and a new directory
+will be generated as "constant/extendedFeatureEdgeMesh"
 
 If you want to extract very thin layer, use the utility
 
@@ -30,12 +34,6 @@ dependent on the dictionary ```system/extrudeMeshDict``` to extrude some layers
 externally to the geometry, however, make sure that those created are
 very thin.
 
-## How to start a case in single and parallel
-
-After the execution of:
-```sh
-surfaceFeatureExtract
-```
 The following commands will start the meshing process:
 
 
