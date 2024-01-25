@@ -1,4 +1,4 @@
-#- [Preface](./preface.md)
+- [Preface](./preface.md)
 
 - [Intro](1_intro/README.md)
 
@@ -6,6 +6,7 @@
   - [Package manager](2_installation/via_package_manager.md)
   - [Precompiled binaries](2_installation/download_binaries.md)
   - [Compiling source code](2_installation/compiling_src_code.md)
+    - [Compiling function object](2_installation/compile_function_objects.md) 
 
 - [Problem set up](3_problem_set_up/README.md)
 
@@ -85,10 +86,6 @@
   - [Trouble shooting](14_paraview/trouble-shooting-common-problems.md)
 
 - [CLI Post-processing](15_post-processing-via-command-line/README.md)
-
-- [Compilation](16_compilation/README.md)
-    
-    - [Problems](16_compilation/problems.md)
 
 - [External library for computation](17_PETSc/README.md)
 

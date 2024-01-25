@@ -1,9 +1,4 @@
-# wmake
-
-```wmake``` is a wrapper for ``` make```, internally developed inside OpenFOAM to improve the compilation 
-experience. The binary is located at ```$WM_PROJECT_DIR/wmake```.
-
-## Compile functionObjects
+# Compile functionObjects
 
 Once you are in possess of the source files (```.c``` and ```.h```) of the objectFunction.
 A new directory must be added at ```$FOAM_SRC/functionObject/…/```.

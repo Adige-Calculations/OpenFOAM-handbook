@@ -1,6 +1,12 @@
 # Compiling source code
 
-The source code must be compiled and then added to the execution path, in order to be used.
+The source code must be compiled and then added to the execution path, in order to be used. The tool for the 
+job is ```wmake```
+
+## wmake
+
+```wmake``` is a wrapper for ``` make```, to improve the compilation 
+experience. The binary is located at ```$WM_PROJECT_DIR/wmake```.
 
 ## Compiling the source code - x86 architecture (64 bit)
 
@@ -55,7 +61,6 @@ source ~/.bashrc
 ```
 OpenFoam® commands should now be recognized by the terminal.
 
-
 ## Compiling the source code - ARM architecture
 
 If the architecture of your machine differ from x86, you need to take few more steps. At first create 
@@ -100,9 +105,9 @@ the installation with a shell script similar to the following one:
 ## -- Loading the env. variables, for putting in scope the mpi utilities  -- #
 module load openmpi
 
-source /fsx/openfoam/OpenFOAM-v2012/etc/bashrc
+source /opt/OpenFOAM/OpenFOAM-v2212/etc/bashrc
 export WM_NCOMPPROCS=36
-cd /fsx/OpenFOAM/openfoam/
+cd /opt/OpenFOAM/OpenFOAM-v2212
 ./Allwmake > installation.log
 ```
 
@@ -110,6 +115,17 @@ This script uses 36 cores, correspondent to a 1 nodes of the HPC on study ("c5n.
 by 36 cores each. The job should compile in few minutes.
 The location of the source code is different (than the advised location) because the software is 
 installed on a shared file system for distribution purpose.
+
+## Usual problems
+
+Several distribution may need some libraries, and correct callings to make the system working.
+To compile OpenFOAM, the shared library of an MPI implementation must be set in the exectution path:
+
+```sh
+export PATH=$PATH:/usr/lib64/openmpi/bin
+source /usr/lib/openfoam/openfoam2312/etc/bashrc
+```
+
 
 <!--  Script to show the footer   -->
 <html>
