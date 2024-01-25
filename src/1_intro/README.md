@@ -1,6 +1,6 @@
 # Intro
 
-OpenFOAM® is classified as free and open-source software, hence everyone can contribute, modify and redistribute the software.
+OpenFOAM® is free and open-source software, hence everyone can contribute, modify and redistribute it.
 The two main distributions of OpenFOAM® actively developed are:
 - OpenFOAM® from the OpenFOAM Foundation
 - OpenFOAM® by OpenCFD Ltd
@@ -9,11 +9,12 @@ These are distributed through two differetn web sites, respectively at:
 - https://www.openfoam.org
 - https://www.openfoam.com
 
-This book will cover OpenFOAM® by OpenCFD Ltd which does software verison control following the nomenclature:
+This book will cover OpenFOAM® by OpenCFD Ltd which does verison control with the following the nomenclature:
 
-> OpenFOAM-v2212
+> OpenFOAM-v2312
 
-Which stands for years followed from the month, i.e. 22 stands for year 2022. while 12 for December, hence the software has been released on Dec 22. The release cicle occurs every 6 months.To check the version of OpenFOAM® run, once the sofware is already installed:
+Which stands for years followed from the month, i.e. 23 stands for year 2023, while 12 for December. The release cicle occurs 
+every 6 months.To check the version of OpenFOAM® run, once the sofware is already installed:
 
 ```sh
 foamVersion

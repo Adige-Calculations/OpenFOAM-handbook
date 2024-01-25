@@ -15,7 +15,10 @@ It will run all the command necessary to run the tutorial. While:
 ./Allclean
 ```
 It will run all the command necessary to clean the tutorial.
-To write you bash script, start a new file with the notation:
+
+## Custom script
+
+To write your shell script, start a new file with the notation:
 
 ```bash
 #!/bin/bash
@@ -35,8 +38,6 @@ An example of a bash script to automate a thermal analysis is presented here:
 ```sh
 #!/bin/bash
 
-#------------------------------------------------------------------------------
-
 SLURM_NTASKS=16                                          # Processor number defined here 
 source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
 
@@ -44,13 +45,6 @@ source ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Source run functions
 ./Allclean
 rm -r log;
 mkdir log
-
-# Remove all mesh region present in the case
-for region in $(foamListRegions)
-do
-    rm -r constant/$region/polyMesh;
-done
-echo "Eliminated mesh on old regions"
 
 # Mesh generation
 restore0Dir
@@ -62,22 +56,12 @@ mpirun -np $SLURM_NTASKS snappyHexMesh -parallel -overwrite > ./log/snappyHexMes
 # Addional mesh zones operation
 reconstructParMesh -constant                                > ./log/reconstructParMesh1         2>&1 && echo "Reconstruct Case"
 topoSet                                                     > ./log/topoSet  && echo "topoSet Executed"
-splitMeshRegions -cellZonesOnly -overwrite                  > ./log/splitMesh.log 2>&1 && echo "splitMeshRegions Executed"
 checkMesh                                                   > ./log/checkMesh.log                   2>&1 && echo "checkMesh Executed"
-createBaffles -region PCB  -overwrite                       >  ./log/createBaffles     2>&1 && echo "createBaffles Executed"
 
-for region in $(foamListRegions)
-  do
-     changeDictionary -region $region                       > ./log/changeDictionary.$region.log 2>&1
-  done
-echo "changeDictionary Executed"
-
-decomposePar -force -allRegions                             > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
+decomposePar -force                                         > ./log/decomposePar2 2>&1 && echo "decomposePar2 Executed"
 mpirun -np $SLURM_NTASKS $(getApplication) -parallel        > ./log/$(getApplication).log 2>&1 && echo "$(getApplication) Executed"
 
 reconstructParMesh -constant -allRegions                    > ./log/reconstructParMesh.log 2>&1 && echo "Finished"
-
-#------------------------------------------------------------------------------
 ```
 
 ## Parametric study

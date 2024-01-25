@@ -68,24 +68,6 @@ $FOAM_SRC –iname *continuity*
 
 and open any of the files.
 
-# Run a GUI
-
-Run a GUI file manager from terminal, ```nautilus``` is the defult in GNOME
-desktop envirnments:
-
-```sh
-nautilus . &
-```
-
-Instead, ```dolphin``` is the default for the KDE desktop environement.
-
-```sh
-dolphin . &
-```
-
-This will open the file manager in the location you are on the terminal. The
-flag ```&``` runs the process in background.
-
 <!--  Script to show the footer   -->
 <html>
 <script

@@ -27,11 +27,7 @@ constant
 It this scenario we have the liquid phase as water, describing its theral behaviour in ```thermophysicalProperties.water```
 
 ```c++
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
+    ...
     object      thermophysicalProperties.water;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -67,12 +63,8 @@ mixture
         mu              4.66E-04;           // dynamic viscosity at 90°C   [Kg/m s]
         Pr              2.98;               // Prandtl Number at 90°C      [nu/alfa] = [mu Cp/k] [-]    
     }
-
 }
-
-
 ```
-
 
 While the interaction between the two phases should look something like:
 ```c++
