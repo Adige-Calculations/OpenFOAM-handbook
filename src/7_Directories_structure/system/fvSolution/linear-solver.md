@@ -1,15 +1,13 @@
 # Linear solver control
 
-Matrix solver which works on algebraic system of shape:
+Linear solvers are sets of algorithms to solve linear problems as the following:
 
 \begin{equation}
 \tag{1}
-Au=b
+Ax=b
 \end{equation}
 
-referring to the method of number-crunching to solve a matrix equation.
-The linear solver stops if any one of the following conditions are
-reached:
+The solver stops if any one of the following conditions are reached:
 
   - ```tolerance``` Define the exit criterion for the solver, it is the
     absolute difference between 2 consecutive iterations and must be low
@@ -22,11 +20,7 @@ reached:
   - ```maxIter``` A maximum number of iterations at which the solver is
     stopped anyway 1000 as default
 
->> The solvers controls can be modified on the fly.
-
-# Available solvers
-
-This section describes the linear solver options available to solve the matrix system.
+>> The solvers controls can be modified on the fly (when a simulation is running).
 
 ## Diagonal solver
 
@@ -75,7 +69,8 @@ tolerance       <absolute tolerance>;
 
 ##  Minimization algorithms - Iterative solver
 
-The below are minimization algorithms:
+The below are minimization algorithms, which they start from a guess and they iteratively correct up to the respect 
+of the equations of the system:
 
 - ```PCG```/```PBiCG```: Preconditioned (bi-)Conjugate Gradient, with PCG for symmetric matrices, PBiCG for asymmetric matrices.
 - ```PBiCGStab```: Stabilised preconditioned (bi-)conjugate gradient, for both symmetric and asymmetric matrices.
