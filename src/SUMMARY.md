@@ -75,15 +75,13 @@
 
 - [Residuals](13_residuals/README.md)
 
-- [ParaView](14_paraview/README.md)
+- [ParaView](paraview/paraview.md)
 
-  - [pvserver](14_paraview/pvserver.md)
+  - [Remote rendering](paraview/pvserver.md)
 
-  - [Compilation](14_paraview/compilation.md)
+  - [Compilation](paraview/compilation.md)
 
-  <!-- - [Plotting advice](14_paraview/plotting_advice.md) -->
-
-  - [Trouble shooting](14_paraview/trouble-shooting-common-problems.md)
+  - [Different meshes](paraview/visualization_different_meshes.md)
 
 - [CLI Post-processing](15_post-processing-via-command-line/README.md)
 
