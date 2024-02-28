@@ -1,79 +1,70 @@
 - [Preface](./preface.md)
 
-- [Intro](1_intro/README.md)
+- [Intro](intro/README.md)
 
-- [Installation](2_installation/README.md)
-  - [Package manager](2_installation/via_package_manager.md)
-  - [Precompiled binaries](2_installation/download_binaries.md)
-  - [Compiling source code](2_installation/compiling_src_code.md)
-    - [Compiling function object](2_installation/compile_function_objects.md) 
+- [Installation](installation/README.md)
+  - [Package manager](installation/via_package_manager.md)
+  - [Precompiled binaries](installation/download_binaries.md)
+  - [Compiling source code](installation/compiling_src_code.md)
+    - [Compiling function object](installation/compile_function_objects.md) 
 
-- [Problem set up](3_problem_set_up/README.md)
+- [Problem set up](problem_set_up/README.md)
 
-- [Automation ](4_automation/README.md)
-  - [Run commands in sequence](4_automation/run-commands-in-sequence.md)
-  - [Create a custom command](4_automation/create-a-custom-command.md)
-  - [Shell scripting](4_automation/bash-script.md)
+- [Automation ](automation/README.md)
+  - [Run commands in sequence](automation/run-commands-in-sequence.md)
+  - [Create a custom command](automation/create-a-custom-command.md)
+  - [Shell scripting](automation/bash-script.md)
 
-- [Useful commands](5_useful_command/README.md)
+- [Useful commands](useful_command/README.md)
 
-- [Mesh](6_mesh/README.md)
-  - [blockMesh](6_mesh/blockmesh.md)
-  - [snappyHexMesh](6_mesh/snappyhexmesh/README.md)
-    - [Internal flow](6_mesh/snappyhexmesh/advice-for-internal-flow.md)
-    - [Setting zones](6_mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.md)
-    - [Multiple regions](6_mesh/snappyhexmesh/multiple_regions.md)
-    - [Refinement technique](6_mesh/snappyhexmesh/advanced-refinement-technique.md)
-  - [cfMesh ](6_mesh/cfmesh.md)
-  - [checkMesh](6_mesh/checkMesh.md)
-  - [ANSYS Meshing to OpenFoam® ](6_mesh/ansys-meshing-to-openfoam.md)
+- [Mesh](mesh/README.md)
+  - [blockMesh](mesh/blockmesh.md)
+  - [snappyHexMesh](mesh/snappyhexmesh/README.md)
+    - [Internal flow](mesh/snappyhexmesh/advice-for-internal-flow.md)
+    - [Setting zones](mesh/snappyhexmesh/setting-zones-inside-the-mesh-for-source-terms.md)
+    - [Multiple regions](mesh/snappyhexmesh/multiple_regions.md)
+    - [Refinement technique](mesh/snappyhexmesh/advanced-refinement-technique.md)
+  - [cfMesh ](mesh/cfmesh.md)
+  - [checkMesh](mesh/checkMesh.md)
+  - [ANSYS Meshing to OpenFoam® ](mesh/ansys-meshing-to-openfoam.md)
 
-- [Directories’ structure](7_Directories_structure/README.md)
+- [Directories’ structure](directories_structure/README.md)
 
-  - [0](7_Directories_structure/0/README.md)
+  - [0](directories_structure/0/README.md)
+    - [ε, ω, k](directories_structure/0/ε-ω-k/README.md)
+    - [nut](directories_structure/0/nut/README.md)
+  - [Constant](directories_structure/constant/README.md)
+    - [transportProperties](directories_structure/constant/transportProperties.md)
+    - [turbulentProperties](directories_structure/constant/turbulentProperties.md)
+    - [polyMesh](directories_structure/constant/polyMesh.md)
+    - [thermophysicalProperties](directories_structure/constant/thermophysicalProperties.md)
+  - [System](directories_structure/system/README.md)
+    - [controlDict](directories_structure/system/controldict.md)
+    - [fvSchemes](directories_structure/system/fvSchemes.md)
+    - [fvSolution](directories_structure/system/fvSolution/README.md)
+      - [Linear solver](directories_structure/system/fvSolution/linear-solver.md)
+      - [Solver](directories_structure/system/fvSolution/solver.md)
+      - [Under-relaxation](directories_structure/system/fvSolution/under-relaxation-factors.md)
+    - [decomposeParDict](directories_structure/system/decomposepardict.md)
+    - [fvOptions](directories_structure/system/fvOptions.md)
+    - [topoSetDict](directories_structure/system/topoSetDict.md)
 
-    - [ε, ω, k](7_Directories_structure/0/ε-ω-k/README.md)
-    - [nut](7_Directories_structure/0/nut/README.md)
+- [Problem initialization](problem-initialization-and-interpolation-from-previous-results/README.md)
+    - [Modularity](problem-initialization-and-interpolation-from-previous-results/modularity.md)
 
-  - [Constant](7_Directories_structure/constant/README.md)
+- [Browse Source Code](browse-source-code/README.md)
 
-    - [transportProperties](7_Directories_structure/constant/transportProperties.md)
-    - [turbulentProperties](7_Directories_structure/constant/turbulentProperties.md)
-    - [polyMesh](7_Directories_structure/constant/polyMesh.md)
-    - [thermophysicalProperties](7_Directories_structure/constant/thermophysicalProperties.md)
+- [Parallel execution](run-in-parallel/README.md)
+    - [MPI (Message Passage Interface)](run-in-parallel/MPI.md)
+    - [Cluster practices](run-in-parallel/cluster_practice.md)
 
-  - [System](7_Directories_structure/system/README.md)
+- [Multiphase model](multiphase-model/README.md)
 
-    - [controlDict](7_Directories_structure/system/controldict.md)
-    - [fvSchemes](7_Directories_structure/system/fvSchemes.md)
-    - [fvSolution](7_Directories_structure/system/fvSolution/README.md)
+- [Conjugate Heat Transfer Model](conjugate-heat-transfer-model/README.md)
+    - [Boundary condition automation](conjugate-heat-transfer-model/automation_for_initial_condition.md)
+    - [Fluid decoupling](conjugate-heat-transfer-model/not_resolving_fluid_part.md)
 
-      - [Linear solver](7_Directories_structure/system/fvSolution/linear-solver.md)
-      - [Solver](7_Directories_structure/system/fvSolution/solver.md)
-      - [Under-relaxation](7_Directories_structure/system/fvSolution/under-relaxation-factors.md)
-
-    - [decomposeParDict](7_Directories_structure/system/decomposepardict.md)
-    - [fvOptions](7_Directories_structure/system/fvOptions.md)
-    - [topoSetDict](7_Directories_structure/system/topoSetDict.md)
-
-- [Problem initialization](8_problem-initialization-and-interpolation-from-previous-results/README.md)
-
-    - [Modularity](8_problem-initialization-and-interpolation-from-previous-results/modularity.md)
-
-- [Browse Source Code](9_browse-source-code/README.md)
-
-- [Parallel execution](10_run-in-parallel/README.md)
-
-    - [MPI (Message Passage Interface)](10_run-in-parallel/MPI.md)
-    - [Cluster practices](10_run-in-parallel/cluster_practice.md)
-
-- [Multiphase model](11_multiphase-model/README.md)
-
-- [Conjugate Heat Transfer Model](12_conjugate-heat-transfer-model/README.md)
-    - [Boundary condition automation](12_conjugate-heat-transfer-model/automation_for_initial_condition.md)
-    - [Fluid decoupling](12_conjugate-heat-transfer-model/not_resolving_fluid_part.md)
-
-- [Residuals](13_residuals/README.md)
+- [Residuals](residuals/README.md)
 
 - [ParaView](paraview/paraview.md)
 
@@ -83,21 +74,17 @@
 
   - [Different meshes](paraview/visualization_different_meshes.md)
 
-- [CLI Post-processing](15_post-processing-via-command-line/README.md)
+- [CLI Post-processing](post-processing-via-command-line/README.md)
 
-- [External library for computation](17_PETSc/README.md)
+- [External library for computation](PETSc/README.md)
 
-- [Editing tools](18_tools/README.md)
+- [Editing tools](tools/README.md)
 
-- [Virtualization](19_virtualization/README.md)
+- [Virtualization](virtualization/README.md)
+  - [Windows Subsystem for Linux](virtualization/WSL.md)
+  - [Multipass](virtualization/multipass.md)
+  - [Docker](virtualization/docker.md)
+  - [Docker compose](virtualization/docker-compose.md)
 
-  - [Windows Subsystem for Linux](19_virtualization/WSL.md)
-
-  - [Multipass](19_virtualization/multipass.md)
-
-  - [Docker](19_virtualization/docker.md)
-
-  - [Docker compose](19_virtualization/docker-compose.md)
-
-- [Navier Stokes equations ](21_math_formulation/README.md)
+- [Navier Stokes equations ](math_formulation/README.md)
 
