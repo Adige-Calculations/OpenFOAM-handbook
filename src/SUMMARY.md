@@ -41,10 +41,7 @@
   - [System](directories_structure/system/README.md)
     - [controlDict](directories_structure/system/controldict.md)
     - [fvSchemes](directories_structure/system/fvSchemes.md)
-    - [fvSolution](directories_structure/system/fvSolution/README.md)
-      - [Linear solver](directories_structure/system/fvSolution/linear-solver.md)
-      - [Solver](directories_structure/system/fvSolution/solver.md)
-      - [Under-relaxation](directories_structure/system/fvSolution/under-relaxation-factors.md)
+    - [fvSolution](directories_structure/system/fvSolution/fvSolution.md)
     - [decomposeParDict](directories_structure/system/decomposepardict.md)
     - [fvOptions](directories_structure/system/fvOptions.md)
     - [topoSetDict](directories_structure/system/topoSetDict.md)
@@ -57,6 +54,8 @@
 - [Parallel execution](run-in-parallel/README.md)
     - [MPI (Message Passage Interface)](run-in-parallel/MPI.md)
     - [Cluster practices](run-in-parallel/cluster_practice.md)
+
+- [Compressibility model](compressible-model/compressible-model.md)
 
 - [Multiphase model](multiphase-model/README.md)
 

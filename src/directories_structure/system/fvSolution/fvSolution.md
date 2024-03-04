@@ -1,13 +1,21 @@
-# Linear solver control
+# fvSolution
 
-Linear solvers are sets of algorithms to solve linear problems as the following:
+The dictionary is divided in 3 parts:
+
+- linear-solver
+- solver
+- under-relaxation factor
+
+## Linear solver control
+
+Linear solvers are a sets of algorithms to solve the following linear problems in matrix form:
 
 \begin{equation}
 \tag{1}
 Ax=b
 \end{equation}
 
-The solver stops if any one of the following conditions are reached:
+The solver is said to have found a solutionh if any one of the following conditions are reached:
 
   - ```tolerance``` Define the exit criterion for the solver, it is the
     absolute difference between 2 consecutive iterations and must be low
@@ -22,7 +30,7 @@ The solver stops if any one of the following conditions are reached:
 
 >> The solvers controls can be modified on the fly (when a simulation is running).
 
-## Diagonal solver
+### Diagonal solver
 
 If the coefficient matrix only has values on its diagonal, the solution vector can be obtained inverting the matrix system using:
 
@@ -42,7 +50,7 @@ Where the inverse of the diagonal matrix is simply:
 A^{-1}= \frac{1}{diagonal(A)}
 \end{equation}
 
-## Direct iterative solvers
+### Direct solvers
 
 The following algoritms are direct methods, or method based on Gaussian elimination:
 
@@ -67,9 +75,9 @@ relTol          <relative tolerance>;
 tolerance       <absolute tolerance>;
 ```
 
-##  Minimization algorithms - Iterative solver
+###  Iterative solver (Minimization algorithms)
 
-The below are minimization algorithms, which they start from a guess and they iteratively correct up to the respect 
+They are solver that start from a guess and they iteratively correct up to the respect 
 of the equations of the system:
 
 - ```PCG```/```PBiCG```: Preconditioned (bi-)Conjugate Gradient, with PCG for symmetric matrices, PBiCG for asymmetric matrices.
@@ -78,7 +86,7 @@ of the equations of the system:
 
 The ```GAMG``` solver can often be the optimal choice for solving the pressure equation.
 
-### Available preconditioners
+### Preconditioners
 
 There are a range of options for preconditioning of matrices in the conjugate gradient solvers.
 
@@ -106,17 +114,35 @@ The pressure equation resolution usage is shown:
     }
 ```
 
+## Solver (coupling equations)
 
-# Coupling fluid dynamics problmes
+Whatever solver you use from above adopt a specific set of sequential algorithm such as semi-implicit 
+method for pressure-linked equations (SIMPLE), pressure-implicit split-operator (PISO) or PIMPLE.
+These sequential algorithms are iterative procedures for coupling equations for momentum and mass conservation, 
+PISO and PIMPLE being used for transient problems and SIMPLE for steady-state.
 
-Most fluid dynamics solver applications use either the pressure-implicit split-operator (PISO), the semi-implicit 
-method for pressure-linked equations (SIMPLE) algorithms, or a combined PIMPLE algorithm. These algorithms are 
-iterative procedures for coupling equations for momentum and mass conservation, PISO and PIMPLE being used for 
-transient problems and SIMPLE for steady-state.
+All the algorithms solve the same governing equations, they differ in how they loop over the equations. 
+The looping is controlled by input parameters that are listed below. They are set in a dictionary named after the algorithm:
 
-## SIMPLE solvers practice
+  - ```nNonOrthogonalCorrectors```: used by all algorithms, specifies repeated
+    solutions of the pressure equation, used to update the explicit
+    non-orthogonal correction of the Laplacian term; typically set to 0
+    (particularly for steady-state) or 1.
 
-### Pressure - Usual solver settings
+  - ```nCorrectors```: used by PISO, and PIMPLE, sets the number of times the
+    algorithm solves the pressure equation and momentum corrector in
+    each step; typically set to 2 or 3.
+
+  - ```nOuterCorrectors```: used by PIMPLE, it enables looping over the entire
+    system of equations within on time step, representing the total
+    number of times the system is solved; must be and is typically set
+    to 1, replicating the PISO algorithm.
+
+  - ```momentumPredictor``` switch those controls solving of the momentum
+    predictor; typically set to off for some flows, including low
+    Reynolds number and multiphase.
+
+### SIMPLE solvers practice
 
 For the pressure equation:
 
@@ -136,12 +162,10 @@ p
 ```
 
 After a while it should be good practice to lower the relative tollerance to ```relTol: 0.0``` to let mamage 
-the tollerance in an absolute criteria
-
-### Velocity - Usual solver settings
+the tolerance as an absolute criteria. While for the velocity: 
 
 ```c++
-p
+U
 {
     solver GAMG;
     smoother <smoother>;
@@ -156,7 +180,7 @@ p
 }
 ```
 
-## PISO & PIMPLE solvers practice
+### PISO & PIMPLE solvers practice
 
 You must do at least one corrector step when using PISO solvers.
 When you use the PISO and PIMPLE solvers, you also have the option to set the
@@ -192,6 +216,81 @@ pFinal
     nCellsInCoarsestLevel 1000;
     mergeLevels 1;
 }
+```
+
+#### Addtional notes
+
+Set to yes the momentumPredictor for high Reynolds flows, where convection dominates:
+
+```c++
+ momentumPredictor yes;
+ ```
+
+Recommended value is 1 (equivalent to PISO).
+Increase to improve the stability of second
+order time discretization schemes (LES
+simulations). Increase for strongly coupled
+problems.
+
+```c++
+nOuterCorrectors 1; 
+```
+
+Recommended to use at least 3 correctors.
+It improves accuracy and stability. Use 4 or
+more for highly transient flows or strongly
+coupled problems.
+
+```c++
+ nCorrector 3; 
+ ```
+
+Recommend to use at least 1 corrector.
+Increase the value for bad quality meshes.
+
+```c++
+ nNonOrthogonalCorrectors 1; 
+```
+
+The orthogonality correctors must be raised once the mesh starts to be highly orthogonal.
+
+|Non-orthogonality       |between 70 and 85| between 60 and 70 | less than 60 |
+|------------------------|-----------------|-------------------|--------------|
+|nNonOrthogonalCorrectors| 3               |                  2|             1|
+
+Flag to indicate whether to solve the turbulence on the final pimple iteration only. For Scale-Resolving 
+Simulation (SRS) the recommended value is false (the default is true)
+
+```c++
+ turbOnFinalIterOnly false; 
+```
+
+## Under-relaxation factors
+
+The relaxation factors for under-relaxaing the fields variable are specified within
+```fvSolution.relaxationFactors.fields``` sub-dictionary, instead
+equation under-relaxations factor are within a ```fvSolution.relaxationFactors.equations``` sub-dictionary. 
+
+### SIMPLE
+
+Usual set of parameters for under-relaxaing the problem using a SIMPLE scheme:
+
+```c++
+p 0.3;
+U 0.7;
+k 0.7;
+omega 0.7;
+```
+
+### SIMPLEC
+
+Usual set of parameters for under-relaxaing the problem using a SIMPLEC scheme:
+
+```c++
+p 1;
+U 0.9;
+k 0.9;
+omega 0.9;
 ```
 
 <!--  Script to show the footer   -->
