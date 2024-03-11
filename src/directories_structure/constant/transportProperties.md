@@ -1,10 +1,11 @@
 # transportProperties
 
-nu is the kinematic viscosity i.e.
+nu is the kinematic viscositym, follows the value of the air at given temperature:
 
-$ ν_{\text{air}} = \frac{µ}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\ $
+\begin{equation}
+\nu_{\text{air}} = \frac{\mu}{\rho} = 1.48 \times 10^{- 5}\ \frac{m^{2}}{s}\
+\end{equation}
 
-Air kinematic viscosity at given temperature
 <!--  Script to show the footer   -->
 <html>
 <script

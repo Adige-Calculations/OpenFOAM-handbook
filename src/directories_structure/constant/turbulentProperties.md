@@ -1,6 +1,6 @@
 # turbulentProperties
 
-The current dictionary contains the adoction control of turbulence models.
+The current dictionary act as the selector for the turbulence model.
 Consequent quanitie must be updated or introduced given the model you of turbulence you want to solve.
 
 ## RANS model (Reynolds Average Navier Stokes)
@@ -19,6 +19,7 @@ RAS
     printCoeffs     on;
 }
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script
