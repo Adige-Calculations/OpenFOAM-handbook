@@ -8,50 +8,65 @@ on the current values of the field. After each solver iteration the
 residual is re-evaluated. To terminate the case, the initial residual of
 the field equations should fall below user-specified threshold values.
 
-## Check convergence on turbulent flows
+#### Check convergence on turbulent flows
 
 A simple trick to check the converge of the calculations properly, consits in checking
 the \\( ν_{t} \\) convergence value since it is dependent from \\( k \\) and \\(  ε \\)
-which both must converge to get a good \\( ν_{t} \\, hence it is one of the best indicator
+which both must converge to get a good \\( ν_{t} \\), hence it is one of the best indicator
 of convergence.
 
-## Graphically check convergence
+## Convergence visualization
 
-Usually residuals can be monitored via terminal live or in a log file afterwords.
-However few solution are present if you want to generate a chart:
+Residuals can be monitored via terminal live or in a log file afterwards. Nonetheless
+solutions are present to generate charts:
 
-### Charts with GNUPlot
+#### GNUPlot
 
-GNU Plot is program for plotting mathematical expressions and data, to install it:
-
-```sudo apt install gnuplot```
-
-and creating a file: ```/system/residual``` called in ```/system/controlDict``` in this way
-
-Then run:
+GNUPlot (```gnuplot```) is program for plotting mathematical expressions and data, to install it use the following:
 
 ```sh
+sudo apt install gnuplot
+```
+
+Activate the object function in ```/system/controlDict```:
+
+```c#
+    ...
+    functions
+    {
+        #includeFunc  residuals
+        ...
+    }
+```
+
+Then the simualtion can be started as:
+
+```sh
+foamInfo residuals
+foamGet residuals
+foamRun > log &
 foamMonitor -l ./postprocessing/0/residuals
 ```
 
-### Charts with pyFoam
+#### Manual GNUPlot file
 
-PyFoam is a python library to control OpenFOAM-runs and manipulate OpenFOAM-data.
-A pyhton interpreter is usually already present in all GNU-Linux system, therefore 
-to make the interpreter able to understand the programme you are going to run, the
-installation of these libary must take place.
-```pip``` the package manger for pyhton projects permits you install libraries present 
-in the python official repo, to run it type as follows:
+A manual file for plotting the simualtion data follow:
 
 ```sh
-pip install PyFoam
+set logscale y
+set title "Residuals"
+set ylabel 'Residual'
+set xlabel 'Iteration'
+plot "< cat log | grep 'Solving for Ux' | cut -d' ' -f9 | tr -d ','" title 'Ux' with lines,\
+"< cat log | grep 'Solving for Uy' | cut -d' ' -f9 | tr -d ','" title 'Uy' with lines,\
+"< cat log | grep 'Solving for Uz' | cut -d' ' -f9 | tr -d ','" title 'Uz' with lines,\
+"< cat log | grep 'Solving for omega' | cut -d' ' -f9 | tr -d ','" title 'omega' with lines,\
+"< cat log | grep 'Solving for k' | cut -d' ' -f9 | tr -d ','" title 'k' with lines,\
+"< cat log | grep 'Solving for p' | cut -d' ' -f9 | tr -d ','" title 'p' with lines
+pause 1
+reread
 ```
-One recommended usage of these utilities would be to start a simulation with foamJob
-and display the residuals with pyFoamPlotWatcher.py without interfering with the simulation.
 
-```sh
-pyFoamPlotRunner.py <yourSolver>
-```
 <!--  Script to show the footer   -->
 <html>
 <script

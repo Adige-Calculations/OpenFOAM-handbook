@@ -1,8 +1,8 @@
 # Text editors
 
-To edit text during local and remote session, a GUI will not be always available.
-As a consequence software able to manage text efficiently on terminal are necessary.
-It is adivised to deprecate ```nano``` and make use of the most advanced tool to edit text.
+To edit text (especially in HPC remote sessions), a GUI will not be always available.
+As a consequence software able to manage text efficiently directly on the terminal are 
+necessary.
 
 | Software name | Destination of use  |  Why |
 | -----------   | ------------------- |------------------- |
@@ -10,7 +10,8 @@ It is adivised to deprecate ```nano``` and make use of the most advanced tool to
 |  vim          | Code editing        | Tons extentions and good sintax highlighting|
 
 
-Debian based system will install the software via:
+Debian based systems can install those software via:
+
 ```sh
 sudo apt install micro vim
 ```

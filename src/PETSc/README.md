@@ -1,12 +1,13 @@
 # PETSc linear algebra solver
 
-the [PETSc](https://petsc.org/) library must be used to resolve the linear system.
+The [PETSc](https://petsc.org/) library can be used to resolve linear system of equations assembled by 
+the OpenFOAM routines.
 
-PETSc must be installed, with the library path (```LDPATH```) updated to include its shared object 
-with the relative env variable set to the petsc installation:
+PETSc is installed (the target is the object ```libpetsc.so```) setting the library path (```LDPATH```) specifing the 
+environment variables set to the petsc installation:
 
-- PETSC_DIR
-- PETSC_ARCH
+- <b>PETSC_DIR</b>
+- <b>PETSC_ARCH</b>
 
 The above env. variables are needed to compile and link the PETSc library.
 
@@ -31,3 +32,20 @@ And try out one of the prepared tutorial cases:
 ```sh
 cd $WM_PROJECT_DIR/module/external_solver/tutorial
 ```
+
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../footers/footer_first_level_depth.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>
