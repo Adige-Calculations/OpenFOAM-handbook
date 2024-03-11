@@ -16,30 +16,16 @@ postProcess -list
 
 An example on how "system/controlDict" shoud be set up to read a function:
 
-```c++
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
-}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+```c#
+...
 
 application     simpleFoam;
 
-// [...]
+...
 
 functions
 
 {
-    #include "yPlus"
-}
-```
-From that we can read the file ```system/yPlus``` that might be organized in this way:
-
-```c++
     yPlusFunction
     {
         type            yPlus;
@@ -47,7 +33,10 @@ From that we can read the file ```system/yPlus``` that might be organized in thi
         writeControl    writeTime;
         patches         (wall);
     }
+
+}
 ```
+
 
 ## Postprocess utility
 

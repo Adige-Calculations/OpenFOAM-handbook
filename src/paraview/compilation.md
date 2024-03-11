@@ -1,21 +1,24 @@
 # ParaView compilation
 
-Sometimes, if you need particular features from paraview it is necessaty to
-build it from source. You'll need CMake and Ninja. Follow the instruction
-present at this source to understand which features are availble.
-<https://vcg.iwr.uni-heidelberg.de/manual_source/>
-
 The build process follows the usual cmake scheme, from the root of your
 source code:
 
 ```sh
 mkdir build
 cd build
-cmake ..
-cmake --build .  # This will actually start the compilation process
+cmake ..         # Generate the build instrutions 
+cmake --build .  # Start the compilation process
 ```
 
-Assuming your system is Debian based the following libraries should be required:
+## Paraview plugins 
+
+If you need particular features from paraview it is necessaty to
+build it from source. You'll need ```cmake``` to build the build instructions and ```ninja``` to execute the latter ones. 
+The instruction present at this source are usefull for this scope: <https://vcg.iwr.uni-heidelberg.de/manual_source/>
+
+## Dependencies
+
+Assuming your system is Debian based the following libraries should be present in the system:
 
 ```sh
 sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1

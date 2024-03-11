@@ -1,7 +1,5 @@
 # Compressible model
 
-## Algorithms explanation
-
 The Navier-Stokes equations consist of a time-dependent continuity equation for conservation of mass, three 
 time-dependent conservation of momentum equations, and a time-dependent conservation of energy equation.
 

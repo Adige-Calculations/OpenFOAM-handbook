@@ -6,7 +6,7 @@
   - [Package manager](installation/via_package_manager.md)
   - [Precompiled binaries](installation/download_binaries.md)
   - [Compiling source code](installation/compiling_src_code.md)
-    - [Compiling function object](installation/compile_function_objects.md) 
+    - [Compiling function objects](installation/compile_function_objects.md) 
 
 - [Problem set up](problem_set_up/README.md)
 
@@ -66,14 +66,12 @@
 - [Residuals](residuals/README.md)
 
 - [ParaView](paraview/paraview.md)
-
   - [Remote rendering](paraview/pvserver.md)
-
   - [Compilation](paraview/compilation.md)
-
   - [Different meshes](paraview/visualization_different_meshes.md)
 
 - [CLI Post-processing](post-processing-via-command-line/README.md)
+  - [Function objects](post-processing-via-command-line/function_object.md)
 
 - [External library for computation](PETSc/README.md)
 

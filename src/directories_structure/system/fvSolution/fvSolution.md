@@ -15,7 +15,7 @@ Linear solvers are a sets of algorithms to solve the following linear problems i
 Ax=b
 \end{equation}
 
-The solver is said to have found a solutionh if any one of the following conditions are reached:
+The solver is said to have found a solution if any one of the following conditions are reached:
 
   - ```tolerance``` Define the exit criterion for the solver, it is the
     absolute difference between 2 consecutive iterations and must be low
@@ -30,9 +30,11 @@ The solver is said to have found a solutionh if any one of the following conditi
 
 >> The solvers controls can be modified on the fly (when a simulation is running).
 
+
 ### Diagonal solver
 
-If the coefficient matrix only has values on its diagonal, the solution vector can be obtained inverting the matrix system using:
+If the matix coefficients have non-zeros values on its diagonal, therefore a set of explicit equations. The solution vector can be 
+obtained inverting the stiffness matrix without incurring in relevant computational effort:
 
 - ```diagonal```: a diagonal solver for explicit systems.
 
@@ -60,7 +62,7 @@ The solvers that use a smoother require the choice of smoother to be specified a
 
 - ```GaussSeidel``` Gauss-Seidel.
 - ```symGaussSeidel``` symmetric Gauss-Seidel.
-- ```DIC/DILU: diagonal``` incomplete-Cholesky (symmetric), incomplete-LU (asymmetric).
+- ```DIC/DILU``` incomplete-Cholesky (symmetric), incomplete-LU (asymmetric).
 - ```DICGaussSeidel``` diagonal incomplete-Cholesky/LU with Gauss-Seidel (symmetric/asymmetric).
 
 When using the smooth solvers, the user can optionally specify the number of sweeps, by the ```nSweeps```
@@ -86,14 +88,19 @@ of the equations of the system:
 
 The ```GAMG``` solver can often be the optimal choice for solving the pressure equation.
 
+> Preconditioners are useful in iterative methods to solve a linear system since the rate of convergence for most iterative 
+> linear solvers increases because the condition number of a matrix decreases as a result of preconditioning. Preconditioned 
+> iterative solvers typically outperform direct solvers, e.g., Gaussian elimination, for large, especially for sparse, matrices.
+
 ### Preconditioners
 
-There are a range of options for preconditioning of matrices in the conjugate gradient solvers.
+Preconditioning is typically related to reducing a condition number of the problem, via the application of a matrix transformation. 
+The preconditioned problem is then usually solved by an iterative method. There are a range of options for preconditioning matrices:
 
 - ```DIC/DILU```: diagonal incomplete-Cholesky (symmetric) and incomplete-LU (asymmetric)
 - ```FDIC```: faster diagonal incomplete-Cholesky (DIC with caching, symmetric)
-- ```diagonal```: diagonal preconditioning.
 - ```GAMG```: geometric-algebraic multi-grid.
+- ```diagonal```: diagonal preconditioning, not generally used
 - ```none```: no preconditioning.
 
 The pressure equation resolution usage is shown:
