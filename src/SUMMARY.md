@@ -67,6 +67,7 @@
 
 - [ParaView](paraview/paraview.md)
   - [Remote rendering](paraview/pvserver.md)
+  - [Filter highlights](paraview/filter_highlights.md) 
   - [Compilation](paraview/compilation.md)
   - [Different meshes](paraview/visualization_different_meshes.md)
 
